@@ -9,7 +9,10 @@ uses
   dxSkinsDefaultPainters, Vcl.Menus, dxBarBuiltInMenu, cxMemo, cxDBEdit, cxPC,
   Vcl.StdCtrls, cxButtons, dxCustomTileControl, dxTileControl, cxGroupBox,
   dximctrl, cxMaskEdit, cxDropDownEdit, cxImageComboBox, cxLabel, cxTextEdit,
-  Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, cxImageList;
+  Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, cxImageList, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
+  Data.DB, cxDBData, cxRadioGroup, cxGridLevel, cxClasses, cxGridCustomView,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, dxBevel;
 
 type
   TfrmCadProdutos = class(TForm)
@@ -17,22 +20,40 @@ type
     PgeCadastroComp: TcxPageControl;
     tabCadastro: TcxTabSheet;
     cxDBMemo1: TcxDBMemo;
-    cxDBTextEdit1: TcxDBTextEdit;
-    cxDBTextEdit2: TcxDBTextEdit;
-    cxDBTextEdit3: TcxDBTextEdit;
-    cxDBTextEdit4: TcxDBTextEdit;
-    cxImageComboBox1: TcxImageComboBox;
+    edtCellDesc: TcxDBTextEdit;
+    edtCellMemoriaRAM: TcxDBTextEdit;
+    edtCellProcessamento: TcxDBTextEdit;
+    cbmMarcaAparelho: TcxImageComboBox;
     cxLabel15: TcxLabel;
     cxLabel16: TcxLabel;
     cxLabel5: TcxLabel;
     cxLabel6: TcxLabel;
     cxLabel8: TcxLabel;
     imgFoto: TdxSpinImage;
-    lblArmazenamento: TcxLabel;
     lblMemoria: TcxLabel;
     lblProcessamento: TcxLabel;
     imgMarcas: TcxImageList;
     tabConsulta: TcxTabSheet;
+    pnlTop: TPanel;
+    btnConsultaProdutos: TcxButton;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxDBImageComboBox1: TcxDBImageComboBox;
+    cxLabel1: TcxLabel;
+    cxLabel2: TcxLabel;
+    cxDBTextEdit1: TcxDBTextEdit;
+    cxLabel3: TcxLabel;
+    cxDBTextEdit2: TcxDBTextEdit;
+    cxLabel4: TcxLabel;
+    cxDBTextEdit3: TcxDBTextEdit;
+    OpenDialog: TOpenDialog;
+    Panel1: TPanel;
+    dxBevel1: TdxBevel;
+    btnSalvar: TcxButton;
+    cxButton2: TcxButton;
+    cxButton3: TcxButton;
+    cxButton1: TcxButton;
   private
     { Private declarations }
   public

@@ -23,8 +23,6 @@ object frmCadProdutos: TfrmCadProdutos
     Properties.ActivePage = tabCadastro
     Properties.CustomButtons.Buttons = <>
     LookAndFeel.NativeStyle = False
-    ExplicitTop = 40
-    ExplicitHeight = 219
     ClientRectBottom = 644
     ClientRectRight = 1113
     ClientRectTop = 24
@@ -32,8 +30,6 @@ object frmCadProdutos: TfrmCadProdutos
       Hint = 'Endere'#231'o'
       Caption = 'Cadastro de Produtos'
       ImageIndex = 0
-      ExplicitTop = 0
-      ExplicitHeight = 219
       object pnlCadastroDeProduto: TPanel
         Left = 0
         Top = 0
@@ -44,43 +40,45 @@ object frmCadProdutos: TfrmCadProdutos
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        ExplicitHeight = 644
+        ExplicitLeft = 3
         DesignSize = (
           1113
           620)
+        object dxBevel1: TdxBevel
+          Left = 0
+          Top = 541
+          Width = 1113
+          Height = 3
+          Align = alBottom
+          ExplicitTop = 540
+        end
         object cxDBMemo1: TcxDBMemo
-          Left = 27
-          Top = 208
+          Left = 25
+          Top = 273
           TabOrder = 0
-          Height = 199
+          Height = 240
           Width = 607
         end
-        object cxDBTextEdit1: TcxDBTextEdit
+        object edtCellDesc: TcxDBTextEdit
           Left = 138
           Top = 61
           TabOrder = 1
           Width = 494
         end
-        object cxDBTextEdit2: TcxDBTextEdit
+        object edtCellMemoriaRAM: TcxDBTextEdit
           Left = 138
           Top = 112
           TabOrder = 2
           Width = 494
         end
-        object cxDBTextEdit3: TcxDBTextEdit
+        object edtCellProcessamento: TcxDBTextEdit
           Left = 138
           Top = 85
           TabOrder = 3
           Width = 494
         end
-        object cxDBTextEdit4: TcxDBTextEdit
-          Left = 140
-          Top = 136
-          TabOrder = 4
-          Width = 494
-        end
-        object cxImageComboBox1: TcxImageComboBox
-          Left = 140
+        object cbmMarcaAparelho: TcxImageComboBox
+          Left = 138
           Top = 34
           Properties.Images = imgMarcas
           Properties.Items = <
@@ -97,8 +95,8 @@ object frmCadProdutos: TfrmCadProdutos
           StyleDisabled.LookAndFeel.Kind = lfFlat
           StyleFocused.LookAndFeel.Kind = lfFlat
           StyleHot.LookAndFeel.Kind = lfFlat
-          TabOrder = 5
-          Width = 121
+          TabOrder = 4
+          Width = 133
         end
         object cxLabel15: TcxLabel
           Left = 0
@@ -128,8 +126,8 @@ object frmCadProdutos: TfrmCadProdutos
           Style.IsFontAssigned = True
         end
         object cxLabel5: TcxLabel
-          Left = 27
-          Top = 185
+          Left = 25
+          Top = 250
           Caption = 'Observa'#231#227'o :'
           ParentFont = False
           Style.Font.Charset = DEFAULT_CHARSET
@@ -152,10 +150,10 @@ object frmCadProdutos: TfrmCadProdutos
           Style.IsFontAssigned = True
         end
         object cxLabel8: TcxLabel
-          Left = 879
-          Top = 340
+          Left = 709
+          Top = 34
           Anchors = [akRight, akBottom]
-          Caption = 'Foto :'
+          Caption = 'Imagem :'
           ParentFont = False
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clWindowText
@@ -163,16 +161,15 @@ object frmCadProdutos: TfrmCadProdutos
           Style.Font.Name = 'Segoe UI'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          ExplicitTop = 364
         end
         object imgFoto: TdxSpinImage
-          Left = 919
-          Top = 340
-          Width = 151
-          Height = 125
+          Left = 767
+          Top = 34
+          Width = 298
+          Height = 290
           Anchors = [akRight, akBottom]
           AutoSize = False
-          BorderStyle = bsNone
+          BorderStyle = bsSingle
           DefaultImages = True
           ImageHAlign = hsiCenter
           ImageVAlign = vsiCenter
@@ -187,20 +184,7 @@ object frmCadProdutos: TfrmCadProdutos
           Ctl3D = False
           ParentColor = True
           ParentCtl3D = False
-          TabOrder = 11
-          ExplicitTop = 244
-        end
-        object lblArmazenamento: TcxLabel
-          Left = 38
-          Top = 137
-          Caption = 'Armazenamento :'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -11
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
+          TabOrder = 10
         end
         object lblMemoria: TcxLabel
           Left = 48
@@ -226,17 +210,235 @@ object frmCadProdutos: TfrmCadProdutos
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
         end
+        object cxDBImageComboBox1: TcxDBImageComboBox
+          Left = 138
+          Top = 139
+          Properties.Items = <
+            item
+              Description = '32 Gigas'
+              ImageIndex = 0
+              Value = 0
+            end
+            item
+              Description = '64 Gigas'
+              Value = 1
+            end
+            item
+              Description = '128 Gigas'
+              Value = 2
+            end
+            item
+              Description = '256 Gigas'
+              Value = 3
+            end
+            item
+              Description = '512 Gigas'
+              Value = 4
+            end
+            item
+              Description = '1 Tera'
+              Value = 5
+            end>
+          TabOrder = 13
+          Width = 133
+        end
+        object cxLabel1: TcxLabel
+          Left = 38
+          Top = 141
+          Caption = 'Armazenamento :'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -11
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+        end
+        object cxLabel2: TcxLabel
+          Left = 106
+          Top = 222
+          Caption = 'Cor :'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -11
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+        end
+        object cxDBTextEdit1: TcxDBTextEdit
+          Left = 138
+          Top = 221
+          TabOrder = 16
+          Width = 494
+        end
+        object cxLabel3: TcxLabel
+          Left = 37
+          Top = 168
+          Caption = 'C'#226'mera Principal :'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -11
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+        end
+        object cxDBTextEdit2: TcxDBTextEdit
+          Left = 138
+          Top = 167
+          TabOrder = 18
+          Width = 494
+        end
+        object cxLabel4: TcxLabel
+          Left = 47
+          Top = 195
+          Caption = 'C'#226'mera frontal :'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -11
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+        end
+        object cxDBTextEdit3: TcxDBTextEdit
+          Left = 138
+          Top = 194
+          TabOrder = 20
+          Width = 494
+        end
+        object Panel1: TPanel
+          Left = 0
+          Top = 544
+          Width = 1113
+          Height = 76
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 21
+          object btnSalvar: TcxButton
+            AlignWithMargins = True
+            Left = 3
+            Top = 3
+            Width = 365
+            Height = 70
+            Align = alLeft
+            Caption = 'Salvar'
+            TabOrder = 0
+          end
+          object cxButton2: TcxButton
+            AlignWithMargins = True
+            Left = 374
+            Top = 3
+            Width = 365
+            Height = 70
+            Align = alLeft
+            Caption = 'Inserir'
+            TabOrder = 1
+            ExplicitLeft = 369
+          end
+          object cxButton3: TcxButton
+            AlignWithMargins = True
+            Left = 745
+            Top = 3
+            Width = 365
+            Height = 70
+            Align = alLeft
+            Caption = 'editar'
+            TabOrder = 2
+            ExplicitLeft = 735
+          end
+        end
+        object cxButton1: TcxButton
+          Left = 767
+          Top = 336
+          Width = 298
+          Height = 57
+          Caption = 'Pesquisar'
+          TabOrder = 22
+        end
       end
     end
     object tabConsulta: TcxTabSheet
       Caption = 'Consultar Produtos'
       ImageIndex = 0
+      object pnlTop: TPanel
+        Left = 0
+        Top = 0
+        Width = 1113
+        Height = 81
+        Align = alTop
+        TabOrder = 0
+        object btnConsultaProdutos: TcxButton
+          AlignWithMargins = True
+          Left = 897
+          Top = 11
+          Width = 205
+          Height = 59
+          Margins.Top = 10
+          Margins.Right = 10
+          Margins.Bottom = 10
+          Align = alRight
+          Caption = 'Pesquisar'
+          TabOrder = 0
+          ExplicitLeft = 904
+          ExplicitTop = 4
+          ExplicitHeight = 73
+        end
+      end
+      object cxGrid1: TcxGrid
+        Left = 0
+        Top = 81
+        Width = 1113
+        Height = 539
+        Align = alClient
+        TabOrder = 1
+        ExplicitLeft = 192
+        ExplicitTop = 240
+        ExplicitWidth = 250
+        ExplicitHeight = 200
+        object cxGrid1DBTableView1: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Buttons.First.Visible = True
+          Navigator.Buttons.PriorPage.Visible = True
+          Navigator.Buttons.Prior.Visible = True
+          Navigator.Buttons.Next.Visible = True
+          Navigator.Buttons.NextPage.Visible = True
+          Navigator.Buttons.Last.Visible = True
+          Navigator.Buttons.Insert.Visible = False
+          Navigator.Buttons.Append.Visible = False
+          Navigator.Buttons.Delete.Visible = False
+          Navigator.Buttons.Edit.Enabled = False
+          Navigator.Buttons.Edit.Visible = False
+          Navigator.Buttons.Post.Visible = True
+          Navigator.Buttons.Cancel.Visible = True
+          Navigator.Buttons.Refresh.Enabled = False
+          Navigator.Buttons.Refresh.Visible = False
+          Navigator.Buttons.SaveBookmark.Enabled = False
+          Navigator.Buttons.SaveBookmark.Visible = False
+          Navigator.Buttons.GotoBookmark.Enabled = False
+          Navigator.Buttons.GotoBookmark.Visible = False
+          Navigator.Buttons.Filter.Enabled = False
+          Navigator.Buttons.Filter.Visible = False
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsBehavior.GoToNextCellOnEnter = True
+          OptionsData.Appending = True
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          OptionsView.HeaderHeight = 30
+        end
+        object cxGrid1Level1: TcxGridLevel
+          GridView = cxGrid1DBTableView1
+        end
+      end
     end
   end
   object imgMarcas: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 3670864
+    DesignInfo = 5767856
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -254,5 +456,9 @@ object frmCadProdutos: TfrmCadProdutos
           C893EFFBE4382D68DB966B386BCFB15AE8BA0E1CC781388E619A26EC555505AE
           EB82E779587F0178031FFEB3E348A57A910000000049454E44AE426082}
       end>
+  end
+  object OpenDialog: TOpenDialog
+    Left = 680
+    Top = 160
   end
 end

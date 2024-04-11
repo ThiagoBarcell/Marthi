@@ -243,12 +243,12 @@ TBDockHeight=9010
 LRDockWidth=1896
 Dockable=1
 StayOnTop=0
-SplitPos=111
+SplitPos=166
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Align,
-ExpandedItems=Anchors=0,Constraints=0
+SelectedItem=Caption,
+ExpandedItems=Anchors=0,Constraints=0,EditValue=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,Properties=1,Style=0,StyleDisabled=0,StyleFocused=0,StyleHot=0,Touch=0,Properties.Alignment=0,Properties.AssignedValues=0,Properties.ButtonGlyph=0,Properties.IncrementalFilteringOptions=0,Properties.ValidationOptions=0,Style.AssignedValues=0,Style.Edges=0,Style.Font=0,Style.LookAndFeel=1,Style.TextStyle=0,Style.LookAndFeel.AssignedValues=1,Font=0,Padding=0,BevelEdges=0,Properties.Images=0,DataBinding=0
 
 [ClassBrowserTool]
 PercentageSizes=1

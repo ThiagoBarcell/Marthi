@@ -102,6 +102,11 @@
             <Form>frmCadProdutos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\Forms\DataModules\GeralDMFrm.pas">
+            <Form>frmGeralDM</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

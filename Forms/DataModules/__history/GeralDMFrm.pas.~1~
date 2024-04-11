@@ -1,0 +1,25 @@
+unit GeralDMFrm;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type
+  TfrmGeralDM = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmGeralDM: TfrmGeralDM;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.
