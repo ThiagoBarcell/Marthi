@@ -12,18 +12,18 @@ uses
   Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, cxImageList, cxStyles,
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
   Data.DB, cxDBData, cxRadioGroup, cxGridLevel, cxClasses, cxGridCustomView,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, dxBevel;
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, dxBevel,
+  GeralDMFrm;
 
 type
   TfrmCadProdutos = class(TForm)
     pnlCadastroDeProduto: TPanel;
     PgeCadastroComp: TcxPageControl;
     tabCadastro: TcxTabSheet;
-    cxDBMemo1: TcxDBMemo;
+    memObsCell: TcxDBMemo;
     edtCellDesc: TcxDBTextEdit;
     edtCellMemoriaRAM: TcxDBTextEdit;
     edtCellProcessamento: TcxDBTextEdit;
-    cbmMarcaAparelho: TcxImageComboBox;
     cxLabel15: TcxLabel;
     cxLabel16: TcxLabel;
     cxLabel5: TcxLabel;
@@ -36,24 +36,32 @@ type
     tabConsulta: TcxTabSheet;
     pnlTop: TPanel;
     btnConsultaProdutos: TcxButton;
-    cxGrid1DBTableView1: TcxGridDBTableView;
-    cxGrid1Level1: TcxGridLevel;
-    cxGrid1: TcxGrid;
+    grdConsultaProdDBTableView: TcxGridDBTableView;
+    grdConsultaProdLevel: TcxGridLevel;
+    grdConsultaProd: TcxGrid;
     cxDBImageComboBox1: TcxDBImageComboBox;
     cxLabel1: TcxLabel;
     cxLabel2: TcxLabel;
-    cxDBTextEdit1: TcxDBTextEdit;
+    edtCellColor: TcxDBTextEdit;
     cxLabel3: TcxLabel;
-    cxDBTextEdit2: TcxDBTextEdit;
+    edtPrincCam: TcxDBTextEdit;
     cxLabel4: TcxLabel;
-    cxDBTextEdit3: TcxDBTextEdit;
+    edtFrontCam: TcxDBTextEdit;
     OpenDialog: TOpenDialog;
     Panel1: TPanel;
     dxBevel1: TdxBevel;
     btnSalvar: TcxButton;
-    cxButton2: TcxButton;
-    cxButton3: TcxButton;
-    cxButton1: TcxButton;
+    btnInserir: TcxButton;
+    btnEditar: TcxButton;
+    btnPesqImagem: TcxButton;
+    grdConsultaProdDBTableViewColumn1: TcxGridDBColumn;
+    grdConsultaProdDBTableViewColumn2: TcxGridDBColumn;
+    grdConsultaProdDBTableViewColumn3: TcxGridDBColumn;
+    cxDBImageComboBox2: TcxDBImageComboBox;
+    procedure btnConsultaProdutosClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btnInserirClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -66,5 +74,25 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmCadProdutos.btnConsultaProdutosClick(Sender: TObject);
+begin
+  frmGeralDM.qryCadCell.Open;
+end;
+
+procedure TfrmCadProdutos.btnSalvarClick(Sender: TObject);
+begin
+  frmGeralDM.qryCadCell.Post;
+end;
+
+procedure TfrmCadProdutos.btnInserirClick(Sender: TObject);
+begin
+  frmGeralDM.qryCadCell.Append;
+end;
+
+procedure TfrmCadProdutos.btnEditarClick(Sender: TObject);
+begin
+  frmGeralDM.qryCadCell.Edit;
+end;
 
 end.
