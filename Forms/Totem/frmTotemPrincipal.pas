@@ -26,7 +26,10 @@ type
     Image2: TImage;
     ShadowEffect5: TShadowEffect;
     ShadowEffect6: TShadowEffect;
-    ArcDial1: TArcDial;
+    Rectangle4: TRectangle;
+    ShadowEffect7: TShadowEffect;
+    Rectangle5: TRectangle;
+    ShadowEffect8: TShadowEffect;
   private
     { Private declarations }
   public
