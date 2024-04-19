@@ -2,8 +2,8 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
   Left = 0
   Top = 0
   BorderStyle = Single
-  ClientHeight = 480
-  ClientWidth = 767
+  ClientHeight = 1555
+  ClientWidth = 800
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -24,7 +24,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
     Fill.Gradient.StartPosition.Y = 1.000000000000000000
     Fill.Gradient.StopPosition.X = 0.499999970197677600
     Fill.Gradient.StopPosition.Y = 0.000000000000000000
-    Size.Width = 767.000000000000000000
+    Size.Width = 800.000000000000000000
     Size.Height = 145.000000000000000000
     Size.PlatformDefault = False
     Stroke.Thickness = 0.000000000000000000
@@ -41,7 +41,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
     Fill.Color = claLavender
     Position.Y = 145.000000000000000000
     Size.Width = 217.000000000000000000
-    Size.Height = 335.000000000000000000
+    Size.Height = 1410.000000000000000000
     Size.PlatformDefault = False
     Stroke.Thickness = 0.000000000000000000
     object RoundRect2: TRoundRect
@@ -207,8 +207,8 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
   object Rectangle3: TRectangle
     Align = Client
     Fill.Color = claLavender
-    Size.Width = 550.000000000000000000
-    Size.Height = 335.000000000000000000
+    Size.Width = 583.000000000000000000
+    Size.Height = 1410.000000000000000000
     Size.PlatformDefault = False
     Stroke.Thickness = 0.000000000000000000
     object ShadowEffect1: TShadowEffect
@@ -218,43 +218,107 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
       Opacity = 0.600000023841857900
       ShadowColor = claBlack
     end
-    object Rectangle4: TRectangle
-      Align = Right
-      Fill.Color = xFFFBFAFA
-      Margins.Left = 5.000000000000000000
-      Margins.Top = 5.000000000000000000
-      Position.X = -5.000000000000000000
-      Position.Y = 5.000000000000000000
-      Size.Width = 270.000000000000000000
-      Size.Height = 330.000000000000000000
+    object VertScrollBox1: TVertScrollBox
+      Align = Client
+      Size.Width = 583.000000000000000000
+      Size.Height = 1410.000000000000000000
       Size.PlatformDefault = False
-      Stroke.Thickness = 0.000000000000000000
-      object ShadowEffect7: TShadowEffect
-        Distance = 3.000000000000000000
-        Direction = 45.000000000000000000
-        Softness = 0.300000011920929000
-        Opacity = 0.600000023841857900
-        ShadowColor = claBlack
+      TabOrder = 0
+      Viewport.Width = 583.000000000000000000
+      Viewport.Height = 1410.000000000000000000
+      object Rectangle4: TRectangle
+        Align = Client
+        Fill.Color = xFFFBFAFA
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 5.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Size.Width = 573.000000000000000000
+        Size.Height = 1359.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Thickness = 0.000000000000000000
+        XRadius = 20.000000000000000000
+        YRadius = 20.000000000000000000
+        object ShadowEffect7: TShadowEffect
+          Distance = 3.000000000000000000
+          Direction = 45.000000000000000000
+          Softness = 0.300000011920929000
+          Opacity = 0.600000023841857900
+          ShadowColor = claBlack
+        end
       end
-    end
-    object Rectangle5: TRectangle
-      Align = Right
-      Fill.Color = xFFFBFAFA
-      Margins.Left = 10.000000000000000000
-      Margins.Top = 5.000000000000000000
-      Margins.Right = 5.000000000000000000
-      Position.X = 275.000000000000000000
-      Position.Y = 5.000000000000000000
-      Size.Width = 270.000000000000000000
-      Size.Height = 330.000000000000000000
-      Size.PlatformDefault = False
-      Stroke.Thickness = 0.000000000000000000
-      object ShadowEffect8: TShadowEffect
-        Distance = 3.000000000000000000
-        Direction = 45.000000000000000000
-        Softness = 0.300000011920929000
-        Opacity = 0.600000023841857900
-        ShadowColor = claBlack
+      object RoundRect3: TRoundRect
+        Align = MostTop
+        Fill.Color = xFFFBFAFA
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 5.000000000000000000
+        Position.X = 5.000000000000000000
+        Position.Y = 5.000000000000000000
+        Size.Width = 573.000000000000000000
+        Size.Height = 36.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Thickness = 0.000000000000000000
+        object ShadowEffect9: TShadowEffect
+          Distance = 3.000000000000000000
+          Direction = 45.000000000000000000
+          Softness = 0.300000011920929000
+          Opacity = 0.600000023841857900
+          ShadowColor = claBlack
+        end
+        object Text1: TText
+          Align = Client
+          Margins.Left = 10.000000000000000000
+          Size.Width = 508.000000000000000000
+          Size.Height = 36.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Leading
+        end
+        object Image3: TImage
+          MultiResBitmap = <
+            item
+              Width = 32
+              Height = 32
+              PNG = {
+                89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+                F4000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                02DE494441545847BDD6CBCB4D5118C771E436106242DE52722B9701C6468488
+                09A50C154626FE040323260648A64624D7014A2E0303B73271294A6E29C540C8
+                F5F7D159757A7BCF3E7BEF93F3AB6FFBECB3D7F3AC675D9E67ADF1E3AA3535AC
+                0BDBC2AA3037CC0E1FC3BBF0209C0FD7C3B7D0585501AC0FA7C248781EEE7778
+                1A9684D51D1685D76177B81606D6B4702CFC0A87C38C4073C29670A0F3F44EBE
+                6BA73D3BF6AD659A5F74581B668613E14DF8133E877B9DA777FFFBAE9DF6C596
+                9FC61239E3B39DDF1B83A97D147605D35E96CCD3BBFF7DD74E7B76ECF9693C13
+                A6AF181E0A3FC2C13029144D0C8FC393702E6C0ABE6BA73DBB3210FE6ACB86B3
+                86A6D14838F37B2C2D0F7B820DFA3DDC0DF382F6ECD8FBCD1FBF7D25D55E051B
+                C95A9A4E23AA23197223BC0C0B023BF6FCF0C72FFF95B2A37F07BBD986B2A6DD
+                D3DE4F3AB81A6E0676ECF9E18F5FFE2B7532C86DB2AB6DACA69A1FBE86AD813D
+                3FC42FFF95525C4E07792DB5ECEE36DA115606F6FCF0C72FFF957A1B4A7191DF
+                FDCA739564097B7E4AD1E2BFA72604B5BD94572557F46D64E39D09ECF9E14FBA
+                CE0A3D2500078BC68250D7DBCEC0A7B03DB0E7873F5922137A4A004E35878A12
+                3B3D2C0E6DF533B0E7873F037B167A4A008E5401BC0FD66B4D1844ECF9E1AF6F
+                0034681DE856771D90055FC28650A9412AE1687557C2A3E161A8A52667412F75
+                9F050A93736267A8AD3AA7E158F25D3BEDCB69782758D665A1B6CA313AE87DE0
+                76F8105CCF64D8D2505B83DC884CBB91EB7C45981CAE84C6411845933BA1A70D
+                67CD4DBB91EB9CF60581360E826C4CD9C1A9AAE660D1F9E6B0371C09978354B3
+                DB6D386BAE0618B9CE15A6FDE14268158414355A47AA538D73F77FC5E55210C4
+                E83C2FD77423D73999918BA155106DB43008C2C8CB72780A7AE841187909624A
+                B06C430BC272C81423D7397996EC708FFCEF723ADA3B46DE1DC4AD70FCDFDB10
+                A46895EC28412862FE1B9A0461DA8D5CE70ADAD066A0C89AEBD4C8F31C37F217
+                7818DA0E959F3AE50000000049454E44AE426082}
+            end>
+          Align = Right
+          Opacity = 0.500000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Position.X = 518.000000000000000000
+          Position.Y = 5.000000000000000000
+          RotationAngle = 90.000000000000000000
+          Size.Width = 50.000000000000000000
+          Size.Height = 26.000000000000000000
+          Size.PlatformDefault = False
+        end
       end
     end
   end

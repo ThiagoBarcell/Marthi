@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
-  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Effects;
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Effects, FMX.Layouts;
 
 type
   TTotemPrincipalfrm = class(TForm)
@@ -28,8 +28,11 @@ type
     ShadowEffect6: TShadowEffect;
     Rectangle4: TRectangle;
     ShadowEffect7: TShadowEffect;
-    Rectangle5: TRectangle;
-    ShadowEffect8: TShadowEffect;
+    VertScrollBox1: TVertScrollBox;
+    RoundRect3: TRoundRect;
+    ShadowEffect9: TShadowEffect;
+    Text1: TText;
+    Image3: TImage;
   private
     { Private declarations }
   public
