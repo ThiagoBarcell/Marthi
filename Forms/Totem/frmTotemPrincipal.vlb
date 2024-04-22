@@ -47,9 +47,6 @@ Coordinates=10,10,101,146
 [ShadowEffect7]
 Coordinates=603,56,101,36
 
-[Layout2]
-Coordinates=190,280,60,36
-
 [Label4]
 Coordinates=295,10,53,58
 
@@ -58,9 +55,6 @@ Coordinates=120,280,60,36
 
 [VertScrollBox1]
 Coordinates=10,280,100,36
-
-[Edit1]
-Coordinates=492,10,44,58
 
 [RoundRect3]
 Coordinates=456,234,86,36
@@ -99,5 +93,5 @@ Coordinates=121,10,101,146
 Coordinates=10,234,60,36
 
 []
-Coordinates=372,166,96,58
+Coordinates=190,280,60,36
 
