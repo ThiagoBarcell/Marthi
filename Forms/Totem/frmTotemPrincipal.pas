@@ -5,23 +5,19 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
-  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Effects, FMX.Layouts;
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Effects, FMX.Layouts, FMX.Edit,
+  FMX.ListBox;
 
 type
   TTotemPrincipalfrm = class(TForm)
     Rectangle1: TRectangle;
-    Rectangle2: TRectangle;
-    Rectangle3: TRectangle;
     RoundRect2: TRoundRect;
     Label1: TLabel;
     Image1: TImage;
-    ShadowEffect1: TShadowEffect;
     ShadowEffect2: TShadowEffect;
     ShadowEffect3: TShadowEffect;
-    SpeedButton1: TSpeedButton;
     ShadowEffect4: TShadowEffect;
     RoundRect1: TRoundRect;
-    SpeedButton2: TSpeedButton;
     Label2: TLabel;
     Image2: TImage;
     ShadowEffect5: TShadowEffect;
@@ -29,10 +25,32 @@ type
     Rectangle4: TRectangle;
     ShadowEffect7: TShadowEffect;
     VertScrollBox1: TVertScrollBox;
+    lytTop: TLayout;
+    lytModelo: TLayout;
+    lytCenter: TLayout;
     RoundRect3: TRoundRect;
     ShadowEffect9: TShadowEffect;
-    Text1: TText;
     Image3: TImage;
+    Layout1: TLayout;
+    Edit1: TEdit;
+    Layout2: TLayout;
+    Layout3: TLayout;
+    Image4: TImage;
+    ComboBox1: TComboBox;
+    Label3: TLabel;
+    Layout4: TLayout;
+    Label4: TLabel;
+    Layout5: TLayout;
+    ComboBox2: TComboBox;
+    Label5: TLabel;
+    StyleBook1: TStyleBook;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    lytRodape: TLayout;
+    Rectangle2: TRectangle;
+    Label9: TLabel;
+    Label10: TLabel;
   private
     { Private declarations }
   public
@@ -45,5 +63,10 @@ var
 implementation
 
 {$R *.fmx}
+{$R *.Surface.fmx MSWINDOWS}
+{$R *.Moto360.fmx ANDROID}
+{$R *.iPhone55in.fmx IOS}
+{$R *.iPad.fmx IOS}
+{$R *.Windows.fmx MSWINDOWS}
 
 end.
