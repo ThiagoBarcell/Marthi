@@ -58,6 +58,7 @@ type
     grdConsultaProdDBTableViewColumn2: TcxGridDBColumn;
     grdConsultaProdDBTableViewColumn3: TcxGridDBColumn;
     cxDBImageComboBox2: TcxDBImageComboBox;
+    Label1: TLabel;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);

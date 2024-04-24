@@ -4,7 +4,7 @@ object frmGeralDM: TfrmGeralDM
   Width = 546
   object ConectMarthi: TFDConnection
     Params.Strings = (
-      'Database=D:\Projeto Toten-MM\DataBase\MARTHIDB.FDB'
+      'Database=D:\Marthi GIT\DataBase\MARTHIDB.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'Server=LocalHost'
@@ -28,7 +28,11 @@ object frmGeralDM: TfrmGeralDM
       '  CELL_CAM_PRINC,'
       '  CELL_CAM_FRONT,'
       '  CELL_COR,'
-      '  CELL_OBS'
+      '  CELL_VALOR_UNITARIO,'
+      '  CELL_VALOR_PARCELADO,'
+      '  CELL_OBS,'
+      '  DAT_CAT,'
+      '  DAT_ALT'
       'FROM CAD_CELL')
     Left = 56
     Top = 80
@@ -90,6 +94,40 @@ object frmGeralDM: TfrmGeralDM
   end
   object upsCadCell: TFDUpdateSQL
     Connection = ConectMarthi
+    InsertSQL.Strings = (
+      
+        'INSERT INTO CAD_CELL (CELL_ID, CELL_MARCA, CELL_DESC, CELL_PROCE' +
+        'SSAMENTO, CELL_MEM_RAM, CELL_ARMAZENAMENTO,'
+      
+        '                      CELL_CAM_PRINC, CELL_CAM_FRONT, CELL_COR, ' +
+        'CELL_OBS, CELL_VALOR_UNITARIO, CELL_VALOR_PARCELADO,'
+      '                      DAT_ALT, DAT_CAD)'
+      
+        'VALUES (:CELL_ID, :CELL_MARCA, :CELL_DESC, :CELL_PROCESSAMENTO, ' +
+        ':CELL_MEM_RAM, :CELL_ARMAZENAMENTO, :CELL_CAM_PRINC,'
+      
+        '        :CELL_CAM_FRONT, :CELL_COR, :CELL_OBS, :CELL_VALOR_UNITA' +
+        'RIO, :CELL_VALOR_PARCELADO, :DAT_ALT, :DAT_CAD);')
+    ModifySQL.Strings = (
+      'UPDATE CAD_CELL'
+      'SET CELL_ID = :CELL_ID,'
+      'CELL_MARCA = :CELL_MARCA,'
+      'CELL_DESC = :CELL_DESC,'
+      'CELL_PROCESSAMENTO = :CELL_PROCESSAMENTO,'
+      'CELL_MEM_RAM = :CELL_MEM_RAM,'
+      'CELL_ARMAZENAMENTO = :CELL_ARMAZENAMENTO,'
+      'CELL_CAM_PRINC = :CELL_CAM_PRINC,'
+      'CELL_CAM_FRONT = :CELL_CAM_FRONT,'
+      'CELL_COR = :CELL_COR,'
+      'CELL_OBS = :CELL_OBS,'
+      'CELL_VALOR_UNITARIO = :CELL_VALOR_UNITARIO,'
+      'CELL_VALOR_PARCELADO = :CELL_VALOR_PARCELADO ,'
+      'DAT_ALT = :DAT_ALT,'
+      'DAT_CAD = :DAT_CAD'
+      'WHERE CELL_ID = :OLD_CELL_ID')
+    DeleteSQL.Strings = (
+      'DELETE FROM CAD_CELL'
+      'WHERE CELL_ID = :OLD_CELL_ID')
     Left = 56
     Top = 200
   end

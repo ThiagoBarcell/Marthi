@@ -379,7 +379,13 @@ object frmCadProdutos: TfrmCadProdutos
         Height = 81
         Align = alTop
         TabOrder = 0
-        ExplicitTop = -6
+        object Label1: TLabel
+          Left = 32
+          Top = 11
+          Width = 92
+          Height = 13
+          Caption = 'Data de Cadastro :'
+        end
         object btnConsultaProdutos: TcxButton
           AlignWithMargins = True
           Left = 897
@@ -402,7 +408,6 @@ object frmCadProdutos: TfrmCadProdutos
         Height = 539
         Align = alClient
         TabOrder = 1
-        ExplicitTop = 83
         object grdConsultaProdDBTableView: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
