@@ -26,9 +26,15 @@ type
     qryCadCellCELL_OBS: TStringField;
     dtsCadCell: TDataSource;
     upsCadCell: TFDUpdateSQL;
+    qryCadCellCELL_VALOR_UNITARIO: TFMTBCDField;
+    qryCadCellCELL_VALOR_PARCELADO: TFMTBCDField;
+    qryCadCellDAT_CAD: TDateField;
+    qryCadCellDAT_ALT: TDateField;
+    procedure qryCadCellNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
   public
+    function ProximoNumero( GENERATOR : String ) : integer;
     { Public declarations }
   end;
 
@@ -40,5 +46,29 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+function TfrmGeralDM.ProximoNumero(GENERATOR: String): integer;
+var
+  oqryNovoNum : TFDQuery;
+begin
+  oqryNovoNum := TFDQuery.Create(nil);
+  oqryNovoNum.Connection := ConectMarthi;
+  try
+    oqryNovoNum.Close;
+    oqryNovoNum.SQL.Clear;
+    oqryNovoNum.SQL.Add( 'SELECT GEN_ID(' + GENERATOR + ',1) AS ID_ATUAL FROM RDB$DATABASE' );
+    oqryNovoNum.Open;
+  finally
+    Result := oqryNovoNum.FieldByName( 'ID_ATUAL' ).AsInteger;
+    FreeAndNil(oqryNovoNum);
+  end;
+end;
+
+procedure TfrmGeralDM.qryCadCellNewRecord(DataSet: TDataSet);
+begin
+  qryCadCellCELL_ID.AsInteger  := ProximoNumero( 'GEN_CAD_CELL_ID' );
+  qryCadCellDAT_CAD.AsDateTime := Now;
+  qryCadCellDAT_ALT.AsDateTime := Now;
+end;
 
 end.

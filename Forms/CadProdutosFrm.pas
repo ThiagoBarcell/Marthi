@@ -13,7 +13,7 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
   Data.DB, cxDBData, cxRadioGroup, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, dxBevel,
-  GeralDMFrm;
+  GeralDMFrm, Vcl.ComCtrls;
 
 type
   TfrmCadProdutos = class(TForm)
@@ -51,18 +51,24 @@ type
     Panel1: TPanel;
     dxBevel1: TdxBevel;
     btnSalvar: TcxButton;
-    btnInserir: TcxButton;
-    btnEditar: TcxButton;
     btnPesqImagem: TcxButton;
     grdConsultaProdDBTableViewColumn1: TcxGridDBColumn;
     grdConsultaProdDBTableViewColumn2: TcxGridDBColumn;
     grdConsultaProdDBTableViewColumn3: TcxGridDBColumn;
     cxDBImageComboBox2: TcxDBImageComboBox;
     Label1: TLabel;
+    edtStartDate: TDateTimePicker;
+    Label2: TLabel;
+    edtEndDate: TDateTimePicker;
+    btnInserir: TcxButton;
+    btnVoltar: TcxButton;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
+    procedure btnPesqImagemClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure btnVoltarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,6 +84,9 @@ implementation
 
 procedure TfrmCadProdutos.btnConsultaProdutosClick(Sender: TObject);
 begin
+  frmGeralDM.qryCadCell.Close;
+  frmGeralDM.qryCadCell.ParamByName( 'START_DATE' ).AsDate := edtStartDate.Date;
+  frmGeralDM.qryCadCell.ParamByName( 'END_DATE' ).AsDate := edtEndDate.Date;
   frmGeralDM.qryCadCell.Open;
 end;
 
@@ -86,9 +95,33 @@ begin
   frmGeralDM.qryCadCell.Post;
 end;
 
+procedure TfrmCadProdutos.btnVoltarClick(Sender: TObject);
+begin
+  PgeCadastroComp.ActivePageIndex := 0;
+end;
+
+procedure TfrmCadProdutos.FormCreate(Sender: TObject);
+begin
+  PgeCadastroComp.ActivePageIndex := 0;
+
+  frmGeralDM.qryCadCell.Close;
+  frmGeralDM.qryCadCell.ParamByName( 'START_DATE' ).AsDate := StrToDate( '01/01/1899' );
+  frmGeralDM.qryCadCell.ParamByName( 'END_DATE' ).AsDate := now;
+  frmGeralDM.qryCadCell.Open;
+end;
+
 procedure TfrmCadProdutos.btnInserirClick(Sender: TObject);
 begin
-  frmGeralDM.qryCadCell.Append;
+  PgeCadastroComp.ActivePageIndex := 1;
+  frmGeralDM.qryCadCell.Insert;
+  Caption := 'Cadastro de Produtos';
+end;
+
+procedure TfrmCadProdutos.btnPesqImagemClick(Sender: TObject);
+begin
+  if OpenDialog.Execute then
+  ShowMessage( OpenDialog.FileName );
+
 end;
 
 procedure TfrmCadProdutos.btnEditarClick(Sender: TObject);

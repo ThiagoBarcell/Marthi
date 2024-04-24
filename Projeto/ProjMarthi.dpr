@@ -10,7 +10,7 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TfrmCadProdutos, frmCadProdutos);
   Application.CreateForm(TfrmGeralDM, frmGeralDM);
+  Application.CreateForm(TfrmCadProdutos, frmCadProdutos);
   Application.Run;
 end.

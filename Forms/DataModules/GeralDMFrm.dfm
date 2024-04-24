@@ -15,6 +15,8 @@ object frmGeralDM: TfrmGeralDM
     Top = 16
   end
   object qryCadCell: TFDQuery
+    Active = True
+    OnNewRecord = qryCadCellNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCadCell
     SQL.Strings = (
@@ -31,13 +33,25 @@ object frmGeralDM: TfrmGeralDM
       '  CELL_VALOR_UNITARIO,'
       '  CELL_VALOR_PARCELADO,'
       '  CELL_OBS,'
-      '  DAT_CAT,'
+      '  DAT_CAD,'
       '  DAT_ALT'
-      'FROM CAD_CELL')
+      'FROM CAD_CELL'
+      ''
+      'WHERE DAT_CAD BETWEEN :START_DATE AND :END_DATE')
     Left = 56
     Top = 80
+    ParamData = <
+      item
+        Name = 'START_DATE'
+        DataType = ftDate
+        ParamType = ptInput
+      end
+      item
+        Name = 'END_DATE'
+        DataType = ftDate
+        ParamType = ptInput
+      end>
     object qryCadCellCELL_ID: TIntegerField
-      AutoGenerateValue = arAutoInc
       FieldName = 'CELL_ID'
       Origin = 'CELL_ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -85,6 +99,26 @@ object frmGeralDM: TfrmGeralDM
       FieldName = 'CELL_OBS'
       Origin = 'CELL_OBS'
       Size = 255
+    end
+    object qryCadCellCELL_VALOR_UNITARIO: TFMTBCDField
+      FieldName = 'CELL_VALOR_UNITARIO'
+      Origin = 'CELL_VALOR_UNITARIO'
+      Precision = 18
+      Size = 2
+    end
+    object qryCadCellCELL_VALOR_PARCELADO: TFMTBCDField
+      FieldName = 'CELL_VALOR_PARCELADO'
+      Origin = 'CELL_VALOR_PARCELADO'
+      Precision = 18
+      Size = 2
+    end
+    object qryCadCellDAT_CAD: TDateField
+      FieldName = 'DAT_CAD'
+      Origin = 'DAT_CAD'
+    end
+    object qryCadCellDAT_ALT: TDateField
+      FieldName = 'DAT_ALT'
+      Origin = 'DAT_ALT'
     end
   end
   object dtsCadCell: TDataSource
