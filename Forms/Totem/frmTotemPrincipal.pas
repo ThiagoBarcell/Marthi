@@ -67,6 +67,14 @@ type
     Edit3: TEdit;
     Label12: TLabel;
     Label15: TLabel;
+    Rectangle5: TRectangle;
+    Layout6: TLayout;
+    Rectangle6: TRectangle;
+    Text1: TText;
+    Text2: TText;
+    Image6: TImage;
+    Rectangle7: TRectangle;
+    Rectangle8: TRectangle;
   private
     { Private declarations }
   public
