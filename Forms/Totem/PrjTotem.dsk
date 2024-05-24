@@ -17,27 +17,26 @@ File_14=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Vendas\Forms\LiberacaoCredito\Ve
 
 [Modules]
 Module0=D:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
-Module1=D:\Sistemas\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
-Module2=default.htm
+Module1=default.htm
+Module2=D:\Sistemas\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
 Count=3
 EditWindowCount=1
 
 [D:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas]
 ModuleType=TSourceModule
 
-[D:\Sistemas\Marthi GIT\Forms\DataModules\GeralDMFrm.pas]
-ModuleType=TSourceModule
-
 [default.htm]
 ModuleType=TURLModule
 
+[D:\Sistemas\Marthi GIT\Forms\DataModules\GeralDMFrm.pas]
+ModuleType=TSourceModule
+
 [EditWindow0]
-ViewCount=4
+ViewCount=3
 CurrentEditView=D:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 View0=0
 View1=1
 View2=2
-View3=3
 PercentageSizes=1
 Create=1
 Visible=1
@@ -83,9 +82,6 @@ Bookmarks=
 EditViewName=Borland.FormDesignerView
 
 [View2]
-CustomEditViewType=TOTACustomEditView
-
-[View3]
 CustomEditViewType=TEditView
 Module=D:\Sistemas\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
 CursorX=1
@@ -156,13 +152,13 @@ Create=1
 Visible=1
 Docked=0
 State=2
-Left=-9627
+Left=-13594
 Top=-4322
-Width=8924
+Width=8931
 Height=8523
 MaxLeft=-7
 MaxTop=-14
-MaxWidth=8924
+MaxWidth=8931
 MaxHeight=8523
 ClientWidth=18770
 ClientHeight=13930
@@ -264,12 +260,12 @@ TBDockHeight=12547
 LRDockWidth=1896
 Dockable=1
 StayOnTop=0
-SplitPos=111
+SplitPos=118
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Margins.Top,LiveBindings
-ExpandedItems=MinMaxInfo=0,Options=0,Anchors=1,Constraints=0,DataBinding=1,LiveBindings=0,"LiveBindings Designer=1",Margins=1,DataBinding.DataSource=0,HeaderGlyph=0,Position=0,Styles=0,Summary=0,Properties=1,Properties.Alignment=0,Properties.AssignedValues=1,Properties.ValidationOptions=0,Font=1,LevelTabs=0,LockedStateImageOptions=0,LookAndFeel=0,PanelStyle=0,Colors=0,OptionsImage=0,EditValue=0,Properties.ButtonGlyph=0,Properties.DateButtons=1,Style=1,StyleDisabled=0,StyleFocused=0,StyleHot=0,Touch=0,HotZone=0,Properties.Glyph=0,Properties.ValueChecked=1,Properties.ValueGrayed=0,Properties.ValueUnchecked=1,Properties.Images=0,Properties.IncrementalFilteringOptions=0,MenuAnimation=0,BackgroundBitmaps=0,DataController=1,DateTimeHandling=0,EditForm=0,FilterBox=0,Filtering=0,FilterRow=0,FindPanel=0,FixedDataRows=0,Images=0,Navigator=0,NewItemRow=0,OptionsBehavior=0,OptionsCustomize=0,OptionsData=0,OptionsSelection=1,DataController.DataModeController=1,DataController.DataSource=1,DataController.Filter=0,DataController.MultiThreadedOptions=0,DataController.Options=0,DataController.Summary=0,DataController.DataSource.DataSet=0,"DataController.DataSource.LiveBindings Designer=0",ActiveStoredUsage=0,FetchOptions=0,FieldOptions=0,FilterChanges=0,FilterOptions=0,FormatOptions=0,ResourceOptions=0,Transaction=0,DataSet=0,SpeedButtonOptions=0,UpdateOptions=0,UpdateTransaction=0,UpdateObject=0,OptionsView=0,Preview=0,GridView=0,BevelEdges=0,RootLevelOptions=0,ProviderFlags=0,Style.AssignedValues=0,Style.Edges=0,Style.Font=0,Style.LookAndFeel=0,Style.StyleController=0,Style.TextStyle=0,Options.FilteringPopupIncrementalFilteringOptions=0,"UpdateObject.LiveBindings Designer=0",OptionsSelection.CheckBoxVisibility=0,Properties.LineOptions=0,GlassFrame=0,ActiveControl=0,BorderIcons=0,ActiveTab=0,Padding=0,RotationCenter=0,Scale=1,Size=0,StyledSettings=0,TextSettings=0,TouchTargetExpansion=0,Fill=1,Sides=0,Stroke=1,Stroke.Bitmap=0,Stroke.Resource=0,ConnectedStoredUsage=0,Params=0,TxOptions=0,Touch.InteractiveGestures=0,Corners=0,Fill.Bitmap=0,Fill.Resource=0,TouchAnimation=0,Fill.Color=0,Brush=1,Brush.Bitmap=0,Brush.Resource=0,"LiveBindings Designer.Element Layers=0",Font.Style=0,BitmapMargins=0
+SelectedItem=Action,
+ExpandedItems="LiveBindings Designer=0",Anchors=1,BorderIcons=0,Constraints=0,Colors=1,Font=1,LiveBindings=1,LookAndFeel=0,Margins=1,OptionsImage=1,SpeedButtonOptions=0,OptionsImage.Glyph=0,OptionsImage.Images=0,GlassFrame=0,HorzScrollBar=0,Properties=1,Style=0,StyleDisabled=0,StyleFocused=0,StyleHot=0,Touch=0,Padding=0,StyleElements=0,VertScrollBar=0,PanelStyle=0,ActiveStoredUsage=0,FetchOptions=0,FieldOptions=0,FilterChanges=0,FilterOptions=0,FormatOptions=0,DataBinding=0,Options=1,Position=1,Styles=1,Properties.Alignment=1,Properties.Glyph=0,Properties.LineOptions=1,Styles.Content=0,Styles.CategoryRow=0,Styles.CaptionRow=0,Styles.Caption=0,Options.FilteringPopupIncrementalFilteringOptions=0,"LiveBindings Designer.Element Layers=0",AssignedValues=1,Font.Style=0,Styles.Content.AssignedValues=0,Styles.Content.Font=1,"Styles.Content.LiveBindings Designer=0",Styles.Content.Font.Style=1,Styles.Caption.AssignedValues=0,Styles.Caption.Font=0,"Styles.Caption.LiveBindings Designer=0",Colors.AssignedColors=0,Brush=1,Pen=1,BevelEdges=0,Corners=0,Fill=0,RotationCenter=0,Scale=1,Sides=0,Size=1,Stroke=1,Stroke.Bitmap=0,Stroke.Resource=1,Caret=0,TouchTargetExpansion=0,StyledSettings=0,TextSettings=1,TextSettings.Font=1,TextSettings.Font.Style=1,BitmapMargins=1
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -558,8 +554,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=-2285
-Top=567
+Left=0
+Top=24
 Width=2855
 Height=3211
 MaxLeft=-1

@@ -29,7 +29,6 @@ type
     cxLabel5: TcxLabel;
     cxLabel6: TcxLabel;
     cxLabel8: TcxLabel;
-    imgFoto: TdxSpinImage;
     lblMemoria: TcxLabel;
     lblProcessamento: TcxLabel;
     imgMarcas: TcxImageList;
@@ -39,7 +38,7 @@ type
     grdConsultaProdDBTableView: TcxGridDBTableView;
     grdConsultaProdLevel: TcxGridLevel;
     grdConsultaProd: TcxGrid;
-    cxDBImageComboBox1: TcxDBImageComboBox;
+    cbxArmazenamentoCell: TcxDBImageComboBox;
     cxLabel1: TcxLabel;
     cxLabel2: TcxLabel;
     edtCellColor: TcxDBTextEdit;
@@ -55,13 +54,14 @@ type
     grdConsultaProdDBTableViewColumn1: TcxGridDBColumn;
     grdConsultaProdDBTableViewColumn2: TcxGridDBColumn;
     grdConsultaProdDBTableViewColumn3: TcxGridDBColumn;
-    cxDBImageComboBox2: TcxDBImageComboBox;
+    cbxMarcaCell: TcxDBImageComboBox;
     Label1: TLabel;
     edtStartDate: TDateTimePicker;
     Label2: TLabel;
     edtEndDate: TDateTimePicker;
     btnInserir: TcxButton;
     btnVoltar: TcxButton;
+    Image1: TImage;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
@@ -120,7 +120,9 @@ end;
 procedure TfrmCadProdutos.btnPesqImagemClick(Sender: TObject);
 begin
   if OpenDialog.Execute then
-  ShowMessage( OpenDialog.FileName );
+  begin
+    Image1.Picture.LoadFromFile(OpenDialog.FileName);
+  end;
 
 end;
 

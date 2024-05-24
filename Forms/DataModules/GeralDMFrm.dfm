@@ -4,18 +4,16 @@ object frmGeralDM: TfrmGeralDM
   Width = 546
   object ConectMarthi: TFDConnection
     Params.Strings = (
-      'Database=D:\Marthi GIT\DataBase\MARTHIDB.FDB'
+      'Database=T:\Marthi\DataBase\MARTHIDB.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'Server=LocalHost'
       'Port=3050'
       'DriverID=FB')
-    Connected = True
     Left = 56
     Top = 16
   end
   object qryCadCell: TFDQuery
-    Active = True
     OnNewRecord = qryCadCellNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCadCell
