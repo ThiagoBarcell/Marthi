@@ -62,6 +62,11 @@ type
     btnInserir: TcxButton;
     btnVoltar: TcxButton;
     Image1: TImage;
+    edtPathImageCell: TcxTextEdit;
+    cxGridImagesDBTableViewImage: TcxGridDBTableView;
+    cxGridImagesLevelImage: TcxGridLevel;
+    cxGridImages: TcxGrid;
+    cxGridImagesDBTableViewImageColumn1: TcxGridDBColumn;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
@@ -69,6 +74,10 @@ type
     procedure btnPesqImagemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnVoltarClick(Sender: TObject);
+    procedure grdConsultaProdDBTableViewCellDblClick(
+      Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
   private
     { Private declarations }
   public
@@ -91,7 +100,18 @@ begin
 end;
 
 procedure TfrmCadProdutos.btnSalvarClick(Sender: TObject);
+var
+  FileStream: TFileStream;
+  BlobStream: TStream;
+
 begin
+  //Salva a imagem na tabela de imagem do celular
+  frmGeralDM.oInsIMG.Close;
+  frmGeralDM.oInsIMG.ParamByName('CELL_ID').AsInteger   := frmGeralDM.qryCadCellCELL_ID.AsInteger;
+  frmGeralDM.oInsIMG.ParamByName('SEQUENCIA').AsInteger := 1;
+  frmGeralDM.oInsIMG.ParamByName('IMAGE').LoadFromFile( edtPathImageCell.Text ,TFieldType.ftBlob );
+  frmGeralDM.oInsIMG.ExecSQL;
+
   frmGeralDM.qryCadCell.Post;
 end;
 
@@ -104,10 +124,21 @@ procedure TfrmCadProdutos.FormCreate(Sender: TObject);
 begin
   PgeCadastroComp.ActivePageIndex := 0;
 
+  edtStartDate.Date := Now;
+  edtEndDate.Date   := Now;
+
+  //Traz os dados de Hoje para não precisar iniciar pesquisando
   frmGeralDM.qryCadCell.Close;
-  frmGeralDM.qryCadCell.ParamByName( 'START_DATE' ).AsDate := StrToDate( '01/01/1899' );
-  frmGeralDM.qryCadCell.ParamByName( 'END_DATE' ).AsDate := now;
+  frmGeralDM.qryCadCell.ParamByName( 'START_DATE' ).AsDate := now;
+  frmGeralDM.qryCadCell.ParamByName( 'END_DATE' ).AsDate   := now;
   frmGeralDM.qryCadCell.Open;
+end;
+
+procedure TfrmCadProdutos.grdConsultaProdDBTableViewCellDblClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+begin
+  PgeCadastroComp.ActivePageIndex := 1;
 end;
 
 procedure TfrmCadProdutos.btnInserirClick(Sender: TObject);
@@ -121,9 +152,9 @@ procedure TfrmCadProdutos.btnPesqImagemClick(Sender: TObject);
 begin
   if OpenDialog.Execute then
   begin
+    edtPathImageCell.Text := OpenDialog.FileName;
     Image1.Picture.LoadFromFile(OpenDialog.FileName);
   end;
-
 end;
 
 procedure TfrmCadProdutos.btnEditarClick(Sender: TObject);

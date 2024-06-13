@@ -182,6 +182,7 @@ object frmCadProdutos: TfrmCadProdutos
           Navigator.Buttons.GotoBookmark.Visible = False
           Navigator.Buttons.Filter.Enabled = False
           Navigator.Buttons.Filter.Visible = False
+          OnCellDblClick = grdConsultaProdDBTableViewCellDblClick
           DataController.DataSource = frmGeralDM.dtsCadCell
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
@@ -203,7 +204,7 @@ object frmCadProdutos: TfrmCadProdutos
             Caption = 'Descri'#231#227'o'
             DataBinding.FieldName = 'CELL_DESC'
             PropertiesClassName = 'TcxLabelProperties'
-            Properties.Alignment.Horz = taCenter
+            Properties.Alignment.Horz = taLeftJustify
             HeaderAlignmentHorz = taCenter
             Width = 822
           end
@@ -557,7 +558,7 @@ object frmCadProdutos: TfrmCadProdutos
         end
         object btnPesqImagem: TcxButton
           Left = 767
-          Top = 329
+          Top = 359
           Width = 298
           Height = 57
           Anchors = [akTop, akRight]
@@ -606,6 +607,57 @@ object frmCadProdutos: TfrmCadProdutos
             end>
           TabOrder = 21
           Width = 494
+        end
+        object edtPathImageCell: TcxTextEdit
+          Left = 767
+          Top = 329
+          Anchors = [akTop, akRight]
+          TabOrder = 22
+          Width = 298
+        end
+        object cxGridImages: TcxGrid
+          Left = 767
+          Top = 422
+          Width = 314
+          Height = 200
+          TabOrder = 23
+          object cxGridImagesDBTableViewImage: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            Navigator.Buttons.First.Visible = True
+            Navigator.Buttons.PriorPage.Visible = True
+            Navigator.Buttons.Prior.Visible = True
+            Navigator.Buttons.Next.Visible = True
+            Navigator.Buttons.NextPage.Visible = True
+            Navigator.Buttons.Last.Visible = True
+            Navigator.Buttons.Insert.Visible = False
+            Navigator.Buttons.Append.Visible = False
+            Navigator.Buttons.Delete.Visible = False
+            Navigator.Buttons.Edit.Enabled = False
+            Navigator.Buttons.Edit.Visible = False
+            Navigator.Buttons.Post.Visible = True
+            Navigator.Buttons.Cancel.Visible = True
+            Navigator.Buttons.Refresh.Enabled = False
+            Navigator.Buttons.Refresh.Visible = False
+            Navigator.Buttons.SaveBookmark.Enabled = False
+            Navigator.Buttons.SaveBookmark.Visible = False
+            Navigator.Buttons.GotoBookmark.Enabled = False
+            Navigator.Buttons.GotoBookmark.Visible = False
+            Navigator.Buttons.Filter.Enabled = False
+            Navigator.Buttons.Filter.Visible = False
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsBehavior.GoToNextCellOnEnter = True
+            OptionsData.Appending = True
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.GroupByBox = False
+            OptionsView.HeaderHeight = 30
+            object cxGridImagesDBTableViewImageColumn1: TcxGridDBColumn
+            end
+          end
+          object cxGridImagesLevelImage: TcxGridLevel
+            GridView = cxGridImagesDBTableViewImage
+          end
         end
       end
     end
