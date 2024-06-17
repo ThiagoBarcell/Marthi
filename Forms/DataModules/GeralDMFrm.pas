@@ -35,8 +35,11 @@ type
     qryImagensCellCELL_ID: TIntegerField;
     qryImagensCellSEQUENCIA: TIntegerField;
     qryImagensCellIMAGE: TBlobField;
+    dtsImagensCell: TDataSource;
+    FDQuery1: TFDQuery;
     procedure qryCadCellNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
+    procedure qryCadCellAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -88,6 +91,13 @@ begin
     Result := oqryNovoNum.FieldByName( 'ID_ATUAL' ).AsInteger;
     FreeAndNil(oqryNovoNum);
   end;
+end;
+
+procedure TfrmGeralDM.qryCadCellAfterScroll(DataSet: TDataSet);
+begin
+  frmGeralDM.qryImagensCell.Close;
+  frmGeralDM.qryImagensCell.ParamByName( 'CELL_ID' ).AsInteger := frmGeralDM.qryCadCellCELL_ID.AsInteger;
+  frmGeralDM.qryImagensCell.Open;
 end;
 
 procedure TfrmGeralDM.qryCadCellNewRecord(DataSet: TDataSet);

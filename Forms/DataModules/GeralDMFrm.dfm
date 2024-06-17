@@ -16,6 +16,7 @@ object frmGeralDM: TfrmGeralDM
     Top = 16
   end
   object qryCadCell: TFDQuery
+    AfterScroll = qryCadCellAfterScroll
     OnNewRecord = qryCadCellNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCadCell
@@ -217,5 +218,19 @@ object frmGeralDM: TfrmGeralDM
       FieldName = 'IMAGE'
       Origin = 'IMAGE'
     end
+  end
+  object dtsImagensCell: TDataSource
+    DataSet = qryImagensCell
+    Left = 144
+    Top = 135
+  end
+  object FDQuery1: TFDQuery
+    Connection = ConectMarthi
+    SQL.Strings = (
+      'DELETE FROM CELL_IMAGES '
+      ''
+      '')
+    Left = 216
+    Top = 16
   end
 end
