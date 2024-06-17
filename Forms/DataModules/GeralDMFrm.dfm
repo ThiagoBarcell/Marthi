@@ -1,5 +1,6 @@
 object frmGeralDM: TfrmGeralDM
   OldCreateOrder = False
+  OnCreate = DataModuleCreate
   Height = 334
   Width = 546
   object ConectMarthi: TFDConnection
@@ -15,7 +16,6 @@ object frmGeralDM: TfrmGeralDM
     Top = 16
   end
   object qryCadCell: TFDQuery
-    Active = True
     OnNewRecord = qryCadCellNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCadCell
@@ -164,5 +164,58 @@ object frmGeralDM: TfrmGeralDM
       'WHERE CELL_ID = :OLD_CELL_ID')
     Left = 56
     Top = 200
+  end
+  object oInsIMG: TFDQuery
+    Connection = ConectMarthi
+    SQL.Strings = (
+      
+        'INSERT INTO CELL_IMAGES ( CELL_IMAGES.CELL_ID, CELL_IMAGES.SEQUE' +
+        'NCIA, CELL_IMAGES.IMAGE ) VALUES ( :CELL_ID, :SEQUENCIA, :IMAGE ' +
+        ')')
+    Left = 144
+    Top = 16
+    ParamData = <
+      item
+        Name = 'CELL_ID'
+        ParamType = ptInput
+      end
+      item
+        Name = 'SEQUENCIA'
+        ParamType = ptInput
+      end
+      item
+        Name = 'IMAGE'
+        ParamType = ptInput
+      end>
+  end
+  object qryImagensCell: TFDQuery
+    Connection = ConectMarthi
+    SQL.Strings = (
+      'SELECT * FROM CELL_IMAGES'
+      'WHERE CELL_ID = :CELL_ID')
+    Left = 144
+    Top = 80
+    ParamData = <
+      item
+        Name = 'CELL_ID'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object qryImagensCellCELL_ID: TIntegerField
+      FieldName = 'CELL_ID'
+      Origin = 'CELL_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryImagensCellSEQUENCIA: TIntegerField
+      FieldName = 'SEQUENCIA'
+      Origin = 'SEQUENCIA'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryImagensCellIMAGE: TBlobField
+      FieldName = 'IMAGE'
+      Origin = 'IMAGE'
+    end
   end
 end

@@ -21,7 +21,7 @@ object frmCadProdutos: TfrmCadProdutos
     Height = 644
     Align = alClient
     TabOrder = 0
-    Properties.ActivePage = tabConsulta
+    Properties.ActivePage = tabCadastro
     Properties.CustomButtons.Buttons = <>
     LookAndFeel.NativeStyle = False
     ClientRectBottom = 644
@@ -31,8 +31,6 @@ object frmCadProdutos: TfrmCadProdutos
       Caption = 'Consultar Produtos'
       ImageIndex = 0
       TabVisible = False
-      ExplicitTop = 24
-      ExplicitHeight = 620
       object pnlTop: TPanel
         Left = 0
         Top = 0
@@ -100,9 +98,6 @@ object frmCadProdutos: TfrmCadProdutos
           Font.Style = []
           ParentFont = False
           OnClick = btnConsultaProdutosClick
-          ExplicitLeft = 897
-          ExplicitTop = 11
-          ExplicitHeight = 59
         end
         object edtStartDate: TDateTimePicker
           Left = 32
@@ -154,9 +149,6 @@ object frmCadProdutos: TfrmCadProdutos
           Font.Style = []
           ParentFont = False
           OnClick = btnInserirClick
-          ExplicitLeft = 1008
-          ExplicitTop = -11
-          ExplicitHeight = 59
         end
       end
       object grdConsultaProd: TcxGrid
@@ -167,8 +159,6 @@ object frmCadProdutos: TfrmCadProdutos
         Height = 573
         Align = alClient
         TabOrder = 1
-        ExplicitWidth = 1113
-        ExplicitHeight = 555
         object grdConsultaProdDBTableView: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
@@ -192,6 +182,7 @@ object frmCadProdutos: TfrmCadProdutos
           Navigator.Buttons.GotoBookmark.Visible = False
           Navigator.Buttons.Filter.Enabled = False
           Navigator.Buttons.Filter.Visible = False
+          OnCellDblClick = grdConsultaProdDBTableViewCellDblClick
           DataController.DataSource = frmGeralDM.dtsCadCell
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
@@ -213,7 +204,7 @@ object frmCadProdutos: TfrmCadProdutos
             Caption = 'Descri'#231#227'o'
             DataBinding.FieldName = 'CELL_DESC'
             PropertiesClassName = 'TcxLabelProperties'
-            Properties.Alignment.Horz = taCenter
+            Properties.Alignment.Horz = taLeftJustify
             HeaderAlignmentHorz = taCenter
             Width = 822
           end
@@ -236,8 +227,6 @@ object frmCadProdutos: TfrmCadProdutos
       Caption = 'Cadastro de Produtos'
       ImageIndex = 0
       TabVisible = False
-      ExplicitTop = 24
-      ExplicitHeight = 620
       object pnlCadastroDeProduto: TPanel
         Left = 0
         Top = 0
@@ -248,7 +237,6 @@ object frmCadProdutos: TfrmCadProdutos
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        ExplicitHeight = 620
         DesignSize = (
           1113
           644)
@@ -260,9 +248,18 @@ object frmCadProdutos: TfrmCadProdutos
           Align = alBottom
           ExplicitTop = 540
         end
+        object Image1: TImage
+          Left = 767
+          Top = 31
+          Width = 298
+          Height = 292
+          Anchors = [akTop, akRight]
+          Stretch = True
+        end
         object memObsCell: TcxDBMemo
           Left = 25
           Top = 273
+          Anchors = [akLeft, akTop, akRight]
           DataBinding.DataField = 'CELL_OBS'
           DataBinding.DataSource = frmGeralDM.dtsCadCell
           TabOrder = 0
@@ -272,6 +269,7 @@ object frmCadProdutos: TfrmCadProdutos
         object edtCellDesc: TcxDBTextEdit
           Left = 138
           Top = 56
+          Anchors = [akLeft, akTop, akRight]
           DataBinding.DataField = 'CELL_DESC'
           DataBinding.DataSource = frmGeralDM.dtsCadCell
           TabOrder = 1
@@ -280,6 +278,7 @@ object frmCadProdutos: TfrmCadProdutos
         object edtCellMemoriaRAM: TcxDBTextEdit
           Left = 138
           Top = 110
+          Anchors = [akLeft, akTop, akRight]
           DataBinding.DataField = 'CELL_MEM_RAM'
           DataBinding.DataSource = frmGeralDM.dtsCadCell
           TabOrder = 2
@@ -288,6 +287,7 @@ object frmCadProdutos: TfrmCadProdutos
         object edtCellProcessamento: TcxDBTextEdit
           Left = 138
           Top = 83
+          Anchors = [akLeft, akTop, akRight]
           DataBinding.DataField = 'CELL_PROCESSAMENTO'
           DataBinding.DataSource = frmGeralDM.dtsCadCell
           TabOrder = 3
@@ -346,8 +346,8 @@ object frmCadProdutos: TfrmCadProdutos
         end
         object cxLabel8: TcxLabel
           Left = 709
-          Top = 58
-          Anchors = [akRight, akBottom]
+          Top = 29
+          Anchors = [akTop, akRight]
           Caption = 'Imagem :'
           ParentFont = False
           Style.Font.Charset = DEFAULT_CHARSET
@@ -356,32 +356,6 @@ object frmCadProdutos: TfrmCadProdutos
           Style.Font.Name = 'Segoe UI'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          ExplicitTop = 34
-        end
-        object imgFoto: TdxSpinImage
-          Left = 767
-          Top = 58
-          Width = 298
-          Height = 290
-          Anchors = [akRight, akBottom]
-          AutoSize = False
-          BorderStyle = bsSingle
-          DefaultImages = True
-          ImageHAlign = hsiCenter
-          ImageVAlign = vsiCenter
-          Items = <>
-          ItemIndex = 0
-          ReadOnly = False
-          Stretch = True
-          UpDownAlign = udaRight
-          UpDownOrientation = siVertical
-          UpDownWidth = 0
-          UseDblClick = True
-          Ctl3D = False
-          ParentColor = True
-          ParentCtl3D = False
-          TabOrder = 9
-          ExplicitTop = 34
         end
         object lblMemoria: TcxLabel
           Left = 48
@@ -407,9 +381,10 @@ object frmCadProdutos: TfrmCadProdutos
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
         end
-        object cxDBImageComboBox1: TcxDBImageComboBox
+        object cbxArmazenamentoCell: TcxDBImageComboBox
           Left = 138
           Top = 137
+          Anchors = [akLeft, akTop, akRight]
           DataBinding.DataField = 'CELL_ARMAZENAMENTO'
           DataBinding.DataSource = frmGeralDM.dtsCadCell
           Properties.Items = <
@@ -438,7 +413,7 @@ object frmCadProdutos: TfrmCadProdutos
               Description = '1 Tera'
               Value = 5
             end>
-          TabOrder = 12
+          TabOrder = 11
           Width = 494
         end
         object cxLabel1: TcxLabel
@@ -468,9 +443,10 @@ object frmCadProdutos: TfrmCadProdutos
         object edtCellColor: TcxDBTextEdit
           Left = 138
           Top = 219
+          Anchors = [akLeft, akTop, akRight]
           DataBinding.DataField = 'CELL_COR'
           DataBinding.DataSource = frmGeralDM.dtsCadCell
-          TabOrder = 15
+          TabOrder = 14
           Width = 494
         end
         object cxLabel3: TcxLabel
@@ -488,9 +464,10 @@ object frmCadProdutos: TfrmCadProdutos
         object edtPrincCam: TcxDBTextEdit
           Left = 138
           Top = 165
+          Anchors = [akLeft, akTop, akRight]
           DataBinding.DataField = 'CELL_CAM_PRINC'
           DataBinding.DataSource = frmGeralDM.dtsCadCell
-          TabOrder = 17
+          TabOrder = 16
           Width = 494
         end
         object cxLabel4: TcxLabel
@@ -508,9 +485,10 @@ object frmCadProdutos: TfrmCadProdutos
         object edtFrontCam: TcxDBTextEdit
           Left = 138
           Top = 192
+          Anchors = [akLeft, akTop, akRight]
           DataBinding.DataField = 'CELL_CAM_FRONT'
           DataBinding.DataSource = frmGeralDM.dtsCadCell
-          TabOrder = 19
+          TabOrder = 18
           Width = 494
         end
         object Panel1: TPanel
@@ -520,15 +498,15 @@ object frmCadProdutos: TfrmCadProdutos
           Height = 76
           Align = alBottom
           BevelOuter = bvNone
-          TabOrder = 20
-          ExplicitTop = 544
+          TabOrder = 19
           object btnSalvar: TcxButton
             AlignWithMargins = True
             Left = 3
             Top = 3
             Width = 559
             Height = 70
-            Align = alClient
+            Align = alLeft
+            Anchors = [akTop, akRight, akBottom]
             Caption = 'Salvar'
             OptionsImage.Glyph.SourceDPI = 96
             OptionsImage.Glyph.Data = {
@@ -547,7 +525,6 @@ object frmCadProdutos: TfrmCadProdutos
               A9E20000000049454E44AE426082}
             TabOrder = 0
             OnClick = btnSalvarClick
-            ExplicitTop = 6
           end
           object btnVoltar: TcxButton
             AlignWithMargins = True
@@ -556,6 +533,7 @@ object frmCadProdutos: TfrmCadProdutos
             Width = 542
             Height = 70
             Align = alRight
+            Anchors = [akLeft, akTop, akBottom]
             Caption = 'Voltar'
             OptionsImage.Glyph.SourceDPI = 96
             OptionsImage.Glyph.Data = {
@@ -580,16 +558,44 @@ object frmCadProdutos: TfrmCadProdutos
         end
         object btnPesqImagem: TcxButton
           Left = 767
-          Top = 336
+          Top = 359
           Width = 298
           Height = 57
+          Anchors = [akTop, akRight]
           Caption = 'Pesquisar'
-          TabOrder = 21
+          OptionsImage.Glyph.SourceDPI = 96
+          OptionsImage.Glyph.Data = {
+            89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+            F80000000473424954080808087C0864880000000970485973000000A6000000
+            A601DD7DFF380000001974455874536F667477617265007777772E696E6B7363
+            6170652E6F72679BEE3C1A0000026F494441544889ADD54D6894571406E0E70E
+            66531004B18B54EBCFC6715102F9511743AD356E142976EB0FB810AC68110A42
+            411752742D314DA1505C48A1E046A20B4390AADD149CB41841A3054D74E5AE28
+            2254CAEDE29EE038F9268925173E868F39F77DDF73CE7BCE9772CEDA4F4A692D
+            76A11F03F8080FD0C41D8CE69C5FCEB958716A6DC029A5741C37D18DABD88D8D
+            381C040DFC9152DAB1180239679145377EC565ACC629DCC0733CC6335CC141F4
+            E04F8CA06B16A3EA99054F017E24144EE13CFAD0853AD6633BC6703DDE2FE1CC
+            62088E87F2069E625B4B66B5F8EF1FFC8ECF43C80CD6E0117A3B12602D9E4459
+            A65AC1DB0257607F94AB1FA72383CF7017B54E045FE1BBA8F9F9F9D28D0B5BF1
+            101FB634FD376CAA8A4FF809A3F81A2773CE130B1923A57408ABF02F3EC04A4C
+            E49C2F55C54F462D9F2FE488B64C6AF834C4EDC750555C4D19A2D77895737EB3
+            90FA96730CD358A7F4704355504D99D055E84A292D5F2C7ACE79089FE05E804F
+            7722682A7E9F50DCF13E67B3B23AEA8A5D2BCF3EFCA04CE8D87BF460A5529ABA
+            52857AA71E8C6250F1724E291D59A4FAEFF16364713FE73C5519156A7628BB65
+            BD32A1A7B16C1EE5BFE09632A44F7160DE5511174794C95C13BF4D7CA358F163
+            65AB9E89B27C1BE07FE182B208372F44D015008F94F16F4426A3CAACFC8C1351
+            F383A1FC42DCDD83BF31306792DB3F3829A55E5CC40BC5594D6F7D5EC797B8AF
+            ACEE73388AB3B88D2FB037E7DC7CA7071DA674130E6008D730ACAC937A4BDC96
+            503E1CEFB3DBB86F4E89FEEF132E7A86461B49EF921004E84005C90C7A968420
+            40FB43F92CC920C6978C2040FB42F960186272490982A407E361ED9DFF017569
+            09E8BC4308980000000049454E44AE426082}
+          TabOrder = 20
           OnClick = btnPesqImagemClick
         end
-        object cxDBImageComboBox2: TcxDBImageComboBox
+        object cbxMarcaCell: TcxDBImageComboBox
           Left = 138
           Top = 29
+          Anchors = [akLeft, akTop, akRight]
           DataBinding.DataField = 'CELL_MARCA'
           DataBinding.DataSource = frmGeralDM.dtsCadCell
           Properties.Images = imgMarcas
@@ -599,8 +605,59 @@ object frmCadProdutos: TfrmCadProdutos
               ImageIndex = 0
               Value = 0
             end>
-          TabOrder = 22
+          TabOrder = 21
           Width = 494
+        end
+        object edtPathImageCell: TcxTextEdit
+          Left = 767
+          Top = 329
+          Anchors = [akTop, akRight]
+          TabOrder = 22
+          Width = 298
+        end
+        object cxGridImages: TcxGrid
+          Left = 767
+          Top = 422
+          Width = 314
+          Height = 200
+          TabOrder = 23
+          object cxGridImagesDBTableViewImage: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            Navigator.Buttons.First.Visible = True
+            Navigator.Buttons.PriorPage.Visible = True
+            Navigator.Buttons.Prior.Visible = True
+            Navigator.Buttons.Next.Visible = True
+            Navigator.Buttons.NextPage.Visible = True
+            Navigator.Buttons.Last.Visible = True
+            Navigator.Buttons.Insert.Visible = False
+            Navigator.Buttons.Append.Visible = False
+            Navigator.Buttons.Delete.Visible = False
+            Navigator.Buttons.Edit.Enabled = False
+            Navigator.Buttons.Edit.Visible = False
+            Navigator.Buttons.Post.Visible = True
+            Navigator.Buttons.Cancel.Visible = True
+            Navigator.Buttons.Refresh.Enabled = False
+            Navigator.Buttons.Refresh.Visible = False
+            Navigator.Buttons.SaveBookmark.Enabled = False
+            Navigator.Buttons.SaveBookmark.Visible = False
+            Navigator.Buttons.GotoBookmark.Enabled = False
+            Navigator.Buttons.GotoBookmark.Visible = False
+            Navigator.Buttons.Filter.Enabled = False
+            Navigator.Buttons.Filter.Visible = False
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsBehavior.GoToNextCellOnEnter = True
+            OptionsData.Appending = True
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.GroupByBox = False
+            OptionsView.HeaderHeight = 30
+            object cxGridImagesDBTableViewImageColumn1: TcxGridDBColumn
+            end
+          end
+          object cxGridImagesLevelImage: TcxGridLevel
+            GridView = cxGridImagesDBTableViewImage
+          end
         end
       end
     end

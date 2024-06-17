@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
   FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet;
+  FireDAC.Comp.DataSet, System.IniFiles;
 
 type
   TfrmGeralDM = class(TDataModule)
@@ -30,10 +30,17 @@ type
     qryCadCellCELL_VALOR_PARCELADO: TFMTBCDField;
     qryCadCellDAT_CAD: TDateField;
     qryCadCellDAT_ALT: TDateField;
+    oInsIMG: TFDQuery;
+    qryImagensCell: TFDQuery;
+    qryImagensCellCELL_ID: TIntegerField;
+    qryImagensCellSEQUENCIA: TIntegerField;
+    qryImagensCellIMAGE: TBlobField;
     procedure qryCadCellNewRecord(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
+    sCaminhoApp : String;
     function ProximoNumero( GENERATOR : String ) : integer;
     { Public declarations }
   end;
@@ -46,6 +53,25 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TfrmGeralDM.DataModuleCreate(Sender: TObject);
+var
+ oIniCaminhos : tinifile;
+ sCaminhoIni  : string;
+begin
+  sCaminhoApp := ( ExtractFilePath( ParamStr(0) ) );
+  sCaminhoIni := ( sCaminhoApp + 'caminhos.ini' );
+
+  oIniCaminhos := TIniFile.Create(sCaminhoIni);
+
+  if ( oIniCaminhos.ReadString( 'Caminhos','BD', '' ) <> '' ) then
+  begin
+    ConectMarthi.Params.Database := oIniCaminhos.ReadString( 'Caminhos','BD', '' );
+  end
+  else
+    oIniCaminhos.WriteString( 'Caminhos','BD', '' );
+
+end;
 
 function TfrmGeralDM.ProximoNumero(GENERATOR: String): integer;
 var
