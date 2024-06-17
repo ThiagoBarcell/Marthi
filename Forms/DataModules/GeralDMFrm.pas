@@ -36,7 +36,7 @@ type
     qryImagensCellSEQUENCIA: TIntegerField;
     qryImagensCellIMAGE: TBlobField;
     dtsImagensCell: TDataSource;
-    FDQuery1: TFDQuery;
+    delImgCell: TFDQuery;
     procedure qryCadCellNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
     procedure qryCadCellAfterScroll(DataSet: TDataSet);

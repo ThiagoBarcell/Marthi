@@ -53,7 +53,6 @@ type
     Panel1: TPanel;
     dxBevel1: TdxBevel;
     btnSalvar: TcxButton;
-    btnPesqImagem: TcxButton;
     grdConsultaProdDBTableViewColumn1: TcxGridDBColumn;
     grdConsultaProdDBTableViewColumn2: TcxGridDBColumn;
     grdConsultaProdDBTableViewColumn3: TcxGridDBColumn;
@@ -65,7 +64,6 @@ type
     btnInserir: TcxButton;
     btnVoltar: TcxButton;
     ImageCell: TImage;
-    edtPathImageCell: TcxTextEdit;
     cxGridImagesDBTableViewImage: TcxGridDBTableView;
     cxGridImagesLevelImage: TcxGridLevel;
     cxGridImages: TcxGrid;
@@ -76,7 +74,6 @@ type
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
-    procedure btnPesqImagemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnVoltarClick(Sender: TObject);
     procedure grdConsultaProdDBTableViewCellDblClick(
@@ -88,6 +85,8 @@ type
       Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
+    procedure btnExcluiImgClick(Sender: TObject);
+    procedure tabCadastroShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -106,20 +105,25 @@ begin
   try
     if OpenDialog.Execute then
     begin
-      edtPathImageCell.Text := OpenDialog.FileName;
-      ImageCell.Picture.LoadFromFile(OpenDialog.FileName);
+      if ( OpenDialog.FileName <> '' ) then
+      begin
+        //Salva a imagem na tabela de imagem do celular
+        frmGeralDM.qryImagensCell.Last;
+        frmGeralDM.oInsIMG.Close;
+        frmGeralDM.oInsIMG.ParamByName('CELL_ID').AsInteger   := frmGeralDM.qryCadCellCELL_ID.AsInteger;
+        frmGeralDM.oInsIMG.ParamByName('SEQUENCIA').AsInteger := frmGeralDM.qryImagensCellSEQUENCIA.AsInteger + 1 ;
+        frmGeralDM.oInsIMG.ParamByName('IMAGE').LoadFromFile( OpenDialog.FileName ,TFieldType.ftBlob );
+        frmGeralDM.oInsIMG.ExecSQL;
+
+        ImageCell.Picture.LoadFromFile(OpenDialog.FileName);
+
+        frmGeralDM.qryImagensCell.Refresh;
+
+      end;
+      //edtPathImageCell.Text := OpenDialog.FileName;
     end;
-
-    //Salva a imagem na tabela de imagem do celular
-    frmGeralDM.oInsIMG.Close;
-    frmGeralDM.oInsIMG.ParamByName('CELL_ID').AsInteger   := frmGeralDM.qryCadCellCELL_ID.AsInteger;
-    frmGeralDM.oInsIMG.ParamByName('SEQUENCIA').AsInteger := frmGeralDM.qryImagensCellSEQUENCIA.AsInteger + 1 ;
-    frmGeralDM.oInsIMG.ParamByName('IMAGE').LoadFromFile( edtPathImageCell.Text ,TFieldType.ftBlob );
-    frmGeralDM.oInsIMG.ExecSQL;
-
-    frmGeralDM.qryImagensCell.Refresh;
   finally
-    Application.MessageBox( 'Não foi possível concluir o insert, por favor verifique !', 'Aviso', 0 )
+    //Application.MessageBox( 'Não foi possível concluir o insert, por favor verifique !', 'Aviso', 0 )
   end;
 end;
 
@@ -195,6 +199,11 @@ begin
   PgeCadastroComp.ActivePageIndex := 1;
 end;
 
+procedure TfrmCadProdutos.tabCadastroShow(Sender: TObject);
+begin
+  ImageCell.Picture := NIL;
+end;
+
 procedure TfrmCadProdutos.btnInserirClick(Sender: TObject);
 begin
   PgeCadastroComp.ActivePageIndex := 1;
@@ -202,18 +211,24 @@ begin
   Caption := 'Cadastro de Produtos';
 end;
 
-procedure TfrmCadProdutos.btnPesqImagemClick(Sender: TObject);
-begin
-  if OpenDialog.Execute then
-  begin
-    edtPathImageCell.Text := OpenDialog.FileName;
-    ImageCell.Picture.LoadFromFile(OpenDialog.FileName);
-  end;
-end;
-
 procedure TfrmCadProdutos.btnEditarClick(Sender: TObject);
 begin
   frmGeralDM.qryCadCell.Edit;
+end;
+
+procedure TfrmCadProdutos.btnExcluiImgClick(Sender: TObject);
+begin
+  //Faz a exclusão das imagens se necessário
+  with frmGeralDM do
+  begin
+    delImgCell.Close;
+    delImgCell.ParamByName( 'CELL_ID'   ).AsInteger := qryCadCellCELL_ID.AsInteger;
+    delImgCell.ParamByName( 'SEQUENCIA' ).AsInteger := qryImagensCellSEQUENCIA.AsInteger;
+    delImgCell.ExecSQL;
+
+    //Faz o refresh na qry
+    qryImagensCell.Refresh;
+  end;
 end;
 
 end.

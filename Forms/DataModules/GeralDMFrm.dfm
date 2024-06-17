@@ -5,13 +5,11 @@ object frmGeralDM: TfrmGeralDM
   Width = 546
   object ConectMarthi: TFDConnection
     Params.Strings = (
-      'Database=D:\Marthi GIT\DataBase\MARTHIDB.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'Server=LocalHost'
       'Port=3050'
       'DriverID=FB')
-    Connected = True
     Left = 56
     Top = 16
   end
@@ -224,13 +222,22 @@ object frmGeralDM: TfrmGeralDM
     Left = 144
     Top = 135
   end
-  object FDQuery1: TFDQuery
+  object delImgCell: TFDQuery
     Connection = ConectMarthi
     SQL.Strings = (
-      'DELETE FROM CELL_IMAGES '
-      ''
-      '')
+      'DELETE FROM CELL_IMAGES'
+      'WHERE( CELL_ID = :CELL_ID )'
+      '  AND( SEQUENCIA = :SEQUENCIA )')
     Left = 216
     Top = 16
+    ParamData = <
+      item
+        Name = 'CELL_ID'
+        ParamType = ptInput
+      end
+      item
+        Name = 'SEQUENCIA'
+        ParamType = ptInput
+      end>
   end
 end
