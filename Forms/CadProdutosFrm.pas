@@ -13,7 +13,10 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
   Data.DB, cxDBData, cxRadioGroup, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, dxBevel,
-  GeralDMFrm, Vcl.ComCtrls;
+  GeralDMFrm, Vcl.ComCtrls, Jpeg;
+
+const
+  OffsetMemoryStream : Int64 = 0;
 
 type
   TfrmCadProdutos = class(TForm)
@@ -61,12 +64,14 @@ type
     edtEndDate: TDateTimePicker;
     btnInserir: TcxButton;
     btnVoltar: TcxButton;
-    Image1: TImage;
+    ImageCell: TImage;
     edtPathImageCell: TcxTextEdit;
     cxGridImagesDBTableViewImage: TcxGridDBTableView;
     cxGridImagesLevelImage: TcxGridLevel;
     cxGridImages: TcxGrid;
-    cxGridImagesDBTableViewImageColumn1: TcxGridDBColumn;
+    cxgrdbclmnGridImagesDBTableViewImageColumnSEQUENCIA: TcxGridDBColumn;
+    btnAddImage: TcxButton;
+    btnExcluiImg: TcxButton;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
@@ -75,6 +80,11 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnVoltarClick(Sender: TObject);
     procedure grdConsultaProdDBTableViewCellDblClick(
+      Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure btnAddImageClick(Sender: TObject);
+    procedure cxGridImagesDBTableViewImageCellClick(
       Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
@@ -91,6 +101,28 @@ implementation
 
 {$R *.dfm}
 
+procedure TfrmCadProdutos.btnAddImageClick(Sender: TObject);
+begin
+  try
+    if OpenDialog.Execute then
+    begin
+      edtPathImageCell.Text := OpenDialog.FileName;
+      ImageCell.Picture.LoadFromFile(OpenDialog.FileName);
+    end;
+
+    //Salva a imagem na tabela de imagem do celular
+    frmGeralDM.oInsIMG.Close;
+    frmGeralDM.oInsIMG.ParamByName('CELL_ID').AsInteger   := frmGeralDM.qryCadCellCELL_ID.AsInteger;
+    frmGeralDM.oInsIMG.ParamByName('SEQUENCIA').AsInteger := frmGeralDM.qryImagensCellSEQUENCIA.AsInteger + 1 ;
+    frmGeralDM.oInsIMG.ParamByName('IMAGE').LoadFromFile( edtPathImageCell.Text ,TFieldType.ftBlob );
+    frmGeralDM.oInsIMG.ExecSQL;
+
+    frmGeralDM.qryImagensCell.Refresh;
+  finally
+    Application.MessageBox( 'Não foi possível concluir o insert, por favor verifique !', 'Aviso', 0 )
+  end;
+end;
+
 procedure TfrmCadProdutos.btnConsultaProdutosClick(Sender: TObject);
 begin
   frmGeralDM.qryCadCell.Close;
@@ -105,19 +137,37 @@ var
   BlobStream: TStream;
 
 begin
-  //Salva a imagem na tabela de imagem do celular
-  frmGeralDM.oInsIMG.Close;
-  frmGeralDM.oInsIMG.ParamByName('CELL_ID').AsInteger   := frmGeralDM.qryCadCellCELL_ID.AsInteger;
-  frmGeralDM.oInsIMG.ParamByName('SEQUENCIA').AsInteger := 1;
-  frmGeralDM.oInsIMG.ParamByName('IMAGE').LoadFromFile( edtPathImageCell.Text ,TFieldType.ftBlob );
-  frmGeralDM.oInsIMG.ExecSQL;
-
   frmGeralDM.qryCadCell.Post;
 end;
 
 procedure TfrmCadProdutos.btnVoltarClick(Sender: TObject);
 begin
   PgeCadastroComp.ActivePageIndex := 0;
+end;
+
+procedure TfrmCadProdutos.cxGridImagesDBTableViewImageCellClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+var
+ MemoryStream : TMemoryStream;
+ Jpg : TJpegImage;
+begin
+  if not(frmGeralDM.qryImagensCell.IsEmpty) and
+  not((frmGeralDM.qryImagensCell.FieldByName( 'IMAGE' ) as TBlobField).IsNull) then
+    try
+      MemoryStream := TMemoryStream.Create;
+      Jpg := TJpegImage.Create;
+      (frmGeralDM.qryImagensCell.FieldByName( 'IMAGE' ) as TBlobField).SaveToStream(MemoryStream);
+      MemoryStream.Position := OffsetMemoryStream;
+      Jpg.LoadFromStream(MemoryStream);
+      ImageCell.Picture.Assign(Jpg);
+    finally
+      Jpg.Free;
+      MemoryStream.Free;
+    end
+  else
+  // o Else faz com que, caso o campo esteja Null, o TImage seja limpado
+    ImageCell.Picture := Nil;
 end;
 
 procedure TfrmCadProdutos.FormCreate(Sender: TObject);
@@ -132,6 +182,10 @@ begin
   frmGeralDM.qryCadCell.ParamByName( 'START_DATE' ).AsDate := now;
   frmGeralDM.qryCadCell.ParamByName( 'END_DATE' ).AsDate   := now;
   frmGeralDM.qryCadCell.Open;
+
+  frmGeralDM.qryImagensCell.Close;
+  frmGeralDM.qryImagensCell.ParamByName( 'CELL_ID' ).AsInteger := frmGeralDM.qryCadCellCELL_ID.AsInteger;
+  frmGeralDM.qryImagensCell.Open;
 end;
 
 procedure TfrmCadProdutos.grdConsultaProdDBTableViewCellDblClick(
@@ -153,7 +207,7 @@ begin
   if OpenDialog.Execute then
   begin
     edtPathImageCell.Text := OpenDialog.FileName;
-    Image1.Picture.LoadFromFile(OpenDialog.FileName);
+    ImageCell.Picture.LoadFromFile(OpenDialog.FileName);
   end;
 end;
 

@@ -11,6 +11,7 @@ object frmCadProdutos: TfrmCadProdutos
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 16
@@ -189,6 +190,7 @@ object frmCadProdutos: TfrmCadProdutos
           DataController.Summary.SummaryGroups = <>
           OptionsBehavior.GoToNextCellOnEnter = True
           OptionsData.Appending = True
+          OptionsSelection.CellSelect = False
           OptionsView.ColumnAutoWidth = True
           OptionsView.GroupByBox = False
           OptionsView.HeaderHeight = 30
@@ -248,7 +250,7 @@ object frmCadProdutos: TfrmCadProdutos
           Align = alBottom
           ExplicitTop = 540
         end
-        object Image1: TImage
+        object ImageCell: TImage
           Left = 767
           Top = 31
           Width = 298
@@ -387,6 +389,7 @@ object frmCadProdutos: TfrmCadProdutos
           Anchors = [akLeft, akTop, akRight]
           DataBinding.DataField = 'CELL_ARMAZENAMENTO'
           DataBinding.DataSource = frmGeralDM.dtsCadCell
+          Properties.Alignment.Horz = taLeftJustify
           Properties.Items = <
             item
               Description = '32 Gigas'
@@ -559,7 +562,7 @@ object frmCadProdutos: TfrmCadProdutos
         object btnPesqImagem: TcxButton
           Left = 767
           Top = 359
-          Width = 298
+          Width = 98
           Height = 57
           Anchors = [akTop, akRight]
           Caption = 'Pesquisar'
@@ -598,6 +601,7 @@ object frmCadProdutos: TfrmCadProdutos
           Anchors = [akLeft, akTop, akRight]
           DataBinding.DataField = 'CELL_MARCA'
           DataBinding.DataSource = frmGeralDM.dtsCadCell
+          Properties.Alignment.Horz = taRightJustify
           Properties.Images = imgMarcas
           Properties.Items = <
             item
@@ -618,8 +622,8 @@ object frmCadProdutos: TfrmCadProdutos
         object cxGridImages: TcxGrid
           Left = 767
           Top = 422
-          Width = 314
-          Height = 200
+          Width = 298
+          Height = 91
           TabOrder = 23
           object cxGridImagesDBTableViewImage: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
@@ -644,6 +648,8 @@ object frmCadProdutos: TfrmCadProdutos
             Navigator.Buttons.GotoBookmark.Visible = False
             Navigator.Buttons.Filter.Enabled = False
             Navigator.Buttons.Filter.Visible = False
+            OnCellClick = cxGridImagesDBTableViewImageCellClick
+            DataController.DataSource = frmGeralDM.dtsImagensCell
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
             DataController.Summary.SummaryGroups = <>
@@ -652,12 +658,66 @@ object frmCadProdutos: TfrmCadProdutos
             OptionsView.ColumnAutoWidth = True
             OptionsView.GroupByBox = False
             OptionsView.HeaderHeight = 30
-            object cxGridImagesDBTableViewImageColumn1: TcxGridDBColumn
+            object cxgrdbclmnGridImagesDBTableViewImageColumnSEQUENCIA: TcxGridDBColumn
+              Caption = 'Imagem'
+              DataBinding.FieldName = 'SEQUENCIA'
+              PropertiesClassName = 'TcxLabelProperties'
+              Properties.Alignment.Horz = taCenter
+              HeaderAlignmentHorz = taCenter
             end
           end
           object cxGridImagesLevelImage: TcxGridLevel
             GridView = cxGridImagesDBTableViewImage
           end
+        end
+        object btnAddImage: TcxButton
+          Left = 871
+          Top = 359
+          Width = 100
+          Height = 57
+          Anchors = [akTop, akRight]
+          Caption = 'Adicionar'
+          OptionsImage.Glyph.SourceDPI = 96
+          OptionsImage.Glyph.Data = {
+            89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+            F80000000473424954080808087C086488000000097048597300000B1500000B
+            15018099D8830000001974455874536F667477617265007777772E696E6B7363
+            6170652E6F72679BEE3C1A0000010B494441544889EDD4B12E444114C6F1DFAC
+            151295621385627B215148741A22A1D4A9B40A9528C433A8BC8257506925649F
+            424221B6169160143BC5BAEEDE3B7657219CE42BCEDCF9BEFF2DCE1C314675C2
+            0A5E11FBB496E36DC8AB194C14CE66738CB980A1EB1FF0070021CDF9D70F214C
+            E1486F3CDBD82B5CB9C23D5EB01F637C2E0DAA7960E73E3FAE329D5566D400A6
+            7153117E8DC9A101093287BB92F047CCD7FA3377D1329EFAC2DFB09EE5CDB994
+            203B784F80935CDFC0291A3059C758C26ECC34061C603BF59731C6D36C62F94F
+            1C6223B5174D2C60331D3C8C129E6AB12FEFF6F7AF8A1F07340B7D2B84B03A62
+            66AB0AB09534B66AA03BCEC04275E9ADE28EFAADF95D75D0FE00B82B822B6955
+            A9E20000000049454E44AE426082}
+          TabOrder = 24
+          OnClick = btnAddImageClick
+        end
+        object btnExcluiImg: TcxButton
+          Left = 977
+          Top = 359
+          Width = 100
+          Height = 57
+          Anchors = [akTop, akRight]
+          Caption = 'Excluir'
+          OptionsImage.Glyph.SourceDPI = 96
+          OptionsImage.Glyph.Data = {
+            89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+            F80000000473424954080808087C086488000000097048597300000B1500000B
+            15018099D8830000001974455874536F667477617265007777772E696E6B7363
+            6170652E6F72679BEE3C1A0000010B494441544889EDD4B12E444114C6F1DFAC
+            151295621385627B215148741A22A1D4A9B40A9528C433A8BC8257506925649F
+            424221B6169160143BC5BAEEDE3B7657219CE42BCEDCF9BEFF2DCE1C314675C2
+            0A5E11FBB496E36DC8AB194C14CE66738CB980A1EB1FF0070021CDF9D70F214C
+            E1486F3CDBD82B5CB9C23D5EB01F637C2E0DAA7960E73E3FAE329D5566D400A6
+            7153117E8DC9A101093287BB92F047CCD7FA3377D1329EFAC2DFB09EE5CDB994
+            203B784F80935CDFC0291A3059C758C26ECC34061C603BF59731C6D36C62F94F
+            1C6223B5174D2C60331D3C8C129E6AB12FEFF6F7AF8A1F07340B7D2B84B03A62
+            66AB0AB09534B66AA03BCEC04275E9ADE28EFAADF95D75D0FE00B82B822B6955
+            A9E20000000049454E44AE426082}
+          TabOrder = 25
         end
       end
     end
