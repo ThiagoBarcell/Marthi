@@ -13,7 +13,7 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
   Data.DB, cxDBData, cxRadioGroup, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, dxBevel,
-  GeralDMFrm, Vcl.ComCtrls, Jpeg;
+  GeralDMFrm, Vcl.ComCtrls, Jpeg, untFuncoes;
 
 const
   OffsetMemoryStream : Int64 = 0;
@@ -41,10 +41,6 @@ type
     grdConsultaProdDBTableView: TcxGridDBTableView;
     grdConsultaProdLevel: TcxGridLevel;
     grdConsultaProd: TcxGrid;
-    cbxArmazenamentoCell: TcxDBImageComboBox;
-    cxLabel1: TcxLabel;
-    cxLabel2: TcxLabel;
-    edtCellColor: TcxDBTextEdit;
     cxLabel3: TcxLabel;
     edtPrincCam: TcxDBTextEdit;
     cxLabel4: TcxLabel;
@@ -70,6 +66,15 @@ type
     cxgrdbclmnGridImagesDBTableViewImageColumnSEQUENCIA: TcxGridDBColumn;
     btnAddImage: TcxButton;
     btnExcluiImg: TcxButton;
+    cxGrid1: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    cxLabel1: TcxLabel;
+    cxGridDBTableView1Column1: TcxGridDBColumn;
+    cxGridDBTableView1Column2: TcxGridDBColumn;
+    cxGridDBTableView1Column3: TcxGridDBColumn;
+    cxGridDBTableView1Column4: TcxGridDBColumn;
+    cxGridDBTableView1Column5: TcxGridDBColumn;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);

@@ -9,11 +9,14 @@ object frmGeralDM: TfrmGeralDM
       'Password=masterkey'
       'Server=LocalHost'
       'Port=3050'
+      'Database=D:\Marthi GIT\DataBase\MARTHIDB.FDB'
       'DriverID=FB')
+    Connected = True
     Left = 56
     Top = 16
   end
   object qryCadCell: TFDQuery
+    Active = True
     AfterScroll = qryCadCellAfterScroll
     OnNewRecord = qryCadCellNewRecord
     Connection = ConectMarthi
@@ -25,25 +28,22 @@ object frmGeralDM: TfrmGeralDM
       '  CELL_DESC,'
       '  CELL_PROCESSAMENTO,'
       '  CELL_MEM_RAM,'
-      '  CELL_ARMAZENAMENTO,'
       '  CELL_CAM_PRINC,'
       '  CELL_CAM_FRONT,'
-      '  CELL_COR,'
-      '  CELL_VALOR_UNITARIO,'
-      '  CELL_VALOR_PARCELADO,'
       '  CELL_OBS,'
       '  DAT_CAD,'
       '  DAT_ALT'
       'FROM CAD_CELL'
       ''
       'WHERE DAT_CAD BETWEEN :START_DATE AND :END_DATE')
-    Left = 56
-    Top = 80
+    Left = 127
+    Top = 16
     ParamData = <
       item
         Name = 'START_DATE'
         DataType = ftDate
         ParamType = ptInput
+        Value = Null
       end
       item
         Name = 'END_DATE'
@@ -75,10 +75,6 @@ object frmGeralDM: TfrmGeralDM
       Origin = 'CELL_MEM_RAM'
       Size = 50
     end
-    object qryCadCellCELL_ARMAZENAMENTO: TIntegerField
-      FieldName = 'CELL_ARMAZENAMENTO'
-      Origin = 'CELL_ARMAZENAMENTO'
-    end
     object qryCadCellCELL_CAM_PRINC: TStringField
       FieldName = 'CELL_CAM_PRINC'
       Origin = 'CELL_CAM_PRINC'
@@ -89,27 +85,10 @@ object frmGeralDM: TfrmGeralDM
       Origin = 'CELL_CAM_FRONT'
       Size = 100
     end
-    object qryCadCellCELL_COR: TStringField
-      FieldName = 'CELL_COR'
-      Origin = 'CELL_COR'
-      Size = 100
-    end
     object qryCadCellCELL_OBS: TStringField
       FieldName = 'CELL_OBS'
       Origin = 'CELL_OBS'
       Size = 255
-    end
-    object qryCadCellCELL_VALOR_UNITARIO: TFMTBCDField
-      FieldName = 'CELL_VALOR_UNITARIO'
-      Origin = 'CELL_VALOR_UNITARIO'
-      Precision = 18
-      Size = 2
-    end
-    object qryCadCellCELL_VALOR_PARCELADO: TFMTBCDField
-      FieldName = 'CELL_VALOR_PARCELADO'
-      Origin = 'CELL_VALOR_PARCELADO'
-      Precision = 18
-      Size = 2
     end
     object qryCadCellDAT_CAD: TDateField
       FieldName = 'DAT_CAD'
@@ -122,25 +101,22 @@ object frmGeralDM: TfrmGeralDM
   end
   object dtsCadCell: TDataSource
     DataSet = qryCadCell
-    Left = 58
-    Top = 136
+    Left = 129
+    Top = 72
   end
   object upsCadCell: TFDUpdateSQL
     Connection = ConectMarthi
     InsertSQL.Strings = (
       
         'INSERT INTO CAD_CELL (CELL_ID, CELL_MARCA, CELL_DESC, CELL_PROCE' +
-        'SSAMENTO, CELL_MEM_RAM, CELL_ARMAZENAMENTO,'
+        'SSAMENTO, CELL_MEM_RAM, '
       
-        '                      CELL_CAM_PRINC, CELL_CAM_FRONT, CELL_COR, ' +
-        'CELL_OBS, CELL_VALOR_UNITARIO, CELL_VALOR_PARCELADO,'
-      '                      DAT_ALT, DAT_CAD)'
+        '                      CELL_CAM_PRINC, CELL_CAM_FRONT, CELL_OBS, ' +
+        'DAT_ALT, DAT_CAD)'
       
         'VALUES (:CELL_ID, :CELL_MARCA, :CELL_DESC, :CELL_PROCESSAMENTO, ' +
-        ':CELL_MEM_RAM, :CELL_ARMAZENAMENTO, :CELL_CAM_PRINC,'
-      
-        '        :CELL_CAM_FRONT, :CELL_COR, :CELL_OBS, :CELL_VALOR_UNITA' +
-        'RIO, :CELL_VALOR_PARCELADO, :DAT_ALT, :DAT_CAD);')
+        ':CELL_MEM_RAM, :CELL_CAM_PRINC,'
+      '        :CELL_CAM_FRONT, :CELL_OBS, :DAT_ALT, :DAT_CAD);')
     ModifySQL.Strings = (
       'UPDATE CAD_CELL'
       'SET CELL_ID = :CELL_ID,'
@@ -148,21 +124,17 @@ object frmGeralDM: TfrmGeralDM
       'CELL_DESC = :CELL_DESC,'
       'CELL_PROCESSAMENTO = :CELL_PROCESSAMENTO,'
       'CELL_MEM_RAM = :CELL_MEM_RAM,'
-      'CELL_ARMAZENAMENTO = :CELL_ARMAZENAMENTO,'
       'CELL_CAM_PRINC = :CELL_CAM_PRINC,'
       'CELL_CAM_FRONT = :CELL_CAM_FRONT,'
-      'CELL_COR = :CELL_COR,'
       'CELL_OBS = :CELL_OBS,'
-      'CELL_VALOR_UNITARIO = :CELL_VALOR_UNITARIO,'
-      'CELL_VALOR_PARCELADO = :CELL_VALOR_PARCELADO ,'
       'DAT_ALT = :DAT_ALT,'
       'DAT_CAD = :DAT_CAD'
       'WHERE CELL_ID = :OLD_CELL_ID')
     DeleteSQL.Strings = (
       'DELETE FROM CAD_CELL'
       'WHERE CELL_ID = :OLD_CELL_ID')
-    Left = 56
-    Top = 200
+    Left = 127
+    Top = 136
   end
   object oInsIMG: TFDQuery
     Connection = ConectMarthi
@@ -171,8 +143,8 @@ object frmGeralDM: TfrmGeralDM
         'INSERT INTO CELL_IMAGES ( CELL_IMAGES.CELL_ID, CELL_IMAGES.SEQUE' +
         'NCIA, CELL_IMAGES.IMAGE ) VALUES ( :CELL_ID, :SEQUENCIA, :IMAGE ' +
         ')')
-    Left = 144
-    Top = 16
+    Left = 216
+    Top = 128
     ParamData = <
       item
         Name = 'CELL_ID'
@@ -192,8 +164,8 @@ object frmGeralDM: TfrmGeralDM
     SQL.Strings = (
       'SELECT * FROM CELL_IMAGES'
       'WHERE CELL_ID = :CELL_ID')
-    Left = 144
-    Top = 80
+    Left = 215
+    Top = 16
     ParamData = <
       item
         Name = 'CELL_ID'
@@ -219,8 +191,8 @@ object frmGeralDM: TfrmGeralDM
   end
   object dtsImagensCell: TDataSource
     DataSet = qryImagensCell
-    Left = 144
-    Top = 135
+    Left = 215
+    Top = 71
   end
   object delImgCell: TFDQuery
     Connection = ConectMarthi
@@ -229,7 +201,7 @@ object frmGeralDM: TfrmGeralDM
       'WHERE( CELL_ID = :CELL_ID )'
       '  AND( SEQUENCIA = :SEQUENCIA )')
     Left = 216
-    Top = 16
+    Top = 184
     ParamData = <
       item
         Name = 'CELL_ID'
@@ -239,5 +211,50 @@ object frmGeralDM: TfrmGeralDM
         Name = 'SEQUENCIA'
         ParamType = ptInput
       end>
+  end
+  object qryCellItens: TFDQuery
+    Connection = ConectMarthi
+    SQL.Strings = (
+      'SELECT'
+      '  CELL_ITENS.ITEM_ID,'
+      '  CELL_ID,'
+      '  ARMAZENAMENTO_ID,'
+      '  COR_ID,'
+      '  CODICAO_ID,'
+      '  CELL_VAL_UNIT,'
+      '  CELL_VAL_PARC'
+      ''
+      'FROM CELL_ITENS'
+      ''
+      '  WHERE( CELL_ID = :CELL_ID )')
+    Left = 298
+    Top = 15
+    ParamData = <
+      item
+        Name = 'CELL_ID'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object IntegerField1: TIntegerField
+      FieldName = 'CELL_ID'
+      Origin = 'CELL_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object IntegerField2: TIntegerField
+      FieldName = 'SEQUENCIA'
+      Origin = 'SEQUENCIA'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object BlobField1: TBlobField
+      FieldName = 'IMAGE'
+      Origin = 'IMAGE'
+    end
+  end
+  object dtsCellItens: TDataSource
+    DataSet = qryCellItens
+    Left = 295
+    Top = 71
   end
 end

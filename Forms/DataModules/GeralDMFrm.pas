@@ -19,15 +19,11 @@ type
     qryCadCellCELL_DESC: TStringField;
     qryCadCellCELL_PROCESSAMENTO: TStringField;
     qryCadCellCELL_MEM_RAM: TStringField;
-    qryCadCellCELL_ARMAZENAMENTO: TIntegerField;
     qryCadCellCELL_CAM_PRINC: TStringField;
     qryCadCellCELL_CAM_FRONT: TStringField;
-    qryCadCellCELL_COR: TStringField;
     qryCadCellCELL_OBS: TStringField;
     dtsCadCell: TDataSource;
     upsCadCell: TFDUpdateSQL;
-    qryCadCellCELL_VALOR_UNITARIO: TFMTBCDField;
-    qryCadCellCELL_VALOR_PARCELADO: TFMTBCDField;
     qryCadCellDAT_CAD: TDateField;
     qryCadCellDAT_ALT: TDateField;
     oInsIMG: TFDQuery;
@@ -37,6 +33,11 @@ type
     qryImagensCellIMAGE: TBlobField;
     dtsImagensCell: TDataSource;
     delImgCell: TFDQuery;
+    qryCellItens: TFDQuery;
+    IntegerField1: TIntegerField;
+    IntegerField2: TIntegerField;
+    BlobField1: TBlobField;
+    dtsCellItens: TDataSource;
     procedure qryCadCellNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
     procedure qryCadCellAfterScroll(DataSet: TDataSet);
