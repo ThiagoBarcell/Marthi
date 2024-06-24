@@ -1,8 +1,8 @@
 object frmGeralDM: TfrmGeralDM
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 334
-  Width = 546
+  Height = 266
+  Width = 752
   object ConectMarthi: TFDConnection
     Params.Strings = (
       'User_Name=SYSDBA'
@@ -235,26 +235,88 @@ object frmGeralDM: TfrmGeralDM
         DataType = ftInteger
         ParamType = ptInput
       end>
-    object IntegerField1: TIntegerField
+    object qryCellItensITEM_ID: TIntegerField
+      FieldName = 'ITEM_ID'
+      Origin = 'ITEM_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryCellItensCELL_ID: TIntegerField
       FieldName = 'CELL_ID'
       Origin = 'CELL_ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object IntegerField2: TIntegerField
-      FieldName = 'SEQUENCIA'
-      Origin = 'SEQUENCIA'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
+    object qryCellItensARMAZENAMENTO_ID: TIntegerField
+      FieldName = 'ARMAZENAMENTO_ID'
+      Origin = 'ARMAZENAMENTO_ID'
     end
-    object BlobField1: TBlobField
-      FieldName = 'IMAGE'
-      Origin = 'IMAGE'
+    object qryCellItensCOR_ID: TIntegerField
+      FieldName = 'COR_ID'
+      Origin = 'COR_ID'
+    end
+    object qryCellItensCODICAO_ID: TIntegerField
+      FieldName = 'CODICAO_ID'
+      Origin = 'CODICAO_ID'
+    end
+    object qryCellItensCELL_VAL_UNIT: TFMTBCDField
+      FieldName = 'CELL_VAL_UNIT'
+      Origin = 'CELL_VAL_UNIT'
+      Precision = 18
+      Size = 2
+    end
+    object qryCellItensCELL_VAL_PARC: TFMTBCDField
+      FieldName = 'CELL_VAL_PARC'
+      Origin = 'CELL_VAL_PARC'
+      Precision = 18
+      Size = 2
     end
   end
   object dtsCellItens: TDataSource
     DataSet = qryCellItens
     Left = 295
     Top = 71
+  end
+  object qryCellCor: TFDQuery
+    Connection = ConectMarthi
+    SQL.Strings = (
+      'SELECT * FROM CELL_CORES')
+    Left = 377
+    Top = 15
+    object qryCellCorCOR_ID: TIntegerField
+      FieldName = 'COR_ID'
+      Origin = 'COR_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryCellCorCOD_DESC: TStringField
+      FieldName = 'COD_DESC'
+      Origin = 'COD_DESC'
+      Required = True
+    end
+  end
+  object qryCellArmazenamento: TFDQuery
+    Connection = ConectMarthi
+    SQL.Strings = (
+      'SELECT * FROM CELL_ARMAZENAMENTO')
+    Left = 470
+    Top = 15
+    object qryCellArmazenamentoARMAZENAMENTO_ID: TIntegerField
+      FieldName = 'ARMAZENAMENTO_ID'
+      Origin = 'ARMAZENAMENTO_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryCellArmazenamentoARMAZENAMENTO_DESC: TStringField
+      FieldName = 'ARMAZENAMENTO_DESC'
+      Origin = 'ARMAZENAMENTO_DESC'
+    end
+  end
+  object qryCellCondicao: TFDQuery
+    Connection = ConectMarthi
+    SQL.Strings = (
+      'SELECT * FROM CELL_CONDICOES')
+    Left = 569
+    Top = 15
   end
 end

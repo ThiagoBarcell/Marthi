@@ -514,6 +514,7 @@ object frmCadProdutos: TfrmCadProdutos
           Width = 302
           Height = 67
           TabOrder = 17
+          LookAndFeel.SkinName = 'UserSkin'
           object cxGridImagesDBTableViewImage: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             Navigator.Buttons.First.Visible = True
@@ -615,21 +616,24 @@ object frmCadProdutos: TfrmCadProdutos
           TabOrder = 19
           OnClick = btnExcluiImgClick
         end
-        object cxGrid1: TcxGrid
+        object grdCell_Itens: TcxGrid
           Left = 138
-          Top = 277
+          Top = 350
           Width = 494
-          Height = 249
+          Height = 196
           TabOrder = 20
-          object cxGridDBTableView1: TcxGridDBTableView
+          LookAndFeel.Kind = lfOffice11
+          LookAndFeel.NativeStyle = False
+          LookAndFeel.SkinName = 'UserSkin'
+          object cxGridDBTableViewCell_Itens: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             Navigator.Buttons.First.Visible = True
-            Navigator.Buttons.PriorPage.Visible = True
+            Navigator.Buttons.PriorPage.Visible = False
             Navigator.Buttons.Prior.Visible = True
             Navigator.Buttons.Next.Visible = True
-            Navigator.Buttons.NextPage.Visible = True
+            Navigator.Buttons.NextPage.Visible = False
             Navigator.Buttons.Last.Visible = True
-            Navigator.Buttons.Insert.Visible = False
+            Navigator.Buttons.Insert.Visible = True
             Navigator.Buttons.Append.Visible = False
             Navigator.Buttons.Delete.Visible = False
             Navigator.Buttons.Edit.Enabled = False
@@ -644,7 +648,9 @@ object frmCadProdutos: TfrmCadProdutos
             Navigator.Buttons.GotoBookmark.Visible = False
             Navigator.Buttons.Filter.Enabled = False
             Navigator.Buttons.Filter.Visible = False
+            Navigator.Visible = True
             OnCellClick = cxGridImagesDBTableViewImageCellClick
+            DataController.DataSource = frmGeralDM.dtsCellItens
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
             DataController.Summary.SummaryGroups = <>
@@ -653,25 +659,55 @@ object frmCadProdutos: TfrmCadProdutos
             OptionsView.ColumnAutoWidth = True
             OptionsView.GroupByBox = False
             OptionsView.HeaderHeight = 30
-            object cxGridDBTableView1Column1: TcxGridDBColumn
+            object cxGridDBTableViewCell_ItensColumnARMAZENAMENTO_ID: TcxGridDBColumn
+              Caption = 'Armazenamento'
+              DataBinding.FieldName = 'ARMAZENAMENTO_ID'
+              PropertiesClassName = 'TcxImageComboBoxProperties'
+              Properties.Items = <>
+              HeaderAlignmentHorz = taCenter
+              Width = 105
             end
-            object cxGridDBTableView1Column2: TcxGridDBColumn
+            object cxGridDBTableViewCell_ItensColumnCOR_ID: TcxGridDBColumn
+              Caption = 'Cor'
+              DataBinding.FieldName = 'COR_ID'
+              PropertiesClassName = 'TcxImageComboBoxProperties'
+              Properties.Items = <>
+              HeaderAlignmentHorz = taCenter
+              Width = 88
             end
-            object cxGridDBTableView1Column3: TcxGridDBColumn
+            object cxGridDBTableViewCell_ItensColumnCODICAO_ID: TcxGridDBColumn
+              Caption = 'Condi'#231#227'o'
+              DataBinding.FieldName = 'CODICAO_ID'
+              PropertiesClassName = 'TcxImageComboBoxProperties'
+              Properties.Items = <>
+              HeaderAlignmentHorz = taCenter
+              Width = 111
             end
-            object cxGridDBTableView1Column4: TcxGridDBColumn
+            object cxGridDBTableViewCell_ItensColumnCELL_VAL_UNIT: TcxGridDBColumn
+              Caption = 'Valor Unit'#225'rio'
+              DataBinding.FieldName = 'CELL_VAL_UNIT'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
+              Properties.Alignment.Horz = taRightJustify
+              HeaderAlignmentHorz = taCenter
+              Width = 91
             end
-            object cxGridDBTableView1Column5: TcxGridDBColumn
+            object cxGridDBTableViewCell_ItensColumnCELL_VAL_PARC: TcxGridDBColumn
+              Caption = 'Valor Parcelado'
+              DataBinding.FieldName = 'CELL_VAL_PARC'
+              PropertiesClassName = 'TcxCurrencyEditProperties'
+              Properties.Alignment.Horz = taRightJustify
+              HeaderAlignmentHorz = taCenter
+              Width = 97
             end
           end
-          object cxGridLevel1: TcxGridLevel
-            GridView = cxGridDBTableView1
+          object grdLevelCell_Itens: TcxGridLevel
+            GridView = cxGridDBTableViewCell_Itens
           end
         end
         object cxLabel1: TcxLabel
-          Left = 60
-          Top = 277
-          Caption = 'Informa'#231#245'es :'
+          Left = 51
+          Top = 287
+          Caption = 'Especifica'#231#245'es :'
           ParentFont = False
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clWindowText
@@ -679,6 +715,111 @@ object frmCadProdutos: TfrmCadProdutos
           Style.Font.Name = 'Segoe UI'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
+        end
+        object btnCadArmazenamento: TcxButton
+          Left = 138
+          Top = 287
+          Width = 160
+          Height = 57
+          Anchors = [akTop, akRight]
+          Caption = 'Cadastro de '#13' Armazenamento'
+          LookAndFeel.NativeStyle = True
+          LookAndFeel.SkinName = ''
+          OptionsImage.Glyph.SourceDPI = 96
+          OptionsImage.Glyph.Data = {
+            89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+            F80000000970485973000000B1000000B101C62D498D0000001974455874536F
+            667477617265007777772E696E6B73636170652E6F72679BEE3C1A0000018449
+            4441544889EDD6BF4B56511CC7F197693F70949E2192A6240437211E1CA3A13F
+            A031C83FE001215A8236977050707274566A796AE8295A1B82A62CA867482A5A
+            224A07A5041DCEB97ABC9C9B57AF631F389CC3F71CDE9F73B8F7FB3D876A8DE1
+            3576B05BB3FDC54BB4FEC105D7F00D1FD1C13656F1308216B014C7F7F00C3F31
+            13FBF93AF00FB814639BB88FAB117A13B7E3F82266F125AE7D8A6E011BCAC05F
+            610337F03DC6DFE1137EE033BEE2778C6DC67E2DAEDDADDAF995CCCE4FA26E7A
+            8233C9C4030C9676DE58A9C128DE9C26BC6C403841531D62A406DBB885F106F0
+            F1C8D8CA4D4E097F40BB81413B32A68A407A820B0DC0659DCF059FE08F904C27
+            D598502E1E178134D1CEA2873EEE60E298F0B758C1739CCB197090858B71FCAB
+            267C44C8E815A54C2E1B141AC01C1ED53498C5746EA29C07A7AEFF0647AAEA23
+            C3654CD6E45496F72A830DE1AAECD43480F7750C06627F5D28DFC7D17AC2D8CF
+            85D4A08FBBC2C59DAD86476812C342A15BCE2D68E185504BEA3E5372CF969EE4
+            D9B2075A746663A04FF9E00000000049454E44AE426082}
+          TabOrder = 22
+        end
+        object btnCadCor: TcxButton
+          Left = 306
+          Top = 287
+          Width = 160
+          Height = 57
+          Anchors = [akTop, akRight]
+          Caption = 'Cadastro de Cor'
+          OptionsImage.Glyph.SourceDPI = 96
+          OptionsImage.Glyph.Data = {
+            89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+            F80000000473424954080808087C0864880000000970485973000000A6000000
+            A601DD7DFF380000001974455874536F667477617265007777772E696E6B7363
+            6170652E6F72679BEE3C1A0000030C4944415448898DD54D8896551407F0DF75
+            5E261DFB92026D48E98389628C2467A2458BCA301AC416D5540415D5C2DA448B
+            2041C73EEC6355649BCA905C147D6D42A50FB185A43591A4A6B4A888A8260922
+            2D26DF99626E8B7B1E7C7AE67DB30B97E739F79E73FEE7FCEFB9E7A69CB36E23
+            A574168671457C87D1836F627E812D39E7A3A1DF8737F15CCEF92390739E35D1
+            C218FE42C6116CC306ACC356ECC1148EE1199C8F5DA13F896B73CEB30170313E
+            C334D66371A72042F71C3C85DF6A8E5705D0242E6D1ADC89E33888658DBD6B70
+            37E675005A15007784DC87EFB1B3AE744938DF8CDE8683B170F037F67700D810
+            54B56A6B4FE25825F4603C22EFEDE0E030DEC7BD01B4B4B17F5FAC0FD5D63EC6
+            C14A581B9C2FAB290CE0B4F8DF8419FC1AA9F73400E6E3DBC8E245EC0BC05138
+            3BAA61AC66F05628FC81D538150F54D5D2E5C09F0F0A8FC6014FA3176E0867FD
+            A13818F27A7C8EDDDDAAA801F02A3E8DFFDBC2C7992D0CE148CE7942193FE14F
+            8CE022BCE32423A574356E463BA5F4069604A5D3F02E7634A2B945B90BAFE1BC
+            9344BE3202FA2AA2DE8D091CA8BAC48F78FCFFD0D0C1F908DA7819B706C0E9D8
+            823D39677394B630534BF7C294D2C694D23DD15BBAD1D2522AE603AC51EE10CC
+            8B795C38DF87E561D41329CEC719CAE57BB80BC628166324E73C93526A02B461
+            4E000CC5E620FAF1203E542AACDB588DBD39E7432177CCA002589452EAC797F8
+            5AE174A5D27ABB8D01E58657A36B06E34A39DD9FCBC90DE3215C8F8D29A5C194
+            D2E694D2D329A58535870BF14B4D6E77CAA0AA86754AEF5FDEA892A43C2C134A
+            29BE5EDBDB816D35F902A58AAEC3216CAAAA88D202F6636B4AE9945A54FD61F8
+            02DEC355B5BD4F70E57F507422835A8B686BB46BE522E6986B6BEB2B626D20E4
+            054E34B8093C3AEB4553DAEE9472D897D7685A81CB1ABA1525B7873C37E4BB94
+            17EE913A455536AF2877620AE329A5279426B82BE77CC0BFC792F8FE1EB6ED00
+            E84C5123BA9672F05361F433B6E331A5C29E550EFD30FA6A763F6067D8DC348B
+            A20E408B706338DE1EDC4EE23BBC84731BFAA3CA83F4B6783EFF01AB8D8E7B9C
+            C436730000000049454E44AE426082}
+          TabOrder = 23
+        end
+        object btnCadCondicao: TcxButton
+          Left = 472
+          Top = 287
+          Width = 160
+          Height = 57
+          Anchors = [akTop, akRight]
+          Caption = 'Cadastro de'#13'Condi'#231#227'o'
+          OptionsImage.Glyph.SourceDPI = 96
+          OptionsImage.Glyph.Data = {
+            89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+            F80000000473424954080808087C0864880000000970485973000000A6000000
+            A601DD7DFF380000001974455874536F667477617265007777772E696E6B7363
+            6170652E6F72679BEE3C1A00000290494441544889ADD549C856551807F0DFE3
+            F07DBA300AC40690425CB8093F0A052B2C23C4120A0A8B2828B4852D4431A245
+            8B72114444426D0269000BDA24D552852252A8504AC3A201CA0635332A1AD486
+            A7C57DBEBCEFEBBDAF251D389CE1FECFFFFF4CE75C99A9AF630176E120D68EC2
+            F672F410DF8027F109BEC54EFC8967B011B3FF9300C6B01013D880C467781B97
+            621C2FE03D9CC4EEC24EE0820E03A7B5E66EC4E1229DEC0731DEE3DDA621ECEF
+            D852DFA6E231FC818F3137F03E7E2DD71357E3517C889F9CDE16E203ACABF50A
+            3C84CBEAEC13781CB7635714E9BD99F9F4244344DC5C07C73A043EC2739979A4
+            B033F01BEEC783783933EF89883DD8AF04CEAA422A2C338AE3688D6B705BCDAF
+            FF3F0512EFD6781CDB33D394B6EF11B13222CE8B883911B13F2236778468B82D
+            ADF1A9CC5C84473455B72C226E19F0005F622F0EE06BCC3F83F5D335C5B00763
+            B5F73AF6E1557C3EE0016EC2253817CB32F3D33358BF1E17E1D6CC3C191113B8
+            A64275BEE6CE0CE60073755C9E0EEB2FD494F19AD6DEF34EE5E31B4DD90E8468
+            0EA694EB5BB06184C0D60AE9F496E0F1E2BBAB15B20181EFF1225E29F0753DE4
+            1375EEBED6DE6BB5F7DD107640E00ECD353F819523ACDF8C1F30ABD66B8B6777
+            8D333B056A6339968E209F8A4378A9C2B900BF6007AED03C3BB37B05FE4572AF
+            6C25F21D4D5927EE9ECC451B3FAD5D7311B10FCFE21C2CCFCCAB9CDE16979577
+            625B85F39F969987DAEBE17BB0B3E2BB09DB3BC86111BED23C6C3F63550F0E06
+            3DC08FAD79D7533D29301F4734757E6094C0B007ABF1B0C68BD5C3E08818C73C
+            CDCF644966EE1D45CE290F0232F3E251E0CC3C51FF8AB732F358FBAC26D19D02
+            6FE08188E80575B45585876BF117DEEC035FAE7901F32CFB1758D757D67F03FF
+            DAA6321D9AA7EA0000000049454E44AE426082}
+          TabOrder = 24
         end
       end
     end

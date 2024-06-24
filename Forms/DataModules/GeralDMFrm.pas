@@ -34,10 +34,21 @@ type
     dtsImagensCell: TDataSource;
     delImgCell: TFDQuery;
     qryCellItens: TFDQuery;
-    IntegerField1: TIntegerField;
-    IntegerField2: TIntegerField;
-    BlobField1: TBlobField;
     dtsCellItens: TDataSource;
+    qryCellItensITEM_ID: TIntegerField;
+    qryCellItensCELL_ID: TIntegerField;
+    qryCellItensARMAZENAMENTO_ID: TIntegerField;
+    qryCellItensCOR_ID: TIntegerField;
+    qryCellItensCODICAO_ID: TIntegerField;
+    qryCellItensCELL_VAL_UNIT: TFMTBCDField;
+    qryCellItensCELL_VAL_PARC: TFMTBCDField;
+    qryCellCor: TFDQuery;
+    qryCellArmazenamento: TFDQuery;
+    qryCellCondicao: TFDQuery;
+    qryCellArmazenamentoARMAZENAMENTO_ID: TIntegerField;
+    qryCellArmazenamentoARMAZENAMENTO_DESC: TStringField;
+    qryCellCorCOR_ID: TIntegerField;
+    qryCellCorCOD_DESC: TStringField;
     procedure qryCadCellNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
     procedure qryCadCellAfterScroll(DataSet: TDataSet);
@@ -96,9 +107,15 @@ end;
 
 procedure TfrmGeralDM.qryCadCellAfterScroll(DataSet: TDataSet);
 begin
-  frmGeralDM.qryImagensCell.Close;
-  frmGeralDM.qryImagensCell.ParamByName( 'CELL_ID' ).AsInteger := frmGeralDM.qryCadCellCELL_ID.AsInteger;
-  frmGeralDM.qryImagensCell.Open;
+  //Tabela com as Imagens dos produtos
+  qryImagensCell.Close;
+  qryImagensCell.ParamByName( 'CELL_ID' ).AsInteger := qryCadCellCELL_ID.AsInteger;
+  qryImagensCell.Open;
+
+  //Tabela com as informações dos celulares
+  qryCellItens.Close;
+  qryCellItens.ParamByName( 'CELL_ID' ).AsInteger := qryCadCellCELL_ID.AsInteger;
+  qryCellItens.Open;
 end;
 
 procedure TfrmGeralDM.qryCadCellNewRecord(DataSet: TDataSet);

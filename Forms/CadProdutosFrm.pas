@@ -13,7 +13,7 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
   Data.DB, cxDBData, cxRadioGroup, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, dxBevel,
-  GeralDMFrm, Vcl.ComCtrls, Jpeg, untFuncoes;
+  GeralDMFrm, Vcl.ComCtrls, Jpeg, untFuncoes, cxCurrencyEdit;
 
 const
   OffsetMemoryStream : Int64 = 0;
@@ -66,15 +66,18 @@ type
     cxgrdbclmnGridImagesDBTableViewImageColumnSEQUENCIA: TcxGridDBColumn;
     btnAddImage: TcxButton;
     btnExcluiImg: TcxButton;
-    cxGrid1: TcxGrid;
-    cxGridDBTableView1: TcxGridDBTableView;
-    cxGridLevel1: TcxGridLevel;
+    grdCell_Itens: TcxGrid;
+    cxGridDBTableViewCell_Itens: TcxGridDBTableView;
+    grdLevelCell_Itens: TcxGridLevel;
     cxLabel1: TcxLabel;
-    cxGridDBTableView1Column1: TcxGridDBColumn;
-    cxGridDBTableView1Column2: TcxGridDBColumn;
-    cxGridDBTableView1Column3: TcxGridDBColumn;
-    cxGridDBTableView1Column4: TcxGridDBColumn;
-    cxGridDBTableView1Column5: TcxGridDBColumn;
+    cxGridDBTableViewCell_ItensColumnARMAZENAMENTO_ID: TcxGridDBColumn;
+    cxGridDBTableViewCell_ItensColumnCOR_ID: TcxGridDBColumn;
+    cxGridDBTableViewCell_ItensColumnCODICAO_ID: TcxGridDBColumn;
+    cxGridDBTableViewCell_ItensColumnCELL_VAL_UNIT: TcxGridDBColumn;
+    cxGridDBTableViewCell_ItensColumnCELL_VAL_PARC: TcxGridDBColumn;
+    btnCadArmazenamento: TcxButton;
+    btnCadCor: TcxButton;
+    btnCadCondicao: TcxButton;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
