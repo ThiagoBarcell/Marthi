@@ -214,6 +214,7 @@ object frmGeralDM: TfrmGeralDM
   end
   object qryCellItens: TFDQuery
     Connection = ConectMarthi
+    UpdateObject = upsCellItens
     SQL.Strings = (
       'SELECT'
       '  CELL_ITENS.ITEM_ID,'
@@ -279,6 +280,7 @@ object frmGeralDM: TfrmGeralDM
   end
   object qryCellCor: TFDQuery
     Connection = ConectMarthi
+    UpdateObject = upsCellCor
     SQL.Strings = (
       'SELECT * FROM CELL_CORES')
     Left = 377
@@ -297,6 +299,7 @@ object frmGeralDM: TfrmGeralDM
   end
   object qryCellArmazenamento: TFDQuery
     Connection = ConectMarthi
+    UpdateObject = upsCellArmazenamento
     SQL.Strings = (
       'SELECT * FROM CELL_ARMAZENAMENTO')
     Left = 470
@@ -314,9 +317,45 @@ object frmGeralDM: TfrmGeralDM
   end
   object qryCellCondicao: TFDQuery
     Connection = ConectMarthi
+    UpdateObject = upsCellCondicao
     SQL.Strings = (
       'SELECT * FROM CELL_CONDICOES')
     Left = 569
     Top = 15
+  end
+  object dtsCellCor: TDataSource
+    DataSet = qryCellCor
+    Left = 376
+    Top = 72
+  end
+  object dtsCellArmazenamento: TDataSource
+    DataSet = qryCellArmazenamento
+    Left = 472
+    Top = 72
+  end
+  object dtsCellCondicao: TDataSource
+    DataSet = qryCellCondicao
+    Left = 568
+    Top = 72
+  end
+  object upsCellCor: TFDUpdateSQL
+    Connection = ConectMarthi
+    Left = 382
+    Top = 134
+  end
+  object upsCellArmazenamento: TFDUpdateSQL
+    Connection = ConectMarthi
+    Left = 473
+    Top = 133
+  end
+  object upsCellCondicao: TFDUpdateSQL
+    Connection = ConectMarthi
+    Left = 578
+    Top = 133
+  end
+  object upsCellItens: TFDUpdateSQL
+    Connection = ConectMarthi
+    Left = 300
+    Top = 134
   end
 end

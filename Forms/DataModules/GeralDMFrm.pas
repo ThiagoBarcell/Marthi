@@ -49,6 +49,13 @@ type
     qryCellArmazenamentoARMAZENAMENTO_DESC: TStringField;
     qryCellCorCOR_ID: TIntegerField;
     qryCellCorCOD_DESC: TStringField;
+    dtsCellCor: TDataSource;
+    dtsCellArmazenamento: TDataSource;
+    dtsCellCondicao: TDataSource;
+    upsCellCor: TFDUpdateSQL;
+    upsCellArmazenamento: TFDUpdateSQL;
+    upsCellCondicao: TFDUpdateSQL;
+    upsCellItens: TFDUpdateSQL;
     procedure qryCadCellNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
     procedure qryCadCellAfterScroll(DataSet: TDataSet);
