@@ -145,7 +145,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
     Padding.Left = 15.000000000000000000
     Margins.Top = 60.000000000000000000
     Position.Y = 205.000000000000000000
-    Size.Width = 273.000000000000000000
+    Size.Width = 257.000000000000000000
     Size.Height = 512.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
@@ -158,7 +158,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
       Margins.Right = 20.000000000000000000
       Position.X = 35.000000000000000000
       Position.Y = 60.000000000000000000
-      Size.Width = 218.000000000000000000
+      Size.Width = 202.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       Stroke.Thickness = 0.000000000000000000
@@ -226,7 +226,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
       Margins.Right = 20.000000000000000000
       Position.X = 35.000000000000000000
       Position.Y = 5.000000000000000000
-      Size.Width = 218.000000000000000000
+      Size.Width = 202.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       Stroke.Thickness = 0.000000000000000000
@@ -311,23 +311,23 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
     Align = Client
     Padding.Right = 15.000000000000000000
     Margins.Top = 60.000000000000000000
-    Size.Width = 427.000000000000000000
+    Size.Width = 443.000000000000000000
     Size.Height = 512.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 3
     object Layout3: TLayout
       Align = Top
-      Size.Width = 412.000000000000000000
+      Size.Width = 428.000000000000000000
       Size.Height = 649.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       object VertScrollBox1: TVertScrollBox
         Align = Client
-        Size.Width = 412.000000000000000000
+        Size.Width = 428.000000000000000000
         Size.Height = 649.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
-        Viewport.Width = 412.000000000000000000
+        Viewport.Width = 428.000000000000000000
         Viewport.Height = 649.000000000000000000
         object Rectangle4: TRectangle
           Align = Top
@@ -336,7 +336,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
           Margins.Right = 20.000000000000000000
           Margins.Bottom = 5.000000000000000000
           Position.Y = 5.000000000000000000
-          Size.Width = 392.000000000000000000
+          Size.Width = 408.000000000000000000
           Size.Height = 244.000000000000000000
           Size.PlatformDefault = False
           Stroke.Thickness = 0.000000000000000000
@@ -352,7 +352,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
           object TabControl2: TTabControl
             StyleName = 'TabControl1Style1'
             Align = Contents
-            Size.Width = 392.000000000000000000
+            Size.Width = 408.000000000000000000
             Size.Height = 244.000000000000000000
             Size.PlatformDefault = False
             StyleLookup = 'TabControl1Style1'
@@ -360,9 +360,9 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
             TabOrder = 1
             TabPosition = None
             Sizes = (
-              392s
+              408s
               244s
-              392s
+              408s
               244s)
             object TabItem1: TTabItem
               CustomIcon = <
@@ -454,19 +454,19 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                           PNG = {
                             89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
                             F4000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-                            0174494441545847ED96AD4B04411C866F763D1411118C0706C120180C06AD66
-                            8BC564B12AD7F49FD0AAD562B258FC0F2E68301804836030D804111145F6C367
-                            765E14F163EFF67647847D60989D99F7F7BEF351B65153F3D7982449DAC69896
-                            C65E49D3F4D66E609ED609C3B0A9792FC4711C0541B0980DD8C016BBF10A999B
-                            59B885B16147476EA97AC83AA6338A7730311645D175A6A810326E38FDB8623F
-                            C3C21C8217694B07EF57321614F73D0836A42F1DBCD715F33BBCD1816A4A03CF
-                            43D9E7837E84EBBA74A5FD83D715A71F957D77503043E1933C0A83C733DDAC6C
-                            7B834DAC399BE2580FD91583B7DB9757CFD85AD914079F21AEF1DC59760F3517
-                            74C3B2E90FAE710AC307679D0FDA476AA6555E0E18AEC83F17B4AB2A2B17DE74
-                            4F193F826657F2F2C1BFC9F59EB8A8AFB076C6E90725AF06722608BA73911F30
-                            774F372959B570CA250213179D8533952C6BD90FBCF58EF2EDBB6F6BDA1FE40E
-                            70F20EED946FAFBF73EF70ED2DDB34ACA9F98F341A6F7CBFF493EE2DE3210000
-                            000049454E44AE426082}
+                            0177494441545847ED96AF4B044118866FD83D1411118C0706C120180C06AD66
+                            8BC564B12AB6F39FD0AAD562B258FC0F2E68301804836030D8041111C575777D
+                            66E745117FECDDDEEC8AB00F1C7333F37EEF3B331F1CD7A8A9F96B4C92241BC6
+                            9896E69592A6E98D3DC05C1CC79D300C9B5AAF8457088260219B70884D4E5329
+                            64B6B3700B73C32B1CBAADF221EB88C128DEC1C26814455799A244C8B8E6F663
+                            8AFD0C1BB3089EA5F50EDE2F64CC2BEE7B10AC4BEF1DBCD714F33BF4685F35DE
+                            C0F340F6F9A01FE6B92E5C69FFE075C9ED4764DF1D144C53F8288FC2E0F1C430
+                            23DBDEE010ABCEA638D64376C5A0777BF2EA195B2B9BE2E033C8AFE699B3EC1E
+                            6ACE198664D31F3CE324BDBC77D6F9A07DA0664AE57EC07059FEB9A05D51995F
+                            E8E9AE327E04CD8EE4FEC1BF496F8F5DD457D83BE5F60392970339E3F4F8D645
+                            7EC0DA1DC38464E5C22D17094C5C7416CE52B2A4ED6AA0D7DBCAB77DDFD27275
+                            901BD2F30E9F13BE57FA77EE1D9EBD653F9AD6D4FC471A8D372B66F4692472A6
+                            B60000000049454E44AE426082}
                         end>
                       Align = Contents
                       Margins.Left = 10.000000000000000000
