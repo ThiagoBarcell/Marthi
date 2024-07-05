@@ -12,6 +12,7 @@ object frmGeralDM: TfrmGeralDM
       'Database=D:\Marthi GIT\DataBase\MARTHIDB.FDB'
       'DriverID=FB')
     Connected = True
+    LoginPrompt = False
     Left = 56
     Top = 16
   end
@@ -213,6 +214,7 @@ object frmGeralDM: TfrmGeralDM
       end>
   end
   object qryCellItens: TFDQuery
+    Active = True
     Connection = ConectMarthi
     UpdateObject = upsCellItens
     SQL.Strings = (
@@ -279,6 +281,7 @@ object frmGeralDM: TfrmGeralDM
     Top = 71
   end
   object qryCellCor: TFDQuery
+    Active = True
     Connection = ConectMarthi
     UpdateObject = upsCellCor
     SQL.Strings = (
@@ -298,6 +301,7 @@ object frmGeralDM: TfrmGeralDM
     end
   end
   object qryCellArmazenamento: TFDQuery
+    Active = True
     Connection = ConectMarthi
     UpdateObject = upsCellArmazenamento
     SQL.Strings = (
@@ -316,6 +320,7 @@ object frmGeralDM: TfrmGeralDM
     end
   end
   object qryCellCondicao: TFDQuery
+    Active = True
     Connection = ConectMarthi
     UpdateObject = upsCellCondicao
     SQL.Strings = (
@@ -340,21 +345,76 @@ object frmGeralDM: TfrmGeralDM
   end
   object upsCellCor: TFDUpdateSQL
     Connection = ConectMarthi
+    InsertSQL.Strings = (
+      'INSERT INTO CELL_CORES ( COR_ID, COD_DESC )'
+      'VALUES ( :COR_ID, :COD_DESC );')
+    ModifySQL.Strings = (
+      'UPDATE CELL_CORES'
+      'SET COR_ID = :COR_ID,'
+      '    COD_DESC = :COD_DESC'
+      'WHERE COR_ID = :OLD_COR_ID')
+    DeleteSQL.Strings = (
+      'DELETE FROM CELL_CORES'
+      'WHERE COR_ID = :OLD_COR_ID')
     Left = 382
     Top = 134
   end
   object upsCellArmazenamento: TFDUpdateSQL
     Connection = ConectMarthi
+    InsertSQL.Strings = (
+      
+        'INSERT INTO CELL_ARMAZENAMENTO ( ARMAZENAMENTO_ID, ARMAZENAMENTO' +
+        '_DESC )'
+      'VALUES ( :ARMAZENAMENTO_ID, :ARMAZENAMENTO_DESC );')
+    ModifySQL.Strings = (
+      'UPDATE CELL_ARMAZENAMENTO'
+      'SET ARMAZENAMENTO_ID = :ARMAZENAMENTO_ID,'
+      '    ARMAZENAMENTO_DESC = :ARMAZENAMENTO_DESC'
+      'WHERE ARMAZENAMENTO_ID = :OLD_ARMAZENAMENTO_ID')
+    DeleteSQL.Strings = (
+      'DELETE FROM CELL_ARMAZENAMENTO'
+      'WHERE ARMAZENAMENTO_ID = :OLD_ARMAZENAMENTO_ID')
     Left = 473
     Top = 133
   end
   object upsCellCondicao: TFDUpdateSQL
     Connection = ConectMarthi
+    InsertSQL.Strings = (
+      'INSERT INTO CELL_CONDICOES ( CONDICAO_ID, CONDICAO_DESC )'
+      'VALUES ( :CONDICAO_ID, :CONDICAO_DESC );')
+    ModifySQL.Strings = (
+      'UPDATE CELL_CONDICOES'
+      'SET CONDICAO_ID = :CONDICAO_ID,'
+      '    CONDICAO_DESC = :CONDICAO_DESC'
+      'WHERE CONDICAO_ID = :OLD_CONDICAO_ID')
+    DeleteSQL.Strings = (
+      'DELETE FROM CELL_CONDICOES'
+      'WHERE CONDICAO_ID = :OLD_CONDICAO_ID')
     Left = 578
     Top = 133
   end
   object upsCellItens: TFDUpdateSQL
     Connection = ConectMarthi
+    InsertSQL.Strings = (
+      
+        'INSERT INTO CELL_ITENS ( ITEM_ID, CELL_ID, ARMAZENAMENTO_ID, COR' +
+        '_ID, CODICAO_ID, CELL_VAL_UNIT, CELL_VAL_PARC )'
+      
+        'VALUES ( :ITEM_ID, :CELL_ID, :ARMAZENAMENTO_ID, :COR_ID, :CODICA' +
+        'O_ID, :CELL_VAL_UNIT, :CELL_VAL_PARC );')
+    ModifySQL.Strings = (
+      'UPDATE CELL_ITENS'
+      'SET ITEM_ID = :ITEM_ID,'
+      '    CELL_ID = :CELL_ID,'
+      '    ARMAZENAMENTO_ID = :ARMAZENAMENTO_ID,'
+      '    COR_ID = :COR_ID,'
+      '    CODICAO_ID = :CODICAO_ID,'
+      '    CELL_VAL_UNIT = :CELL_VAL_UNIT,'
+      '    CELL_VAL_PARC = :CELL_VAL_PARC'
+      'WHERE ITEM_ID = :OLD_ITEM_ID')
+    DeleteSQL.Strings = (
+      'DELETE FROM CELL_ITENS'
+      'WHERE ITEM_ID = :OLD_ITEM_ID')
     Left = 300
     Top = 134
   end

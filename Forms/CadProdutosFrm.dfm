@@ -587,7 +587,7 @@ object frmCadProdutos: TfrmCadProdutos
           OnClick = btnAddImageClick
         end
         object btnExcluiImg: TcxButton
-          Left = 915
+          Left = 917
           Top = 324
           Width = 148
           Height = 57
@@ -744,6 +744,7 @@ object frmCadProdutos: TfrmCadProdutos
             85D4A08FBBC2C59DAD86476812C342A15BCE2D68E185504BEA3E5372CF969EE4
             D9B2075A746663A04FF9E00000000049454E44AE426082}
           TabOrder = 22
+          OnClick = btnCadArmazenamentoClick
         end
         object btnCadCor: TcxButton
           Left = 306

@@ -13,7 +13,7 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
   Data.DB, cxDBData, cxRadioGroup, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, dxBevel,
-  GeralDMFrm, Vcl.ComCtrls, Jpeg, untFuncoes, cxCurrencyEdit;
+  GeralDMFrm, Vcl.ComCtrls, Jpeg, untFuncoes, cxCurrencyEdit, CadInformarcoesFrm;
 
 const
   OffsetMemoryStream : Int64 = 0;
@@ -95,6 +95,7 @@ type
       AShift: TShiftState; var AHandled: Boolean);
     procedure btnExcluiImgClick(Sender: TObject);
     procedure tabCadastroShow(Sender: TObject);
+    procedure btnCadArmazenamentoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -133,6 +134,14 @@ begin
   finally
     //Application.MessageBox( 'Não foi possível concluir o insert, por favor verifique !', 'Aviso', 0 )
   end;
+end;
+
+procedure TfrmCadProdutos.btnCadArmazenamentoClick(Sender: TObject);
+var
+  CadArmazenamento : TfrmCadInformacoes;
+begin
+  CadArmazenamento := TfrmCadInformacoes.Create( Self );
+  CadArmazenamento.ShowModal;
 end;
 
 procedure TfrmCadProdutos.btnConsultaProdutosClick(Sender: TObject);

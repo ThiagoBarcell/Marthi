@@ -12,6 +12,7 @@ object frmCadInformacoes: TfrmCadInformacoes
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
   object PgeCadastroComp: TcxPageControl
@@ -24,18 +25,12 @@ object frmCadInformacoes: TfrmCadInformacoes
     Properties.ActivePage = tabArmazenamento
     Properties.CustomButtons.Buttons = <>
     LookAndFeel.NativeStyle = False
-    ExplicitLeft = -478
-    ExplicitTop = -345
-    ExplicitWidth = 1113
-    ExplicitHeight = 644
     ClientRectBottom = 309
     ClientRectRight = 341
     ClientRectTop = 24
     object tabArmazenamento: TcxTabSheet
       Caption = 'Armazenamento'
       ImageIndex = 0
-      ExplicitWidth = 635
-      ExplicitHeight = 275
       object grdCadastroArmazenamento: TcxGrid
         Left = 0
         Top = 0
@@ -45,11 +40,66 @@ object frmCadInformacoes: TfrmCadInformacoes
         BevelInner = bvNone
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitLeft = 56
-        ExplicitTop = 40
-        ExplicitWidth = 250
-        ExplicitHeight = 200
-        object grdCadastroArmazenamentoDBTableView1: TcxGridDBTableView
+        object grdCadastroArmazenamentoDBTableView: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Buttons.First.Visible = True
+          Navigator.Buttons.PriorPage.Visible = True
+          Navigator.Buttons.Prior.Visible = True
+          Navigator.Buttons.Next.Visible = True
+          Navigator.Buttons.NextPage.Visible = True
+          Navigator.Buttons.Last.Visible = True
+          Navigator.Buttons.Insert.Visible = True
+          Navigator.Buttons.Append.Visible = False
+          Navigator.Buttons.Delete.Visible = False
+          Navigator.Buttons.Edit.Enabled = False
+          Navigator.Buttons.Edit.Visible = False
+          Navigator.Buttons.Post.Visible = True
+          Navigator.Buttons.Cancel.Visible = True
+          Navigator.Buttons.Refresh.Enabled = False
+          Navigator.Buttons.Refresh.Visible = False
+          Navigator.Buttons.SaveBookmark.Enabled = False
+          Navigator.Buttons.SaveBookmark.Visible = False
+          Navigator.Buttons.GotoBookmark.Enabled = False
+          Navigator.Buttons.GotoBookmark.Visible = False
+          Navigator.Buttons.Filter.Enabled = False
+          Navigator.Buttons.Filter.Visible = False
+          Navigator.Visible = True
+          DataController.DataSource = frmGeralDM.dtsCellArmazenamento
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsBehavior.GoToNextCellOnEnter = True
+          OptionsData.Appending = True
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          OptionsView.HeaderHeight = 30
+          object grdCadastroArmazenamentoDBTableViewColumn2: TcxGridDBColumn
+            Caption = 'Armazenamento'
+            DataBinding.FieldName = 'ARMAZENAMENTO_DESC'
+            PropertiesClassName = 'TcxTextEditProperties'
+            GroupSummaryAlignment = taCenter
+            HeaderAlignmentHorz = taCenter
+            Width = 231
+          end
+        end
+        object grdCadastroArmazenamentoLevel: TcxGridLevel
+          GridView = grdCadastroArmazenamentoDBTableView
+        end
+      end
+    end
+    object tabCondicao: TcxTabSheet
+      Caption = 'Condi'#231#227'o'
+      ImageIndex = 1
+      object grdCadastroCondicao: TcxGrid
+        Left = 0
+        Top = 0
+        Width = 341
+        Height = 285
+        Align = alClient
+        BevelInner = bvNone
+        BevelOuter = bvNone
+        TabOrder = 0
+        object grdCadastroCondicaoDBTableView: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
           Navigator.Buttons.PriorPage.Visible = True
@@ -72,6 +122,61 @@ object frmCadInformacoes: TfrmCadInformacoes
           Navigator.Buttons.GotoBookmark.Visible = False
           Navigator.Buttons.Filter.Enabled = False
           Navigator.Buttons.Filter.Visible = False
+          Navigator.Visible = True
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsBehavior.GoToNextCellOnEnter = True
+          OptionsData.Appending = True
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          OptionsView.HeaderHeight = 30
+          object grdCadastroCondicaoDBTableViewColumn1: TcxGridDBColumn
+          end
+          object grdCadastroCondicaoDBTableViewColumn2: TcxGridDBColumn
+          end
+        end
+        object grdCadastroCondicaoLevel: TcxGridLevel
+          GridView = grdCadastroCondicaoDBTableView
+        end
+      end
+    end
+    object tabCor: TcxTabSheet
+      Caption = 'Cor'
+      ImageIndex = 2
+      object grdCadastroCor: TcxGrid
+        Left = 0
+        Top = 0
+        Width = 341
+        Height = 285
+        Align = alClient
+        BevelInner = bvNone
+        BevelOuter = bvNone
+        TabOrder = 0
+        object grdCadastroCorDBTableView: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Buttons.First.Visible = True
+          Navigator.Buttons.PriorPage.Visible = True
+          Navigator.Buttons.Prior.Visible = True
+          Navigator.Buttons.Next.Visible = True
+          Navigator.Buttons.NextPage.Visible = True
+          Navigator.Buttons.Last.Visible = True
+          Navigator.Buttons.Insert.Visible = False
+          Navigator.Buttons.Append.Visible = False
+          Navigator.Buttons.Delete.Visible = False
+          Navigator.Buttons.Edit.Enabled = False
+          Navigator.Buttons.Edit.Visible = False
+          Navigator.Buttons.Post.Visible = True
+          Navigator.Buttons.Cancel.Visible = True
+          Navigator.Buttons.Refresh.Enabled = False
+          Navigator.Buttons.Refresh.Visible = False
+          Navigator.Buttons.SaveBookmark.Enabled = False
+          Navigator.Buttons.SaveBookmark.Visible = False
+          Navigator.Buttons.GotoBookmark.Enabled = False
+          Navigator.Buttons.GotoBookmark.Visible = False
+          Navigator.Buttons.Filter.Enabled = False
+          Navigator.Buttons.Filter.Visible = False
+          Navigator.Visible = True
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
@@ -81,22 +186,10 @@ object frmCadInformacoes: TfrmCadInformacoes
           OptionsView.GroupByBox = False
           OptionsView.HeaderHeight = 30
         end
-        object grdCadastroArmazenamentoLevel1: TcxGridLevel
-          GridView = grdCadastroArmazenamentoDBTableView1
+        object grdCadastroCorLevel: TcxGridLevel
+          GridView = grdCadastroCorDBTableView
         end
       end
-    end
-    object tabCondicao: TcxTabSheet
-      Caption = 'Condi'#231#227'o'
-      ImageIndex = 1
-      ExplicitWidth = 635
-      ExplicitHeight = 275
-    end
-    object tabCor: TcxTabSheet
-      Caption = 'Cor'
-      ImageIndex = 2
-      ExplicitWidth = 635
-      ExplicitHeight = 275
     end
   end
 end

@@ -9,7 +9,7 @@ uses
   cxLookAndFeelPainters, cxPC, GeralDMFrm, cxStyles, cxCustomData, cxFilter,
   cxData, cxDataStorage, cxEdit, cxNavigator, dxDateRanges, Data.DB, cxDBData,
   cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid;
+  cxGridTableView, cxGridDBTableView, cxGrid, cxTextEdit;
 
 type
   TfrmCadInformacoes = class(TForm)
@@ -17,9 +17,18 @@ type
     tabArmazenamento: TcxTabSheet;
     tabCondicao: TcxTabSheet;
     tabCor: TcxTabSheet;
-    grdCadastroArmazenamentoDBTableView1: TcxGridDBTableView;
-    grdCadastroArmazenamentoLevel1: TcxGridLevel;
+    grdCadastroArmazenamentoDBTableView: TcxGridDBTableView;
+    grdCadastroArmazenamentoLevel: TcxGridLevel;
     grdCadastroArmazenamento: TcxGrid;
+    grdCadastroCondicao: TcxGrid;
+    grdCadastroCondicaoDBTableView: TcxGridDBTableView;
+    grdCadastroCondicaoLevel: TcxGridLevel;
+    grdCadastroCor: TcxGrid;
+    grdCadastroCorDBTableView: TcxGridDBTableView;
+    grdCadastroCorLevel: TcxGridLevel;
+    grdCadastroCondicaoDBTableViewColumn1: TcxGridDBColumn;
+    grdCadastroCondicaoDBTableViewColumn2: TcxGridDBColumn;
+    grdCadastroArmazenamentoDBTableViewColumn2: TcxGridDBColumn;
   private
     { Private declarations }
   public
