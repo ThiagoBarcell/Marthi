@@ -27,12 +27,14 @@ type
     grdCadastroCorDBTableView: TcxGridDBTableView;
     grdCadastroCorLevel: TcxGridLevel;
     grdCadastroCondicaoDBTableViewColumn1: TcxGridDBColumn;
-    grdCadastroCondicaoDBTableViewColumn2: TcxGridDBColumn;
     grdCadastroArmazenamentoDBTableViewColumn2: TcxGridDBColumn;
+    grdCadastroCorDBTableViewColumn1: TcxGridDBColumn;
   private
     { Private declarations }
   public
     { Public declarations }
+
+  constructor Create( AOwner: TComponent; iInformacao : Integer );
   end;
 
 var
@@ -41,5 +43,29 @@ var
 implementation
 
 {$R *.dfm}
+
+{ TfrmCadInformacoes }
+
+constructor TfrmCadInformacoes.Create(AOwner: TComponent; iInformacao: Integer);
+begin
+  inherited Create( AOwner );
+  case iInformacao of
+    0 : begin
+          PgeCadastroComp.ActivePageIndex := iInformacao;
+          frmGeralDM.qryCellArmazenamento.Close;
+          frmGeralDM.qryCellArmazenamento.Open;
+        end;
+
+    1 : begin
+          PgeCadastroComp.ActivePageIndex := iInformacao;
+          frmGeralDM.qryCellArmazenamento.Close;
+          frmGeralDM.qryCellArmazenamento.Open;
+        end;
+
+    2 : begin
+          PgeCadastroComp.ActivePageIndex := iInformacao;
+        end;
+  end;
+end;
 
 end.

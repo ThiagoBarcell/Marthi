@@ -9,7 +9,7 @@ object frmGeralDM: TfrmGeralDM
       'Password=masterkey'
       'Server=LocalHost'
       'Port=3050'
-      'Database=D:\Marthi GIT\DataBase\MARTHIDB.FDB'
+      'Database=D:\Marthi DataBase\DataBase\MARTHIDB.FDB'
       'DriverID=FB')
     Connected = True
     LoginPrompt = False
@@ -17,7 +17,6 @@ object frmGeralDM: TfrmGeralDM
     Top = 16
   end
   object qryCadCell: TFDQuery
-    Active = True
     AfterScroll = qryCadCellAfterScroll
     OnNewRecord = qryCadCellNewRecord
     Connection = ConectMarthi
@@ -214,7 +213,6 @@ object frmGeralDM: TfrmGeralDM
       end>
   end
   object qryCellItens: TFDQuery
-    Active = True
     Connection = ConectMarthi
     UpdateObject = upsCellItens
     SQL.Strings = (
@@ -281,7 +279,6 @@ object frmGeralDM: TfrmGeralDM
     Top = 71
   end
   object qryCellCor: TFDQuery
-    Active = True
     Connection = ConectMarthi
     UpdateObject = upsCellCor
     SQL.Strings = (
@@ -301,7 +298,6 @@ object frmGeralDM: TfrmGeralDM
     end
   end
   object qryCellArmazenamento: TFDQuery
-    Active = True
     Connection = ConectMarthi
     UpdateObject = upsCellArmazenamento
     SQL.Strings = (
@@ -320,7 +316,6 @@ object frmGeralDM: TfrmGeralDM
     end
   end
   object qryCellCondicao: TFDQuery
-    Active = True
     Connection = ConectMarthi
     UpdateObject = upsCellCondicao
     SQL.Strings = (
