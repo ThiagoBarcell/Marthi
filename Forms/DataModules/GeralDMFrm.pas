@@ -56,9 +56,15 @@ type
     upsCellArmazenamento: TFDUpdateSQL;
     upsCellCondicao: TFDUpdateSQL;
     upsCellItens: TFDUpdateSQL;
+    qryCellCondicaoCONDICAO_ID: TIntegerField;
+    qryCellCondicaoCONDICAO_DESC: TStringField;
     procedure qryCadCellNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
     procedure qryCadCellAfterScroll(DataSet: TDataSet);
+    procedure qryCellItensNewRecord(DataSet: TDataSet);
+    procedure qryCellCorNewRecord(DataSet: TDataSet);
+    procedure qryCellArmazenamentoNewRecord(DataSet: TDataSet);
+    procedure qryCellCondicaoNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -130,6 +136,26 @@ begin
   qryCadCellCELL_ID.AsInteger  := ProximoNumero( 'GEN_CAD_CELL_ID' );
   qryCadCellDAT_CAD.AsDateTime := Now;
   qryCadCellDAT_ALT.AsDateTime := Now;
+end;
+
+procedure TfrmGeralDM.qryCellArmazenamentoNewRecord(DataSet: TDataSet);
+begin
+  qryCellArmazenamentoARMAZENAMENTO_ID.AsInteger := ProximoNumero( 'GEN_CELL_ARMAZENAMENTO_ID' );
+end;
+
+procedure TfrmGeralDM.qryCellCondicaoNewRecord(DataSet: TDataSet);
+begin
+  qryCellCondicaoCONDICAO_ID.AsInteger := ProximoNumero( 'GEN_CELL_CONDICOES_ID' );
+end;
+
+procedure TfrmGeralDM.qryCellCorNewRecord(DataSet: TDataSet);
+begin
+  qryCellCorCOR_ID.AsInteger := ProximoNumero( 'GEN_CELL_CORES_ID' );
+end;
+
+procedure TfrmGeralDM.qryCellItensNewRecord(DataSet: TDataSet);
+begin
+  qryCellItensITEM_ID.AsInteger := ProximoNumero( 'GEN_CELL_ITENS_ID' );
 end;
 
 end.

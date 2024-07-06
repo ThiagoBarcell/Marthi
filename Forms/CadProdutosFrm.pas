@@ -96,6 +96,8 @@ type
     procedure btnExcluiImgClick(Sender: TObject);
     procedure tabCadastroShow(Sender: TObject);
     procedure btnCadArmazenamentoClick(Sender: TObject);
+    procedure btnCadCorClick(Sender: TObject);
+    procedure btnCadCondicaoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -141,7 +143,35 @@ var
   CadArmazenamento : TfrmCadInformacoes;
 begin
   CadArmazenamento := TfrmCadInformacoes.Create( Self,0 );
-  CadArmazenamento.ShowModal;
+  try
+    CadArmazenamento.ShowModal;
+  finally
+    FreeAndNil( CadArmazenamento );
+  end;
+end;
+
+procedure TfrmCadProdutos.btnCadCondicaoClick(Sender: TObject);
+var
+  CadCondicao : TfrmCadInformacoes;
+begin
+  CadCondicao := TfrmCadInformacoes.Create( Self, 1 );
+  try
+    CadCondicao.ShowModal;
+  finally
+    FreeAndNil( CadCondicao );
+  end;
+end;
+
+procedure TfrmCadProdutos.btnCadCorClick(Sender: TObject);
+var
+  CadCor : TfrmCadInformacoes;
+begin
+  CadCor := TfrmCadInformacoes.Create( Self, 2 );
+  try
+    CadCor.ShowModal;
+  finally
+    FreeAndNil( CadCor );
+  end;
 end;
 
 procedure TfrmCadProdutos.btnConsultaProdutosClick(Sender: TObject);

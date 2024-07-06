@@ -32,8 +32,6 @@ object frmCadProdutos: TfrmCadProdutos
       Caption = 'Consultar Produtos'
       ImageIndex = 0
       TabVisible = False
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pnlTop: TPanel
         Left = 0
         Top = 0
@@ -787,6 +785,7 @@ object frmCadProdutos: TfrmCadProdutos
             A20E408B706338DE1EDC4EE23BBC84731BFAA3CA83F4B6783EFF01AB8D8E7B9C
             C436730000000049454E44AE426082}
           TabOrder = 23
+          OnClick = btnCadCorClick
         end
         object btnCadCondicao: TcxButton
           Left = 472
@@ -823,6 +822,7 @@ object frmCadProdutos: TfrmCadProdutos
             6FE08188E80575B45585876BF117DEEC035FAE7901F32CFB1758D757D67F03FF
             DAA6321D9AA7EA0000000049454E44AE426082}
           TabOrder = 24
+          OnClick = btnCadCondicaoClick
         end
       end
     end

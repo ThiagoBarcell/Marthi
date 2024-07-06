@@ -32,8 +32,6 @@ object frmCadInformacoes: TfrmCadInformacoes
     object tabArmazenamento: TcxTabSheet
       Caption = 'Armazenamento'
       ImageIndex = 0
-      ExplicitTop = 24
-      ExplicitHeight = 285
       object grdCadastroArmazenamento: TcxGrid
         Left = 0
         Top = 0
@@ -46,7 +44,6 @@ object frmCadInformacoes: TfrmCadInformacoes
         LookAndFeel.Kind = lfOffice11
         LookAndFeel.NativeStyle = False
         LookAndFeel.SkinName = 'UserSkin'
-        ExplicitHeight = 285
         object grdCadastroArmazenamentoDBTableView: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
@@ -98,6 +95,7 @@ object frmCadInformacoes: TfrmCadInformacoes
       Caption = 'Condi'#231#227'o'
       ImageIndex = 1
       ExplicitTop = 24
+      ExplicitWidth = 0
       ExplicitHeight = 285
       object grdCadastroCondicao: TcxGrid
         Left = 0
@@ -160,6 +158,7 @@ object frmCadInformacoes: TfrmCadInformacoes
       Caption = 'Cor'
       ImageIndex = 2
       ExplicitTop = 24
+      ExplicitWidth = 0
       ExplicitHeight = 285
       object grdCadastroCor: TcxGrid
         Left = 0

@@ -1,0 +1,8 @@
+/* Sequenciador do armazenamento */
+CREATE SEQUENCE GEN_CELL_ARMAZENAMENTO_ID;
+
+/* Sequenciador das cores */
+CREATE SEQUENCE GEN_CELL_CORES_ID
+
+/* Sequenciador das condições */
+CREATE SEQUENCE GEN_CELL_CONDICOES_ID
