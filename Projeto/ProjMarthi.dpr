@@ -3,7 +3,9 @@ program ProjMarthi;
 uses
   Vcl.Forms,
   CadProdutosFrm in '..\Forms\CadProdutosFrm.pas' {frmCadProdutos},
-  GeralDMFrm in '..\Forms\DataModules\GeralDMFrm.pas' {frmGeralDM: TDataModule};
+  GeralDMFrm in '..\Forms\DataModules\GeralDMFrm.pas' {frmGeralDM: TDataModule},
+  untFuncoes in '..\Forms\untFuncoes.pas',
+  CadInformarcoesFrm in '..\Forms\CadInformarcoesFrm.pas' {frmCadInformacoes};
 
 {$R *.res}
 

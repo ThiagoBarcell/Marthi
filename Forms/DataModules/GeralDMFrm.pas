@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
   FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet;
+  FireDAC.Comp.DataSet, System.IniFiles;
 
 type
   TfrmGeralDM = class(TDataModule)
@@ -19,21 +19,50 @@ type
     qryCadCellCELL_DESC: TStringField;
     qryCadCellCELL_PROCESSAMENTO: TStringField;
     qryCadCellCELL_MEM_RAM: TStringField;
-    qryCadCellCELL_ARMAZENAMENTO: TIntegerField;
     qryCadCellCELL_CAM_PRINC: TStringField;
     qryCadCellCELL_CAM_FRONT: TStringField;
-    qryCadCellCELL_COR: TStringField;
     qryCadCellCELL_OBS: TStringField;
     dtsCadCell: TDataSource;
     upsCadCell: TFDUpdateSQL;
-    qryCadCellCELL_VALOR_UNITARIO: TFMTBCDField;
-    qryCadCellCELL_VALOR_PARCELADO: TFMTBCDField;
     qryCadCellDAT_CAD: TDateField;
     qryCadCellDAT_ALT: TDateField;
+    oInsIMG: TFDQuery;
+    qryImagensCell: TFDQuery;
+    qryImagensCellCELL_ID: TIntegerField;
+    qryImagensCellSEQUENCIA: TIntegerField;
+    qryImagensCellIMAGE: TBlobField;
+    dtsImagensCell: TDataSource;
+    delImgCell: TFDQuery;
+    qryCellItens: TFDQuery;
+    dtsCellItens: TDataSource;
+    qryCellItensITEM_ID: TIntegerField;
+    qryCellItensCELL_ID: TIntegerField;
+    qryCellItensARMAZENAMENTO_ID: TIntegerField;
+    qryCellItensCOR_ID: TIntegerField;
+    qryCellItensCODICAO_ID: TIntegerField;
+    qryCellItensCELL_VAL_UNIT: TFMTBCDField;
+    qryCellItensCELL_VAL_PARC: TFMTBCDField;
+    qryCellCor: TFDQuery;
+    qryCellArmazenamento: TFDQuery;
+    qryCellCondicao: TFDQuery;
+    qryCellArmazenamentoARMAZENAMENTO_ID: TIntegerField;
+    qryCellArmazenamentoARMAZENAMENTO_DESC: TStringField;
+    qryCellCorCOR_ID: TIntegerField;
+    qryCellCorCOD_DESC: TStringField;
+    dtsCellCor: TDataSource;
+    dtsCellArmazenamento: TDataSource;
+    dtsCellCondicao: TDataSource;
+    upsCellCor: TFDUpdateSQL;
+    upsCellArmazenamento: TFDUpdateSQL;
+    upsCellCondicao: TFDUpdateSQL;
+    upsCellItens: TFDUpdateSQL;
     procedure qryCadCellNewRecord(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
+    procedure qryCadCellAfterScroll(DataSet: TDataSet);
   private
     { Private declarations }
   public
+    sCaminhoApp : String;
     function ProximoNumero( GENERATOR : String ) : integer;
     { Public declarations }
   end;
@@ -46,6 +75,25 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TfrmGeralDM.DataModuleCreate(Sender: TObject);
+var
+ oIniCaminhos : tinifile;
+ sCaminhoIni  : string;
+begin
+  sCaminhoApp := ( ExtractFilePath( ParamStr(0) ) );
+  sCaminhoIni := ( sCaminhoApp + 'caminhos.ini' );
+
+  oIniCaminhos := TIniFile.Create(sCaminhoIni);
+
+  if ( oIniCaminhos.ReadString( 'Caminhos','BD', '' ) <> '' ) then
+  begin
+    ConectMarthi.Params.Database := oIniCaminhos.ReadString( 'Caminhos','BD', '' );
+  end
+  else
+    oIniCaminhos.WriteString( 'Caminhos','BD', '' );
+
+end;
 
 function TfrmGeralDM.ProximoNumero(GENERATOR: String): integer;
 var
@@ -62,6 +110,19 @@ begin
     Result := oqryNovoNum.FieldByName( 'ID_ATUAL' ).AsInteger;
     FreeAndNil(oqryNovoNum);
   end;
+end;
+
+procedure TfrmGeralDM.qryCadCellAfterScroll(DataSet: TDataSet);
+begin
+  //Tabela com as Imagens dos produtos
+  qryImagensCell.Close;
+  qryImagensCell.ParamByName( 'CELL_ID' ).AsInteger := qryCadCellCELL_ID.AsInteger;
+  qryImagensCell.Open;
+
+  //Tabela com as informações dos celulares
+  qryCellItens.Close;
+  qryCellItens.ParamByName( 'CELL_ID' ).AsInteger := qryCadCellCELL_ID.AsInteger;
+  qryCellItens.Open;
 end;
 
 procedure TfrmGeralDM.qryCadCellNewRecord(DataSet: TDataSet);
