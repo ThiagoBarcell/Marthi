@@ -32,6 +32,8 @@ object frmCadProdutos: TfrmCadProdutos
       Caption = 'Consultar Produtos'
       ImageIndex = 0
       TabVisible = False
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object pnlTop: TPanel
         Left = 0
         Top = 0

@@ -140,7 +140,7 @@ procedure TfrmCadProdutos.btnCadArmazenamentoClick(Sender: TObject);
 var
   CadArmazenamento : TfrmCadInformacoes;
 begin
-  CadArmazenamento := TfrmCadInformacoes.Create( Self );
+  CadArmazenamento := TfrmCadInformacoes.Create( Self,0 );
   CadArmazenamento.ShowModal;
 end;
 
