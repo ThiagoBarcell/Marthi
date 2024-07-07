@@ -13,7 +13,8 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
   Data.DB, cxDBData, cxRadioGroup, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, dxBevel,
-  GeralDMFrm, Vcl.ComCtrls, Jpeg, untFuncoes, cxCurrencyEdit, CadInformarcoesFrm;
+  GeralDMFrm, Vcl.ComCtrls, Jpeg, untFuncoes, cxCurrencyEdit, CadInformarcoesFrm,
+  cxDBLookupComboBox, dxGDIPlusClasses;
 
 const
   OffsetMemoryStream : Int64 = 0;
@@ -31,7 +32,6 @@ type
     cxLabel16: TcxLabel;
     cxLabel5: TcxLabel;
     cxLabel6: TcxLabel;
-    cxLabel8: TcxLabel;
     lblMemoria: TcxLabel;
     lblProcessamento: TcxLabel;
     imgMarcas: TcxImageList;
@@ -53,10 +53,6 @@ type
     grdConsultaProdDBTableViewColumn2: TcxGridDBColumn;
     grdConsultaProdDBTableViewColumn3: TcxGridDBColumn;
     cbxMarcaCell: TcxDBImageComboBox;
-    Label1: TLabel;
-    edtStartDate: TDateTimePicker;
-    Label2: TLabel;
-    edtEndDate: TDateTimePicker;
     btnInserir: TcxButton;
     btnVoltar: TcxButton;
     ImageCell: TImage;
@@ -78,6 +74,20 @@ type
     btnCadArmazenamento: TcxButton;
     btnCadCor: TcxButton;
     btnCadCondicao: TcxButton;
+    pnlFiltros: TPanel;
+    Label1: TLabel;
+    cbxFiltros: TcxImageComboBox;
+    pgeFiltros: TcxPageControl;
+    tabFiltroCadastro: TcxTabSheet;
+    edtStartDate: TDateTimePicker;
+    Label2: TLabel;
+    edtEndDate: TDateTimePicker;
+    tabFiltroDesc: TcxTabSheet;
+    edtFiltroDesc: TcxTextEdit;
+    cxLabel2: TcxLabel;
+    pnlFaixaTop: TPanel;
+    btnFechar: TcxButton;
+    Image1: TImage;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
@@ -98,9 +108,13 @@ type
     procedure btnCadArmazenamentoClick(Sender: TObject);
     procedure btnCadCorClick(Sender: TObject);
     procedure btnCadCondicaoClick(Sender: TObject);
+    procedure cbxFiltrosPropertiesChange(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
   private
+    procedure AbreTelaInfo( iCod : Integer ) ;
     { Private declarations }
   public
+  Funcoes : TFuncoesUteis;
     { Public declarations }
   end;
 
@@ -142,36 +156,30 @@ procedure TfrmCadProdutos.btnCadArmazenamentoClick(Sender: TObject);
 var
   CadArmazenamento : TfrmCadInformacoes;
 begin
-  CadArmazenamento := TfrmCadInformacoes.Create( Self,0 );
+  AbreTelaInfo( 0 )
+end;
+
+procedure TfrmCadProdutos.AbreTelaInfo( iCod : Integer ) ;
+var
+  CadInformacoes : TfrmCadInformacoes;
+begin
+  CadInformacoes := TfrmCadInformacoes.Create( Self,iCod );
   try
-    CadArmazenamento.ShowModal;
+    CadInformacoes.ShowModal;
   finally
-    FreeAndNil( CadArmazenamento );
+    Funcoes.AbreQrysInfo;
+    FreeAndNil( CadInformacoes );
   end;
 end;
 
 procedure TfrmCadProdutos.btnCadCondicaoClick(Sender: TObject);
-var
-  CadCondicao : TfrmCadInformacoes;
 begin
-  CadCondicao := TfrmCadInformacoes.Create( Self, 1 );
-  try
-    CadCondicao.ShowModal;
-  finally
-    FreeAndNil( CadCondicao );
-  end;
+  AbreTelaInfo( 1 )
 end;
 
 procedure TfrmCadProdutos.btnCadCorClick(Sender: TObject);
-var
-  CadCor : TfrmCadInformacoes;
 begin
-  CadCor := TfrmCadInformacoes.Create( Self, 2 );
-  try
-    CadCor.ShowModal;
-  finally
-    FreeAndNil( CadCor );
-  end;
+  AbreTelaInfo( 2 );
 end;
 
 procedure TfrmCadProdutos.btnConsultaProdutosClick(Sender: TObject);
@@ -183,17 +191,21 @@ begin
 end;
 
 procedure TfrmCadProdutos.btnSalvarClick(Sender: TObject);
-var
-  FileStream: TFileStream;
-  BlobStream: TStream;
-
 begin
+  if not ( frmGeralDM.qryCadCell.State in dsEditModes ) then
+    frmGeralDM.qryCadCell.Edit;
+
   frmGeralDM.qryCadCell.Post;
 end;
 
 procedure TfrmCadProdutos.btnVoltarClick(Sender: TObject);
 begin
   PgeCadastroComp.ActivePageIndex := 0;
+end;
+
+procedure TfrmCadProdutos.cbxFiltrosPropertiesChange(Sender: TObject);
+begin
+  pgeFiltros.ActivePageIndex := cbxFiltros.ItemIndex;
 end;
 
 procedure TfrmCadProdutos.cxGridImagesDBTableViewImageCellClick(
@@ -217,7 +229,8 @@ begin
       MemoryStream.Free;
     end
   else
-  // o Else faz com que, caso o campo esteja Null, o TImage seja limpado
+  // o Else faz com que, caso o campo esteja Null, o TImage seja limpo
+
     ImageCell.Picture := Nil;
 end;
 
@@ -237,6 +250,8 @@ begin
   frmGeralDM.qryImagensCell.Close;
   frmGeralDM.qryImagensCell.ParamByName( 'CELL_ID' ).AsInteger := frmGeralDM.qryCadCellCELL_ID.AsInteger;
   frmGeralDM.qryImagensCell.Open;
+
+  Funcoes := TFuncoesUteis.Create;
 end;
 
 procedure TfrmCadProdutos.grdConsultaProdDBTableViewCellDblClick(
@@ -248,7 +263,8 @@ end;
 
 procedure TfrmCadProdutos.tabCadastroShow(Sender: TObject);
 begin
-  ImageCell.Picture := NIL;
+  //ImageCell.Picture := NIL;
+  Funcoes.AbreQrysInfo;
 end;
 
 procedure TfrmCadProdutos.btnInserirClick(Sender: TObject);
@@ -276,6 +292,11 @@ begin
     //Faz o refresh na qry
     qryImagensCell.Refresh;
   end;
+end;
+
+procedure TfrmCadProdutos.btnFecharClick(Sender: TObject);
+begin
+  CLOSE;
 end;
 
 end.

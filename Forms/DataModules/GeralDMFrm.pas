@@ -156,6 +156,8 @@ end;
 procedure TfrmGeralDM.qryCellItensNewRecord(DataSet: TDataSet);
 begin
   qryCellItensITEM_ID.AsInteger := ProximoNumero( 'GEN_CELL_ITENS_ID' );
+  qryCellItensCELL_ID.AsInteger := qryCadCellCELL_ID.AsInteger;
+
 end;
 
 end.

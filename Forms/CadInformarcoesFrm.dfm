@@ -22,7 +22,7 @@ object frmCadInformacoes: TfrmCadInformacoes
     Height = 309
     Align = alClient
     TabOrder = 0
-    Properties.ActivePage = tabArmazenamento
+    Properties.ActivePage = tabCor
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
     LookAndFeel.NativeStyle = False
@@ -54,7 +54,7 @@ object frmCadInformacoes: TfrmCadInformacoes
           Navigator.Buttons.Last.Visible = True
           Navigator.Buttons.Insert.Visible = True
           Navigator.Buttons.Append.Visible = False
-          Navigator.Buttons.Delete.Visible = False
+          Navigator.Buttons.Delete.Visible = True
           Navigator.Buttons.Edit.Enabled = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = True
@@ -94,9 +94,6 @@ object frmCadInformacoes: TfrmCadInformacoes
     object tabCondicao: TcxTabSheet
       Caption = 'Condi'#231#227'o'
       ImageIndex = 1
-      ExplicitTop = 24
-      ExplicitWidth = 0
-      ExplicitHeight = 285
       object grdCadastroCondicao: TcxGrid
         Left = 0
         Top = 0
@@ -109,7 +106,6 @@ object frmCadInformacoes: TfrmCadInformacoes
         LookAndFeel.Kind = lfOffice11
         LookAndFeel.NativeStyle = False
         LookAndFeel.SkinName = 'UserSkin'
-        ExplicitHeight = 285
         object grdCadastroCondicaoDBTableView: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
@@ -120,7 +116,7 @@ object frmCadInformacoes: TfrmCadInformacoes
           Navigator.Buttons.Last.Visible = True
           Navigator.Buttons.Insert.Visible = True
           Navigator.Buttons.Append.Visible = False
-          Navigator.Buttons.Delete.Visible = False
+          Navigator.Buttons.Delete.Visible = True
           Navigator.Buttons.Edit.Enabled = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = True
@@ -157,9 +153,6 @@ object frmCadInformacoes: TfrmCadInformacoes
     object tabCor: TcxTabSheet
       Caption = 'Cor'
       ImageIndex = 2
-      ExplicitTop = 24
-      ExplicitWidth = 0
-      ExplicitHeight = 285
       object grdCadastroCor: TcxGrid
         Left = 0
         Top = 0
@@ -172,7 +165,6 @@ object frmCadInformacoes: TfrmCadInformacoes
         LookAndFeel.Kind = lfOffice11
         LookAndFeel.NativeStyle = False
         LookAndFeel.SkinName = 'UserSkin'
-        ExplicitHeight = 285
         object grdCadastroCorDBTableView: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
@@ -183,7 +175,7 @@ object frmCadInformacoes: TfrmCadInformacoes
           Navigator.Buttons.Last.Visible = True
           Navigator.Buttons.Insert.Visible = True
           Navigator.Buttons.Append.Visible = False
-          Navigator.Buttons.Delete.Visible = False
+          Navigator.Buttons.Delete.Visible = True
           Navigator.Buttons.Edit.Enabled = False
           Navigator.Buttons.Edit.Visible = False
           Navigator.Buttons.Post.Visible = True
