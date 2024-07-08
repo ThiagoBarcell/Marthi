@@ -58,12 +58,14 @@ begin
 
     1 : begin
           PgeCadastroComp.ActivePageIndex := iInformacao;
-          frmGeralDM.qryCellArmazenamento.Close;
-          frmGeralDM.qryCellArmazenamento.Open;
+          frmGeralDM.qryCellCondicao.Close;
+          frmGeralDM.qryCellCondicao.Open;
         end;
 
     2 : begin
           PgeCadastroComp.ActivePageIndex := iInformacao;
+          frmGeralDM.qryCellCor.Close;
+          frmGeralDM.qryCellCor.Open;
         end;
   end;
 end;

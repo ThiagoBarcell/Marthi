@@ -9,7 +9,7 @@ object frmGeralDM: TfrmGeralDM
       'Password=masterkey'
       'Server=LocalHost'
       'Port=3050'
-      'Database=D:\Marthi DataBase\DataBase\MARTHIDB.FDB'
+      'Database=T:\DataBase\MARTHIDB\MARTHIDB.FDB'
       'DriverID=FB')
     Connected = True
     LoginPrompt = False
@@ -213,6 +213,7 @@ object frmGeralDM: TfrmGeralDM
       end>
   end
   object qryCellItens: TFDQuery
+    OnNewRecord = qryCellItensNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellItens
     SQL.Strings = (
@@ -279,6 +280,7 @@ object frmGeralDM: TfrmGeralDM
     Top = 71
   end
   object qryCellCor: TFDQuery
+    OnNewRecord = qryCellCorNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellCor
     SQL.Strings = (
@@ -298,6 +300,7 @@ object frmGeralDM: TfrmGeralDM
     end
   end
   object qryCellArmazenamento: TFDQuery
+    OnNewRecord = qryCellArmazenamentoNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellArmazenamento
     SQL.Strings = (
@@ -316,12 +319,24 @@ object frmGeralDM: TfrmGeralDM
     end
   end
   object qryCellCondicao: TFDQuery
+    OnNewRecord = qryCellCondicaoNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellCondicao
     SQL.Strings = (
       'SELECT * FROM CELL_CONDICOES')
     Left = 569
     Top = 15
+    object qryCellCondicaoCONDICAO_ID: TIntegerField
+      FieldName = 'CONDICAO_ID'
+      Origin = 'CONDICAO_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryCellCondicaoCONDICAO_DESC: TStringField
+      FieldName = 'CONDICAO_DESC'
+      Origin = 'CONDICAO_DESC'
+      Size = 50
+    end
   end
   object dtsCellCor: TDataSource
     DataSet = qryCellCor
