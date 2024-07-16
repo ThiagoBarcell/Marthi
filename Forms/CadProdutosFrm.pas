@@ -88,6 +88,10 @@ type
     pnlFaixaTop: TPanel;
     btnFechar: TcxButton;
     Image1: TImage;
+    pnlCentralGeral: TPanel;
+    lblTitulo: TLabel;
+    ImgUteis: TcxImageCollection;
+    imgNO_IMAGE: TcxImageCollectionItem;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
@@ -110,6 +114,13 @@ type
     procedure btnCadCondicaoClick(Sender: TObject);
     procedure cbxFiltrosPropertiesChange(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
+    procedure FormMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure tabConsultaShow(Sender: TObject);
+    procedure pnlFaixaTopMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure lblTituloMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     procedure AbreTelaInfo( iCod : Integer ) ;
     { Private declarations }
@@ -254,6 +265,15 @@ begin
   Funcoes := TFuncoesUteis.Create;
 end;
 
+procedure TfrmCadProdutos.FormMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+const
+  sc_DragMove = $f012;
+begin
+  ReleaseCapture;
+  Perform(wm_SysCommand, sc_DragMove, 0);
+end;
+
 procedure TfrmCadProdutos.grdConsultaProdDBTableViewCellDblClick(
   Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
   AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
@@ -261,17 +281,41 @@ begin
   PgeCadastroComp.ActivePageIndex := 1;
 end;
 
+procedure TfrmCadProdutos.lblTituloMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+const
+  sc_DragMove = $f012;
+begin
+  ReleaseCapture;
+  Perform(wm_SysCommand, sc_DragMove, 0);
+end;
+
+procedure TfrmCadProdutos.pnlFaixaTopMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+const
+  sc_DragMove = $f012;
+begin
+  ReleaseCapture;
+  Perform(wm_SysCommand, sc_DragMove, 0);
+end;
+
 procedure TfrmCadProdutos.tabCadastroShow(Sender: TObject);
 begin
   //ImageCell.Picture := NIL;
+  lblTitulo.Caption := 'Cadastro de Celulares';
   Funcoes.AbreQrysInfo;
+end;
+
+procedure TfrmCadProdutos.tabConsultaShow(Sender: TObject);
+begin
+ lblTitulo.Caption := 'Consulta de Produtos';
 end;
 
 procedure TfrmCadProdutos.btnInserirClick(Sender: TObject);
 begin
   PgeCadastroComp.ActivePageIndex := 1;
   frmGeralDM.qryCadCell.Insert;
-  Caption := 'Cadastro de Produtos';
+  Caption := 'Consulta de Celulares';
 end;
 
 procedure TfrmCadProdutos.btnEditarClick(Sender: TObject);

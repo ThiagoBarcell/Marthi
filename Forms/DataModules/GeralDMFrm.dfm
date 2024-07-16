@@ -9,7 +9,7 @@ object frmGeralDM: TfrmGeralDM
       'Password=masterkey'
       'Server=LocalHost'
       'Port=3050'
-      'Database=T:\DataBase\MARTHIDB\MARTHIDB.FDB'
+      'Database=D:\Marthi DataBase\DataBase\MARTHIDB.FDB'
       'DriverID=FB')
     Connected = True
     LoginPrompt = False
@@ -280,6 +280,7 @@ object frmGeralDM: TfrmGeralDM
     Top = 71
   end
   object qryCellCor: TFDQuery
+    Active = True
     OnNewRecord = qryCellCorNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellCor
