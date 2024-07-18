@@ -126,6 +126,7 @@ type
     { Private declarations }
   public
   Funcoes : TFuncoesUteis;
+  sSqlOriginal : string;
     { Public declarations }
   end;
 
@@ -195,9 +196,19 @@ end;
 
 procedure TfrmCadProdutos.btnConsultaProdutosClick(Sender: TObject);
 begin
+  frmGeralDM.qryCadCell.SQL.Text := sSqlOriginal;
+
   frmGeralDM.qryCadCell.Close;
-  frmGeralDM.qryCadCell.ParamByName( 'START_DATE' ).AsDate := edtStartDate.Date;
-  frmGeralDM.qryCadCell.ParamByName( 'END_DATE' ).AsDate := edtEndDate.Date;
+  case pgeFiltros.ActivePageIndex of
+    0 : begin
+          frmGeralDM.qryCadCell.SQL.Add( ' WHERE DAT_CAD BETWEEN ' + QuotedStr( StringReplace( DateToStr( edtStartDate.Date ), '/', '.', [rfReplaceAll] ) ) +
+                                         ' AND ' + QuotedStr( StringReplace( DateToStr( edtEndDate.Date ), '/', '.', [rfReplaceAll] ) ) )
+        end;
+
+    1 : begin
+          frmGeralDM.qryCadCell.SQL.Add( ' WHERE CELL_DESC LIKE ' + QuotedStr( '%' + edtFiltroDesc.Text + '%' )  )
+        end;
+  end;
   frmGeralDM.qryCadCell.Open;
 end;
 
@@ -227,7 +238,9 @@ var
  Jpg : TJpegImage;
 begin
   if not(frmGeralDM.qryImagensCell.IsEmpty) and
-  not((frmGeralDM.qryImagensCell.FieldByName( 'IMAGE' ) as TBlobField).IsNull) then
+     not((frmGeralDM.qryImagensCell.FieldByName( 'IMAGE' ) as TBlobField).IsNull)
+  then
+  begin
     try
       MemoryStream := TMemoryStream.Create;
       Jpg := TJpegImage.Create;
@@ -239,10 +252,7 @@ begin
       Jpg.Free;
       MemoryStream.Free;
     end
-  else
-  // o Else faz com que, caso o campo esteja Null, o TImage seja limpo
-
-    ImageCell.Picture := Nil;
+  end
 end;
 
 procedure TfrmCadProdutos.FormCreate(Sender: TObject);
@@ -252,17 +262,11 @@ begin
   edtStartDate.Date := Now;
   edtEndDate.Date   := Now;
 
-  //Traz os dados de Hoje para não precisar iniciar pesquisando
-  frmGeralDM.qryCadCell.Close;
-  frmGeralDM.qryCadCell.ParamByName( 'START_DATE' ).AsDate := now;
-  frmGeralDM.qryCadCell.ParamByName( 'END_DATE' ).AsDate   := now;
-  frmGeralDM.qryCadCell.Open;
-
-  frmGeralDM.qryImagensCell.Close;
-  frmGeralDM.qryImagensCell.ParamByName( 'CELL_ID' ).AsInteger := frmGeralDM.qryCadCellCELL_ID.AsInteger;
-  frmGeralDM.qryImagensCell.Open;
-
   Funcoes := TFuncoesUteis.Create;
+
+  pgeFiltros.ActivePageIndex := 0;
+
+  sSqlOriginal := frmGeralDM.qryCadCell.SQL.Text;
 end;
 
 procedure TfrmCadProdutos.FormMouseDown(Sender: TObject; Button: TMouseButton;
@@ -304,18 +308,19 @@ begin
   //ImageCell.Picture := NIL;
   lblTitulo.Caption := 'Cadastro de Celulares';
   Funcoes.AbreQrysInfo;
+
+  ImageCell.Picture.Assign( ImgUteis.Items[0].Picture);
 end;
 
 procedure TfrmCadProdutos.tabConsultaShow(Sender: TObject);
 begin
- lblTitulo.Caption := 'Consulta de Produtos';
+ lblTitulo.Caption := 'Consulta de Celulares';
 end;
 
 procedure TfrmCadProdutos.btnInserirClick(Sender: TObject);
 begin
   PgeCadastroComp.ActivePageIndex := 1;
   frmGeralDM.qryCadCell.Insert;
-  Caption := 'Consulta de Celulares';
 end;
 
 procedure TfrmCadProdutos.btnEditarClick(Sender: TObject);

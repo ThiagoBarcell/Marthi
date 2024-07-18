@@ -25,10 +25,6 @@ object frmCadProdutos: TfrmCadProdutos
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = 616
-    ExplicitTop = 232
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object PgeCadastroComp: TcxPageControl
       Left = 0
       Top = 41
@@ -36,7 +32,7 @@ object frmCadProdutos: TfrmCadProdutos
       Height = 663
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = tabCadastro
+      Properties.ActivePage = tabConsulta
       Properties.CustomButtons.Buttons = <>
       LookAndFeel.NativeStyle = False
       ClientRectBottom = 663
@@ -227,7 +223,7 @@ object frmCadProdutos: TfrmCadProdutos
                 ImageIndex = 1
                 object edtFiltroDesc: TcxTextEdit
                   Left = 32
-                  Top = 12
+                  Top = 7
                   TabOrder = 0
                   Width = 437
                 end
@@ -242,7 +238,12 @@ object frmCadProdutos: TfrmCadProdutos
           Width = 1126
           Height = 584
           Align = alClient
+          BevelInner = bvNone
+          BevelOuter = bvNone
           TabOrder = 1
+          LookAndFeel.Kind = lfUltraFlat
+          LookAndFeel.NativeStyle = False
+          LookAndFeel.SkinName = 'UserSkin'
           object grdConsultaProdDBTableView: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             Navigator.Buttons.First.Visible = True
@@ -873,7 +874,6 @@ object frmCadProdutos: TfrmCadProdutos
               Navigator.Buttons.Filter.Enabled = False
               Navigator.Buttons.Filter.Visible = False
               Navigator.Visible = True
-              OnCellClick = cxGridImagesDBTableViewImageCellClick
               DataController.DataSource = frmGeralDM.dtsCellItens
               DataController.Summary.DefaultGroupSummaryItems = <>
               DataController.Summary.FooterSummaryItems = <>
@@ -1098,7 +1098,6 @@ object frmCadProdutos: TfrmCadProdutos
       ParentBackground = False
       TabOrder = 1
       OnMouseDown = pnlFaixaTopMouseDown
-      ExplicitTop = -6
       object Image1: TImage
         Left = 1
         Top = 1
@@ -7590,6 +7589,7 @@ object frmCadProdutos: TfrmCadProdutos
       end>
   end
   object OpenDialog: TOpenDialog
+    Filter = 'Imagens( JPG )|*.jpg|Imagens( JPEG )|*.jpeg'
     Left = 296
     Top = 88
   end

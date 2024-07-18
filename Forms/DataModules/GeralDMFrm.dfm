@@ -35,21 +35,9 @@ object frmGeralDM: TfrmGeralDM
       '  DAT_ALT'
       'FROM CAD_CELL'
       ''
-      'WHERE DAT_CAD BETWEEN :START_DATE AND :END_DATE')
+      '--WHERE DAT_CAD BETWEEN :START_DATE AND :END_DATE')
     Left = 127
     Top = 16
-    ParamData = <
-      item
-        Name = 'START_DATE'
-        DataType = ftDate
-        ParamType = ptInput
-        Value = Null
-      end
-      item
-        Name = 'END_DATE'
-        DataType = ftDate
-        ParamType = ptInput
-      end>
     object qryCadCellCELL_ID: TIntegerField
       FieldName = 'CELL_ID'
       Origin = 'CELL_ID'
