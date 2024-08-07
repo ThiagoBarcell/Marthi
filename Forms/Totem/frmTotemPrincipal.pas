@@ -102,6 +102,12 @@ type
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     LinkPropertyToFieldBitmap: TLinkPropertyToField;
+    lytGlobal: TLayout;
+    lytToten: TLayout;
+    Rectangle8: TRectangle;
+    Rectangle9: TRectangle;
+    Rectangle10: TRectangle;
+    Rectangle11: TRectangle;
   private
     { Private declarations }
   public

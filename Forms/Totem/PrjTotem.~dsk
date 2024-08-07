@@ -32,12 +32,11 @@ ModuleType=TSourceModule
 ModuleType=TURLModule
 
 [EditWindow0]
-ViewCount=4
+ViewCount=3
 CurrentEditView=D:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 View0=0
 View1=1
 View2=2
-View3=3
 PercentageSizes=1
 Create=1
 Visible=1
@@ -56,13 +55,13 @@ BorlandEditorCodeExplorer=BorlandEditorCodeExplorer@EditWindow0
 TopPanelSize=0
 LeftPanelSize=1896
 LeftPanelClients=PropertyInspector,DockSite3
-LeftPanelData=0000080001010000000040170000000000000168070000000000000100000000580E000009000000446F636B536974653301000000005A2900001100000050726F7065727479496E73706563746F72FFFFFFFF
+LeftPanelData=000008000101000000002B1B0000000000000168070000000000000100000000580E000009000000446F636B53697465330100000000523000001100000050726F7065727479496E73706563746F72FFFFFFFF
 RightPanelSize=1999
 RightPanelClients=DockSite2,DockSite4
-RightPanelData=00000800010100000000401700000000000001CF0700000000000001000000004212000009000000446F636B536974653201000000005A29000009000000446F636B5369746534FFFFFFFF
-BottomPanelSize=1680
+RightPanelData=000008000101000000002B1B00000000000001CF0700000000000001000000004212000009000000446F636B536974653201000000005230000009000000446F636B5369746534FFFFFFFF
+BottomPanelSize=0
 BottomPanelClients=DockSite1,MessageView
-BottomPanelData=0000080001020100000009000000446F636B536974653165810000000000000290060000000000000100000000658100000F0000004D65737361676556696577466F726DFFFFFFFF
+BottomPanelData=0000080001020200000009000000446F636B53697465310F0000004D65737361676556696577466F726D1534000000000000022806000000000000FFFFFFFF
 BottomMiddlePanelSize=0
 BottomMiddlePanelClients=DockSite0,GraphDrawingModel
 BottomMiddelPanelData=0000080001020200000009000000446F636B536974653010000000477261706844726177696E67566965779A1D00000000000002F806000000000000FFFFFFFF
@@ -80,12 +79,9 @@ TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=Borland.FormDesignerView
+EditViewName=D:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 
 [View2]
-CustomEditViewType=TOTACustomEditView
-
-[View3]
 CustomEditViewType=TEditView
 Module=D:\Sistemas\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
 CursorX=1
@@ -94,7 +90,7 @@ TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=Borland.FormDesignerView
+EditViewName=D:\Sistemas\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
 
 [UndockedDesigner]
 Count=0
@@ -156,13 +152,13 @@ Create=1
 Visible=1
 Docked=0
 State=2
-Left=-9627
+Left=-14568
 Top=-4322
-Width=8924
+Width=8931
 Height=8523
 MaxLeft=-7
 MaxTop=-14
-MaxWidth=8924
+MaxWidth=8931
 MaxHeight=8523
 ClientWidth=18770
 ClientHeight=13930
@@ -192,16 +188,16 @@ StayOnTop=0
 [MessageView]
 PercentageSizes=1
 Create=1
-Visible=1
+Visible=0
 Docked=1
 State=0
 Left=0
 Top=24
-Width=18624
+Width=2767
 Height=1423
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=18624
+ClientWidth=2767
 ClientHeight=1423
 TBDockHeight=1423
 LRDockWidth=2767
@@ -217,11 +213,11 @@ State=0
 Left=0
 Top=0
 Width=1999
-Height=5827
+Height=7683
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1999
-ClientHeight=5827
+ClientHeight=7683
 TBDockHeight=7154
 LRDockWidth=1999
 Dockable=1
@@ -255,21 +251,16 @@ State=0
 Left=0
 Top=306
 Width=1896
-Height=6870
+Height=8726
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1896
-ClientHeight=6870
+ClientHeight=8726
 TBDockHeight=12547
 LRDockWidth=1896
 Dockable=1
 StayOnTop=0
 SplitPos=111
-
-[PropInspDesignerSelection]
-ArrangeBy=Name
-SelectedItem=Margins.Top,LiveBindings
-ExpandedItems=MinMaxInfo=0,Options=0,Anchors=1,Constraints=0,DataBinding=1,LiveBindings=0,"LiveBindings Designer=1",Margins=1,DataBinding.DataSource=0,HeaderGlyph=0,Position=0,Styles=0,Summary=0,Properties=1,Properties.Alignment=0,Properties.AssignedValues=1,Properties.ValidationOptions=0,Font=1,LevelTabs=0,LockedStateImageOptions=0,LookAndFeel=0,PanelStyle=0,Colors=0,OptionsImage=0,EditValue=0,Properties.ButtonGlyph=0,Properties.DateButtons=1,Style=1,StyleDisabled=0,StyleFocused=0,StyleHot=0,Touch=0,HotZone=0,Properties.Glyph=0,Properties.ValueChecked=1,Properties.ValueGrayed=0,Properties.ValueUnchecked=1,Properties.Images=0,Properties.IncrementalFilteringOptions=0,MenuAnimation=0,BackgroundBitmaps=0,DataController=1,DateTimeHandling=0,EditForm=0,FilterBox=0,Filtering=0,FilterRow=0,FindPanel=0,FixedDataRows=0,Images=0,Navigator=0,NewItemRow=0,OptionsBehavior=0,OptionsCustomize=0,OptionsData=0,OptionsSelection=1,DataController.DataModeController=1,DataController.DataSource=1,DataController.Filter=0,DataController.MultiThreadedOptions=0,DataController.Options=0,DataController.Summary=0,DataController.DataSource.DataSet=0,"DataController.DataSource.LiveBindings Designer=0",ActiveStoredUsage=0,FetchOptions=0,FieldOptions=0,FilterChanges=0,FilterOptions=0,FormatOptions=0,ResourceOptions=0,Transaction=0,DataSet=0,SpeedButtonOptions=0,UpdateOptions=0,UpdateTransaction=0,UpdateObject=0,OptionsView=0,Preview=0,GridView=0,BevelEdges=0,RootLevelOptions=0,ProviderFlags=0,Style.AssignedValues=0,Style.Edges=0,Style.Font=0,Style.LookAndFeel=0,Style.StyleController=0,Style.TextStyle=0,Options.FilteringPopupIncrementalFilteringOptions=0,"UpdateObject.LiveBindings Designer=0",OptionsSelection.CheckBoxVisibility=0,Properties.LineOptions=0,GlassFrame=0,ActiveControl=0,BorderIcons=0,ActiveTab=0,Padding=0,RotationCenter=0,Scale=1,Size=0,StyledSettings=0,TextSettings=0,TouchTargetExpansion=0,Fill=1,Sides=0,Stroke=1,Stroke.Bitmap=0,Stroke.Resource=0,ConnectedStoredUsage=0,Params=0,TxOptions=0,Touch.InteractiveGestures=0,Corners=0,Fill.Bitmap=0,Fill.Resource=0,TouchAnimation=0,Fill.Color=0,Brush=1,Brush.Bitmap=0,Brush.Resource=0,"LiveBindings Designer.Element Layers=0",Font.Style=0,BitmapMargins=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -409,7 +400,8 @@ StayOnTop=0
 Column0Width=145
 Column1Width=100
 Column2Width=115
-Column3Width=162
+Column3Width=250
+Column4Width=10
 
 [LocalVarsWindow]
 PercentageSizes=1
@@ -802,11 +794,11 @@ State=0
 Left=0
 Top=383
 Width=1999
-Height=5827
+Height=7683
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1999
-ClientHeight=5827
+ClientHeight=7683
 TBDockHeight=12547
 LRDockWidth=1999
 Dockable=1
