@@ -92,6 +92,7 @@ type
     lblTitulo: TLabel;
     ImgUteis: TcxImageCollection;
     imgNO_IMAGE: TcxImageCollectionItem;
+    btnExcluir: TcxButton;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
@@ -121,6 +122,7 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure lblTituloMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure btnExcluirClick(Sender: TObject);
   private
     procedure AbreTelaInfo( iCod : Integer ) ;
     { Private declarations }
@@ -341,6 +343,12 @@ begin
     //Faz o refresh na qry
     qryImagensCell.Refresh;
   end;
+end;
+
+procedure TfrmCadProdutos.btnExcluirClick(Sender: TObject);
+begin
+  if( Application.MessageBox( 'Deseja realmente excluir o registro selecionado ?', 'Aviso', MB_YESNO + MB_ICONQUESTION ) = IDYES )then
+    grdConsultaProdDBTableView.DataController.DeleteSelection;
 end;
 
 procedure TfrmCadProdutos.btnFecharClick(Sender: TObject);

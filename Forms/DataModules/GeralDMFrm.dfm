@@ -132,7 +132,7 @@ object frmGeralDM: TfrmGeralDM
         'NCIA, CELL_IMAGES.IMAGE ) VALUES ( :CELL_ID, :SEQUENCIA, :IMAGE ' +
         ')')
     Left = 216
-    Top = 128
+    Top = 136
     ParamData = <
       item
         Name = 'CELL_ID'
@@ -268,7 +268,6 @@ object frmGeralDM: TfrmGeralDM
     Top = 71
   end
   object qryCellCor: TFDQuery
-    Active = True
     OnNewRecord = qryCellCorNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellCor
@@ -282,9 +281,9 @@ object frmGeralDM: TfrmGeralDM
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object qryCellCorCOD_DESC: TStringField
-      FieldName = 'COD_DESC'
-      Origin = 'COD_DESC'
+    object qryCellCorCOR_DESC: TStringField
+      FieldName = 'COR_DESC'
+      Origin = 'COR_DESC'
       Required = True
     end
   end

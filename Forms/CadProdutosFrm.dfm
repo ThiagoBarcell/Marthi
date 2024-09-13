@@ -53,9 +53,9 @@ object frmCadProdutos: TfrmCadProdutos
           TabOrder = 0
           object btnConsultaProdutos: TcxButton
             AlignWithMargins = True
-            Left = 700
+            Left = 558
             Top = 10
-            Width = 205
+            Width = 180
             Height = 53
             Margins.Top = 10
             Margins.Right = 10
@@ -96,12 +96,13 @@ object frmCadProdutos: TfrmCadProdutos
             Font.Style = []
             ParentFont = False
             OnClick = btnConsultaProdutosClick
+            ExplicitLeft = 557
           end
           object btnInserir: TcxButton
             AlignWithMargins = True
-            Left = 918
+            Left = 751
             Top = 10
-            Width = 204
+            Width = 179
             Height = 53
             Margins.Top = 10
             Margins.Right = 10
@@ -129,6 +130,7 @@ object frmCadProdutos: TfrmCadProdutos
             Font.Style = []
             ParentFont = False
             OnClick = btnInserirClick
+            ExplicitLeft = 942
           end
           object pnlFiltros: TPanel
             Left = 0
@@ -229,6 +231,48 @@ object frmCadProdutos: TfrmCadProdutos
                 end
               end
             end
+          end
+          object btnExcluir: TcxButton
+            AlignWithMargins = True
+            Left = 943
+            Top = 10
+            Width = 179
+            Height = 53
+            Margins.Top = 10
+            Margins.Right = 10
+            Margins.Bottom = 10
+            Align = alRight
+            Caption = 'Excluir'
+            OptionsImage.Glyph.SourceDPI = 96
+            OptionsImage.Glyph.Data = {
+              89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+              F80000000473424954080808087C0864880000000970485973000000B1000000
+              B101C62D498D0000001974455874536F667477617265007777772E696E6B7363
+              6170652E6F72679BEE3C1A000001B0494441544889BDD5B96E14411006E0CF18
+              091B4B1C9285CD2688CC2101208E9077E01170C233E00824520202725202528E
+              0410214204E420BC876141205F0201C1546BC6B3333B6D4B5052AB6BA6AAFAAF
+              FABBBA9B7F2C331DF613B886432DF6DF7882EF074DE036FE748C5BD31638DC01
+              B010F3757CADD94EE161C5A713E0288E602E061C8BF90BC62DB1C77136F49DCA
+              D8AE3A5FC4AE6E3A72C70ECEC16C05790E43AC60840FF811F6DD5A76D52CD723
+              6E265878A4D8F8C7E1B347CE440677EB860CB917B14BD59FF5F6EB87532FBEAF
+              E2BEB29D6F6235F4593C50D02B627E61A32B930D3C0DFD4E00A64D7C8F37A1AF
+              846D2DBE5FE1637DB1A603D4AF5490B2596AF05B8E7954A9A09F03B08ED3A10F
+              6A8B35010C14142E476C27405F71452C28BA83E60AD2BF214E2ABA30BB829461
+              2E40A2340B2039F594144D03182829CDA648048DF1730AC0668C7D5590B2E829
+              DA70A47D93538507AE8082E3B60A8635DF890A9AAEEBFA697E81F3A1BF55DE2F
+              43BC0C3DFB1427F98C67B9CE01F4A9C9D0F6E0BCC365DC30F9D0D4651117F07C
+              1F09B9826FF2EFFFB192C63D32EDD15FC425CC7724B385D7265FBCFF237F01AF
+              BD8C981C734D460000000049454E44AE426082}
+            TabOrder = 3
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            OnClick = btnExcluirClick
+            ExplicitLeft = 991
+            ExplicitTop = 42
           end
         end
         object grdConsultaProd: TcxGrid
@@ -905,9 +949,7 @@ object frmCadProdutos: TfrmCadProdutos
                 Properties.KeyFieldNames = 'COR_ID'
                 Properties.ListColumns = <
                   item
-                    Caption = 'Cores'
-                    HeaderAlignment = taCenter
-                    FieldName = 'COD_DESC'
+                    FieldName = 'COR_DESC'
                   end>
                 Properties.ListSource = frmGeralDM.dtsCellCor
                 HeaderAlignmentHorz = taCenter

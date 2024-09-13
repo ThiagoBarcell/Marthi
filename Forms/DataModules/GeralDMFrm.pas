@@ -48,7 +48,6 @@ type
     qryCellArmazenamentoARMAZENAMENTO_ID: TIntegerField;
     qryCellArmazenamentoARMAZENAMENTO_DESC: TStringField;
     qryCellCorCOR_ID: TIntegerField;
-    qryCellCorCOD_DESC: TStringField;
     dtsCellCor: TDataSource;
     dtsCellArmazenamento: TDataSource;
     dtsCellCondicao: TDataSource;
@@ -58,6 +57,7 @@ type
     upsCellItens: TFDUpdateSQL;
     qryCellCondicaoCONDICAO_ID: TIntegerField;
     qryCellCondicaoCONDICAO_DESC: TStringField;
+    qryCellCorCOR_DESC: TStringField;
     procedure qryCadCellNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
     procedure qryCadCellAfterScroll(DataSet: TDataSet);
