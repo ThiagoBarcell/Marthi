@@ -75,9 +75,6 @@ type
     Label15: TLabel;
     Rectangle5: TRectangle;
     Rectangle6: TRectangle;
-    Text2: TText;
-    Image6: TImage;
-    Rectangle7: TRectangle;
     Layout6: TLayout;
     ConectMarthi: TFDConnection;
     qryCadCell: TFDQuery;
@@ -108,6 +105,8 @@ type
     Rectangle9: TRectangle;
     Rectangle10: TRectangle;
     Rectangle11: TRectangle;
+    Layout7: TLayout;
+    Layout8: TLayout;
   private
     { Private declarations }
   public
