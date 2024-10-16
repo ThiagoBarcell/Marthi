@@ -151,8 +151,8 @@ Create=1
 Visible=1
 Docked=0
 State=2
-Left=-12921
-Top=1341
+Left=-18741
+Top=1640
 Width=8931
 Height=8523
 MaxLeft=-7
@@ -263,8 +263,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Name,
-ExpandedItems=Anchors=0,BorderIcons=0,Border=0,Fill=0,FormFactor=0,"LiveBindings Designer=0",Padding=1,StyleBook=0,SystemStatusBar=0,Touch=0,LiveBindings=0,Margins=1,Position=1,RotationCenter=0,Scale=0,Size=1,TouchTargetExpansion=1,StyledSettings=1,TextSettings=1,TextSettings.Font=1,Caret=0,Sides=0,Stroke=1,Stroke.Bitmap=0,Stroke.Resource=0,TextSettings.Font.Style=1
+SelectedItem=Action,LiveBindings
+ExpandedItems=Anchors=0,BorderIcons=0,Border=0,Fill=0,FormFactor=0,"LiveBindings Designer=0",Padding=1,StyleBook=0,SystemStatusBar=0,Touch=0,LiveBindings=0,Margins=1,Position=1,RotationCenter=0,Scale=0,Size=1,TouchTargetExpansion=1,StyledSettings=1,TextSettings=1,TextSettings.Font=1,Caret=0,Sides=0,Stroke=1,Stroke.Bitmap=0,Stroke.Resource=0,TextSettings.Font.Style=1,Properties=1,Constraints=0,DataBinding=0,BackgroundBitmaps=0,DataController=1,DateTimeHandling=0,EditForm=0,FilterBox=0,Filtering=0,FilterRow=0,FindPanel=0,FixedDataRows=0,Navigator=0,NewItemRow=0,OptionsBehavior=0,OptionsCustomize=0,OptionsData=0,OptionsSelection=0,OptionsView=0,Preview=0,Styles=0,DateTimeHandling.Filters=0,DataController.DataModeController=0,DataController.DataSource=1,DataController.Filter=0,DataController.MultiThreadedOptions=0,DataController.Options=0,DataController.Summary=0,DataController.DataSource.DataSet=0,"DataController.DataSource.LiveBindings Designer=0",FetchOptions=0,FieldOptions=0,FilterChanges=0,FilterOptions=0,FormatOptions=0,Colors=1,Font=0,LookAndFeel=0,OptionsImage=1,SpeedButtonOptions=1,Colors.AssignedColors=0,OptionsImage.Glyph=0,OptionsImage.Images=0,ActiveStoredUsage=0,Corners=0,BitmapMargins=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -617,8 +617,8 @@ Create=1
 Visible=0
 Docked=0
 State=0
-Left=0
-Top=0
+Left=1288
+Top=705
 Width=7416
 Height=8577
 MaxLeft=-7

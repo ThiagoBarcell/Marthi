@@ -1,46 +1,34 @@
-inherited TotemPrincipalfrm_Windows: TTotemPrincipalfrm_Windows
+inherited TotemPrincipalfrm_Moto360: TTotemPrincipalfrm_Moto360
+  ClientHeight = 218
+  ClientWidth = 240
   DesignerMasterStyle = 0
   inherited lytGlobal: TLayout
+    Size.Width = 240.000000000000000000
+    Size.Height = 218.000000000000000000
     inherited Rectangle8: TRectangle
-      inherited lytToten: TLayout
+      Size.Width = 240.000000000000000000
+      Size.Height = 218.000000000000000000
+      inherited lytToten: TLayout [0]
+        Position.X = -1.552209496498108000
+        Position.Y = -6.291205883026123000
         inherited Rectangle11: TRectangle
           inherited lytCenter: TLayout
             inherited Rectangle10: TRectangle
               inherited Layout3: TLayout
                 inherited VertScrollBox1: TVertScrollBox
                   Viewport.Width = 420.000000000000000000
-                  Viewport.Height = 649.000000000000000000
+                  Viewport.Height = 644.000000000000000000
                   inherited Rectangle4: TRectangle
                     inherited TabControl2: TTabControl
                       Sizes = (
-                        400s
+                        399.999969482422s
                         244s
-                        400s
+                        399.999969482422s
                         244s)
                       inherited TabItem1: TTabItem
                         ExplicitSize.cx = 8.000000000000000000
                         ExplicitSize.cy = 8.000000000000000000
-                        inherited Layout7: TLayout
-                          inherited Layout5: TLayout
-                            Position.Y = 101.000000000000000000
-                            inherited Label5: TLabel
-                              TextSettings.Font.StyleExt = {00070000000000000004000000}
-                            end
-                          end
-                          inherited Layout4: TLayout
-                            Margins.Bottom = 15.000000000000000000
-                            inherited Label3: TLabel
-                              TextSettings.Font.StyleExt = {00070000000000000004000000}
-                            end
-                          end
-                          inherited Label6: TLabel
-                            Position.Y = 155.000000000000000000
-                          end
-                          inherited Label8: TLabel
-                            Position.Y = 191.000000000000000000
-                          end
-                        end
-                        inherited Layout6: TLayout
+                        inherited Layout6: TLayout [0]
                           inherited imgCell: TImage
                             MultiResBitmap = <
                               item
@@ -32884,21 +32872,23 @@ inherited TotemPrincipalfrm_Windows: TTotemPrincipalfrm_Windows
                               end>
                           end
                         end
+                        inherited Layout7: TLayout [1]
+                          inherited Layout5: TLayout
+                            inherited Label5: TLabel
+                              TextSettings.Font.StyleExt = {00070000000000000004000000}
+                            end
+                          end
+                          inherited Layout4: TLayout
+                            Margins.Bottom = 15.000000000000000000
+                            inherited Label3: TLabel
+                              TextSettings.Font.StyleExt = {00070000000000000004000000}
+                            end
+                          end
+                        end
                       end
                       inherited TabItem4: TTabItem
                         ExplicitSize.cx = 8.000000000000000000
                         ExplicitSize.cy = 8.000000000000000000
-                        inherited Layout9: TLayout
-                          inherited RoundRect4: TRoundRect
-                            inherited img1: TImage
-                              MultiResBitmap.Height = 128
-                              MultiResBitmap.Width = 128
-                              inherited lbl1: TLabel
-                                TextSettings.Font.StyleExt = {00070000000000000004000000}
-                              end
-                            end
-                          end
-                        end
                       end
                     end
                   end
@@ -32924,7 +32914,21 @@ inherited TotemPrincipalfrm_Windows: TTotemPrincipalfrm_Windows
               end
             end
           end
+          inherited lytTop: TLayout
+            inherited Layout1: TLayout
+              inherited RoundRect3: TRoundRect
+                inherited Layout2: TLayout
+                  inherited Edit1: TEdit
+                    Size.Height = 32.000000000000000000
+                  end
+                end
+              end
+            end
+          end
         end
+      end
+      inherited Layout8: TLayout [1]
+        Size.Height = 218.000000000000000000
       end
     end
   end

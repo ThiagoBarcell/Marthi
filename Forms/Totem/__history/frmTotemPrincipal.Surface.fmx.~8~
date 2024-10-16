@@ -1,8 +1,16 @@
-inherited TotemPrincipalfrm_Windows: TTotemPrincipalfrm_Windows
+inherited TotemPrincipalfrm_Surface: TTotemPrincipalfrm_Surface
+  ClientHeight = 1920
+  ClientWidth = 1080
   DesignerMasterStyle = 0
   inherited lytGlobal: TLayout
+    Size.Width = 1080.000000000000000000
+    Size.Height = 1920.000000000000000000
     inherited Rectangle8: TRectangle
-      inherited lytToten: TLayout
+      Size.Width = 1080.000000000000000000
+      Size.Height = 1920.000000000000000000
+      inherited lytToten: TLayout [0]
+        Position.X = 116.845962524414100000
+        Position.Y = 9035.248046875000000000
         inherited Rectangle11: TRectangle
           inherited lytCenter: TLayout
             inherited Rectangle10: TRectangle
@@ -20,27 +28,7 @@ inherited TotemPrincipalfrm_Windows: TTotemPrincipalfrm_Windows
                       inherited TabItem1: TTabItem
                         ExplicitSize.cx = 8.000000000000000000
                         ExplicitSize.cy = 8.000000000000000000
-                        inherited Layout7: TLayout
-                          inherited Layout5: TLayout
-                            Position.Y = 101.000000000000000000
-                            inherited Label5: TLabel
-                              TextSettings.Font.StyleExt = {00070000000000000004000000}
-                            end
-                          end
-                          inherited Layout4: TLayout
-                            Margins.Bottom = 15.000000000000000000
-                            inherited Label3: TLabel
-                              TextSettings.Font.StyleExt = {00070000000000000004000000}
-                            end
-                          end
-                          inherited Label6: TLabel
-                            Position.Y = 155.000000000000000000
-                          end
-                          inherited Label8: TLabel
-                            Position.Y = 191.000000000000000000
-                          end
-                        end
-                        inherited Layout6: TLayout
+                        inherited Layout6: TLayout [0]
                           inherited imgCell: TImage
                             MultiResBitmap = <
                               item
@@ -32884,21 +32872,23 @@ inherited TotemPrincipalfrm_Windows: TTotemPrincipalfrm_Windows
                               end>
                           end
                         end
+                        inherited Layout7: TLayout [1]
+                          inherited Layout5: TLayout
+                            inherited Label5: TLabel
+                              TextSettings.Font.StyleExt = {00070000000000000004000000}
+                            end
+                          end
+                          inherited Layout4: TLayout
+                            Margins.Bottom = 15.000000000000000000
+                            inherited Label3: TLabel
+                              TextSettings.Font.StyleExt = {00070000000000000004000000}
+                            end
+                          end
+                        end
                       end
                       inherited TabItem4: TTabItem
                         ExplicitSize.cx = 8.000000000000000000
                         ExplicitSize.cy = 8.000000000000000000
-                        inherited Layout9: TLayout
-                          inherited RoundRect4: TRoundRect
-                            inherited img1: TImage
-                              MultiResBitmap.Height = 128
-                              MultiResBitmap.Width = 128
-                              inherited lbl1: TLabel
-                                TextSettings.Font.StyleExt = {00070000000000000004000000}
-                              end
-                            end
-                          end
-                        end
                       end
                     end
                   end
@@ -32925,6 +32915,9 @@ inherited TotemPrincipalfrm_Windows: TTotemPrincipalfrm_Windows
             end
           end
         end
+      end
+      inherited Layout8: TLayout [1]
+        Size.Height = 1920.000000000000000000
       end
     end
   end

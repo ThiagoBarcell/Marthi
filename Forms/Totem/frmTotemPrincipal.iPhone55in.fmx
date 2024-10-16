@@ -8,7 +8,10 @@ inherited TotemPrincipalfrm_iPhone55in: TTotemPrincipalfrm_iPhone55in
     inherited Rectangle8: TRectangle
       Size.Width = 414.000000000000000000
       Size.Height = 716.000000000000000000
-      inherited lytToten: TLayout [0]
+      inherited Layout8: TLayout
+        Size.Height = 716.000000000000000000
+      end
+      inherited lytToten: TLayout
         Position.X = -4.953655719757080000
         Position.Y = -20.337284088134770000
         inherited Rectangle11: TRectangle
@@ -21,16 +24,36 @@ inherited TotemPrincipalfrm_iPhone55in: TTotemPrincipalfrm_iPhone55in
                   inherited Rectangle4: TRectangle
                     inherited TabControl2: TTabControl
                       Sizes = (
-                        400.000030517578s
+                        400s
                         244s
-                        400.000030517578s
+                        400s
                         244s)
                       inherited TabItem1: TTabItem
                         Size.Width = 11.000000000000000000
                         Size.Height = 11.000000000000000000
                         ExplicitSize.cx = 8.000000000000000000
                         ExplicitSize.cy = 8.000000000000000000
-                        inherited Layout6: TLayout [0]
+                        inherited Layout7: TLayout
+                          inherited Layout5: TLayout
+                            Position.Y = 101.000000000000000000
+                            inherited Label5: TLabel
+                              TextSettings.Font.StyleExt = {00070000000000000004000000}
+                            end
+                          end
+                          inherited Layout4: TLayout
+                            Margins.Bottom = 15.000000000000000000
+                            inherited Label3: TLabel
+                              TextSettings.Font.StyleExt = {00070000000000000004000000}
+                            end
+                          end
+                          inherited Label6: TLabel
+                            Position.Y = 155.000000000000000000
+                          end
+                          inherited Label8: TLabel
+                            Position.Y = 191.000000000000000000
+                          end
+                        end
+                        inherited Layout6: TLayout
                           inherited imgCell: TImage
                             MultiResBitmap = <
                               item
@@ -32874,35 +32897,32 @@ inherited TotemPrincipalfrm_iPhone55in: TTotemPrincipalfrm_iPhone55in
                               end>
                           end
                         end
-                        inherited Layout7: TLayout [1]
-                          inherited Layout5: TLayout
-                            inherited Rectangle5: TRectangle
-                              inherited ComboBox2: TComboBox
-                                Size.Height = 30.000000000000000000
-                              end
-                            end
-                            inherited Label5: TLabel
-                              TextSettings.Font.StyleExt = {00070000000000000004000000}
-                            end
-                          end
-                          inherited Layout4: TLayout
-                            Margins.Bottom = 15.000000000000000000
-                            inherited Rectangle6: TRectangle
-                              inherited ComboBox1: TComboBox
-                                Size.Height = 30.000000000000000000
-                              end
-                            end
-                            inherited Label3: TLabel
-                              TextSettings.Font.StyleExt = {00070000000000000004000000}
-                            end
-                          end
-                        end
                       end
                       inherited TabItem4: TTabItem
                         Size.Width = 11.000000000000000000
                         Size.Height = 11.000000000000000000
                         ExplicitSize.cx = 8.000000000000000000
                         ExplicitSize.cy = 8.000000000000000000
+                        inherited Layout9: TLayout
+                          inherited edt1: TEdit
+                            Size.Height = 30.000000000000000000
+                          end
+                          inherited edt2: TEdit
+                            Size.Height = 30.000000000000000000
+                          end
+                          inherited cbb3: TComboBox
+                            Size.Height = 30.000000000000000000
+                          end
+                          inherited RoundRect4: TRoundRect
+                            inherited img1: TImage
+                              MultiResBitmap.Height = 128
+                              MultiResBitmap.Width = 128
+                              inherited lbl1: TLabel
+                                TextSettings.Font.StyleExt = {00070000000000000004000000}
+                              end
+                            end
+                          end
+                        end
                       end
                     end
                   end
@@ -32940,9 +32960,6 @@ inherited TotemPrincipalfrm_iPhone55in: TTotemPrincipalfrm_iPhone55in
             end
           end
         end
-      end
-      inherited Layout8: TLayout [1]
-        Size.Height = 716.000000000000000000
       end
     end
   end

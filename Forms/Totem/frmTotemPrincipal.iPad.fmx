@@ -8,7 +8,10 @@ inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
     inherited Rectangle8: TRectangle
       Size.Width = 768.000000000000000000
       Size.Height = 1004.000000000000000000
-      inherited lytToten: TLayout [0]
+      inherited Layout8: TLayout
+        Size.Height = 1004.000000000000000000
+      end
+      inherited lytToten: TLayout
         Position.X = 7.518850326538086000
         Position.Y = 264.665313720703100000
         inherited Rectangle11: TRectangle
@@ -30,7 +33,38 @@ inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
                         Size.Height = 11.000000000000000000
                         ExplicitSize.cx = 8.000000000000000000
                         ExplicitSize.cy = 8.000000000000000000
-                        inherited Layout6: TLayout [0]
+                        inherited Layout7: TLayout
+                          Size.Height = 243.999969482421900000
+                          inherited Layout5: TLayout
+                            Position.Y = 101.000000000000000000
+                            inherited Rectangle5: TRectangle
+                              inherited ComboBox2: TComboBox
+                                Size.Height = 30.000000000000000000
+                              end
+                            end
+                            inherited Label5: TLabel
+                              TextSettings.Font.StyleExt = {00070000000000000004000000}
+                            end
+                          end
+                          inherited Layout4: TLayout
+                            Margins.Bottom = 15.000000000000000000
+                            inherited Rectangle6: TRectangle
+                              inherited ComboBox1: TComboBox
+                                Size.Height = 30.000000000000000000
+                              end
+                            end
+                            inherited Label3: TLabel
+                              TextSettings.Font.StyleExt = {00070000000000000004000000}
+                            end
+                          end
+                          inherited Label6: TLabel
+                            Position.Y = 155.000000000000000000
+                          end
+                          inherited Label8: TLabel
+                            Position.Y = 191.000000000000000000
+                          end
+                        end
+                        inherited Layout6: TLayout
                           Size.Height = 243.999969482421900000
                           inherited imgCell: TImage
                             MultiResBitmap = <
@@ -32876,35 +32910,38 @@ inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
                             Size.Height = 243.999969482421900000
                           end
                         end
-                        inherited Layout7: TLayout [1]
-                          inherited Layout5: TLayout
-                            inherited Rectangle5: TRectangle
-                              inherited ComboBox2: TComboBox
-                                Size.Height = 30.000000000000000000
-                              end
-                            end
-                            inherited Label5: TLabel
-                              TextSettings.Font.StyleExt = {00070000000000000004000000}
-                            end
-                          end
-                          inherited Layout4: TLayout
-                            Margins.Bottom = 15.000000000000000000
-                            inherited Rectangle6: TRectangle
-                              inherited ComboBox1: TComboBox
-                                Size.Height = 30.000000000000000000
-                              end
-                            end
-                            inherited Label3: TLabel
-                              TextSettings.Font.StyleExt = {00070000000000000004000000}
-                            end
-                          end
-                        end
                       end
                       inherited TabItem4: TTabItem
                         Size.Width = 11.000000000000000000
                         Size.Height = 11.000000000000000000
                         ExplicitSize.cx = 8.000000000000000000
                         ExplicitSize.cy = 8.000000000000000000
+                        inherited Layout9: TLayout
+                          inherited edt1: TEdit
+                            Size.Height = 30.000000000000000000
+                          end
+                          inherited edt2: TEdit
+                            Size.Height = 30.000000000000000000
+                          end
+                          inherited cbb1: TComboBox
+                            Size.Height = 30.000000000000000000
+                          end
+                          inherited cbb2: TComboBox
+                            Size.Height = 30.000000000000000000
+                          end
+                          inherited cbb3: TComboBox
+                            Size.Height = 30.000000000000000000
+                          end
+                          inherited RoundRect4: TRoundRect
+                            inherited img1: TImage
+                              MultiResBitmap.Height = 128
+                              MultiResBitmap.Width = 128
+                              inherited lbl1: TLabel
+                                TextSettings.Font.StyleExt = {00070000000000000004000000}
+                              end
+                            end
+                          end
+                        end
                       end
                     end
                   end
@@ -32942,9 +32979,6 @@ inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
             end
           end
         end
-      end
-      inherited Layout8: TLayout [1]
-        Size.Height = 1004.000000000000000000
       end
     end
   end

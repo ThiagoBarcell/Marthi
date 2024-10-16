@@ -595,6 +595,13 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
       Size.Height = 767.000000000000000000
       Size.PlatformDefault = False
       Stroke.Thickness = 0.000000000000000000
+      object Layout8: TLayout
+        Align = Left
+        Size.Width = 353.000000000000000000
+        Size.Height = 767.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+      end
       object lytToten: TLayout
         Align = Scale
         Position.X = 285.000000000000000000
@@ -706,23 +713,23 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                             Size.PlatformDefault = False
                             TabOrder = 1
                             object Rectangle5: TRectangle
-                              Align = Bottom
+                              Align = Client
                               Fill.Color = claCornflowerblue
-                              Position.Y = 16.000000000000000000
                               Size.Width = 194.000000000000000000
-                              Size.Height = 33.000000000000000000
+                              Size.Height = 32.000000000000000000
                               Size.PlatformDefault = False
                               Stroke.Thickness = 0.000000000000000000
                               object ComboBox2: TComboBox
-                                Align = Client
+                                Align = Contents
                                 Items.Strings = (
                                   '64 GB'
                                   '128 GB'
                                   '256 GB')
                                 ItemIndex = 0
                                 Size.Width = 194.000000000000000000
-                                Size.Height = 33.000000000000000000
+                                Size.Height = 32.000000000000000000
                                 Size.PlatformDefault = False
+                                StyleLookup = 'comboboxstyle'
                                 TabOrder = 0
                               end
                             end
@@ -750,61 +757,11 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                             Size.PlatformDefault = False
                             TabOrder = 2
                             object Rectangle6: TRectangle
-                              Align = Bottom
+                              Align = Client
                               Fill.Color = claAliceblue
-                              Position.Y = 16.000000000000000000
                               Size.Width = 194.000000000000000000
-                              Size.Height = 33.000000000000000000
+                              Size.Height = 32.000000000000000000
                               Size.PlatformDefault = False
-                              object Rectangle7: TRectangle
-                                Align = Right
-                                Fill.Color = claCornflowerblue
-                                Margins.Top = 1.000000000000000000
-                                Margins.Right = 1.000000000000000000
-                                Margins.Bottom = 1.000000000000000000
-                                Position.X = 160.000000000000000000
-                                Position.Y = 1.000000000000000000
-                                Size.Width = 33.000000000000000000
-                                Size.Height = 31.000000000000000000
-                                Size.PlatformDefault = False
-                                Stroke.Thickness = 0.000000000000000000
-                                object Image6: TImage
-                                  MultiResBitmap = <
-                                    item
-                                      Width = 32
-                                      Height = 32
-                                      PNG = {
-                                        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-                                        F40000000473424954080808087C08648800000150494441545885EDD6AF4A04
-                                        611486F133E0A08888605C300806C1603068355B2C268B55B1E94D68D5BAC564
-                                        B178071B34180C824130186C82888872BE73BEC7322B23AC32BBF367CBBE37F0
-                                        7B38DF8411196DB4212F01F645A43524FF39015643089D344DD326E51082A569
-                                        BA2E2222C021CDEFE0A70648628C174DC931C64B20F9751260C6CC1EEBC655F5
-                                        0998EDF92EC08AAA7ED5882BB0F6EFC701ECD51500EC16FA42DDFDAC6AD9DDCF
-                                        0BE1D915A64208F755E121840760BA704016B1A4AA1F657155FD0496FBC27311
-                                        3B6503809D81F0EEDCBD3DA8ECEEED527876850977BF1D00BF03264B0764110B
-                                        AAFA561457D57760B1123C17B1D5C701B62BC5BB73F7D302A73FA90517110152
-                                        33BBFA0B37B31B60BCB6802C624E555F7ABCFB2B305F2B9E8BD850D598C323B0
-                                        D908DE9DBB1FE7DEFDA8515C44041833B38E995D038DFECEE5235AC0B07E6847
-                                        1BAD9A7D0399A2F199334125DF0000000049454E44AE426082}
-                                    end>
-                                  Align = Contents
-                                  Margins.Left = 10.000000000000000000
-                                  Margins.Top = 5.000000000000000000
-                                  Margins.Right = 10.000000000000000000
-                                  Margins.Bottom = 5.000000000000000000
-                                  Size.Width = 13.000000000000000000
-                                  Size.Height = 21.000000000000000000
-                                  Size.PlatformDefault = False
-                                end
-                              end
-                              object Text2: TText
-                                Align = Left
-                                Size.Width = 50.000000000000000000
-                                Size.Height = 33.000000000000000000
-                                Size.PlatformDefault = False
-                                Text = 'Branco'
-                              end
                               object ComboBox1: TComboBox
                                 Align = Contents
                                 Items.Strings = (
@@ -813,8 +770,9 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                                   'Preto')
                                 ItemIndex = 0
                                 Size.Width = 194.000000000000000000
-                                Size.Height = 33.000000000000000000
+                                Size.Height = 32.000000000000000000
                                 Size.PlatformDefault = False
+                                StyleLookup = 'comboboxstyle'
                                 TabOrder = 2
                               end
                             end
@@ -1570,16 +1528,16 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                   Cursor = crHandPoint
                   Margins.Top = 10.000000000000000000
                   Margins.Bottom = 10.000000000000000000
-                  Position.X = 610.000000000000000000
+                  Position.X = 605.000000000000000000
                   Position.Y = 10.000000000000000000
                   RotationAngle = 90.000000000000000000
-                  Size.Width = 50.000000000000000000
+                  Size.Width = 55.000000000000000000
                   Size.Height = 21.000000000000000000
                   Size.PlatformDefault = False
                 end
                 object Layout2: TLayout
                   Align = Client
-                  Size.Width = 610.000000000000000000
+                  Size.Width = 605.000000000000000000
                   Size.Height = 41.000000000000000000
                   Size.PlatformDefault = False
                   TabOrder = 0
@@ -1591,7 +1549,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                     ReturnKeyType = Done
                     ClipParent = True
                     Margins.Left = 20.000000000000000000
-                    Size.Width = 590.000000000000000000
+                    Size.Width = 585.000000000000000000
                     Size.Height = 41.000000000000000000
                     Size.PlatformDefault = False
                     CheckSpelling = True
