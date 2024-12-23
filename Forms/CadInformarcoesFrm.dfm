@@ -32,6 +32,8 @@ object frmCadInformacoes: TfrmCadInformacoes
     object tabArmazenamento: TcxTabSheet
       Caption = 'Armazenamento'
       ImageIndex = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdCadastroArmazenamento: TcxGrid
         Left = 0
         Top = 0
@@ -94,6 +96,8 @@ object frmCadInformacoes: TfrmCadInformacoes
     object tabCondicao: TcxTabSheet
       Caption = 'Condi'#231#227'o'
       ImageIndex = 1
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdCadastroCondicao: TcxGrid
         Left = 0
         Top = 0
@@ -200,7 +204,7 @@ object frmCadInformacoes: TfrmCadInformacoes
           OptionsView.HeaderHeight = 30
           object grdCadastroCorDBTableViewColumn1: TcxGridDBColumn
             Caption = 'Cor'
-            DataBinding.FieldName = 'COD_DESC'
+            DataBinding.FieldName = 'COR_DESC'
             HeaderAlignmentHorz = taCenter
           end
         end

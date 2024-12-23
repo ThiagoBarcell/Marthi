@@ -32,7 +32,7 @@ object frmCadProdutos: TfrmCadProdutos
       Height = 663
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = tabConsulta
+      Properties.ActivePage = tabCadastro
       Properties.CustomButtons.Buttons = <>
       LookAndFeel.NativeStyle = False
       ClientRectBottom = 663
@@ -96,7 +96,6 @@ object frmCadProdutos: TfrmCadProdutos
             Font.Style = []
             ParentFont = False
             OnClick = btnConsultaProdutosClick
-            ExplicitLeft = 557
           end
           object btnInserir: TcxButton
             AlignWithMargins = True
@@ -130,7 +129,6 @@ object frmCadProdutos: TfrmCadProdutos
             Font.Style = []
             ParentFont = False
             OnClick = btnInserirClick
-            ExplicitLeft = 942
           end
           object pnlFiltros: TPanel
             Left = 0
@@ -223,6 +221,8 @@ object frmCadProdutos: TfrmCadProdutos
               object tabFiltroDesc: TcxTabSheet
                 Caption = 'tabFiltroDesc'
                 ImageIndex = 1
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object edtFiltroDesc: TcxTextEdit
                   Left = 32
                   Top = 7
@@ -271,8 +271,6 @@ object frmCadProdutos: TfrmCadProdutos
             Font.Style = []
             ParentFont = False
             OnClick = btnExcluirClick
-            ExplicitLeft = 991
-            ExplicitTop = 42
           end
         end
         object grdConsultaProd: TcxGrid
@@ -949,6 +947,7 @@ object frmCadProdutos: TfrmCadProdutos
                 Properties.KeyFieldNames = 'COR_ID'
                 Properties.ListColumns = <
                   item
+                    Caption = 'Cores'
                     FieldName = 'COR_DESC'
                   end>
                 Properties.ListSource = frmGeralDM.dtsCellCor

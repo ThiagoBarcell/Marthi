@@ -268,6 +268,7 @@ object frmGeralDM: TfrmGeralDM
     Top = 71
   end
   object qryCellCor: TFDQuery
+    Active = True
     OnNewRecord = qryCellCorNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellCor
@@ -344,12 +345,12 @@ object frmGeralDM: TfrmGeralDM
   object upsCellCor: TFDUpdateSQL
     Connection = ConectMarthi
     InsertSQL.Strings = (
-      'INSERT INTO CELL_CORES ( COR_ID, COD_DESC )'
-      'VALUES ( :COR_ID, :COD_DESC );')
+      'INSERT INTO CELL_CORES ( COR_ID, COR_DESC )'
+      'VALUES ( :COR_ID, :COR_DESC );')
     ModifySQL.Strings = (
       'UPDATE CELL_CORES'
       'SET COR_ID = :COR_ID,'
-      '    COD_DESC = :COD_DESC'
+      '    COR_DESC = :COR_DESC'
       'WHERE COR_ID = :OLD_COR_ID')
     DeleteSQL.Strings = (
       'DELETE FROM CELL_CORES'
