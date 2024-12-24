@@ -35,8 +35,7 @@ object frmGeralDM: TfrmGeralDM
       '  CELL_OBS,'
       '  DAT_CAD,'
       '  DAT_ALT,'
-      '  CELL_STATUS,'
-      '  CELL_REFERENCIA'
+      '  CELL_STATUS'
       'FROM CAD_CELL'
       ''
       '--WHERE DAT_CAD BETWEEN :START_DATE AND :END_DATE')
@@ -94,11 +93,6 @@ object frmGeralDM: TfrmGeralDM
       FieldName = 'CELL_STATUS'
       Origin = 'CELL_STATUS'
     end
-    object qryCadCellCELL_REFERENCIA: TStringField
-      FieldName = 'CELL_REFERENCIA'
-      Origin = 'CELL_REFERENCIA'
-      Size = 50
-    end
   end
   object dtsCadCell: TDataSource
     DataSet = qryCadCell
@@ -113,13 +107,13 @@ object frmGeralDM: TfrmGeralDM
         'SSAMENTO, CELL_MEM_RAM, '
       
         '                      CELL_CAM_PRINC, CELL_CAM_FRONT, CELL_OBS, ' +
-        'DAT_ALT, DAT_CAD, CELL_STATUS, CELL_REFERENCIA)'
+        'DAT_ALT, DAT_CAD, CELL_STATUS)'
       
         'VALUES (:CELL_ID, :CELL_MARCA, :CELL_DESC, :CELL_PROCESSAMENTO, ' +
         ':CELL_MEM_RAM, :CELL_CAM_PRINC,'
       
         '        :CELL_CAM_FRONT, :CELL_OBS, :DAT_ALT, :DAT_CAD, :CELL_ST' +
-        'ATUS, :CELL_REFERENCIA);')
+        'ATUS);')
     ModifySQL.Strings = (
       'UPDATE CAD_CELL'
       'SET CELL_ID = :CELL_ID,'
@@ -132,8 +126,7 @@ object frmGeralDM: TfrmGeralDM
       'CELL_OBS = :CELL_OBS,'
       'DAT_ALT = :DAT_ALT,'
       'DAT_CAD = :DAT_CAD,'
-      'CELL_STATUS = :CELL_STATUS,'
-      'CELL_REFERENCIA = :CELL_REFERENCIA'
+      'CELL_STATUS = :CELL_STATUS'
       'WHERE CELL_ID = :OLD_CELL_ID')
     DeleteSQL.Strings = (
       'DELETE FROM CAD_CELL'

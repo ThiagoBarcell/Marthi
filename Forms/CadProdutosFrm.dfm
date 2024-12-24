@@ -32,7 +32,7 @@ object frmCadProdutos: TfrmCadProdutos
       Height = 663
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = tabCadastro
+      Properties.ActivePage = tabConsulta
       Properties.CustomButtons.Buttons = <>
       LookAndFeel.NativeStyle = False
       ClientRectBottom = 663
@@ -158,6 +158,10 @@ object frmCadProdutos: TfrmCadProdutos
                 item
                   Description = 'Descri'#231#227'o'
                   Value = 1
+                end
+                item
+                  Description = 'Refer'#234'ncia'
+                  Value = 2
                 end>
               Properties.OnChange = cbxFiltrosPropertiesChange
               Style.LookAndFeel.Kind = lfUltraFlat
@@ -182,7 +186,7 @@ object frmCadProdutos: TfrmCadProdutos
               Height = 39
               Align = alBottom
               TabOrder = 1
-              Properties.ActivePage = tabFiltroCadastro
+              Properties.ActivePage = tabFiltroReferencia
               Properties.CustomButtons.Buttons = <>
               Properties.HideTabs = True
               LookAndFeel.NativeStyle = False
@@ -222,6 +226,15 @@ object frmCadProdutos: TfrmCadProdutos
                 Caption = 'tabFiltroDesc'
                 ImageIndex = 1
                 object edtFiltroDesc: TcxTextEdit
+                  Left = 32
+                  Top = 7
+                  TabOrder = 0
+                  Width = 437
+                end
+              end
+              object tabFiltroReferencia: TcxTabSheet
+                ImageIndex = 2
+                object edtFiltroReferencia: TcxTextEdit
                   Left = 32
                   Top = 7
                   TabOrder = 0
@@ -328,6 +341,8 @@ object frmCadProdutos: TfrmCadProdutos
             end
             object grdConsultaProdDBTableViewColumn5: TcxGridDBColumn
               Caption = 'Refer'#234'ncia'
+              DataBinding.FieldName = 'CELL_REFERENCIA'
+              PropertiesClassName = 'TcxLabelProperties'
               FooterAlignmentHorz = taCenter
               GroupSummaryAlignment = taCenter
               HeaderAlignmentHorz = taCenter
@@ -393,8 +408,6 @@ object frmCadProdutos: TfrmCadProdutos
           Color = clWhite
           ParentBackground = False
           TabOrder = 0
-          ExplicitLeft = 3
-          ExplicitTop = 2
           DesignSize = (
             1132
             663)
@@ -1181,7 +1194,7 @@ object frmCadProdutos: TfrmCadProdutos
             Left = 120
             Top = 221
             Anchors = [akLeft, akTop, akRight]
-            DataBinding.DataField = 'CELL_DESC'
+            DataBinding.DataField = 'CELL_REFERENCIA'
             DataBinding.DataSource = frmGeralDM.dtsCadCell
             TabOrder = 26
             Width = 442

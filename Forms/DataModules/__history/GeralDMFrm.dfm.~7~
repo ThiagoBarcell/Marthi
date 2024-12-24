@@ -94,11 +94,6 @@ object frmGeralDM: TfrmGeralDM
       FieldName = 'CELL_STATUS'
       Origin = 'CELL_STATUS'
     end
-    object qryCadCellCELL_REFERENCIA: TStringField
-      FieldName = 'CELL_REFERENCIA'
-      Origin = 'CELL_REFERENCIA'
-      Size = 50
-    end
   end
   object dtsCadCell: TDataSource
     DataSet = qryCadCell

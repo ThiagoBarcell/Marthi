@@ -99,6 +99,8 @@ type
     edtReferencia: TcxDBTextEdit;
     cxLabel5: TcxLabel;
     memObsCell: TcxDBMemo;
+    tabFiltroReferencia: TcxTabSheet;
+    edtFiltroReferencia: TcxTextEdit;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
@@ -213,6 +215,10 @@ begin
 
     1 : begin
           frmGeralDM.qryCadCell.SQL.Add( ' WHERE CELL_DESC LIKE ' + QuotedStr( '%' + edtFiltroDesc.Text + '%' )  )
+        end;
+
+    2 : begin
+          frmGeralDM.qryCadCell.SQL.Add( ' WHERE CELL_REFERENCIA LIKE ' + QuotedStr( '%' + edtFiltroReferencia.Text + '%' )  )
         end;
   end;
   frmGeralDM.qryCadCell.Open;

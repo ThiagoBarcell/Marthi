@@ -24,13 +24,11 @@ type
     pnlCadastroDeProduto: TPanel;
     PgeCadastroComp: TcxPageControl;
     tabCadastro: TcxTabSheet;
-    memObsCell: TcxDBMemo;
     edtCellDesc: TcxDBTextEdit;
     edtCellMemoriaRAM: TcxDBTextEdit;
     edtCellProcessamento: TcxDBTextEdit;
     cxLabel15: TcxLabel;
     cxLabel16: TcxLabel;
-    cxLabel5: TcxLabel;
     cxLabel6: TcxLabel;
     lblMemoria: TcxLabel;
     lblProcessamento: TcxLabel;
@@ -93,8 +91,16 @@ type
     ImgUteis: TcxImageCollection;
     imgNO_IMAGE: TcxImageCollectionItem;
     btnExcluir: TcxButton;
-    cxDBImageComboBox1: TcxDBImageComboBox;
+    cbxStatusCell: TcxDBImageComboBox;
     cxLabel7: TcxLabel;
+    grdConsultaProdDBTableViewColumn4: TcxGridDBColumn;
+    grdConsultaProdDBTableViewColumn5: TcxGridDBColumn;
+    cxLabel8: TcxLabel;
+    edtReferencia: TcxDBTextEdit;
+    cxLabel5: TcxLabel;
+    memObsCell: TcxDBMemo;
+    tabFiltroReferencia: TcxTabSheet;
+    edtFiltroReferencia: TcxTextEdit;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
@@ -210,6 +216,10 @@ begin
     1 : begin
           frmGeralDM.qryCadCell.SQL.Add( ' WHERE CELL_DESC LIKE ' + QuotedStr( '%' + edtFiltroDesc.Text + '%' )  )
         end;
+
+    2 : begin
+          frmGeralDM.qryCadCell.SQL.Add( ' WHERE CELL_REFERENCIA LIKE ' + QuotedStr( '%' + edtFiltroDesc.Text + '%' )  )
+        end;
   end;
   frmGeralDM.qryCadCell.Open;
 end;
@@ -220,6 +230,10 @@ begin
     frmGeralDM.qryCadCell.Edit;
 
   frmGeralDM.qryCadCell.Post;
+
+  Application.MessageBox( 'Salvo com sucesso', 'Aviso', MB_ICONEXCLAMATION + MB_OK );
+
+  btnVoltar.Click;
 end;
 
 procedure TfrmCadProdutos.btnVoltarClick(Sender: TObject);
@@ -239,6 +253,9 @@ var
  MemoryStream : TMemoryStream;
  Jpg : TJpegImage;
 begin
+  Jpg := nil;
+  MemoryStream := nil;
+
   if not(frmGeralDM.qryImagensCell.IsEmpty) and
      not((frmGeralDM.qryImagensCell.FieldByName( 'IMAGE' ) as TBlobField).IsNull)
   then
