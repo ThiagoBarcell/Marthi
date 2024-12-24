@@ -8,7 +8,8 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
   FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet, System.IniFiles;
+  FireDAC.Comp.DataSet, System.IniFiles, FireDAC.Phys.IBBase, untFuncoes,
+  System.ImageList, Vcl.ImgList, Vcl.Controls, cxImageList, cxGraphics;
 
 type
   TfrmGeralDM = class(TDataModule)
@@ -58,17 +59,20 @@ type
     qryCellCondicaoCONDICAO_ID: TIntegerField;
     qryCellCondicaoCONDICAO_DESC: TStringField;
     qryCellCorCOR_DESC: TStringField;
+    FBLink: TFDPhysFBDriverLink;
+    qryCadCellCELL_STATUS: TSmallintField;
+    imgStatus: TcxImageList;
     procedure qryCadCellNewRecord(DataSet: TDataSet);
-    procedure DataModuleCreate(Sender: TObject);
     procedure qryCadCellAfterScroll(DataSet: TDataSet);
     procedure qryCellItensNewRecord(DataSet: TDataSet);
     procedure qryCellCorNewRecord(DataSet: TDataSet);
     procedure qryCellArmazenamentoNewRecord(DataSet: TDataSet);
     procedure qryCellCondicaoNewRecord(DataSet: TDataSet);
+    procedure DataModuleCreate(Sender: TObject);
   private
+  lFuncoes: TFuncoesUteis;
     { Private declarations }
   public
-    sCaminhoApp : String;
     function ProximoNumero( GENERATOR : String ) : integer;
     { Public declarations }
   end;
@@ -83,22 +87,9 @@ implementation
 {$R *.dfm}
 
 procedure TfrmGeralDM.DataModuleCreate(Sender: TObject);
-var
- oIniCaminhos : tinifile;
- sCaminhoIni  : string;
 begin
-  sCaminhoApp := ( ExtractFilePath( ParamStr(0) ) );
-  sCaminhoIni := ( sCaminhoApp + 'caminhos.ini' );
-
-  oIniCaminhos := TIniFile.Create(sCaminhoIni);
-
-  if ( oIniCaminhos.ReadString( 'Caminhos','BD', '' ) <> '' ) then
-  begin
-    ConectMarthi.Params.Database := oIniCaminhos.ReadString( 'Caminhos','BD', '' );
-  end
-  else
-    oIniCaminhos.WriteString( 'Caminhos','BD', '' );
-
+  //Configura a conexão com o banco
+  lFuncoes.ConectaBD_Ini( ConectMarthi, FBLink );
 end;
 
 function TfrmGeralDM.ProximoNumero(GENERATOR: String): integer;
@@ -136,6 +127,7 @@ begin
   qryCadCellCELL_ID.AsInteger  := ProximoNumero( 'GEN_CAD_CELL_ID' );
   qryCadCellDAT_CAD.AsDateTime := Now;
   qryCadCellDAT_ALT.AsDateTime := Now;
+  qryCadCellCELL_STATUS.AsInteger := 1; //Status ativo
 end;
 
 procedure TfrmGeralDM.qryCellArmazenamentoNewRecord(DataSet: TDataSet);

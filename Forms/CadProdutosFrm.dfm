@@ -221,8 +221,6 @@ object frmCadProdutos: TfrmCadProdutos
               object tabFiltroDesc: TcxTabSheet
                 Caption = 'tabFiltroDesc'
                 ImageIndex = 1
-                ExplicitWidth = 0
-                ExplicitHeight = 0
                 object edtFiltroDesc: TcxTextEdit
                   Left = 32
                   Top = 7
@@ -321,12 +319,19 @@ object frmCadProdutos: TfrmCadProdutos
             OptionsView.GroupByBox = False
             OptionsView.HeaderHeight = 30
             object grdConsultaProdDBTableViewColumn1: TcxGridDBColumn
-              Caption = 'C'#243'digo'
+              Caption = 'C'#243'digo Interno'
               DataBinding.FieldName = 'CELL_ID'
               PropertiesClassName = 'TcxLabelProperties'
               Properties.Alignment.Horz = taCenter
               HeaderAlignmentHorz = taCenter
-              Width = 136
+              Width = 130
+            end
+            object grdConsultaProdDBTableViewColumn5: TcxGridDBColumn
+              Caption = 'Refer'#234'ncia'
+              FooterAlignmentHorz = taCenter
+              GroupSummaryAlignment = taCenter
+              HeaderAlignmentHorz = taCenter
+              Width = 178
             end
             object grdConsultaProdDBTableViewColumn2: TcxGridDBColumn
               Caption = 'Descri'#231#227'o'
@@ -334,7 +339,29 @@ object frmCadProdutos: TfrmCadProdutos
               PropertiesClassName = 'TcxLabelProperties'
               Properties.Alignment.Horz = taLeftJustify
               HeaderAlignmentHorz = taCenter
-              Width = 822
+              Width = 515
+            end
+            object grdConsultaProdDBTableViewColumn4: TcxGridDBColumn
+              Caption = 'Status'
+              DataBinding.FieldName = 'CELL_STATUS'
+              PropertiesClassName = 'TcxImageComboBoxProperties'
+              Properties.Alignment.Horz = taLeftJustify
+              Properties.Items = <
+                item
+                  Description = 'Inativo'
+                  ImageIndex = 1
+                  Value = 0
+                end
+                item
+                  Description = 'Ativo'
+                  ImageIndex = 0
+                  Value = 1
+                end>
+              Properties.PopupAlignment = taCenter
+              FooterAlignmentHorz = taCenter
+              GroupSummaryAlignment = taCenter
+              HeaderAlignmentHorz = taCenter
+              Width = 104
             end
             object grdConsultaProdDBTableViewColumn3: TcxGridDBColumn
               Caption = 'Marca'
@@ -342,7 +369,7 @@ object frmCadProdutos: TfrmCadProdutos
               PropertiesClassName = 'TcxLabelProperties'
               Properties.Alignment.Horz = taCenter
               HeaderAlignmentHorz = taCenter
-              Width = 153
+              Width = 197
             end
           end
           object grdConsultaProdLevel: TcxGridLevel
@@ -366,6 +393,8 @@ object frmCadProdutos: TfrmCadProdutos
           Color = clWhite
           ParentBackground = False
           TabOrder = 0
+          ExplicitLeft = 3
+          ExplicitTop = 2
           DesignSize = (
             1132
             663)
@@ -536,41 +565,31 @@ object frmCadProdutos: TfrmCadProdutos
             Stretch = True
             ExplicitLeft = 642
           end
-          object memObsCell: TcxDBMemo
-            Left = 120
-            Top = 192
-            Anchors = [akLeft, akTop, akRight]
-            DataBinding.DataField = 'CELL_OBS'
-            DataBinding.DataSource = frmGeralDM.dtsCadCell
-            TabOrder = 0
-            Height = 81
-            Width = 442
-          end
           object edtCellDesc: TcxDBTextEdit
             Left = 120
-            Top = 56
+            Top = 79
             Anchors = [akLeft, akTop, akRight]
             DataBinding.DataField = 'CELL_DESC'
             DataBinding.DataSource = frmGeralDM.dtsCadCell
-            TabOrder = 1
+            TabOrder = 0
             Width = 442
           end
           object edtCellMemoriaRAM: TcxDBTextEdit
             Left = 120
-            Top = 110
+            Top = 135
             Anchors = [akLeft, akTop, akRight]
             DataBinding.DataField = 'CELL_MEM_RAM'
             DataBinding.DataSource = frmGeralDM.dtsCadCell
-            TabOrder = 2
+            TabOrder = 1
             Width = 442
           end
           object edtCellProcessamento: TcxDBTextEdit
             Left = 120
-            Top = 83
+            Top = 107
             Anchors = [akLeft, akTop, akRight]
             DataBinding.DataField = 'CELL_PROCESSAMENTO'
             DataBinding.DataSource = frmGeralDM.dtsCadCell
-            TabOrder = 3
+            TabOrder = 2
             Width = 442
           end
           object cxLabel15: TcxLabel
@@ -591,20 +610,8 @@ object frmCadProdutos: TfrmCadProdutos
           end
           object cxLabel16: TcxLabel
             Left = 71
-            Top = 33
+            Top = 51
             Caption = 'Marca :'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Segoe UI'
-            Style.Font.Style = [fsBold]
-            Style.IsFontAssigned = True
-          end
-          object cxLabel5: TcxLabel
-            Left = 43
-            Top = 195
-            Caption = 'Observa'#231#227'o :'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
             Style.Font.Color = clWindowText
@@ -615,7 +622,7 @@ object frmCadProdutos: TfrmCadProdutos
           end
           object cxLabel6: TcxLabel
             Left = 62
-            Top = 59
+            Top = 79
             Caption = 'Modelo :'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -627,7 +634,7 @@ object frmCadProdutos: TfrmCadProdutos
           end
           object lblMemoria: TcxLabel
             Left = 77
-            Top = 113
+            Top = 135
             Caption = 'RAM :'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -639,7 +646,7 @@ object frmCadProdutos: TfrmCadProdutos
           end
           object lblProcessamento: TcxLabel
             Left = 40
-            Top = 86
+            Top = 107
             Caption = 'Processador :'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -651,7 +658,7 @@ object frmCadProdutos: TfrmCadProdutos
           end
           object cxLabel3: TcxLabel
             Left = 22
-            Top = 140
+            Top = 163
             Caption = 'C'#226'mera Traseira :'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -663,16 +670,16 @@ object frmCadProdutos: TfrmCadProdutos
           end
           object edtPrincCam: TcxDBTextEdit
             Left = 120
-            Top = 137
+            Top = 163
             Anchors = [akLeft, akTop, akRight]
             DataBinding.DataField = 'CELL_CAM_PRINC'
             DataBinding.DataSource = frmGeralDM.dtsCadCell
-            TabOrder = 11
+            TabOrder = 9
             Width = 442
           end
           object cxLabel4: TcxLabel
             Left = 26
-            Top = 167
+            Top = 191
             Caption = 'C'#226'mera frontal :'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -684,11 +691,11 @@ object frmCadProdutos: TfrmCadProdutos
           end
           object edtFrontCam: TcxDBTextEdit
             Left = 120
-            Top = 164
+            Top = 191
             Anchors = [akLeft, akTop, akRight]
             DataBinding.DataField = 'CELL_CAM_FRONT'
             DataBinding.DataSource = frmGeralDM.dtsCadCell
-            TabOrder = 13
+            TabOrder = 11
             Width = 442
           end
           object Panel1: TPanel
@@ -698,7 +705,7 @@ object frmCadProdutos: TfrmCadProdutos
             Height = 76
             Align = alBottom
             BevelOuter = bvNone
-            TabOrder = 14
+            TabOrder = 12
             object btnSalvar: TcxButton
               AlignWithMargins = True
               Left = 3
@@ -758,7 +765,7 @@ object frmCadProdutos: TfrmCadProdutos
           end
           object cbxMarcaCell: TcxDBImageComboBox
             Left = 120
-            Top = 29
+            Top = 51
             Anchors = [akLeft, akTop, akRight]
             DataBinding.DataField = 'CELL_MARCA'
             DataBinding.DataSource = frmGeralDM.dtsCadCell
@@ -770,7 +777,7 @@ object frmCadProdutos: TfrmCadProdutos
                 ImageIndex = 0
                 Value = 0
               end>
-            TabOrder = 15
+            TabOrder = 13
             Width = 442
           end
           object cxGridImages: TcxGrid
@@ -778,7 +785,7 @@ object frmCadProdutos: TfrmCadProdutos
             Top = 460
             Width = 218
             Height = 67
-            TabOrder = 16
+            TabOrder = 14
             LookAndFeel.SkinName = 'UserSkin'
             object cxGridImagesDBTableViewImage: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
@@ -849,7 +856,7 @@ object frmCadProdutos: TfrmCadProdutos
               1C6223B5174D2C60331D3C8C129E6AB12FEFF6F7AF8A1F07340B7D2B84B03A62
               66AB0AB09534B66AA03BCEC04275E9ADE28EFAADF95D75D0FE00B82B822B6955
               A9E20000000049454E44AE426082}
-            TabOrder = 17
+            TabOrder = 15
             OnClick = btnAddImageClick
           end
           object btnExcluiImg: TcxButton
@@ -880,15 +887,15 @@ object frmCadProdutos: TfrmCadProdutos
               43BC0C3DFB1427F98C67B9CE01F4A9C9D0F6E0BCC365DC30F9D0D4651117F07C
               1F09B9826FF2EFFFB192C63D32EDD15FC425CC7724B385D7265FBCFF237F01AF
               BD8C981C734D460000000049454E44AE426082}
-            TabOrder = 18
+            TabOrder = 16
             OnClick = btnExcluiImgClick
           end
           object grdCell_Itens: TcxGrid
             Left = 22
-            Top = 366
+            Top = 410
             Width = 540
-            Height = 196
-            TabOrder = 19
+            Height = 171
+            TabOrder = 17
             LookAndFeel.Kind = lfOffice11
             LookAndFeel.NativeStyle = False
             LookAndFeel.SkinName = 'UserSkin'
@@ -992,7 +999,7 @@ object frmCadProdutos: TfrmCadProdutos
           end
           object cxLabel1: TcxLabel
             Left = 22
-            Top = 280
+            Top = 324
             Caption = 'Especifica'#231#245'es :'
             ParentFont = False
             Style.Font.Charset = DEFAULT_CHARSET
@@ -1004,7 +1011,7 @@ object frmCadProdutos: TfrmCadProdutos
           end
           object btnCadArmazenamento: TcxButton
             Left = 22
-            Top = 303
+            Top = 347
             Width = 176
             Height = 57
             Anchors = [akTop, akRight]
@@ -1029,12 +1036,12 @@ object frmCadProdutos: TfrmCadProdutos
               C3654CD6E45496F72A830DE1AAECD43480F7750C06627F5D28DFC7D17AC2D8CF
               85D4A08FBBC2C59DAD86476812C342A15BCE2D68E185504BEA3E5372CF969EE4
               D9B2075A746663A04FF9E00000000049454E44AE426082}
-            TabOrder = 21
+            TabOrder = 19
             OnClick = btnCadArmazenamentoClick
           end
           object btnCadCor: TcxButton
             Left = 204
-            Top = 303
+            Top = 347
             Width = 176
             Height = 57
             Anchors = [akTop, akRight]
@@ -1070,12 +1077,12 @@ object frmCadProdutos: TfrmCadProdutos
               E84C5123BA9672F05361F433B6E331A5C29E550EFD30FA6A763F6067D8DC348B
               A20E408B706338DE1EDC4EE23BBC84731BFAA3CA83F4B6783EFF01AB8D8E7B9C
               C436730000000049454E44AE426082}
-            TabOrder = 22
+            TabOrder = 20
             OnClick = btnCadCorClick
           end
           object btnCadCondicao: TcxButton
             Left = 386
-            Top = 303
+            Top = 347
             Width = 176
             Height = 57
             Anchors = [akTop, akRight]
@@ -1107,7 +1114,7 @@ object frmCadProdutos: TfrmCadProdutos
               CDCF644966EE1D45CE290F0232F3E251E0CC3C51FF8AB732F358FBAC26D19D02
               6FE08188E80575B45585876BF117DEEC035FAE7901F32CFB1758D757D67F03FF
               DAA6321D9AA7EA0000000049454E44AE426082}
-            TabOrder = 23
+            TabOrder = 21
             OnClick = btnCadCondicaoClick
           end
           object cxLabel2: TcxLabel
@@ -1125,6 +1132,81 @@ object frmCadProdutos: TfrmCadProdutos
             Style.Font.Name = 'Segoe UI'
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
+          end
+          object cbxStatusCell: TcxDBImageComboBox
+            Left = 120
+            Top = 24
+            DataBinding.DataField = 'CELL_STATUS'
+            DataBinding.DataSource = frmGeralDM.dtsCadCell
+            Properties.Alignment.Horz = taLeftJustify
+            Properties.Items = <
+              item
+                Description = 'Inativo'
+                ImageIndex = 1
+                Value = 0
+              end
+              item
+                Description = 'Ativo'
+                ImageIndex = 0
+                Value = 1
+              end>
+            TabOrder = 23
+            Width = 442
+          end
+          object cxLabel7: TcxLabel
+            Left = 71
+            Top = 26
+            Caption = 'Status :'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Segoe UI'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+          end
+          object cxLabel8: TcxLabel
+            Left = 49
+            Top = 221
+            Caption = 'Refer'#234'ncia :'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Segoe UI'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+          end
+          object edtReferencia: TcxDBTextEdit
+            Left = 120
+            Top = 221
+            Anchors = [akLeft, akTop, akRight]
+            DataBinding.DataField = 'CELL_DESC'
+            DataBinding.DataSource = frmGeralDM.dtsCadCell
+            TabOrder = 26
+            Width = 442
+          end
+          object cxLabel5: TcxLabel
+            Left = 43
+            Top = 251
+            Caption = 'Observa'#231#227'o :'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Segoe UI'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+          end
+          object memObsCell: TcxDBMemo
+            Left = 120
+            Top = 251
+            Anchors = [akLeft, akTop, akRight]
+            DataBinding.DataField = 'CELL_OBS'
+            DataBinding.DataSource = frmGeralDM.dtsCadCell
+            TabOrder = 28
+            Height = 81
+            Width = 442
           end
         end
       end
@@ -7610,7 +7692,7 @@ object frmCadProdutos: TfrmCadProdutos
   object imgMarcas: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 1573160
+    DesignInfo = 4719680
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -7631,12 +7713,12 @@ object frmCadProdutos: TfrmCadProdutos
   end
   object OpenDialog: TOpenDialog
     Filter = 'Imagens( JPG )|*.jpg|Imagens( JPEG )|*.jpeg'
-    Left = 296
-    Top = 88
+    Left = 1088
+    Top = 136
   end
   object ImgUteis: TcxImageCollection
-    Left = 296
-    Top = 153
+    Left = 1088
+    Top = 201
     object imgNO_IMAGE: TcxImageCollectionItem
       Picture.Data = {
         0B546478504E47496D61676589504E470D0A1A0A0000000D4948445200000200

@@ -14,7 +14,7 @@ uses
   Data.DB, cxDBData, cxRadioGroup, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, dxBevel,
   GeralDMFrm, Vcl.ComCtrls, Jpeg, untFuncoes, cxCurrencyEdit, CadInformarcoesFrm,
-  cxDBLookupComboBox, dxGDIPlusClasses;
+  cxDBLookupComboBox, dxGDIPlusClasses, FireDAC.Stan.Param;
 
 const
   OffsetMemoryStream : Int64 = 0;
@@ -24,13 +24,11 @@ type
     pnlCadastroDeProduto: TPanel;
     PgeCadastroComp: TcxPageControl;
     tabCadastro: TcxTabSheet;
-    memObsCell: TcxDBMemo;
     edtCellDesc: TcxDBTextEdit;
     edtCellMemoriaRAM: TcxDBTextEdit;
     edtCellProcessamento: TcxDBTextEdit;
     cxLabel15: TcxLabel;
     cxLabel16: TcxLabel;
-    cxLabel5: TcxLabel;
     cxLabel6: TcxLabel;
     lblMemoria: TcxLabel;
     lblProcessamento: TcxLabel;
@@ -93,6 +91,14 @@ type
     ImgUteis: TcxImageCollection;
     imgNO_IMAGE: TcxImageCollectionItem;
     btnExcluir: TcxButton;
+    cbxStatusCell: TcxDBImageComboBox;
+    cxLabel7: TcxLabel;
+    grdConsultaProdDBTableViewColumn4: TcxGridDBColumn;
+    grdConsultaProdDBTableViewColumn5: TcxGridDBColumn;
+    cxLabel8: TcxLabel;
+    edtReferencia: TcxDBTextEdit;
+    cxLabel5: TcxLabel;
+    memObsCell: TcxDBMemo;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
@@ -167,8 +173,6 @@ begin
 end;
 
 procedure TfrmCadProdutos.btnCadArmazenamentoClick(Sender: TObject);
-var
-  CadArmazenamento : TfrmCadInformacoes;
 begin
   AbreTelaInfo( 0 )
 end;
@@ -181,7 +185,7 @@ begin
   try
     CadInformacoes.ShowModal;
   finally
-    Funcoes.AbreQrysInfo;
+    Funcoes.AbreQrysInfo( frmGeralDM.qryCellArmazenamento, frmGeralDM.qryCellCondicao, frmGeralDM.qryCellCor );
     FreeAndNil( CadInformacoes );
   end;
 end;
@@ -220,6 +224,10 @@ begin
     frmGeralDM.qryCadCell.Edit;
 
   frmGeralDM.qryCadCell.Post;
+
+  Application.MessageBox( 'Salvo com sucesso', 'Aviso', MB_ICONEXCLAMATION + MB_OK );
+
+  btnVoltar.Click;
 end;
 
 procedure TfrmCadProdutos.btnVoltarClick(Sender: TObject);
@@ -239,6 +247,9 @@ var
  MemoryStream : TMemoryStream;
  Jpg : TJpegImage;
 begin
+  Jpg := nil;
+  MemoryStream := nil;
+
   if not(frmGeralDM.qryImagensCell.IsEmpty) and
      not((frmGeralDM.qryImagensCell.FieldByName( 'IMAGE' ) as TBlobField).IsNull)
   then
@@ -309,7 +320,7 @@ procedure TfrmCadProdutos.tabCadastroShow(Sender: TObject);
 begin
   //ImageCell.Picture := NIL;
   lblTitulo.Caption := 'Cadastro de Celulares';
-  Funcoes.AbreQrysInfo;
+  Funcoes.AbreQrysInfo( frmGeralDM.qryCellArmazenamento, frmGeralDM.qryCellCondicao, frmGeralDM.qryCellCor );
 
   ImageCell.Picture.Assign( ImgUteis.Items[0].Picture);
 end;

@@ -1,5 +1,0 @@
-object frmGeralDM: TfrmGeralDM
-  OldCreateOrder = False
-  Height = 489
-  Width = 674
-end

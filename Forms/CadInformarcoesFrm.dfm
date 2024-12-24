@@ -157,6 +157,8 @@ object frmCadInformacoes: TfrmCadInformacoes
     object tabCor: TcxTabSheet
       Caption = 'Cor'
       ImageIndex = 2
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdCadastroCor: TcxGrid
         Left = 0
         Top = 0
