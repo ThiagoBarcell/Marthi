@@ -13,8 +13,6 @@ type
     tbc1: TTabControl;
     TabItem1: TTabItem;
     Layout6: TLayout;
-    lst1: TListBox;
-    ListBoxImagens: TListBoxItem;
     Layout7: TLayout;
     Layout5: TLayout;
     Rectangle5: TRectangle;
@@ -49,6 +47,7 @@ type
     ShadowEffect8: TShadowEffect;
     lbl1: TLabel;
     imgCell: TRectangle;
+    HorzScrollBoxImagens: THorzScrollBox;
   private
     { Private declarations }
   public

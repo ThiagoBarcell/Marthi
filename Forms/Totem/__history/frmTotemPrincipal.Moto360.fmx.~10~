@@ -1,0 +1,68 @@
+inherited TotemPrincipalfrm_Moto360: TTotemPrincipalfrm_Moto360
+  ClientHeight = 218
+  ClientWidth = 240
+  DesignerMasterStyle = 0
+  inherited lytGlobal: TLayout
+    Size.Width = 240.000000000000000000
+    Size.Height = 218.000000000000000000
+    inherited Rectangle8: TRectangle
+      Size.Width = 240.000000000000000000
+      Size.Height = 218.000000000000000000
+      inherited Layout8: TLayout
+        Size.Height = 218.000000000000000000
+      end
+      inherited lytToten: TLayout
+        Position.X = -1.552209496498108000
+        Position.Y = -6.291205883026123000
+        inherited Rectangle11: TRectangle
+          inherited lytCenter: TLayout
+            inherited Rectangle10: TRectangle
+              inherited Layout3: TLayout
+                inherited VertScrollBox1: TVertScrollBox
+                  Viewport.Width = 420.000000000000000000
+                  Viewport.Height = 649.000000000000000000
+                  inherited lstCelulares: TListBox
+                    Viewport.Width = 420.000000000000000000
+                    Viewport.Height = 649.000000000000000000
+                  end
+                end
+              end
+            end
+          end
+          inherited lytModelo: TLayout
+            inherited Rectangle9: TRectangle
+              inherited RoundRect1: TRoundRect
+                inherited Image2: TImage
+                  inherited Label2: TLabel
+                    TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  end
+                end
+              end
+              inherited RoundRect2: TRoundRect
+                inherited Image1: TImage
+                  inherited Label1: TLabel
+                    TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  end
+                end
+              end
+            end
+          end
+          inherited lytTop: TLayout
+            inherited Layout1: TLayout
+              inherited RoundRect3: TRoundRect
+                inherited Layout2: TLayout
+                  inherited Edit1: TEdit
+                    Size.Height = 32.000000000000000000
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  inherited qryCadCell: TFDQuery
+    Active = True
+  end
+end

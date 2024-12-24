@@ -7,12 +7,12 @@ object frmGeralDM: TfrmGeralDM
     Params.Strings = (
       'User_Name=SYSDBA'
       'Password=masterkey'
-      'Server=10.242.255.190'
+      'Server=LOCALHOST'
       'Port=3050'
-      'Database=D:\Marthi DataBase\DataBase\MARTHIDB.FDB'
-      'Protocol=TCPIP'
+      
+        'Database=C:\Sistemas\Marthi GIT\Marthi DataBase\DataBase\MARTHID' +
+        'B.FDB'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 56
     Top = 16
@@ -269,7 +269,6 @@ object frmGeralDM: TfrmGeralDM
     Top = 71
   end
   object qryCellCor: TFDQuery
-    Active = True
     OnNewRecord = qryCellCorNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellCor
