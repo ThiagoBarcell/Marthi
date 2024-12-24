@@ -13,7 +13,8 @@ uses
   FireDAC.DApt.Intf, FireDAC.DApt, Data.Bind.EngExt, Fmx.Bind.DBEngExt,
   System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.Components,
   Data.Bind.DBScope, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  Frame.MarthiGIT.Totem, Winapi.Windows, System.Math;
+  Frame.MarthiGIT.Totem, Winapi.Windows, System.Math, System.IniFiles, Untfuncoes,
+  FireDAC.Phys.IBBase;
 
 type
   TTotemPrincipalfrm = class(TForm)
@@ -67,7 +68,13 @@ type
     qryCadCellCELL_DESC: TStringField;
     qryCadCellCOR_DESC: TStringField;
     qryCadCellARMAZENAMENTO_DESC: TStringField;
+    qryCadCellCELL_VAL_UNIT: TFMTBCDField;
+    qryCadCellCELL_VAL_PARC: TFMTBCDField;
+    Rectangle3: TRectangle;
+    Layout4: TLayout;
+    FBLink: TFDPhysFBDriverLink;
     procedure FormCreate(Sender: TObject);
+    procedure Rectangle3Click(Sender: TObject);
   private
     { Private declarations }
     procedure CarregarDados;
@@ -119,7 +126,17 @@ begin
 
     // Atualiza o texto do label
     Frame.lblNomeItem.Text := dtsCadCell.DataSet.FieldByName('CELL_DESC').AsString;
+    try
+      Frame.lblValorAVista.Text := 'R$ ' + FloatToStrF(dtsCadCell.DataSet.FieldByName('CELL_VAL_UNIT').AsFloat, ffFixed, 15, 2);
+    except
+      Frame.lblValorAVista.Text := 'R$ 0,00';
+    end;
 
+    try
+      Frame.lblValorAPrazo.Text := FloatToStrF(dtsCadCell.DataSet.FieldByName('CELL_VAL_PARC').AsFloat, ffFixed, 15, 2);
+    except
+      Frame.lblValorAPrazo.Text := '';
+    end;
     // Acessa o campo BLOB
 //    BlobField := dtsCadCell.DataSet.FieldByName('IMAGE') as TBlobField;
 
@@ -200,6 +217,7 @@ begin
         CloneRect.Fill.Bitmap.WrapMode := TWrapMode.TileStretch; // Define o preenchimento como bitmap
         CloneRect.XRadius := 10;
         CloneRect.YRadius := 10;
+        CloneRect.Corners := [TCorner.TopLeft, TCorner.BottomLeft];
         CloneRect.SendToBack;
 
         // Carrega a imagem do banco
@@ -253,8 +271,27 @@ begin
 end;
 
 procedure TTotemPrincipalfrm.FormCreate(Sender: TObject);
+var
+ oIniCaminhos : tinifile;
+ sCaminhoIni, sCaminhoApp  : string;
 begin
+  sCaminhoApp := ( ExtractFilePath( ParamStr(0) ) );
+  sCaminhoIni := ( sCaminhoApp + 'caminhos.ini' );
+
+  oIniCaminhos := TIniFile.Create(sCaminhoIni);
+
+  if ( oIniCaminhos.ReadString( 'Caminhos','BD', '' ) <> '' ) then
+  begin
+    ConectMarthi.Params.Database := oIniCaminhos.ReadString( 'Caminhos','BD', '' );
+  end
+  else
+    oIniCaminhos.WriteString( 'Caminhos','BD', '' );
   CarregarDados;
+end;
+
+procedure TTotemPrincipalfrm.Rectangle3Click(Sender: TObject);
+begin
+  Close;
 end;
 
 end.

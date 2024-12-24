@@ -1,25 +1,21 @@
-inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
-  ClientHeight = 1024
-  ClientWidth = 768
+inherited TotemPrincipalfrm_Moto360: TTotemPrincipalfrm_Moto360
+  ClientHeight = 218
+  ClientWidth = 240
   DesignerMasterStyle = 0
   inherited lytGlobal: TLayout
-    Size.Width = 768.000000000000000000
-    Size.Height = 1024.000000000000000000
+    Size.Width = 240.000000000000000000
+    Size.Height = 218.000000000000000000
     inherited Rectangle8: TRectangle
-      Size.Width = 768.000000000000000000
-      Size.Height = 1024.000000000000000000
+      Size.Width = 240.000000000000000000
+      Size.Height = 218.000000000000000000
       inherited Layout8: TLayout
-        Size.Height = 1024.000000000000000000
+        Size.Height = 218.000000000000000000
       end
       inherited lytToten: TLayout
-        Size.Width = 168.000000000000000000
-        Size.Height = 1024.000000000000000000
+        Size.Width = 0.000000000000000000
+        Size.Height = 218.000000000000000000
         inherited Rectangle11: TRectangle
-          Size.Width = 168.000000000000000000
-          Size.Height = 1024.000000000000000000
           inherited lytCenter: TLayout
-            Size.Width = 0.000000000000000000
-            Size.Height = 769.000000000000000000
             inherited Rectangle10: TRectangle
               inherited Layout3: TLayout
                 inherited VertScrollBox1: TVertScrollBox
@@ -30,9 +26,7 @@ inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
             end
           end
           inherited lytModelo: TLayout
-            Size.Height = 769.000000000000000000
             inherited Rectangle9: TRectangle
-              Size.Height = 769.000000000000000000
               inherited RoundRect1: TRoundRect
                 inherited Image2: TImage
                   inherited Label2: TLabel
@@ -49,30 +43,12 @@ inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
               end
             end
           end
-          inherited lytRodape: TLayout
-            Position.Y = 974.000000000000000000
-            Size.Width = 168.000000000000000000
-            inherited Rectangle2: TRectangle
-              Size.Width = 168.000000000000000000
-            end
-          end
           inherited lytTop: TLayout
-            Size.Width = 168.000000000000000000
-            inherited Rectangle1: TRectangle
-              Size.Width = 168.000000000000000000
-            end
             inherited Layout1: TLayout
-              Size.Width = 138.000000000000000000
               inherited RoundRect3: TRoundRect
-                Size.Width = 128.000000000000000000
-                inherited Image3: TImage
-                  Position.X = 73.000000000000000000
-                end
                 inherited Layout2: TLayout
-                  Size.Width = 73.000000000000000000
                   inherited Edit1: TEdit
-                    Size.Width = 53.000000000000000000
-                    Size.Height = 29.000000000000000000
+                    Size.Height = 32.000000000000000000
                   end
                 end
               end
@@ -81,9 +57,28 @@ inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
         end
       end
       inherited Layout4: TLayout
-        Position.X = 468.000000000000000000
-        Size.Height = 1024.000000000000000000
+        Position.X = -60.000000000000000000
+        Size.Height = 218.000000000000000000
       end
     end
+    inherited Rectangle3: TRectangle
+      Fill.Bitmap.Bitmap.PNG = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F8000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+        013B49444154484BED93314BC35010C75F8450BF80826BC99040CDA283524AB1
+        BA88F8651D74B143A1E0D22996F086D0B5453F80434AE2FF9F3EF135DE4B0675
+        CB0F8EBBDE25FF7BBD77511D1DBFC633FE075114CDE17ABEEFDF2549F2B6CBEE
+        13C7F1719EE78F65597E68AD4726BDC781F11287B073084C29B44B7D63C4A708
+        CF3CCFE3B322CE0678F916EE1536403C0BC3F0A42A8020088E907B4638806934
+        B8AF0A02CE11110A61443CE5294C6314932DB07310BF4AD3748358A4B101B146
+        C1D3AEAAA4527DD8128DAE5DF7F3456B03629ABC20A4305941FCB24D9C345DF2
+        9FD0DAC01A114FCF11D1FACC49DB55A7B181B02D43FCBE402C6E9784F30EEA1B
+        646F8BB45DF8D0D6ACD571FE03083CC15180DB32B65731CBB277E46E102E6121
+        9A3F54050167037EFE700B0889ABC81C6B08174551F0D98E8E7F41A94F73E98C
+        82F6D9E32A0000000049454E44AE426082}
+    end
+  end
+  inherited qryCadCell: TFDQuery
+    Active = True
   end
 end

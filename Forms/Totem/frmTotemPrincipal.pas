@@ -13,7 +13,8 @@ uses
   FireDAC.DApt.Intf, FireDAC.DApt, Data.Bind.EngExt, Fmx.Bind.DBEngExt,
   System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.Components,
   Data.Bind.DBScope, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  Frame.MarthiGIT.Totem, Winapi.Windows, System.Math, System.IniFiles;
+  Frame.MarthiGIT.Totem, Winapi.Windows, System.Math, System.IniFiles, Untfuncoes,
+  FireDAC.Phys.IBBase;
 
 type
   TTotemPrincipalfrm = class(TForm)
@@ -71,6 +72,7 @@ type
     qryCadCellCELL_VAL_PARC: TFMTBCDField;
     Rectangle3: TRectangle;
     Layout4: TLayout;
+    FBLink: TFDPhysFBDriverLink;
     procedure FormCreate(Sender: TObject);
     procedure Rectangle3Click(Sender: TObject);
   private
@@ -103,6 +105,10 @@ var
   BlobField: TBlobField;
   Cont, CellID: Integer;
 begin
+  //Atualiza a qry principal
+  qryCadCell.Close;
+  qryCadCell.Open;
+
   Cont := 0;
   // Limpa os componentes existentes no VertScrollBox
   while VertScrollBox1.Content.ControlsCount > 0 do
@@ -271,19 +277,23 @@ end;
 procedure TTotemPrincipalfrm.FormCreate(Sender: TObject);
 var
  oIniCaminhos : tinifile;
+ lFuncoes : TFuncoesUteis;
  sCaminhoIni, sCaminhoApp  : string;
 begin
-  sCaminhoApp := ( ExtractFilePath( ParamStr(0) ) );
-  sCaminhoIni := ( sCaminhoApp + 'caminhos.ini' );
+//  sCaminhoApp := ( ExtractFilePath( ParamStr(0) ) );
+//  sCaminhoIni := ( sCaminhoApp + 'caminhos.ini' );
+//
+//  oIniCaminhos := TIniFile.Create(sCaminhoIni);
+//
+//  if ( oIniCaminhos.ReadString( 'Caminhos','BD', '' ) <> '' ) then
+//  begin
+//    ConectMarthi.Params.Database := oIniCaminhos.ReadString( 'Caminhos','BD', '' );
+//  end
+//  else
+//    oIniCaminhos.WriteString( 'Caminhos','BD', '' );
 
-  oIniCaminhos := TIniFile.Create(sCaminhoIni);
+  lFuncoes.ConectaBD_Ini( ConectMarthi, FBLink );
 
-  if ( oIniCaminhos.ReadString( 'Caminhos','BD', '' ) <> '' ) then
-  begin
-    ConectMarthi.Params.Database := oIniCaminhos.ReadString( 'Caminhos','BD', '' );
-  end
-  else
-    oIniCaminhos.WriteString( 'Caminhos','BD', '' );
   CarregarDados;
 end;
 
