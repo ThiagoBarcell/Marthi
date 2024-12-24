@@ -4,7 +4,8 @@ uses
   System.StartUpCopy,
   FMX.Forms,
   frmTotemPrincipal in 'frmTotemPrincipal.pas' {TotemPrincipalfrm},
-  GeralDMFrm in '..\DataModules\GeralDMFrm.pas' {frmGeralDM: TDataModule};
+  GeralDMFrm in '..\DataModules\GeralDMFrm.pas' {frmGeralDM: TDataModule},
+  Frame.MarthiGIT.Totem in 'Frame.MarthiGIT.Totem.pas' {FrameTotem: TFrame};
 
 {$R *.res}
 

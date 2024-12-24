@@ -12,7 +12,8 @@ uses
   FireDAC.Phys.FBDef, FireDAC.FMXUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, Data.Bind.EngExt, Fmx.Bind.DBEngExt,
   System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.Components,
-  Data.Bind.DBScope, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  Data.Bind.DBScope, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Frame.MarthiGIT.Totem, Winapi.Windows;
 
 type
   TTotemPrincipalfrm = class(TForm)
@@ -28,8 +29,6 @@ type
     Image2: TImage;
     ShadowEffect5: TShadowEffect;
     ShadowEffect6: TShadowEffect;
-    Rectangle4: TRectangle;
-    ShadowEffect7: TShadowEffect;
     VertScrollBox1: TVertScrollBox;
     lytTop: TLayout;
     lytModelo: TLayout;
@@ -46,75 +45,35 @@ type
     Label10: TLabel;
     Edit1: TEdit;
     Layout2: TLayout;
-    TabControl2: TTabControl;
-    TabItem1: TTabItem;
-    TabItem4: TTabItem;
-    imgCell: TImage;
-    Label4: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    Layout4: TLayout;
-    ComboBox1: TComboBox;
-    Label3: TLabel;
-    Layout5: TLayout;
-    ComboBox2: TComboBox;
-    Label5: TLabel;
-    Rectangle3: TRectangle;
-    Image5: TImage;
-    Rectangle5: TRectangle;
-    Rectangle6: TRectangle;
-    Layout6: TLayout;
     ConectMarthi: TFDConnection;
     qryCadCell: TFDQuery;
-    qryCadCellCELL_ID: TIntegerField;
-    qryCadCellCELL_MARCA: TIntegerField;
-    qryCadCellCELL_DESC: TStringField;
-    qryCadCellCELL_PROCESSAMENTO: TStringField;
-    qryCadCellCELL_MEM_RAM: TStringField;
-    qryCadCellCELL_ARMAZENAMENTO: TIntegerField;
-    qryCadCellCELL_CAM_PRINC: TStringField;
-    qryCadCellCELL_CAM_FRONT: TStringField;
-    qryCadCellCELL_COR: TStringField;
-    qryCadCellCELL_OBS: TStringField;
-    qryCadCellCELL_VALOR_UNITARIO: TFMTBCDField;
-    qryCadCellCELL_VALOR_PARCELADO: TFMTBCDField;
-    qryCadCellDAT_CAD: TDateField;
-    qryCadCellDAT_ALT: TDateField;
     qryImagensCell: TFDQuery;
     qryImagensCellCELL_ID: TIntegerField;
     qryImagensCellSEQUENCIA: TIntegerField;
     qryImagensCellIMAGE: TBlobField;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
-    LinkPropertyToFieldBitmap: TLinkPropertyToField;
     lytGlobal: TLayout;
     lytToten: TLayout;
     Rectangle8: TRectangle;
     Rectangle9: TRectangle;
     Rectangle10: TRectangle;
     Rectangle11: TRectangle;
-    Layout7: TLayout;
     Layout8: TLayout;
-    Layout9: TLayout;
-    lbl2: TLabel;
-    edt1: TEdit;
-    lbl3: TLabel;
-    edt2: TEdit;
-    lbl4: TLabel;
-    cbb1: TComboBox;
-    lbl5: TLabel;
-    cbb2: TComboBox;
-    lbl6: TLabel;
-    cbb3: TComboBox;
-    lbl7: TLabel;
-    RoundRect4: TRoundRect;
-    ShadowEffect1: TShadowEffect;
-    img1: TImage;
-    ShadowEffect8: TShadowEffect;
-    lbl1: TLabel;
+    lstCelulares: TListBox;
+    ListCelularItem: TListBoxItem;
+    BindSourceDB2: TBindSourceDB;
+    LinkFillControlToField1: TLinkFillControlToField;
+    BindSourceDB3: TBindSourceDB;
+    qryCadCellCELL_ID: TIntegerField;
+    qryCadCellCELL_DESC: TStringField;
+    qryCadCellCOR_DESC: TStringField;
+    qryCadCellARMAZENAMENTO_DESC: TStringField;
+    qryCadCellIMAGE: TBlobField;
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
+    procedure CarregarDados;
   public
     { Public declarations }
   end;
@@ -130,5 +89,61 @@ implementation
 {$R *.iPhone55in.fmx IOS}
 {$R *.iPad.fmx IOS}
 {$R *.Windows.fmx MSWINDOWS}
+
+{ TTotemPrincipalfrm }
+
+procedure TTotemPrincipalfrm.CarregarDados;
+var
+  Frame: TFrameTotem;
+  LStream: TMemoryStream;
+  Rectangle: TRectangle;
+  BlobField: TBlobField;
+begin
+  // Limpa os componentes existentes no VertScrollBox
+  while VertScrollBox1.Content.ControlsCount > 0 do
+    VertScrollBox1.Content.Controls[0].Free;
+
+  // Percorre os dados da query
+  BindSourceDB3.DataSet.First;
+  while not BindSourceDB3.DataSet.Eof do
+  begin
+    // Cria uma instância do frame
+    Frame := TFrameTotem.Create(VertScrollBox1);
+    Frame.Parent := VertScrollBox1;
+    Frame.Align := TAlignLayout.Top;
+    Frame.Margins.Top := 5;
+    Frame.Margins.Bottom := 5;
+
+    // Cria um TRectangle para exibir a imagem
+    Rectangle := TRectangle.Create(Frame);
+    Rectangle.Parent := Frame;
+    Rectangle.Align := TAlignLayout.Top;
+    Rectangle.Height := 100; // Ajuste conforme necessário
+
+    // Acessa o campo BLOB
+    BlobField := BindSourceDB3.DataSet.FieldByName('IMAGE') as TBlobField;
+
+    // Cria o stream e carrega o BLOB
+    LStream := TMemoryStream.Create;
+    try
+      // Carrega os dados do BLOB para o stream
+      BlobField.GetData(LStream);
+      LStream.Position := 0;
+
+      // Aplica o stream ao Bitmap do TRectangle
+      Rectangle.Fill.Bitmap.Bitmap.LoadFromStream(LStream);
+    finally
+      LStream.Free;
+    end;
+
+    // Passa para o próximo registro
+    BindSourceDB3.DataSet.Next;
+  end;
+end;
+
+procedure TTotemPrincipalfrm.FormCreate(Sender: TObject);
+begin
+  CarregarDados;
+end;
 
 end.

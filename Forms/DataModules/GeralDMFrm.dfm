@@ -7,9 +7,10 @@ object frmGeralDM: TfrmGeralDM
     Params.Strings = (
       'User_Name=SYSDBA'
       'Password=masterkey'
-      'Server=LocalHost'
+      'Server=10.242.255.190'
       'Port=3050'
       'Database=D:\Marthi DataBase\DataBase\MARTHIDB.FDB'
+      'Protocol=TCPIP'
       'DriverID=FB')
     Connected = True
     LoginPrompt = False
