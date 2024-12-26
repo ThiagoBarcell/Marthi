@@ -54,6 +54,12 @@ inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
             Size.Width = 168.000000000000000000
             inherited Rectangle2: TRectangle
               Size.Width = 168.000000000000000000
+              inherited Label10: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label9: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
             end
           end
           inherited lytTop: TLayout

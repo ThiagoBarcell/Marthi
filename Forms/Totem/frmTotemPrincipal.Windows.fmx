@@ -32,6 +32,16 @@ inherited TotemPrincipalfrm_Windows: TTotemPrincipalfrm_Windows
               end
             end
           end
+          inherited lytRodape: TLayout
+            inherited Rectangle2: TRectangle
+              inherited Label10: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label9: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+            end
+          end
         end
       end
     end

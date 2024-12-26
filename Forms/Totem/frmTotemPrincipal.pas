@@ -79,6 +79,7 @@ type
     qryCores: TFDQuery;
     qryCoresCOR_DESC: TStringField;
     qryCadCellCELL_MARCA: TIntegerField;
+    Rectangle4: TRectangle;
     procedure FormCreate(Sender: TObject);
     procedure Rectangle3Click(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
@@ -313,8 +314,6 @@ begin
         CloneRect.Stroke.Thickness := 0;
         CloneRect.Fill.Kind := TBrushKind.Bitmap; // Define o preenchimento como bitmap
         CloneRect.Fill.Bitmap.WrapMode := TWrapMode.TileStretch; // Define o preenchimento como bitmap
-        CloneRect.XRadius := 10;
-        CloneRect.YRadius := 10;
         CloneRect.Corners := [TCorner.TopLeft, TCorner.BottomLeft];
         CloneRect.SendToBack;
 

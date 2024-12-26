@@ -10,8 +10,8 @@ type
   TFrameTotem = class(TFrame)
     Rectangle4: TRectangle;
     ShadowEffect7: TShadowEffect;
-    tbc1: TTabControl;
-    TabItem1: TTabItem;
+    tbcTotem: TTabControl;
+    TabTotemPrincipal: TTabItem;
     Layout6: TLayout;
     Layout7: TLayout;
     Layout5: TLayout;
@@ -26,21 +26,15 @@ type
     lblValorAVista: TLabel;
     Label7: TLabel;
     lblValorAPrazo: TLabel;
-    Rectangle3: TRectangle;
-    img2: TImage;
-    TabItem4: TTabItem;
+    btnComprar: TRectangle;
+    TabTotemCliente: TTabItem;
     Layout9: TLayout;
     lbl2: TLabel;
-    edt1: TEdit;
+    edtNomeCli: TEdit;
     lbl3: TLabel;
-    edt2: TEdit;
+    edtTelCli: TEdit;
     lbl4: TLabel;
-    cbb1: TComboBox;
-    lbl5: TLabel;
-    cbb2: TComboBox;
     lbl6: TLabel;
-    cbb3: TComboBox;
-    lbl7: TLabel;
     RoundRect4: TRoundRect;
     ShadowEffect1: TShadowEffect;
     img1: TImage;
@@ -49,6 +43,14 @@ type
     imgCell: TRectangle;
     HorzScrollBoxImagens: THorzScrollBox;
     CELL_MARCA: TLabel;
+    Rectangle1: TRectangle;
+    edtValorTel: TEdit;
+    edtCorTel: TEdit;
+    Label1: TLabel;
+    edtCapacidadeTel: TEdit;
+    Label2: TLabel;
+    procedure btnComprarClick(Sender: TObject);
+    procedure Rectangle1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -62,10 +64,23 @@ implementation
 
 { TFrameTotem }
 
+procedure TFrameTotem.btnComprarClick(Sender: TObject);
+begin
+  tbcTotem.ActiveTab := TabTotemCliente;
+  edtCorTel.Text := cbbCor.Items[cbbCor.ItemIndex];
+  edtValorTel.Text := lblValorAVista.Text;
+  edtCapacidadeTel.Text := cbbCapacidade.Items[cbbCapacidade.ItemIndex];
+end;
+
 procedure TFrameTotem.PreencherDados(const Nome: string; Imagem: TImage);
 begin
   lblNomeItem.Text := Nome;
   imgCell.Fill.Bitmap.Bitmap.Assign(Imagem);  
+end;
+
+procedure TFrameTotem.Rectangle1Click(Sender: TObject);
+begin
+  tbcTotem.ActiveTab := TabTotemPrincipal;
 end;
 
 end.

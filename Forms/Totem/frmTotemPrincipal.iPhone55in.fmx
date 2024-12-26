@@ -43,6 +43,16 @@ inherited TotemPrincipalfrm_iPhone55in: TTotemPrincipalfrm_iPhone55in
               end
             end
           end
+          inherited lytRodape: TLayout
+            inherited Rectangle2: TRectangle
+              inherited Label10: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label9: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+            end
+          end
           inherited lytTop: TLayout
             inherited Layout1: TLayout
               inherited RoundRect3: TRoundRect
