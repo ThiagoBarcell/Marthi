@@ -339,7 +339,9 @@ end;
 
 procedure TfrmCadProdutos.btnInserirClick(Sender: TObject);
 begin
+
   PgeCadastroComp.ActivePageIndex := 1;
+  frmGeralDM.qryCadCell.Open;
   frmGeralDM.qryCadCell.Insert;
 end;
 
