@@ -2,8 +2,8 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
   Left = 0
   Top = 1
   BorderStyle = None
-  ClientHeight = 657
-  ClientWidth = 1270
+  ClientHeight = 2160
+  ClientWidth = 3840
   Position = Designed
   StyleBook = StyleBook1
   WindowState = wsMaximized
@@ -586,66 +586,66 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
   end
   object lytGlobal: TLayout
     Align = Client
-    Size.Width = 1270.000000000000000000
-    Size.Height = 657.000000000000000000
+    Size.Width = 3840.000000000000000000
+    Size.Height = 2160.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 10
     object Rectangle8: TRectangle
       Align = Client
-      Size.Width = 1270.000000000000000000
-      Size.Height = 657.000000000000000000
+      Size.Width = 3840.000000000000000000
+      Size.Height = 2160.000000000000000000
       Size.PlatformDefault = False
       Stroke.Thickness = 0.000000000000000000
       object Layout8: TLayout
         Align = Left
         Size.Width = 300.000000000000000000
-        Size.Height = 657.000000000000000000
+        Size.Height = 2160.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
       end
       object lytToten: TLayout
         Align = Client
-        Size.Width = 670.000000000000000000
-        Size.Height = 657.000000000000000000
+        Size.Width = 3240.000000000000000000
+        Size.Height = 2160.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         object Rectangle11: TRectangle
           Align = Client
           Fill.Color = claWhite
-          Size.Width = 670.000000000000000000
-          Size.Height = 657.000000000000000000
+          Size.Width = 3240.000000000000000000
+          Size.Height = 2160.000000000000000000
           Size.PlatformDefault = False
           Stroke.Thickness = 0.000000000000000000
           object lytCenter: TLayout
             Align = Client
             Padding.Right = 15.000000000000000000
             Margins.Top = 60.000000000000000000
-            Size.Width = 405.000000000000000000
-            Size.Height = 402.000000000000000000
+            Size.Width = 2975.000000000000000000
+            Size.Height = 1905.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
             object Rectangle10: TRectangle
               Align = Client
               Fill.Color = claWhite
-              Size.Width = 390.000000000000000000
-              Size.Height = 402.000000000000000000
+              Size.Width = 2960.000000000000000000
+              Size.Height = 1905.000000000000000000
               Size.PlatformDefault = False
               Stroke.Thickness = 0.000000000000000000
               object Layout3: TLayout
                 Align = Top
-                Size.Width = 390.000000000000000000
+                Size.Width = 2960.000000000000000000
                 Size.Height = 649.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 0
                 object VertScrollBox1: TVertScrollBox
                   Align = Contents
-                  Size.Width = 390.000000000000000000
+                  Size.Width = 2960.000000000000000000
                   Size.Height = 649.000000000000000000
                   Size.PlatformDefault = False
                   StyleLookup = 'scrollboxstyle'
                   TabOrder = 0
                   ShowScrollBars = False
-                  Viewport.Width = 390.000000000000000000
+                  Viewport.Width = 2960.000000000000000000
                   Viewport.Height = 649.000000000000000000
                 end
               end
@@ -657,17 +657,18 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
             Margins.Top = 60.000000000000000000
             Position.Y = 205.000000000000000000
             Size.Width = 265.000000000000000000
-            Size.Height = 402.000000000000000000
+            Size.Height = 1905.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 1
             object Rectangle9: TRectangle
               Align = Client
               Fill.Color = claWhite
+              Margins.Top = 5.000000000000000000
               Size.Width = 250.000000000000000000
-              Size.Height = 402.000000000000000000
+              Size.Height = 1900.000000000000000000
               Size.PlatformDefault = False
               Stroke.Thickness = 0.000000000000000000
-              object RoundRect1: TRoundRect
+              object btnIphone: TRoundRect
                 Align = MostTop
                 Cursor = crHandPoint
                 Fill.Color = xFFFBFAFA
@@ -680,77 +681,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                 Size.Height = 50.000000000000000000
                 Size.PlatformDefault = False
                 Stroke.Thickness = 0.000000000000000000
-                object ShadowEffect6: TShadowEffect
-                  Distance = 3.000000000000000000
-                  Direction = 45.000000000000000000
-                  Softness = 0.300000011920929000
-                  Opacity = 0.600000023841857900
-                  ShadowColor = claBlack
-                end
-                object Image2: TImage
-                  MultiResBitmap = <
-                    item
-                      Width = 48
-                      Height = 48
-                      PNG = {
-                        89504E470D0A1A0A0000000D49484452000000300000003008060000005702F9
-                        87000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-                        0128494441546843EDD8A16EC2501406E0BF17B6110402C41204621834860740
-                        9029DE600237B18499F9591424BC01120FC9C2B24904097672414D2136B36C94
-                        BB901EB13204AC4D4F1BFE2F697A7A6FD2F46FCECD6D0A2222558E9CFFB0EDBA
-                        9532169CEEE3CE6735724E2C06D0C600DA18405BE203ECBD917D77C6521DE8EB
-                        13CEDB2BCCFC09663A02DC954CF86DDFFFE4EE522A8FDE46769A812D55E036AF
-                        B1BAE9C1E60A32118E485BC8162FE0B6EE81545A46828B7C0DD86219EB9ABF3D
-                        82F8F71AD8EED19D7279ACAB75B88D2BDF5B77162F48F76FE5CA13CF35F0BE84
-                        791E22F53090018F3D2F49155C242D646613A9C459568AE0420BB06981DF87CF
-                        C7528AF045BE88C3C600DA18401B036863006D890FB0F7D7A836FE5A8C2B06D0
-                        C600DA188088E898013FC64548904A88269C0000000049454E44AE426082}
-                    end>
-                  Align = Left
-                  Margins.Top = 5.000000000000000000
-                  Margins.Bottom = 5.000000000000000000
-                  Position.Y = 5.000000000000000000
-                  Size.Width = 100.000000000000000000
-                  Size.Height = 40.000000000000000000
-                  Size.PlatformDefault = False
-                  object ShadowEffect5: TShadowEffect
-                    Distance = 3.000000000000000000
-                    Direction = 45.000000000000000000
-                    Softness = 0.300000011920929000
-                    Opacity = 0.600000023841857900
-                    ShadowColor = claBlack
-                  end
-                  object Label2: TLabel
-                    Align = Right
-                    StyledSettings = []
-                    Margins.Right = -100.000000000000000000
-                    Position.X = 100.000000000000000000
-                    Size.Width = 100.000000000000000000
-                    Size.Height = 40.000000000000000000
-                    Size.PlatformDefault = False
-                    TextSettings.Font.Family = 'Arial'
-                    TextSettings.Font.Size = 16.000000000000000000
-                    TextSettings.Font.StyleExt = {00070000000000000004000000}
-                    TextSettings.FontColor = xFF828282
-                    TextSettings.HorzAlign = Center
-                    Text = 'Xiaomi'
-                    TabOrder = 0
-                  end
-                end
-              end
-              object RoundRect2: TRoundRect
-                Align = MostTop
-                Cursor = crHandPoint
-                Fill.Color = xFFFBFAFA
-                Margins.Left = 5.000000000000000000
-                Margins.Top = 5.000000000000000000
-                Margins.Right = 20.000000000000000000
-                Position.X = 5.000000000000000000
-                Position.Y = 60.000000000000000000
-                Size.Width = 225.000000000000000000
-                Size.Height = 50.000000000000000000
-                Size.PlatformDefault = False
-                Stroke.Thickness = 0.000000000000000000
+                OnClick = btnIphoneClick
                 object ShadowEffect2: TShadowEffect
                   Distance = 3.000000000000000000
                   Direction = 45.000000000000000000
@@ -830,12 +761,85 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                   end
                 end
               end
+              object btnXiaomi: TRoundRect
+                Tag = 1
+                Align = MostTop
+                Cursor = crHandPoint
+                Fill.Color = xFFFBFAFA
+                Margins.Left = 5.000000000000000000
+                Margins.Top = 5.000000000000000000
+                Margins.Right = 20.000000000000000000
+                Position.X = 5.000000000000000000
+                Position.Y = 60.000000000000000000
+                Size.Width = 225.000000000000000000
+                Size.Height = 50.000000000000000000
+                Size.PlatformDefault = False
+                Stroke.Thickness = 0.000000000000000000
+                OnClick = btnXiaomiClick
+                object ShadowEffect6: TShadowEffect
+                  Distance = 3.000000000000000000
+                  Direction = 45.000000000000000000
+                  Softness = 0.300000011920929000
+                  Opacity = 0.600000023841857900
+                  ShadowColor = claBlack
+                end
+                object Image2: TImage
+                  MultiResBitmap = <
+                    item
+                      Width = 48
+                      Height = 48
+                      PNG = {
+                        89504E470D0A1A0A0000000D49484452000000300000003008060000005702F9
+                        87000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                        0128494441546843EDD8A16EC2501406E0BF17B6110402C41204621834860740
+                        9029DE600237B18499F9591424BC01120FC9C2B24904097672414D2136B36C94
+                        BB901EB13204AC4D4F1BFE2F697A7A6FD2F46FCECD6D0A2222558E9CFFB0EDBA
+                        9532169CEEE3CE6735724E2C06D0C600DA18405BE203ECBD917D77C6521DE8EB
+                        13CEDB2BCCFC09663A02DC954CF86DDFFFE4EE522A8FDE46769A812D55E036AF
+                        B1BAE9C1E60A32118E485BC8162FE0B6EE81545A46828B7C0DD86219EB9ABF3D
+                        82F8F71AD8EED19D7279ACAB75B88D2BDF5B77162F48F76FE5CA13CF35F0BE84
+                        791E22F53090018F3D2F49155C242D646613A9C459568AE0420BB06981DF87CF
+                        C7528AF045BE88C3C600DA18401B036863006D890FB0F7D7A836FE5A8C2B06D0
+                        C600DA188088E898013FC64548904A88269C0000000049454E44AE426082}
+                    end>
+                  Align = Left
+                  Margins.Top = 5.000000000000000000
+                  Margins.Bottom = 5.000000000000000000
+                  Position.Y = 5.000000000000000000
+                  Size.Width = 100.000000000000000000
+                  Size.Height = 40.000000000000000000
+                  Size.PlatformDefault = False
+                  object ShadowEffect5: TShadowEffect
+                    Distance = 3.000000000000000000
+                    Direction = 45.000000000000000000
+                    Softness = 0.300000011920929000
+                    Opacity = 0.600000023841857900
+                    ShadowColor = claBlack
+                  end
+                  object Label2: TLabel
+                    Align = Right
+                    StyledSettings = []
+                    Margins.Right = -100.000000000000000000
+                    Position.X = 100.000000000000000000
+                    Size.Width = 100.000000000000000000
+                    Size.Height = 40.000000000000000000
+                    Size.PlatformDefault = False
+                    TextSettings.Font.Family = 'Arial'
+                    TextSettings.Font.Size = 16.000000000000000000
+                    TextSettings.Font.StyleExt = {00070000000000000004000000}
+                    TextSettings.FontColor = xFF828282
+                    TextSettings.HorzAlign = Center
+                    Text = 'Xiaomi'
+                    TabOrder = 0
+                  end
+                end
+              end
             end
           end
           object lytRodape: TLayout
             Align = Bottom
-            Position.Y = 607.000000000000000000
-            Size.Width = 670.000000000000000000
+            Position.Y = 2110.000000000000000000
+            Size.Width = 3240.000000000000000000
             Size.Height = 50.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
@@ -855,7 +859,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
               Fill.Gradient.StartPosition.Y = 1.000000000000000000
               Fill.Gradient.StopPosition.X = 0.499999970197677600
               Fill.Gradient.StopPosition.Y = 0.000000000000000000
-              Size.Width = 670.000000000000000000
+              Size.Width = 3240.000000000000000000
               Size.Height = 50.000000000000000000
               Size.PlatformDefault = False
               Stroke.Color = claWhite
@@ -876,7 +880,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
           end
           object lytTop: TLayout
             Align = Top
-            Size.Width = 670.000000000000000000
+            Size.Width = 3240.000000000000000000
             Size.Height = 145.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 3
@@ -896,7 +900,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
               Fill.Gradient.StartPosition.Y = 1.000000000000000000
               Fill.Gradient.StopPosition.X = 0.499999970197677600
               Fill.Gradient.StopPosition.Y = 0.000000000000000000
-              Size.Width = 670.000000000000000000
+              Size.Width = 3240.000000000000000000
               Size.Height = 177.000000000000000000
               Size.PlatformDefault = False
               Stroke.Thickness = 0.000000000000000000
@@ -915,7 +919,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
               Margins.Right = 15.000000000000000000
               Position.X = 15.000000000000000000
               Position.Y = 147.000000000000000000
-              Size.Width = 640.000000000000000000
+              Size.Width = 3210.000000000000000000
               Size.Height = 46.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
@@ -925,7 +929,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                 Margins.Left = 5.000000000000000000
                 Margins.Top = 5.000000000000000000
                 Margins.Right = 5.000000000000000000
-                Size.Width = 630.000000000000000000
+                Size.Width = 3200.000000000000000000
                 Size.Height = 41.000000000000000000
                 Size.PlatformDefault = False
                 Stroke.Thickness = 0.000000000000000000
@@ -973,7 +977,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                   Cursor = crHandPoint
                   Margins.Top = 10.000000000000000000
                   Margins.Bottom = 10.000000000000000000
-                  Position.X = 575.000000000000000000
+                  Position.X = 3145.000000000000000000
                   Position.Y = 10.000000000000000000
                   RotationAngle = 90.000000000000000000
                   Size.Width = 55.000000000000000000
@@ -982,22 +986,27 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                 end
                 object Layout2: TLayout
                   Align = Client
-                  Size.Width = 575.000000000000000000
+                  Size.Width = 3145.000000000000000000
                   Size.Height = 41.000000000000000000
                   Size.PlatformDefault = False
                   TabOrder = 0
-                  object Edit1: TEdit
+                  object edtPesquisa: TEdit
                     Touch.InteractiveGestures = [LongTap, DoubleTap]
                     Align = Contents
                     StyleLookup = 'transparentedit'
                     TabOrder = 0
+                    KeyboardType = PhonePad
                     ReturnKeyType = Done
                     ClipParent = True
                     Margins.Left = 20.000000000000000000
-                    Size.Width = 555.000000000000000000
+                    Size.Width = 3125.000000000000000000
                     Size.Height = 41.000000000000000000
                     Size.PlatformDefault = False
                     CheckSpelling = True
+                    CharCase = ecUpperCase
+                    OnTyping = edtPesquisaTyping
+                    OnEnter = edtPesquisaEnter
+                    OnExit = edtPesquisaExit
                   end
                 end
               end
@@ -1007,9 +1016,9 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
       end
       object Layout4: TLayout
         Align = Right
-        Position.X = 970.000000000000000000
+        Position.X = 3540.000000000000000000
         Size.Width = 300.000000000000000000
-        Size.Height = 657.000000000000000000
+        Size.Height = 2160.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
       end
@@ -1033,7 +1042,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
         82F6D9E32A0000000049454E44AE426082}
       Fill.Bitmap.WrapMode = TileStretch
       Fill.Kind = Bitmap
-      Position.X = 1245.000000000000000000
+      Position.X = 3815.000000000000000000
       Position.Y = 1.000000000000000000
       Size.Width = 24.000000000000000000
       Size.Height = 24.000000000000000000
@@ -1048,7 +1057,11 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
       'Password=masterkey'
       'Server=LOCALHOST'
       'Port=3050'
+      
+        'Database=C:\Sistemas\Marthi GIT\Marthi DataBase\DataBase\MARTHID' +
+        'B.FDB'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 128
     Top = 296
@@ -1059,6 +1072,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
       'SELECT'
       '  CAD_CELL.CELL_ID,'
       '  CAD_CELL.CELL_DESC,'
+      '  CAD_CELL.CELL_MARCA, '
       '  CELL_CORES.COR_DESC,'
       '  CELL_ARMAZENAMENTO.ARMAZENAMENTO_DESC,'
       '  CELL_ITENS.CELL_VAL_UNIT,'
@@ -1075,6 +1089,8 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
       
         '  ON( CELL_ITENS.ARMAZENAMENTO_ID  = CELL_ARMAZENAMENTO.ARMAZENA' +
         'MENTO_ID )'
+      ''
+      'WHERE CELL_STATUS = 1'
       ''
       '')
     Left = 128
@@ -1121,6 +1137,10 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
       ReadOnly = True
       Precision = 18
       Size = 2
+    end
+    object qryCadCellCELL_MARCA: TIntegerField
+      FieldName = 'CELL_MARCA'
+      Origin = 'CELL_MARCA'
     end
   end
   object qryImagensCell: TFDQuery
@@ -1184,5 +1204,58 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
   object FBLink: TFDPhysFBDriverLink
     Left = 128
     Top = 352
+  end
+  object qryCapacidades: TFDQuery
+    Connection = ConectMarthi
+    SQL.Strings = (
+      'SELECT DISTINCT'
+      '   CELL_ARMAZENAMENTO.ARMAZENAMENTO_DESC'
+      'FROM'
+      '   CELL_ARMAZENAMENTO'
+      'LEFT OUTER JOIN CELL_ITENS'
+      
+        '  ON( CELL_ARMAZENAMENTO.ARMAZENAMENTO_ID  = CELL_ITENS.ARMAZENA' +
+        'MENTO_ID )'
+      'WHERE'
+      '  CELL_ITENS.CELL_ID = :CELL_ID')
+    Left = 24
+    Top = 424
+    ParamData = <
+      item
+        Name = 'CELL_ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object qryCapacidadesARMAZENAMENTO_DESC: TStringField
+      FieldName = 'ARMAZENAMENTO_DESC'
+      Origin = 'ARMAZENAMENTO_DESC'
+    end
+  end
+  object qryCores: TFDQuery
+    Connection = ConectMarthi
+    SQL.Strings = (
+      'SELECT DISTINCT'
+      '   CELL_CORES.COR_DESC'
+      'FROM'
+      '   CELL_CORES'
+      'LEFT OUTER JOIN CELL_ITENS'
+      '  ON( CELL_CORES.COR_ID  = CELL_ITENS.COR_ID )'
+      'WHERE'
+      '  CELL_ITENS.CELL_ID = :CELL_ID')
+    Left = 24
+    Top = 480
+    ParamData = <
+      item
+        Name = 'CELL_ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end>
+    object qryCoresCOR_DESC: TStringField
+      FieldName = 'COR_DESC'
+      Origin = 'COR_DESC'
+      Required = True
+    end
   end
 end

@@ -4,13 +4,6 @@ Coordinates=10,326,69,33
 [Image1]
 Coordinates=478,166,49,51
 
-[RoundRect2]
-Coordinates=350,280,74,33
-Visible=True
-
-[RoundRect1]
-Coordinates=450,280,74,33
-
 [Label1]
 Coordinates=203,166,46,51
 
@@ -66,9 +59,6 @@ Coordinates=603,221,88,33
 []
 Coordinates=374,904,116,177
 Visible=True
-
-[Edit1]
-Coordinates=52,142,40,51
 
 [Label9]
 Coordinates=119,245,46,51
@@ -138,4 +128,14 @@ Coordinates=20,500,141,321
 
 [dtsImagensCell]
 Coordinates=590,637,92,123
+
+[edtPesquisa]
+Coordinates=52,142,40,51
+
+[btnXiaomi]
+Coordinates=450,280,74,33
+
+[btnIphone]
+Coordinates=350,280,74,33
+Visible=True
 

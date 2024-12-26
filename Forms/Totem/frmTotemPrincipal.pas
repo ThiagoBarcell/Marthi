@@ -3,6 +3,7 @@ unit frmTotemPrincipal;
 interface
 
 uses
+  Winapi.Windows, Winapi.Messages, Winapi.ShellAPI,
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Effects, FMX.Layouts, FMX.Edit,
@@ -13,19 +14,19 @@ uses
   FireDAC.DApt.Intf, FireDAC.DApt, Data.Bind.EngExt, Fmx.Bind.DBEngExt,
   System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.Components,
   Data.Bind.DBScope, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  Frame.MarthiGIT.Totem, Winapi.Windows, System.Math, System.IniFiles, Untfuncoes,
+  Frame.MarthiGIT.Totem, System.Math, System.IniFiles, Untfuncoes,
   FireDAC.Phys.IBBase;
 
 type
   TTotemPrincipalfrm = class(TForm)
     Rectangle1: TRectangle;
-    RoundRect2: TRoundRect;
+    btnIphone: TRoundRect;
     Label1: TLabel;
     Image1: TImage;
     ShadowEffect2: TShadowEffect;
     ShadowEffect3: TShadowEffect;
     ShadowEffect4: TShadowEffect;
-    RoundRect1: TRoundRect;
+    btnXiaomi: TRoundRect;
     Label2: TLabel;
     Image2: TImage;
     ShadowEffect5: TShadowEffect;
@@ -44,7 +45,7 @@ type
     Rectangle2: TRectangle;
     Label9: TLabel;
     Label10: TLabel;
-    Edit1: TEdit;
+    edtPesquisa: TEdit;
     Layout2: TLayout;
     ConectMarthi: TFDConnection;
     qryCadCell: TFDQuery;
@@ -73,13 +74,27 @@ type
     Rectangle3: TRectangle;
     Layout4: TLayout;
     FBLink: TFDPhysFBDriverLink;
+    qryCapacidades: TFDQuery;
+    qryCapacidadesARMAZENAMENTO_DESC: TStringField;
+    qryCores: TFDQuery;
+    qryCoresCOR_DESC: TStringField;
+    qryCadCellCELL_MARCA: TIntegerField;
     procedure FormCreate(Sender: TObject);
     procedure Rectangle3Click(Sender: TObject);
+    procedure edtPesquisaEnter(Sender: TObject);
+    procedure edtPesquisaExit(Sender: TObject);
+    procedure edtPesquisaTyping(Sender: TObject);
+    procedure btnIphoneClick(Sender: TObject);
+    procedure btnXiaomiClick(Sender: TObject);
   private
     { Private declarations }
     procedure CarregarDados;
     procedure AjustarAlturaScrollBox(ScrollBox: TVertScrollBox);
     procedure CarregarImagensHorizontais(Frame: TFrameTotem; CellID: Integer);
+    procedure CarregarCapacidades(Frame: TFrameTotem; CellID: Integer);
+    procedure CarregarCores(Frame: TFrameTotem; CellID: Integer);
+    procedure MostrarTecladoVirtual;
+    procedure OcultarTecladoVirtual;
   public
     { Public declarations }
   end;
@@ -141,36 +156,15 @@ begin
     except
       Frame.lblValorAPrazo.Text := '';
     end;
-    // Acessa o campo BLOB
-//    BlobField := dtsCadCell.DataSet.FieldByName('IMAGE') as TBlobField;
 
     // Obtem o CELL_ID e carrega imagens horizontais
     CellID := dtsCadCell.DataSet.FieldByName('CELL_ID').AsInteger;
     CarregarImagensHorizontais(Frame, CellID);
 
-    // Verifica se o campo possui dados
-//    if not BlobField.IsNull then
-//    begin
-//      // Cria o stream e carrega o BLOB
-//      LStream := TMemoryStream.Create;
-//      try
-//        // Carrega os dados do BLOB para o stream
-//        BlobField.SaveToStream(LStream);
-//        LStream.Position := 0;
-//
-//        // Aplica o stream ao Bitmap do TRectangle
-//        Frame.imgCell.Fill.Kind := TBrushKind.Bitmap; // Define o tipo de preenchimento como bitmap
-//        Frame.imgCell.Fill.Bitmap.Bitmap.LoadFromStream(LStream);
-//      finally
-//        LStream.Free;
-//      end;
-//    end
-//    else
-//    begin
-//      // Caso o campo esteja vazio, pode definir uma imagem padrão ou limpar o preenchimento
-//      Frame.imgCell.Fill.Kind := TBrushKind.Solid; // Define o preenchimento sólido (sem imagem)
-//      Frame.imgCell.Fill.Color := TAlphaColors.Gray; // Cor de fundo para imagens ausentes
-//    end;
+    // Carrega os ComboBox do frame
+    CarregarCapacidades(Frame, CellID);
+    CarregarCores(Frame, CellID);
+    Frame.CELL_MARCA.Text := dtsCadCell.DataSet.FieldByName('CELL_MARCA').AsString; // Definindo a marca do celular
 
     // Passa para o próximo registro
     dtsCadCell.DataSet.Next;
@@ -178,6 +172,106 @@ begin
 
   // Ajusta a altura do ScrollBox
   AjustarAlturaScrollBox(VertScrollBox1);
+end;
+
+procedure TTotemPrincipalfrm.MostrarTecladoVirtual;
+begin
+  ShellExecute(0, 'open', 'C:\Windows\System32\osk.exe', nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TTotemPrincipalfrm.OcultarTecladoVirtual;
+var
+  hwnd: Winapi.Windows.HWND;
+begin
+  hwnd := FindWindow(nil, 'Teclado Virtual');
+  if hwnd <> 0 then
+    PostMessage(hwnd, WM_CLOSE, 0, 0);
+end;
+
+procedure TTotemPrincipalfrm.btnIphoneClick(Sender: TObject);
+var
+  Frame: TFrameTotem;
+  i: Integer;
+begin
+  // Filtra os frames para exibir apenas os com CELL_MARCA = 0 (iPhone)
+  for i := 0 to VertScrollBox1.Content.ControlsCount - 1 do
+  begin
+    Frame := TFrameTotem(VertScrollBox1.Content.Controls[i]);
+
+    // Verifica se o frame corresponde à marca iPhone (CELL_MARCA = 0)
+    if (StrToInt(Frame.CELL_MARCA.Text) = 0) then
+      Frame.Visible := True
+    else
+      Frame.Visible := False; // Esconde os frames que não correspondem
+  end;
+
+end;
+
+procedure TTotemPrincipalfrm.btnXiaomiClick(Sender: TObject);
+var
+  Frame: TFrameTotem;
+  i: Integer;
+begin
+  // Filtra os frames para exibir apenas os com CELL_MARCA = 1 (Xiaomi)
+  for i := 0 to VertScrollBox1.Content.ControlsCount - 1 do
+  begin
+    Frame := TFrameTotem(VertScrollBox1.Content.Controls[i]);
+
+    // Verifica se o frame corresponde à marca Xiaomi (CELL_MARCA = 1)
+    if (StrToInt(Frame.CELL_MARCA.Text) = 1) then
+      Frame.Visible := True
+    else
+      Frame.Visible := False; // Esconde os frames que não correspondem
+  end;
+
+end;
+
+procedure TTotemPrincipalfrm.CarregarCapacidades(Frame: TFrameTotem; CellID: Integer);
+var
+  ComboBox: TComboBox;
+begin
+  // Localiza o ComboBox de capacidade no frame
+  ComboBox := Frame.FindComponent('cbbCapacidade') as TComboBox;
+  if not Assigned(ComboBox) then
+    Exit;
+
+  qryCapacidades.Close;
+  qryCapacidades.ParamByName('CELL_ID').AsInteger := CellID;
+  qryCapacidades.Open;
+
+  ComboBox.Items.Clear;
+  while not qryCapacidades.Eof do
+  begin
+    ComboBox.Items.Add(qryCapacidades.FieldByName('ARMAZENAMENTO_DESC').AsString);
+    qryCapacidades.Next;
+  end;
+
+  if ComboBox.Items.Count > 0 then
+    ComboBox.ItemIndex := 0; // Seleciona o primeiro item por padrão
+end;
+
+procedure TTotemPrincipalfrm.CarregarCores(Frame: TFrameTotem; CellID: Integer);
+var
+  ComboBox: TComboBox;
+begin
+  // Localiza o ComboBox de cor no frame
+  ComboBox := Frame.FindComponent('cbbCor') as TComboBox;
+  if not Assigned(ComboBox) then
+    Exit;
+
+  qryCores.Close;
+  qryCores.ParamByName('CELL_ID').AsInteger := CellID;
+  qryCores.Open;
+
+  ComboBox.Items.Clear;
+  while not qryCores.Eof do
+  begin
+    ComboBox.Items.Add(qryCores.FieldByName('COR_DESC').AsString);
+    qryCores.Next;
+  end;
+
+  if ComboBox.Items.Count > 0 then
+    ComboBox.ItemIndex := 0; // Seleciona o primeiro item por padrão
 end;
 
 procedure TTotemPrincipalfrm.CarregarImagensHorizontais(Frame: TFrameTotem; CellID: Integer);
@@ -257,6 +351,56 @@ begin
   end;
 end;
 
+procedure TTotemPrincipalfrm.edtPesquisaEnter(Sender: TObject);
+begin
+  MostrarTecladoVirtual;
+end;
+
+procedure TTotemPrincipalfrm.edtPesquisaExit(Sender: TObject);
+begin
+  OcultarTecladoVirtual;
+end;
+
+procedure TTotemPrincipalfrm.edtPesquisaTyping(Sender: TObject);
+var
+  Frame: TFrameTotem;
+  i: Integer;
+  SearchText: string;
+begin
+  // Obtém o texto digitado
+  SearchText := edtPesquisa.Text.Trim;
+
+  // Se o campo de pesquisa estiver vazio, mostra todos os frames
+  if SearchText = '' then
+  begin
+    // Torna todos os frames visíveis
+    for i := 0 to VertScrollBox1.Content.ControlsCount - 1 do
+    begin
+      Frame := TFrameTotem(VertScrollBox1.Content.Controls[i]);
+      Frame.Visible := True;
+    end;
+  end
+  else
+  begin
+    // Filtra a consulta com base no texto digitado
+    qryCadCell.Filtered := False;
+    qryCadCell.Filter := Format('CELL_DESC LIKE %s', [QuotedStr('%' + SearchText + '%')]);
+    qryCadCell.Filtered := True;
+
+    // Percorre os frames no ScrollBox e ajusta a visibilidade com base no filtro
+    for i := 0 to VertScrollBox1.Content.ControlsCount - 1 do
+    begin
+      Frame := TFrameTotem(VertScrollBox1.Content.Controls[i]);
+
+      // Verifica se o texto do campo edtPesquisa está na descrição do Frame
+      if Frame.lblNomeItem.Text.ToLower.Contains(SearchText.ToLower) then
+        Frame.Visible := True  // Torna o frame visível se o texto contiver a descrição
+      else
+        Frame.Visible := False; // Torna o frame invisível caso contrário
+    end;
+  end;
+end;
+
 procedure TTotemPrincipalfrm.AjustarAlturaScrollBox(ScrollBox: TVertScrollBox);
 var
   I: Integer;
@@ -280,17 +424,6 @@ var
  lFuncoes : TFuncoesUteis;
  sCaminhoIni, sCaminhoApp  : string;
 begin
-//  sCaminhoApp := ( ExtractFilePath( ParamStr(0) ) );
-//  sCaminhoIni := ( sCaminhoApp + 'caminhos.ini' );
-//
-//  oIniCaminhos := TIniFile.Create(sCaminhoIni);
-//
-//  if ( oIniCaminhos.ReadString( 'Caminhos','BD', '' ) <> '' ) then
-//  begin
-//    ConectMarthi.Params.Database := oIniCaminhos.ReadString( 'Caminhos','BD', '' );
-//  end
-//  else
-//    oIniCaminhos.WriteString( 'Caminhos','BD', '' );
 
   lFuncoes.ConectaBD_Ini( ConectMarthi, FBLink );
 

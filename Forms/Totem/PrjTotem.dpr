@@ -12,7 +12,7 @@ uses
 
 begin
   Application.Initialize;
-  Application.CreateForm(TTotemPrincipalfrm, TotemPrincipalfrm);
   Application.CreateForm(TfrmGeralDM, frmGeralDM);
+  Application.CreateForm(TTotemPrincipalfrm, TotemPrincipalfrm);
   Application.Run;
 end.

@@ -1,0 +1,65 @@
+inherited TotemPrincipalfrm_iPhone55in: TTotemPrincipalfrm_iPhone55in
+  ClientHeight = 736
+  ClientWidth = 414
+  DesignerMasterStyle = 0
+  inherited lytGlobal: TLayout
+    Size.Width = 414.000000000000000000
+    Size.Height = 736.000000000000000000
+    inherited Rectangle8: TRectangle
+      Size.Width = 414.000000000000000000
+      Size.Height = 736.000000000000000000
+      inherited Layout8: TLayout
+        Size.Height = 736.000000000000000000
+      end
+      inherited lytToten: TLayout
+        Size.Width = 0.000000000000000000
+        Size.Height = 736.000000000000000000
+        inherited Rectangle11: TRectangle
+          inherited lytCenter: TLayout
+            inherited Rectangle10: TRectangle
+              inherited Layout3: TLayout
+                inherited VertScrollBox1: TVertScrollBox
+                  Viewport.Width = 390.000000000000000000
+                  Viewport.Height = 649.000000000000000000
+                end
+              end
+            end
+          end
+          inherited lytModelo: TLayout
+            inherited Rectangle9: TRectangle
+              inherited RoundRect1: TRoundRect
+                inherited Image2: TImage
+                  inherited Label2: TLabel
+                    TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  end
+                end
+              end
+              inherited RoundRect2: TRoundRect
+                inherited Image1: TImage
+                  inherited Label1: TLabel
+                    TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  end
+                end
+              end
+            end
+          end
+          inherited lytTop: TLayout
+            inherited Layout1: TLayout
+              inherited RoundRect3: TRoundRect
+                inherited Layout2: TLayout
+                  inherited Edit1: TEdit
+                    Size.Height = 29.000000000000000000
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+      inherited Layout4: TLayout
+        Position.X = 114.000000000000000000
+        Size.Height = 736.000000000000000000
+      end
+    end
+  end
+end

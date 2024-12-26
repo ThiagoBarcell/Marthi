@@ -1,0 +1,89 @@
+inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
+  ClientHeight = 1024
+  ClientWidth = 768
+  DesignerMasterStyle = 0
+  inherited lytGlobal: TLayout
+    Size.Width = 768.000000000000000000
+    Size.Height = 1024.000000000000000000
+    inherited Rectangle8: TRectangle
+      Size.Width = 768.000000000000000000
+      Size.Height = 1024.000000000000000000
+      inherited Layout8: TLayout
+        Size.Height = 1024.000000000000000000
+      end
+      inherited lytToten: TLayout
+        Size.Width = 168.000000000000000000
+        Size.Height = 1024.000000000000000000
+        inherited Rectangle11: TRectangle
+          Size.Width = 168.000000000000000000
+          Size.Height = 1024.000000000000000000
+          inherited lytCenter: TLayout
+            Size.Width = 0.000000000000000000
+            Size.Height = 769.000000000000000000
+            inherited Rectangle10: TRectangle
+              inherited Layout3: TLayout
+                inherited VertScrollBox1: TVertScrollBox
+                  Viewport.Width = 390.000000000000000000
+                  Viewport.Height = 649.000000000000000000
+                end
+              end
+            end
+          end
+          inherited lytModelo: TLayout
+            Size.Height = 769.000000000000000000
+            inherited Rectangle9: TRectangle
+              Size.Height = 769.000000000000000000
+              inherited RoundRect1: TRoundRect
+                inherited Image2: TImage
+                  inherited Label2: TLabel
+                    TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  end
+                end
+              end
+              inherited RoundRect2: TRoundRect
+                inherited Image1: TImage
+                  inherited Label1: TLabel
+                    TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  end
+                end
+              end
+            end
+          end
+          inherited lytRodape: TLayout
+            Position.Y = 974.000000000000000000
+            Size.Width = 168.000000000000000000
+            inherited Rectangle2: TRectangle
+              Size.Width = 168.000000000000000000
+            end
+          end
+          inherited lytTop: TLayout
+            Size.Width = 168.000000000000000000
+            inherited Rectangle1: TRectangle
+              Size.Width = 168.000000000000000000
+            end
+            inherited Layout1: TLayout
+              Size.Width = 138.000000000000000000
+              inherited RoundRect3: TRoundRect
+                Size.Width = 128.000000000000000000
+                inherited Image3: TImage
+                  Position.X = 73.000000000000000000
+                end
+                inherited Layout2: TLayout
+                  Size.Width = 73.000000000000000000
+                  inherited Edit1: TEdit
+                    Size.Width = 53.000000000000000000
+                    Size.Height = 29.000000000000000000
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+      inherited Layout4: TLayout
+        Position.X = 468.000000000000000000
+        Size.Height = 1024.000000000000000000
+      end
+    end
+  end
+end

@@ -36,15 +36,15 @@ inherited TotemPrincipalfrm_Surface: TTotemPrincipalfrm_Surface
           inherited lytModelo: TLayout
             Size.Height = 1665.000000000000000000
             inherited Rectangle9: TRectangle
-              Size.Height = 1665.000000000000000000
-              inherited RoundRect1: TRoundRect
+              Size.Height = 1660.000000000000000000
+              inherited btnXiaomi: TRoundRect [0]
                 inherited Image2: TImage
                   inherited Label2: TLabel
                     TextSettings.Font.StyleExt = {00070000000000000004000000}
                   end
                 end
               end
-              inherited RoundRect2: TRoundRect
+              inherited btnIphone: TRoundRect [1]
                 inherited Image1: TImage
                   inherited Label1: TLabel
                     TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -74,7 +74,7 @@ inherited TotemPrincipalfrm_Surface: TTotemPrincipalfrm_Surface
                 end
                 inherited Layout2: TLayout
                   Size.Width = 385.000000000000000000
-                  inherited Edit1: TEdit
+                  inherited edtPesquisa: TEdit
                     Size.Width = 365.000000000000000000
                   end
                 end

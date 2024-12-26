@@ -48,6 +48,7 @@ type
     lbl1: TLabel;
     imgCell: TRectangle;
     HorzScrollBoxImagens: THorzScrollBox;
+    CELL_MARCA: TLabel;
   private
     { Private declarations }
   public
@@ -64,13 +65,7 @@ implementation
 procedure TFrameTotem.PreencherDados(const Nome: string; Imagem: TImage);
 begin
   lblNomeItem.Text := Nome;
-
-  // Se imgCell for um TImage, você pode continuar usando Assign
-  // Se for um TRectangle, você deve usar Fill.Bitmap.Assign
-  imgCell.Fill.Bitmap.Bitmap.Assign(Imagem);  // imgCell aqui assume que é um TImage
-
-  // Ou se estiver usando um TRectangle:
-  // imgCell.Fill.Bitmap.Assign(Imagem); // imgCell sendo um TRectangle
+  imgCell.Fill.Bitmap.Bitmap.Assign(Imagem);  
 end;
 
 end.
