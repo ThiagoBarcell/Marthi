@@ -101,6 +101,7 @@ type
     memObsCell: TcxDBMemo;
     tabFiltroReferencia: TcxTabSheet;
     edtFiltroReferencia: TcxTextEdit;
+    imgStatus: TcxImageList;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);

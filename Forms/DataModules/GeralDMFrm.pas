@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
   FireDAC.Comp.DataSet, System.IniFiles, FireDAC.Phys.IBBase, untFuncoes,
-  System.ImageList, Vcl.ImgList, Vcl.Controls, cxImageList, cxGraphics;
+  System.ImageList, Vcl.ImgList, Vcl.Controls;
 
 type
   TfrmGeralDM = class(TDataModule)
@@ -61,7 +61,6 @@ type
     qryCellCorCOR_DESC: TStringField;
     FBLink: TFDPhysFBDriverLink;
     qryCadCellCELL_STATUS: TSmallintField;
-    imgStatus: TcxImageList;
     qryCadCellCELL_REFERENCIA: TStringField;
     procedure qryCadCellNewRecord(DataSet: TDataSet);
     procedure qryCadCellAfterScroll(DataSet: TDataSet);
