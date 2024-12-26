@@ -62,8 +62,6 @@ type
     Rectangle10: TRectangle;
     Rectangle11: TRectangle;
     Layout8: TLayout;
-    BindSourceDB2: TBindSourceDB;
-    LinkFillControlToField1: TLinkFillControlToField;
     dtsCadCell: TBindSourceDB;
     qryCadCellCELL_ID: TIntegerField;
     qryCadCellCELL_DESC: TStringField;

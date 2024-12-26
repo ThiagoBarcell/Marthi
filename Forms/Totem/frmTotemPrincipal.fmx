@@ -7706,10 +7706,9 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
         'Database=C:\Sistemas\Marthi GIT\Marthi DataBase\DataBase\MARTHID' +
         'B.FDB'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
-    Left = 128
-    Top = 296
+    Left = 16
+    Top = 16
   end
   object qryCadCell: TFDQuery
     Connection = ConectMarthi
@@ -7738,8 +7737,8 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
       'WHERE CELL_STATUS = 1'
       ''
       '')
-    Left = 128
-    Top = 416
+    Left = 96
+    Top = 16
     object qryCadCellCELL_ID: TIntegerField
       FieldName = 'CELL_ID'
       Origin = 'CELL_ID'
@@ -7793,8 +7792,8 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
     SQL.Strings = (
       'SELECT * FROM CELL_IMAGES'
       '')
-    Left = 208
-    Top = 360
+    Left = 96
+    Top = 80
     object qryImagensCellCELL_ID: TIntegerField
       FieldName = 'CELL_ID'
       Origin = 'CELL_ID'
@@ -7815,40 +7814,24 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
   object dtsImagensCell: TBindSourceDB
     DataSet = qryImagensCell
     ScopeMappings = <>
-    Left = 208
-    Top = 496
+    Left = 176
+    Top = 80
   end
   object BindingsList1: TBindingsList
     Methods = <>
     OutputConverters = <>
-    Left = 20
-    Top = 5
-    object LinkFillControlToField1: TLinkFillControlToField
-      Category = 'Quick Bindings'
-      Track = True
-      FillDataSource = BindSourceDB2
-      FillDisplayFieldName = 'CELL_COR'
-      AutoFill = True
-      FillExpressions = <>
-      FillHeaderExpressions = <>
-      FillBreakGroups = <>
-    end
-  end
-  object BindSourceDB2: TBindSourceDB
-    DataSet = qryCadCell
-    ScopeMappings = <>
-    Left = 624
-    Top = 368
+    Left = 252
+    Top = 13
   end
   object dtsCadCell: TBindSourceDB
     DataSet = qryCadCell
     ScopeMappings = <>
-    Left = 216
-    Top = 432
+    Left = 176
+    Top = 16
   end
   object FBLink: TFDPhysFBDriverLink
-    Left = 128
-    Top = 352
+    Left = 16
+    Top = 80
   end
   object qryCapacidades: TFDQuery
     Connection = ConectMarthi
@@ -7863,8 +7846,8 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
         'MENTO_ID )'
       'WHERE'
       '  CELL_ITENS.CELL_ID = :CELL_ID')
-    Left = 24
-    Top = 424
+    Left = 96
+    Top = 152
     ParamData = <
       item
         Name = 'CELL_ID'
@@ -7888,8 +7871,8 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
       '  ON( CELL_CORES.COR_ID  = CELL_ITENS.COR_ID )'
       'WHERE'
       '  CELL_ITENS.CELL_ID = :CELL_ID')
-    Left = 24
-    Top = 480
+    Left = 96
+    Top = 216
     ParamData = <
       item
         Name = 'CELL_ID'

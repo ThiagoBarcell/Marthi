@@ -57,7 +57,7 @@ Coordinates=170,234,45,33
 Coordinates=603,221,88,33
 
 []
-Coordinates=374,904,116,177
+Coordinates=20,500,141,321
 Visible=True
 
 [Label9]
@@ -79,8 +79,7 @@ Coordinates=590,481,53,33
 Coordinates=590,533,64,33
 
 [qryCadCell]
-Coordinates=20,500,68,33
-Visible=False
+Coordinates=98,510,68,33
 
 [ConectMarthi]
 Coordinates=568,585,80,33
@@ -122,9 +121,6 @@ Coordinates=584,904,58,33
 
 [Rectangle10]
 Coordinates=742,827,75,33
-
-[BindSourceDB2]
-Coordinates=20,500,141,321
 
 [dtsImagensCell]
 Coordinates=590,637,92,123
