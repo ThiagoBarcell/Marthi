@@ -1,5 +1,5 @@
 object FrameTotem: TFrameTotem
-  Size.Width = 494.000000000000000000
+  Size.Width = 592.000000000000000000
   Size.Height = 245.000000000000000000
   Size.PlatformDefault = False
   object Rectangle4: TRectangle
@@ -10,7 +10,7 @@ object FrameTotem: TFrameTotem
     Margins.Top = 5.000000000000000000
     Margins.Right = 10.000000000000000000
     Margins.Bottom = 5.000000000000000000
-    Size.Width = 474.000000000000000000
+    Size.Width = 572.000000000000000000
     Size.Height = 235.000000000000000000
     Size.PlatformDefault = False
     Stroke.Thickness = 0.000000000000000000
@@ -26,23 +26,23 @@ object FrameTotem: TFrameTotem
     object tbcTotem: TTabControl
       StyleName = 'TabControl1Style1'
       Align = Contents
-      Size.Width = 474.000000000000000000
+      Size.Width = 572.000000000000000000
       Size.Height = 235.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'TabControl1Style1'
-      TabIndex = 0
+      TabIndex = 1
       TabOrder = 1
       TabPosition = None
       Sizes = (
-        474s
+        572s
         235s
-        474s
+        572s
         235s)
       object TabTotemPrincipal: TTabItem
         CustomIcon = <
           item
           end>
-        IsSelected = True
+        IsSelected = False
         Size.Width = 8.000000000000000000
         Size.Height = 8.000000000000000000
         Size.PlatformDefault = False
@@ -52,8 +52,14 @@ object FrameTotem: TFrameTotem
         ExplicitSize.cy = 8.000000000000000000
         object Layout6: TLayout
           Align = Left
-          Size.Width = 177.000000000000000000
-          Size.Height = 235.000000000000000000
+          Margins.Left = 2.000000000000000000
+          Margins.Top = 2.000000000000000000
+          Margins.Right = 2.000000000000000000
+          Margins.Bottom = 2.000000000000000000
+          Position.X = 2.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 225.000000000000000000
+          Size.Height = 231.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
           object imgCell: TRectangle
@@ -61,29 +67,29 @@ object FrameTotem: TFrameTotem
             ClipParent = True
             Fill.Bitmap.WrapMode = TileStretch
             Fill.Kind = Bitmap
-            Size.Width = 177.000000000000000000
-            Size.Height = 235.000000000000000000
+            Size.Width = 225.000000000000000000
+            Size.Height = 231.000000000000000000
             Size.PlatformDefault = False
             Stroke.Thickness = 0.000000000000000000
             XRadius = 3.000000000000000000
             YRadius = 3.000000000000000000
             object HorzScrollBoxImagens: THorzScrollBox
               Align = Client
-              Size.Width = 177.000000000000000000
-              Size.Height = 235.000000000000000000
+              Size.Width = 225.000000000000000000
+              Size.Height = 231.000000000000000000
               Size.PlatformDefault = False
               StyleLookup = 'scrollboxstyle'
               TabOrder = 0
               ShowScrollBars = False
-              Viewport.Width = 177.000000000000000000
-              Viewport.Height = 235.000000000000000000
+              Viewport.Width = 225.000000000000000000
+              Viewport.Height = 231.000000000000000000
             end
           end
         end
         object Layout7: TLayout
           Align = Right
-          Position.X = 176.000000000000000000
-          Size.Width = 298.000000000000000000
+          Position.X = 224.000000000000000000
+          Size.Width = 348.000000000000000000
           Size.Height = 235.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 1
@@ -94,14 +100,14 @@ object FrameTotem: TFrameTotem
             Margins.Right = 15.000000000000000000
             Position.X = 15.000000000000000000
             Position.Y = 86.000000000000000000
-            Size.Width = 268.000000000000000000
+            Size.Width = 318.000000000000000000
             Size.Height = 49.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 1
             object Rectangle5: TRectangle
               Align = Client
               Fill.Color = claCornflowerblue
-              Size.Width = 268.000000000000000000
+              Size.Width = 318.000000000000000000
               Size.Height = 32.000000000000000000
               Size.PlatformDefault = False
               Stroke.Thickness = 0.000000000000000000
@@ -112,7 +118,7 @@ object FrameTotem: TFrameTotem
                   '128 GB'
                   '256 GB')
                 ItemIndex = 0
-                Size.Width = 268.000000000000000000
+                Size.Width = 318.000000000000000000
                 Size.Height = 32.000000000000000000
                 Size.PlatformDefault = False
                 StyleLookup = 'comboboxstyle'
@@ -122,7 +128,7 @@ object FrameTotem: TFrameTotem
             object Label5: TLabel
               Align = MostTop
               StyledSettings = [Family, Size]
-              Size.Width = 268.000000000000000000
+              Size.Width = 318.000000000000000000
               Size.Height = 17.000000000000000000
               Size.PlatformDefault = False
               TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -138,14 +144,14 @@ object FrameTotem: TFrameTotem
             Margins.Right = 15.000000000000000000
             Position.X = 15.000000000000000000
             Position.Y = 32.000000000000000000
-            Size.Width = 268.000000000000000000
+            Size.Width = 318.000000000000000000
             Size.Height = 49.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
             object Rectangle6: TRectangle
               Align = Client
               Fill.Color = claAliceblue
-              Size.Width = 268.000000000000000000
+              Size.Width = 318.000000000000000000
               Size.Height = 32.000000000000000000
               Size.PlatformDefault = False
               object cbbCor: TComboBox
@@ -155,7 +161,7 @@ object FrameTotem: TFrameTotem
                   'Azul'
                   'Preto')
                 ItemIndex = 0
-                Size.Width = 268.000000000000000000
+                Size.Width = 318.000000000000000000
                 Size.Height = 32.000000000000000000
                 Size.PlatformDefault = False
                 StyleLookup = 'comboboxstyle'
@@ -165,7 +171,7 @@ object FrameTotem: TFrameTotem
             object Label3: TLabel
               Align = MostTop
               StyledSettings = [Family, Size]
-              Size.Width = 268.000000000000000000
+              Size.Width = 318.000000000000000000
               Size.Height = 17.000000000000000000
               Size.PlatformDefault = False
               TextSettings.Font.StyleExt = {00070000000000000004000000}
@@ -179,7 +185,7 @@ object FrameTotem: TFrameTotem
             StyledSettings = [Family, Style]
             Margins.Top = 10.000000000000000000
             Position.Y = 10.000000000000000000
-            Size.Width = 298.000000000000000000
+            Size.Width = 348.000000000000000000
             Size.Height = 17.000000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Size = 16.000000000000000000
@@ -196,7 +202,7 @@ object FrameTotem: TFrameTotem
             Margins.Right = 15.000000000000000000
             Position.X = 15.000000000000000000
             Position.Y = 140.000000000000000000
-            Size.Width = 268.000000000000000000
+            Size.Width = 318.000000000000000000
             Size.Height = 36.000000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Size = 16.000000000000000000
@@ -206,7 +212,7 @@ object FrameTotem: TFrameTotem
             TabOrder = 4
             object Label7: TLabel
               Align = Top
-              Size.Width = 268.000000000000000000
+              Size.Width = 318.000000000000000000
               Size.Height = 17.000000000000000000
               Size.PlatformDefault = False
               Text = #192' Vista'
@@ -220,7 +226,7 @@ object FrameTotem: TFrameTotem
             Margins.Right = 15.000000000000000000
             Position.X = 15.000000000000000000
             Position.Y = 176.000000000000000000
-            Size.Width = 268.000000000000000000
+            Size.Width = 318.000000000000000000
             Size.Height = 22.000000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Size = 14.000000000000000000
@@ -316,7 +322,7 @@ object FrameTotem: TFrameTotem
               052E96BF9AE91EDCEB0000000049454E44AE426082}
             Fill.Bitmap.WrapMode = TileStretch
             Fill.Kind = Bitmap
-            Position.X = 218.000000000000000000
+            Position.X = 266.000000000000000000
             Position.Y = 155.000000000000000000
             Size.Width = 64.000000000000000000
             Size.Height = 64.000000000000000000
@@ -342,7 +348,7 @@ object FrameTotem: TFrameTotem
         CustomIcon = <
           item
           end>
-        IsSelected = False
+        IsSelected = True
         Size.Width = 8.000000000000000000
         Size.Height = 8.000000000000000000
         Size.PlatformDefault = False
@@ -353,16 +359,16 @@ object FrameTotem: TFrameTotem
         ExplicitSize.cy = 8.000000000000000000
         object Layout9: TLayout
           Align = Center
-          Size.Width = 474.000000000000000000
+          Size.Width = 497.000000000000000000
           Size.Height = 235.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
-          object lbl2: TLabel
+          object lblTITULOCEL: TLabel
             Align = MostTop
             StyledSettings = [Family, Style, FontColor]
             Margins.Top = 10.000000000000000000
             Position.Y = 10.000000000000000000
-            Size.Width = 474.000000000000000000
+            Size.Width = 497.000000000000000000
             Size.Height = 17.000000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Size = 16.000000000000000000
@@ -408,7 +414,7 @@ object FrameTotem: TFrameTotem
               TabOrder = 0
             end
           end
-          object RoundRect4: TRoundRect
+          object btnEnviaWhatsapp: TRoundRect
             Cursor = crHandPoint
             Fill.Color = xFFFBFAFA
             Margins.Left = 5.000000000000000000

@@ -20,23 +20,23 @@ inherited TotemPrincipalfrm_iPhone55in: TTotemPrincipalfrm_iPhone55in
               inherited Layout3: TLayout
                 inherited VertScrollBox1: TVertScrollBox
                   Viewport.Width = 2960.000000000000000000
-                  Viewport.Height = 649.000000000000000000
+                  Viewport.Height = 1905.000000000000000000
                 end
               end
             end
           end
           inherited lytModelo: TLayout
             inherited Rectangle9: TRectangle
-              inherited btnXiaomi: TRoundRect [0]
-                inherited Image2: TImage
-                  inherited Label2: TLabel
+              inherited btnIphone: TRoundRect
+                inherited Image1: TImage
+                  inherited Label1: TLabel
                     TextSettings.Font.StyleExt = {00070000000000000004000000}
                   end
                 end
               end
-              inherited btnIphone: TRoundRect [1]
-                inherited Image1: TImage
-                  inherited Label1: TLabel
+              inherited btnXiaomi: TRoundRect
+                inherited Image2: TImage
+                  inherited Label2: TLabel
                     TextSettings.Font.StyleExt = {00070000000000000004000000}
                   end
                 end
