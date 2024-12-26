@@ -5,7 +5,15 @@ interface
 uses
   System.IniFiles,
   System.SysUtils,
-  FireDAC.Comp.Client, FireDAC.Phys.FB;
+  FireDAC.Comp.Client,
+  FireDAC.Phys.FB,
+  System.Classes,
+  REST.Types,
+  REST.Client,
+  System.Net.URLClient,
+  System.Net.HttpClient,
+  System.Net.HttpClientComponent,
+  System.NetEncoding ;
 
 type TFuncoesUteis = class
 
@@ -13,6 +21,7 @@ public
   //Procedures
   procedure AbreQrysInfo( lQryArmazenamento, lQryCondicao, lQryCor : TFDQuery );
   Procedure ConectaBD_Ini( lConexao : TFDConnection; lLinkFB : TFDPhysFBDriverLink );
+  procedure EnviarMsgWhatsApp( sAPIKEYEMP, sTelefoneFrom, sTelefoneTo : String; sMensagem : WideString = ''; sCaminhoAnexo : String = ''; lEviarMensagemPDF : Boolean = False );
 
 private
 
@@ -90,5 +99,139 @@ begin
   lConexao.Params.Text := lParams;
 
 end;
+
+procedure TFuncoesUteis.EnviarMsgWhatsApp(sAPIKEYEMP, sTelefoneFrom, sTelefoneTo: String; sMensagem: WideString; sCaminhoAnexo: String; lEviarMensagemPDF: Boolean);
+var
+  inStream       : TStream;
+  outStream      : TStream;
+  StringList     : TStringList;
+  sNomeArquivo   : String;
+  sExtArquivo    : String;
+  sURLBase       : String;
+  sCaminhoBase64 : String;
+  sRESTClient    : TRESTClient;
+  sRESTRequest   : TRESTRequest;
+  sRESTResponse  : TRESTResponse;
+
+begin
+
+  //sTelefoneFrom := StrSuprime( Trim( sTelefoneFrom ), ' <>:?,.;/^~{}[]"!@#$%¨&*()_-+=|\QWERTYUIOPASDFGHJKLÇZXCVBNM' );
+  //sTelefoneTo   := StrSuprime( Trim( sTelefoneTo ), ' <>:?,.;/^~{}[]"!@#$%¨&*()_-+=|\QWERTYUIOPASDFGHJKLÇZXCVBNM' );
+
+  if( Trim( sTelefoneFrom ) <> '' ) and
+    ( Trim( sTelefoneTo ) <> ''   )then
+  try
+
+    sURLBase := 'https://app.whatsgw.com.br/api/WhatsGw/Send';
+
+    sRESTClient   := TRESTClient.Create( sURLBase );
+    sRESTRequest  := TRESTRequest.Create( sRESTClient );
+    sRESTResponse := TRESTResponse.Create( sRESTClient );
+    StringList    := TStringList.Create;
+
+    if( Trim( sCaminhoAnexo ) <> '' )then
+    begin
+
+      sExtArquivo    := ExtractFileExt( sCaminhoAnexo );
+      sCaminhoBase64 := ExtractFilePath( sCaminhoAnexo ) + ChangeFileExt( ExtractFileName( sCaminhoAnexo ), EmptyStr ) + '.txt';
+
+      try
+
+        inStream := TFileStream.Create( sCaminhoAnexo, fmOpenRead);
+
+        try
+
+          outStream := TFileStream.Create( sCaminhoBase64, fmCreate );
+
+          TNetEncoding.Base64.Encode( inStream, outStream );
+
+        finally
+
+          FreeAndNil( outStream );
+
+        end;
+
+      finally
+
+        FreeAndNil( inStream );
+
+      end;
+
+      sNomeArquivo := ChangeFileExt( ExtractFileName( sCaminhoAnexo ), EmptyStr );
+      StringList.LoadFromFile( sCaminhoBase64 );
+
+    end;
+
+    //Parametros RestRequest
+    sRESTRequest.Client   := sRESTClient;
+    sRESTRequest.Response := sRESTResponse;
+    sRESTRequest.Accept   := 'application/json;q=0.9,text/plain;q=0.9,text/html';
+    sRESTRequest.Method   := rmPOST;
+
+    //Parametros RestClient
+    sRESTClient.AcceptCharset       := 'UTF-8';
+    sRESTClient.Accept              := 'application/json;q=0.9,text/plain;q=0.9,text/html';
+    sRESTClient.RaiseExceptionOn500 := False;
+    sRESTRequest.Params.Clear;
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[0].Name  := 'apikey';
+    sRESTRequest.Params.Items[0].Value := sAPIKEYEMP;
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[1].Name  := 'phone_number';
+    sRESTRequest.Params.Items[1].Value := '55' + sTelefoneFrom;
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[2].Name  := 'contact_phone_number';
+    sRESTRequest.Params.Items[2].Value := '55' + sTelefoneTo;
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[3].Name  := 'message_custom_id';
+    sRESTRequest.Params.Items[3].Value := 'yowsoftwareid';
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[4].Name  := 'message_type';
+
+    if( Trim( sExtArquivo ) = '' )then
+    begin
+     sRESTRequest.Params.Items[4].Value := 'text';
+     StringList.Text := sMensagem;
+    end
+    else
+      sRESTRequest.Params.Items[4].Value := 'image';
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[5].Name  := 'message_caption';
+    sRESTRequest.Params.Items[5].Value := sMensagem;
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[6].Name  := 'message_body_mimetype';
+    sRESTRequest.Params.Items[6].Value := 'image/jpeg';
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[7].Name  := 'message_body_filename';
+    sRESTRequest.Params.Items[7].Value := sNomeArquivo + sExtArquivo;
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[8].Name  := 'message_body';
+    sRESTRequest.Params.Items[8].Value := StringList.Text;
+
+    sRESTRequest.Execute;
+
+  finally
+
+    DeleteFile( sCaminhoBase64 );
+
+    FreeAndNil( sRESTClient );
+    FreeAndNil( StringList );
+
+    if( lEviarMensagemPDF )then
+      EnviarMsgWhatsApp( sAPIKEYEMP, sTelefoneFrom, sTelefoneTo, sMensagem );
+
+  end;
+
+end;
+
 
 end.

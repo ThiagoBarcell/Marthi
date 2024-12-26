@@ -1,0 +1,49 @@
+inherited TotemPrincipalfrm_Windows: TTotemPrincipalfrm_Windows
+  DesignerMasterStyle = 0
+  inherited lytGlobal: TLayout
+    inherited Rectangle8: TRectangle
+      inherited lytToten: TLayout
+        inherited Rectangle11: TRectangle
+          inherited lytCenter: TLayout
+            inherited Rectangle10: TRectangle
+              inherited Layout3: TLayout
+                inherited VertScrollBox1: TVertScrollBox
+                  Viewport.Width = 2960.000000000000000000
+                  Viewport.Height = 649.000000000000000000
+                end
+              end
+            end
+          end
+          inherited lytModelo: TLayout
+            inherited Rectangle9: TRectangle
+              inherited btnXiaomi: TRoundRect [0]
+                inherited Image2: TImage
+                  inherited Label2: TLabel
+                    TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  end
+                end
+              end
+              inherited btnIphone: TRoundRect [1]
+                inherited Image1: TImage
+                  inherited Label1: TLabel
+                    TextSettings.Font.StyleExt = {00070000000000000004000000}
+                  end
+                end
+              end
+            end
+          end
+          inherited lytRodape: TLayout
+            inherited Rectangle2: TRectangle
+              inherited Label10: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+              inherited Label9: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

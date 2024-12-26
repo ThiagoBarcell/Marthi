@@ -80,6 +80,7 @@ Coordinates=590,533,64,33
 
 [qryCadCell]
 Coordinates=98,510,68,33
+Visible=False
 
 [ConectMarthi]
 Coordinates=568,585,80,33

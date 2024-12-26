@@ -25,10 +25,12 @@ inherited TotemPrincipalfrm_Surface: TTotemPrincipalfrm_Surface
               Size.Height = 1665.000000000000000000
               inherited Layout3: TLayout
                 Size.Width = 200.000000000000000000
+                Size.Height = 1665.000000000000000000
                 inherited VertScrollBox1: TVertScrollBox
                   Size.Width = 200.000000000000000000
+                  Size.Height = 1665.000000000000000000
                   Viewport.Width = 200.000000000000000000
-                  Viewport.Height = 649.000000000000000000
+                  Viewport.Height = 1665.000000000000000000
                 end
               end
             end
@@ -37,16 +39,16 @@ inherited TotemPrincipalfrm_Surface: TTotemPrincipalfrm_Surface
             Size.Height = 1665.000000000000000000
             inherited Rectangle9: TRectangle
               Size.Height = 1660.000000000000000000
-              inherited btnXiaomi: TRoundRect [0]
-                inherited Image2: TImage
-                  inherited Label2: TLabel
+              inherited btnIphone: TRoundRect
+                inherited Image1: TImage
+                  inherited Label1: TLabel
                     TextSettings.Font.StyleExt = {00070000000000000004000000}
                   end
                 end
               end
-              inherited btnIphone: TRoundRect [1]
-                inherited Image1: TImage
-                  inherited Label1: TLabel
+              inherited btnXiaomi: TRoundRect
+                inherited Image2: TImage
+                  inherited Label2: TLabel
                     TextSettings.Font.StyleExt = {00070000000000000004000000}
                   end
                 end

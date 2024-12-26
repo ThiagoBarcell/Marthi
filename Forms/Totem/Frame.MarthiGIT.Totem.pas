@@ -4,7 +4,8 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
-  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls, FMX.Objects, FMX.Edit, FMX.Controls.Presentation, FMX.ListBox, FMX.Layouts, FMX.TabControl, FMX.Effects;
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls, FMX.Objects, FMX.Edit, FMX.Controls.Presentation, FMX.ListBox, FMX.Layouts, FMX.TabControl, FMX.Effects,
+  FireDAC.Comp.Client;
 
 type
   TFrameTotem = class(TFrame)
@@ -29,13 +30,13 @@ type
     btnComprar: TRectangle;
     TabTotemCliente: TTabItem;
     Layout9: TLayout;
-    lbl2: TLabel;
+    lblTITULOCEL: TLabel;
     edtNomeCli: TEdit;
     lbl3: TLabel;
     edtTelCli: TEdit;
     lbl4: TLabel;
     lbl6: TLabel;
-    RoundRect4: TRoundRect;
+    btnEnviaWhatsapp: TRoundRect;
     ShadowEffect1: TShadowEffect;
     img1: TImage;
     ShadowEffect8: TShadowEffect;
@@ -70,6 +71,7 @@ begin
   edtCorTel.Text := cbbCor.Items[cbbCor.ItemIndex];
   edtValorTel.Text := lblValorAVista.Text;
   edtCapacidadeTel.Text := cbbCapacidade.Items[cbbCapacidade.ItemIndex];
+  lblTITULOCEL.Text := lblNomeItem.Text;
 end;
 
 procedure TFrameTotem.PreencherDados(const Nome: string; Imagem: TImage);
