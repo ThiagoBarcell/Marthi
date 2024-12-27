@@ -677,14 +677,14 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
               Size.PlatformDefault = False
               Stroke.Thickness = 0.000000000000000000
               object btnIphone: TRoundRect
-                Align = MostTop
+                Align = Top
                 Cursor = crHandPoint
                 Fill.Color = xFFFBFAFA
                 Margins.Left = 5.000000000000000000
-                Margins.Top = 5.000000000000000000
+                Margins.Top = 20.000000000000000000
                 Margins.Right = 20.000000000000000000
                 Position.X = 5.000000000000000000
-                Position.Y = 5.000000000000000000
+                Position.Y = 20.000000000000000000
                 Size.Width = 225.000000000000000000
                 Size.Height = 50.000000000000000000
                 Size.PlatformDefault = False
@@ -771,14 +771,14 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
               end
               object btnXiaomi: TRoundRect
                 Tag = 1
-                Align = MostTop
+                Align = Top
                 Cursor = crHandPoint
                 Fill.Color = xFFFBFAFA
                 Margins.Left = 5.000000000000000000
                 Margins.Top = 5.000000000000000000
                 Margins.Right = 20.000000000000000000
                 Position.X = 5.000000000000000000
-                Position.Y = 60.000000000000000000
+                Position.Y = 75.000000000000000000
                 Size.Width = 225.000000000000000000
                 Size.Height = 50.000000000000000000
                 Size.PlatformDefault = False
@@ -867,7 +867,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
               Fill.Gradient.StopPosition.X = 0.499999970197677600
               Fill.Gradient.StopPosition.Y = 0.000000000000000000
               Size.Width = 3440.000000000000000000
-              Size.Height = 177.000000000000000000
+              Size.Height = 200.000000000000000000
               Size.PlatformDefault = False
               Stroke.Thickness = 0.000000000000000000
               object ShadowEffect3: TShadowEffect
@@ -884,7 +884,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
               Margins.Top = -30.000000000000000000
               Margins.Right = 15.000000000000000000
               Position.X = 15.000000000000000000
-              Position.Y = 147.000000000000000000
+              Position.Y = 170.000000000000000000
               Size.Width = 3410.000000000000000000
               Size.Height = 46.000000000000000000
               Size.PlatformDefault = False
@@ -1044,7 +1044,19 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
         TabOrder = 3
         object Rectangle2: TRectangle
           Align = Client
-          Fill.Color = xFF282828
+          Fill.Kind = Gradient
+          Fill.Gradient.Points = <
+            item
+              Color = xFF131313
+              Offset = 0.000000000000000000
+            end
+            item
+              Color = x0FB6B6B6
+              Offset = 1.000000000000000000
+            end>
+          Fill.Gradient.StartPosition.Y = 0.500000000000000000
+          Fill.Gradient.StopPosition.X = 1.000000000000000000
+          Fill.Gradient.StopPosition.Y = 0.500000000000000000
           Size.Width = 3840.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
@@ -1056,7 +1068,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
             Position.X = 3589.000000000000000000
             Position.Y = 24.000000000000000000
             TextSettings.Font.Family = 'Arial'
-            TextSettings.FontColor = xFF888888
+            TextSettings.FontColor = xFF646464
             Text = 'V.24.01.00'
             TabOrder = 0
           end
@@ -1070,7 +1082,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
             Size.PlatformDefault = False
             TextSettings.Font.Family = 'Arial'
             TextSettings.Font.StyleExt = {00070000000000000004000000}
-            TextSettings.FontColor = xFF888888
+            TextSettings.FontColor = xFF646464
             Text = 'Desenvolvido por Marthi System'
             TabOrder = 1
           end

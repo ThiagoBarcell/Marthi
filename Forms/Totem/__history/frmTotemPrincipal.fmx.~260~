@@ -1044,22 +1044,36 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
         TabOrder = 3
         object Rectangle2: TRectangle
           Align = Client
-          Fill.Color = xFF282828
+          Fill.Kind = Gradient
+          Fill.Gradient.Points = <
+            item
+              Color = xFF131313
+              Offset = 0.000000000000000000
+            end
+            item
+              Color = x0FB6B6B6
+              Offset = 1.000000000000000000
+            end>
+          Fill.Gradient.StartPosition.Y = 0.500000000000000000
+          Fill.Gradient.StopPosition.X = 1.000000000000000000
+          Fill.Gradient.StopPosition.Y = 0.500000000000000000
           Size.Width = 3840.000000000000000000
           Size.Height = 49.000000000000000000
           Size.PlatformDefault = False
           Stroke.Color = claWhite
           Stroke.Thickness = 0.000000000000000000
           object Label10: TLabel
+            Anchors = [akTop, akRight]
             StyledSettings = [Size]
             Position.X = 3589.000000000000000000
             Position.Y = 24.000000000000000000
             TextSettings.Font.Family = 'Arial'
-            TextSettings.FontColor = xFF888888
+            TextSettings.FontColor = xFF646464
             Text = 'V.24.01.00'
             TabOrder = 0
           end
           object Label9: TLabel
+            Anchors = [akTop, akRight]
             StyledSettings = [Size]
             Position.X = 3589.000000000000000000
             Position.Y = 7.000000000000000000
@@ -1068,12 +1082,13 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
             Size.PlatformDefault = False
             TextSettings.Font.Family = 'Arial'
             TextSettings.Font.StyleExt = {00070000000000000004000000}
-            TextSettings.FontColor = xFF888888
+            TextSettings.FontColor = xFF646464
             Text = 'Desenvolvido por Marthi System'
             TabOrder = 1
           end
         end
         object Rectangle4: TRectangle
+          Anchors = [akTop, akRight]
           Fill.Bitmap.Bitmap.PNG = {
             89504E470D0A1A0A0000000D49484452000001AD000001A20806000000540099
             E2000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
