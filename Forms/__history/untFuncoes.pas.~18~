@@ -1,0 +1,289 @@
+unit untFuncoes;
+
+interface
+
+uses
+  System.IniFiles,
+  System.SysUtils,
+  FireDAC.Comp.Client,
+  FireDAC.Phys.FB,
+  System.Classes,
+  REST.Types,
+  REST.Client,
+  System.Net.URLClient,
+  System.Net.HttpClient,
+  System.Net.HttpClientComponent,
+  System.NetEncoding ;
+
+type TFuncoesUteis = class
+
+public
+  //Procedures
+  procedure AbreQrysInfo( lQryArmazenamento, lQryCondicao, lQryCor : TFDQuery );
+  Procedure ConectaBD_Ini( lConexao : TFDConnection; lLinkFB : TFDPhysFBDriverLink );
+  procedure EnviarMsgWhatsApp( sAPIKEYEMP, sTelefoneFrom, sTelefoneTo : String; sMensagem : WideString = ''; sCaminhoAnexo : String = ''; lEviarMensagemPDF : Boolean = False );
+  procedure ReplicaCelular(lQryCell: TFDQuery; lConnectionBD : TFDConnection );
+
+  //Functions
+  function CriaQuery ( Conexao : TFDConnection ): TFDQuery;
+  function NextID( lGenerator : string; lConexaoBD : TFDConnection ) : Integer;
+
+private
+
+end;
+
+implementation
+{ TFuncoesUteis }
+
+procedure TFuncoesUteis.AbreQrysInfo( lQryArmazenamento, lQryCondicao, lQryCor : TFDQuery );
+begin
+  lQryArmazenamento.Close;
+  lQryArmazenamento.Open;
+  lQryCondicao.Close;
+  lQryCondicao.Open;
+  lQryCor.Close;
+  lQryCor.Open;
+end;
+
+Procedure TFuncoesUteis.ConectaBD_Ini( lConexao : TFDConnection; lLinkFB : TFDPhysFBDriverLink );
+var
+ oIniCaminhos: tinifile;
+ sCaminhoIni: string;
+ sCaminhoApp: string;
+
+ lDataBase: string;
+ lServer: string;
+ lPorta: string;
+ lParams : string;
+
+begin
+  sCaminhoApp := ( ExtractFilePath( ParamStr(0) ) );
+  sCaminhoIni := ( sCaminhoApp + 'caminhos.ini' );
+
+  oIniCaminhos := TIniFile.Create(sCaminhoIni);
+
+  //Verifica o caminho do banco
+  if ( oIniCaminhos.ReadString( 'Caminhos','BD', '' ) <> '' ) then
+  begin
+    lDataBase := oIniCaminhos.ReadString( 'Caminhos','BD', '' );
+  end
+  else
+    oIniCaminhos.WriteString( 'Caminhos','BD', '' );
+
+  //Verifica o caminho do banco
+  if ( oIniCaminhos.ReadString( 'Caminhos','Server', '' ) <> '' ) then
+  begin
+    lServer := oIniCaminhos.ReadString( 'Caminhos','Server', '' );
+  end
+  else
+    oIniCaminhos.WriteString( 'Caminhos','Server', '' );
+
+  //Verifica o caminho do banco
+  if ( oIniCaminhos.ReadString( 'Caminhos','Porta', '' ) <> '' ) then
+  begin
+    lPorta := oIniCaminhos.ReadString( 'Caminhos','Porta', '' );
+  end
+  else
+    oIniCaminhos.WriteString( 'Caminhos','Porta', '' );
+
+  if ( oIniCaminhos.ReadString( 'Caminhos','DLL', '' ) <> '' ) then
+  begin
+    lLinkFB.VendorLib := oIniCaminhos.ReadString( 'Caminhos','DLL', '' );
+  end
+  else
+    oIniCaminhos.WriteString( 'Caminhos','DLL', '' );
+
+  lParams := ( 'User_Name=SYSDBA' + sLineBreak +
+  'Password=masterkey' + sLineBreak +
+  'Server=' + lServer + sLineBreak +
+  'Port='+ lPorta + sLineBreak +
+  'Database=' + lDataBase + sLineBreak +
+  'Protocol=TCPIP'+ sLineBreak +
+  'DriverID=FB' );
+
+  lConexao.Params.Text := lParams;
+
+end;
+
+function TFuncoesUteis.CriaQuery( Conexao : TFDConnection ): TFDQuery;
+var
+  lQry : TFDQuery;
+begin
+  lQry := TFDQuery.Create(nil);
+  lQry.Connection := Conexao;
+end;
+
+procedure TFuncoesUteis.EnviarMsgWhatsApp(sAPIKEYEMP, sTelefoneFrom, sTelefoneTo: String; sMensagem: WideString; sCaminhoAnexo: String; lEviarMensagemPDF: Boolean);
+var
+  inStream       : TStream;
+  outStream      : TStream;
+  StringList     : TStringList;
+  sNomeArquivo   : String;
+  sExtArquivo    : String;
+  sURLBase       : String;
+  sCaminhoBase64 : String;
+  sRESTClient    : TRESTClient;
+  sRESTRequest   : TRESTRequest;
+  sRESTResponse  : TRESTResponse;
+
+begin
+
+  //sTelefoneFrom := StrSuprime( Trim( sTelefoneFrom ), ' <>:?,.;/^~{}[]"!@#$%¨&*()_-+=|\QWERTYUIOPASDFGHJKLÇZXCVBNM' );
+  //sTelefoneTo   := StrSuprime( Trim( sTelefoneTo ), ' <>:?,.;/^~{}[]"!@#$%¨&*()_-+=|\QWERTYUIOPASDFGHJKLÇZXCVBNM' );
+
+  if( Trim( sTelefoneFrom ) <> '' ) and
+    ( Trim( sTelefoneTo ) <> ''   )then
+  try
+
+    sURLBase := 'https://app.whatsgw.com.br/api/WhatsGw/Send';
+
+    sRESTClient   := TRESTClient.Create( sURLBase );
+    sRESTRequest  := TRESTRequest.Create( sRESTClient );
+    sRESTResponse := TRESTResponse.Create( sRESTClient );
+    StringList    := TStringList.Create;
+
+    if( Trim( sCaminhoAnexo ) <> '' )then
+    begin
+
+      sExtArquivo    := ExtractFileExt( sCaminhoAnexo );
+      sCaminhoBase64 := ExtractFilePath( sCaminhoAnexo ) + ChangeFileExt( ExtractFileName( sCaminhoAnexo ), EmptyStr ) + '.txt';
+
+      try
+
+        inStream := TFileStream.Create( sCaminhoAnexo, fmOpenRead);
+
+        try
+
+          outStream := TFileStream.Create( sCaminhoBase64, fmCreate );
+
+          TNetEncoding.Base64.Encode( inStream, outStream );
+
+        finally
+
+          FreeAndNil( outStream );
+
+        end;
+
+      finally
+
+        FreeAndNil( inStream );
+
+      end;
+
+      sNomeArquivo := ChangeFileExt( ExtractFileName( sCaminhoAnexo ), EmptyStr );
+      StringList.LoadFromFile( sCaminhoBase64 );
+
+    end;
+
+    //Parametros RestRequest
+    sRESTRequest.Client   := sRESTClient;
+    sRESTRequest.Response := sRESTResponse;
+    sRESTRequest.Accept   := 'application/json;q=0.9,text/plain;q=0.9,text/html';
+    sRESTRequest.Method   := rmPOST;
+
+    //Parametros RestClient
+    sRESTClient.AcceptCharset       := 'UTF-8';
+    sRESTClient.Accept              := 'application/json;q=0.9,text/plain;q=0.9,text/html';
+    sRESTClient.RaiseExceptionOn500 := False;
+    sRESTRequest.Params.Clear;
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[0].Name  := 'apikey';
+    sRESTRequest.Params.Items[0].Value := sAPIKEYEMP;
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[1].Name  := 'phone_number';
+    sRESTRequest.Params.Items[1].Value := '55' + sTelefoneFrom;
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[2].Name  := 'contact_phone_number';
+    sRESTRequest.Params.Items[2].Value := '55' + sTelefoneTo;
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[3].Name  := 'message_custom_id';
+    sRESTRequest.Params.Items[3].Value := 'yowsoftwareid';
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[4].Name  := 'message_type';
+
+    if( Trim( sExtArquivo ) = '' )then
+    begin
+     sRESTRequest.Params.Items[4].Value := 'text';
+     StringList.Text := sMensagem;
+    end
+    else
+      sRESTRequest.Params.Items[4].Value := 'image';
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[5].Name  := 'message_caption';
+    sRESTRequest.Params.Items[5].Value := sMensagem;
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[6].Name  := 'message_body_mimetype';
+    sRESTRequest.Params.Items[6].Value := 'image/jpeg';
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[7].Name  := 'message_body_filename';
+    sRESTRequest.Params.Items[7].Value := sNomeArquivo + sExtArquivo;
+
+    sRESTRequest.Params.Add;
+    sRESTRequest.Params.Items[8].Name  := 'message_body';
+    sRESTRequest.Params.Items[8].Value := StringList.Text;
+
+    sRESTRequest.Execute;
+
+  finally
+
+    DeleteFile( sCaminhoBase64 );
+
+    FreeAndNil( sRESTClient );
+    FreeAndNil( StringList );
+
+    if( lEviarMensagemPDF )then
+      EnviarMsgWhatsApp( sAPIKEYEMP, sTelefoneFrom, sTelefoneTo, sMensagem );
+
+  end;
+
+end;
+
+function TFuncoesUteis.NextID(lGenerator: string;
+  lConexaoBD: TFDConnection): Integer;
+var
+  oqryNovoNum : TFDQuery;
+begin
+  oqryNovoNum := TFDQuery.Create(nil);
+  oqryNovoNum.Connection := lConexaoBD;
+  try
+    oqryNovoNum.Close;
+    oqryNovoNum.SQL.Clear;
+    oqryNovoNum.SQL.Add( 'SELECT GEN_ID(' + lGenerator + ',1) AS ID_ATUAL FROM RDB$DATABASE' );
+    oqryNovoNum.Open;
+  finally
+    Result := oqryNovoNum.FieldByName( 'ID_ATUAL' ).AsInteger;
+    FreeAndNil(oqryNovoNum);
+  end;
+end;
+
+procedure TFuncoesUteis.ReplicaCelular(lQryCell: TFDQuery; lConnectionBD : TFDConnection );
+var
+  lQryReplicacao : TFDQuery;
+begin
+  try
+    lQryReplicacao := CriaQuery( lConnectionBD );
+    lQryReplicacao.Close;
+    lQryReplicacao.SQL.Clear;
+    lQryReplicacao.SQL.Add( 'INSERT INTO CAD_CELL (CELL_ID, CELL_MARCA, CELL_DESC, CELL_PROCESSAMENTO,' +
+      'CELL_MEM_RAM, CELL_CAM_PRINC, CELL_CAM_FRONT, CELL_OBS, DAT_CAD, ' +
+      ' DAT_ALT, CELL_STATUS, CELL_REFERENCIA) ' +
+      ' VALUES (' + NextID( 'GEN_CAD_CELL_ID', lConnectionBD ) + ' , ' + lQryCell.FieldByName( 'CELL_MARCA' ).AsInteger +
+      ', ' + lQryCell.FieldByName( 'CELL_DESC' ).AsString + ', ' + lQryCell.FieldByName( 'CELL_PROCESSAMENTO' ).AsString +
+      ', ' + lQryCell.FieldByName( 'CELL_MEM_RAM' ).AsString + ' , ' + lQryCell.FieldByName( 'CELL_CAM_PRINC' ).AsString +
+      ', ' + lQryCell.FieldByName( 'CELL_CAM_FRONT' ).AsString + ' , ' + lQryCell.FieldByName( 'CELL_OBS' ).AsString + ' , ' +
+      'CURRENT_DATE, CURRENT_DATE, 1, ' + QuotedStr( 'REPLICADO' ) + ');' );
+    lQryReplicacao.ExecSQL;
+  finally
+    lQryReplicacao.Free;
+  end;
+end;
+
+end.

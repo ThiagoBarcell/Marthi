@@ -62,6 +62,7 @@ type
     FBLink: TFDPhysFBDriverLink;
     qryCadCellCELL_STATUS: TSmallintField;
     qryCadCellCELL_REFERENCIA: TStringField;
+    qryCellItensCELL_PARCELAS: TStringField;
     procedure qryCadCellNewRecord(DataSet: TDataSet);
     procedure qryCadCellAfterScroll(DataSet: TDataSet);
     procedure qryCellItensNewRecord(DataSet: TDataSet);

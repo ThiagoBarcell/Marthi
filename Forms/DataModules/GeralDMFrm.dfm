@@ -12,6 +12,7 @@ object frmGeralDM: TfrmGeralDM
       'Database=C:\MarthiGIT\Marthi DataBase\DataBase\MARTHIDB.FDB'
       'Protocol=TCPIP'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 56
     Top = 16
@@ -216,6 +217,7 @@ object frmGeralDM: TfrmGeralDM
       end>
   end
   object qryCellItens: TFDQuery
+    Active = True
     OnNewRecord = qryCellItensNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellItens
@@ -227,7 +229,8 @@ object frmGeralDM: TfrmGeralDM
       '  COR_ID,'
       '  CODICAO_ID,'
       '  CELL_VAL_UNIT,'
-      '  CELL_VAL_PARC'
+      '  CELL_VAL_PARC,'
+      '  CELL_PARCELAS'
       ''
       'FROM CELL_ITENS'
       ''
@@ -275,6 +278,12 @@ object frmGeralDM: TfrmGeralDM
       Origin = 'CELL_VAL_PARC'
       Precision = 18
       Size = 2
+    end
+    object qryCellItensCELL_PARCELAS: TStringField
+      FieldName = 'CELL_PARCELAS'
+      Origin = 'CELL_PARCELAS'
+      FixedChar = True
+      Size = 25
     end
   end
   object dtsCellItens: TDataSource
@@ -411,10 +420,10 @@ object frmGeralDM: TfrmGeralDM
     InsertSQL.Strings = (
       
         'INSERT INTO CELL_ITENS ( ITEM_ID, CELL_ID, ARMAZENAMENTO_ID, COR' +
-        '_ID, CODICAO_ID, CELL_VAL_UNIT, CELL_VAL_PARC )'
+        '_ID, CODICAO_ID, CELL_VAL_UNIT, CELL_VAL_PARC, CELL_PARCELAS )'
       
         'VALUES ( :ITEM_ID, :CELL_ID, :ARMAZENAMENTO_ID, :COR_ID, :CODICA' +
-        'O_ID, :CELL_VAL_UNIT, :CELL_VAL_PARC );')
+        'O_ID, :CELL_VAL_UNIT, :CELL_VAL_PARC, :CELL_PARCELAS );')
     ModifySQL.Strings = (
       'UPDATE CELL_ITENS'
       'SET ITEM_ID = :ITEM_ID,'
@@ -423,7 +432,8 @@ object frmGeralDM: TfrmGeralDM
       '    COR_ID = :COR_ID,'
       '    CODICAO_ID = :CODICAO_ID,'
       '    CELL_VAL_UNIT = :CELL_VAL_UNIT,'
-      '    CELL_VAL_PARC = :CELL_VAL_PARC'
+      '    CELL_VAL_PARC = :CELL_VAL_PARC,'
+      '    CELL_PARCELAS = :CELL_PARCELAS'
       'WHERE ITEM_ID = :OLD_ITEM_ID')
     DeleteSQL.Strings = (
       'DELETE FROM CELL_ITENS'

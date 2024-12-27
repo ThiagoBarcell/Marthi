@@ -32,7 +32,7 @@ object frmCadProdutos: TfrmCadProdutos
       Height = 663
       Align = alClient
       TabOrder = 0
-      Properties.ActivePage = tabCadastro
+      Properties.ActivePage = tabConsulta
       Properties.CustomButtons.Buttons = <>
       LookAndFeel.NativeStyle = False
       ClientRectBottom = 663
@@ -960,7 +960,7 @@ object frmCadProdutos: TfrmCadProdutos
                   end>
                 Properties.ListSource = frmGeralDM.dtsCellArmazenamento
                 HeaderAlignmentHorz = taCenter
-                Width = 105
+                Width = 102
               end
               object cxGridDBTableViewCell_ItensColumnCOR_ID: TcxGridDBColumn
                 Caption = 'Cor'
@@ -974,7 +974,7 @@ object frmCadProdutos: TfrmCadProdutos
                   end>
                 Properties.ListSource = frmGeralDM.dtsCellCor
                 HeaderAlignmentHorz = taCenter
-                Width = 88
+                Width = 85
               end
               object cxGridDBTableViewCell_ItensColumnCODICAO_ID: TcxGridDBColumn
                 Caption = 'Condi'#231#227'o'
@@ -989,7 +989,7 @@ object frmCadProdutos: TfrmCadProdutos
                   end>
                 Properties.ListSource = frmGeralDM.dtsCellCondicao
                 HeaderAlignmentHorz = taCenter
-                Width = 111
+                Width = 97
               end
               object cxGridDBTableViewCell_ItensColumnCELL_VAL_UNIT: TcxGridDBColumn
                 Caption = 'Valor Unit'#225'rio'
@@ -997,7 +997,7 @@ object frmCadProdutos: TfrmCadProdutos
                 PropertiesClassName = 'TcxCurrencyEditProperties'
                 Properties.Alignment.Horz = taRightJustify
                 HeaderAlignmentHorz = taCenter
-                Width = 91
+                Width = 92
               end
               object cxGridDBTableViewCell_ItensColumnCELL_VAL_PARC: TcxGridDBColumn
                 Caption = 'Valor Parcelado'
@@ -1006,6 +1006,15 @@ object frmCadProdutos: TfrmCadProdutos
                 Properties.Alignment.Horz = taRightJustify
                 HeaderAlignmentHorz = taCenter
                 Width = 97
+              end
+              object cxGridDBTableViewCell_ItensColumn1: TcxGridDBColumn
+                Caption = 'Parcelas'
+                DataBinding.FieldName = 'CELL_PARCELAS'
+                PropertiesClassName = 'TcxTextEditProperties'
+                FooterAlignmentHorz = taCenter
+                GroupSummaryAlignment = taCenter
+                HeaderAlignmentHorz = taCenter
+                Width = 65
               end
             end
             object grdLevelCell_Itens: TcxGridLevel
@@ -7738,6 +7747,7 @@ object frmCadProdutos: TfrmCadProdutos
           043C65A1170000000049454E44AE426082}
         PaintStyle = bpsGlyph
         TabOrder = 1
+        Visible = False
         ExplicitLeft = 1088
       end
     end

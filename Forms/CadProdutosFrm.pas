@@ -105,6 +105,7 @@ type
     btnConfiguracao: TcxButton;
     ppmGridCadastro: TPopupMenu;
     Duplicarregistro1: TMenuItem;
+    cxGridDBTableViewCell_ItensColumn1: TcxGridDBColumn;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
