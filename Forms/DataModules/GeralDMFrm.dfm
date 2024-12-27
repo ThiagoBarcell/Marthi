@@ -9,10 +9,8 @@ object frmGeralDM: TfrmGeralDM
       'Password=masterkey'
       'Server=localhost'
       'Port=3050'
-      'Database=C:\MarthiGIT\Marthi DataBase\DataBase\MARTHIDB.FDB'
       'Protocol=TCPIP'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 56
     Top = 16
@@ -217,7 +215,6 @@ object frmGeralDM: TfrmGeralDM
       end>
   end
   object qryCellItens: TFDQuery
-    Active = True
     OnNewRecord = qryCellItensNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellItens
