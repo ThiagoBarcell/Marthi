@@ -16,18 +16,18 @@ File_13=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Setup\Forms\SetUpLookUpDMFrm.pas
 File_14=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Vendas\Forms\Report\VenPlanilhaSepReportFrm.pas',0,1,7497,95,7522,0,0,,
 
 [Modules]
-Module0=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
-Module1=C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
+Module0=C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
+Module1=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 Module2=default.htm
 Module3=C:\Sistemas\Marthi GIT\Forms\untFuncoes.pas
 Module4=C:\Sistemas\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
 Count=5
 EditWindowCount=1
 
-[C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas]
+[C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas]
 ModuleType=TSourceModule
 
-[C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas]
+[C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas]
 ModuleType=TSourceModule
 
 [default.htm]
@@ -41,7 +41,7 @@ ModuleType=TSourceModule
 
 [EditWindow0]
 ViewCount=5
-CurrentEditView=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
+CurrentEditView=C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
 View0=0
 View1=1
 View2=2
@@ -105,8 +105,8 @@ EditViewName=C:\Sistemas\Marthi GIT\Forms\untFuncoes.pas
 CustomEditViewType=TEditView
 Module=C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
 CursorX=41
-CursorY=82
-TopLine=63
+CursorY=81
+TopLine=62
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -153,7 +153,7 @@ StayOnTop=0
 [Breakpoints]
 Count=2
 Breakpoint0='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',135,'',0,1,'',1,0,0,'',1,'','','',0,''
-Breakpoint1='C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas',74,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint1='C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas',73,'',0,1,'',1,0,0,'',1,'','','',0,''
 
 [EmbarcaderoWin32Debugger_AddressBreakpoints]
 Count=0
@@ -245,12 +245,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=2012
-Height=8480
+Width=1908
+Height=8002
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2012
-ClientHeight=8480
+ClientWidth=1908
+ClientHeight=8002
 TBDockHeight=7157
 LRDockWidth=1999
 Dockable=1
@@ -297,8 +297,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Margins.Top,
-ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,Corners=0,Fill=1,LiveBindings=0,Margins=1,Padding=0,Position=0,RotationCenter=0,Scale=0,Sides=0,Size=0,Stroke=0,Touch=0,Fill.Bitmap=1,Fill.Resource=0,Fill.Bitmap.Image=0
+SelectedItem=Height,
+ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,LiveBindings=0,Margins=1,Padding=0,Position=0,RotationCenter=0,Scale=0,Size=0,StyledSettings=0,TextSettings=0,Touch=0,TouchTargetExpansion=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -780,8 +780,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=1191
-Top=115
+Left=8
+Top=8
 Width=2025
 Height=8480
 MaxLeft=-1
@@ -828,14 +828,14 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=1193
-Top=115
+Left=8
+Top=8
 Width=2012
 Height=8480
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2012
-ClientHeight=8480
+ClientWidth=1908
+ClientHeight=8002
 TBDockHeight=8480
 LRDockWidth=2012
 Dockable=1

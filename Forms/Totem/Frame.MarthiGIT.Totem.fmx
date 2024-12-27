@@ -30,7 +30,7 @@ object FrameTotem: TFrameTotem
       Size.Height = 235.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'TabControl1Style1'
-      TabIndex = 0
+      TabIndex = 1
       TabOrder = 1
       TabPosition = None
       Sizes = (
@@ -42,7 +42,7 @@ object FrameTotem: TFrameTotem
         CustomIcon = <
           item
           end>
-        IsSelected = True
+        IsSelected = False
         Size.Width = 8.000000000000000000
         Size.Height = 8.000000000000000000
         Size.PlatformDefault = False
@@ -198,10 +198,10 @@ object FrameTotem: TFrameTotem
             Align = Top
             StyledSettings = [Family, Style]
             Margins.Left = 15.000000000000000000
-            Margins.Top = 5.000000000000000000
+            Margins.Top = 30.000000000000000000
             Margins.Right = 15.000000000000000000
             Position.X = 15.000000000000000000
-            Position.Y = 140.000000000000000000
+            Position.Y = 165.000000000000000000
             Size.Width = 270.000000000000000000
             Size.Height = 36.000000000000000000
             Size.PlatformDefault = False
@@ -225,7 +225,7 @@ object FrameTotem: TFrameTotem
             Margins.Left = 15.000000000000000000
             Margins.Right = 15.000000000000000000
             Position.X = 15.000000000000000000
-            Position.Y = 176.000000000000000000
+            Position.Y = 201.000000000000000000
             Size.Width = 270.000000000000000000
             Size.Height = 22.000000000000000000
             Size.PlatformDefault = False
@@ -247,8 +247,8 @@ object FrameTotem: TFrameTotem
           object btnComprar: TRoundRect
             Cursor = crHandPoint
             Fill.Color = xFF3392E9
-            Position.X = 152.000000000000000000
-            Position.Y = 156.000000000000000000
+            Position.X = 155.000000000000000000
+            Position.Y = 182.000000000000000000
             Size.Width = 129.000000000000000000
             Size.Height = 40.000000000000000000
             Size.PlatformDefault = False
@@ -279,7 +279,7 @@ object FrameTotem: TFrameTotem
         CustomIcon = <
           item
           end>
-        IsSelected = False
+        IsSelected = True
         Size.Width = 8.000000000000000000
         Size.Height = 8.000000000000000000
         Size.PlatformDefault = False
@@ -290,7 +290,7 @@ object FrameTotem: TFrameTotem
         ExplicitSize.cy = 8.000000000000000000
         object Layout9: TLayout
           Align = Center
-          Size.Width = 497.000000000000000000
+          Size.Width = 549.000000000000000000
           Size.Height = 235.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -299,7 +299,7 @@ object FrameTotem: TFrameTotem
             StyledSettings = [Family, Style, FontColor]
             Margins.Top = 10.000000000000000000
             Position.Y = 10.000000000000000000
-            Size.Width = 497.000000000000000000
+            Size.Width = 549.000000000000000000
             Size.Height = 17.000000000000000000
             Size.PlatformDefault = False
             TextSettings.Font.Size = 16.000000000000000000
@@ -312,14 +312,14 @@ object FrameTotem: TFrameTotem
             TabOrder = 0
             Position.X = 40.000000000000000000
             Position.Y = 48.000000000000000000
-            Size.Width = 417.000000000000000000
+            Size.Width = 497.000000000000000000
             Size.Height = 25.000000000000000000
             Size.PlatformDefault = False
             object lbl3: TLabel
               Align = Top
               Margins.Top = -15.000000000000000000
               Position.Y = -15.000000000000000000
-              Size.Width = 417.000000000000000000
+              Size.Width = 497.000000000000000000
               Size.Height = 17.000000000000000000
               Size.PlatformDefault = False
               Text = 'Digite seu Nome e Sobrenome :'
@@ -330,15 +330,15 @@ object FrameTotem: TFrameTotem
             Touch.InteractiveGestures = [LongTap, DoubleTap]
             TabOrder = 1
             Position.X = 40.000000000000000000
-            Position.Y = 96.000000000000000000
-            Size.Width = 161.000000000000000000
+            Position.Y = 94.000000000000000000
+            Size.Width = 241.000000000000000000
             Size.Height = 25.000000000000000000
             Size.PlatformDefault = False
             object lbl4: TLabel
               Align = Top
               Margins.Top = -15.000000000000000000
               Position.Y = -15.000000000000000000
-              Size.Width = 161.000000000000000000
+              Size.Width = 241.000000000000000000
               Size.Height = 17.000000000000000000
               Size.PlatformDefault = False
               Text = 'Telefone :'
@@ -349,10 +349,10 @@ object FrameTotem: TFrameTotem
             Touch.InteractiveGestures = [LongTap, DoubleTap]
             TabOrder = 4
             ReadOnly = True
-            Position.X = 232.000000000000000000
+            Position.X = 312.000000000000000000
             Position.Y = 144.000000000000000000
             Size.Width = 225.000000000000000000
-            Size.Height = 22.000000000000000000
+            Size.Height = 25.000000000000000000
             Size.PlatformDefault = False
             object lbl6: TLabel
               Align = Top
@@ -370,10 +370,10 @@ object FrameTotem: TFrameTotem
             StyleLookup = 'editstyle'
             TabOrder = 2
             ReadOnly = True
-            Position.X = 232.000000000000000000
-            Position.Y = 96.000000000000000000
+            Position.X = 312.000000000000000000
+            Position.Y = 94.000000000000000000
             Size.Width = 225.000000000000000000
-            Size.Height = 22.000000000000000000
+            Size.Height = 25.000000000000000000
             Size.PlatformDefault = False
             Caret.Color = x00A4A4A5
             object Label1: TLabel
@@ -393,14 +393,14 @@ object FrameTotem: TFrameTotem
             ReadOnly = True
             Position.X = 38.000000000000000000
             Position.Y = 145.000000000000000000
-            Size.Width = 163.000000000000000000
-            Size.Height = 22.000000000000000000
+            Size.Width = 243.000000000000000000
+            Size.Height = 25.000000000000000000
             Size.PlatformDefault = False
             object Label2: TLabel
               Align = Top
               Margins.Top = -15.000000000000000000
               Position.Y = -15.000000000000000000
-              Size.Width = 163.000000000000000000
+              Size.Width = 243.000000000000000000
               Size.Height = 17.000000000000000000
               Size.PlatformDefault = False
               Text = 'Capacidade :'
@@ -413,7 +413,7 @@ object FrameTotem: TFrameTotem
             Margins.Left = 5.000000000000000000
             Margins.Top = 5.000000000000000000
             Margins.Right = 20.000000000000000000
-            Position.X = 232.000000000000000000
+            Position.X = 312.000000000000000000
             Position.Y = 180.000000000000000000
             Size.Width = 228.000000000000000000
             Size.Height = 40.000000000000000000
