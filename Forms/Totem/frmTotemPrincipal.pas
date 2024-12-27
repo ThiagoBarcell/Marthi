@@ -20,24 +20,11 @@ uses
 type
   TTotemPrincipalfrm = class(TForm)
     Rectangle1: TRectangle;
-    btnIphone: TRoundRect;
-    Label1: TLabel;
-    Image1: TImage;
-    ShadowEffect2: TShadowEffect;
     ShadowEffect3: TShadowEffect;
-    ShadowEffect4: TShadowEffect;
-    btnXiaomi: TRoundRect;
-    Label2: TLabel;
-    Image2: TImage;
-    ShadowEffect5: TShadowEffect;
-    ShadowEffect6: TShadowEffect;
     VertScrollBox1: TVertScrollBox;
     lytTop: TLayout;
     lytModelo: TLayout;
     lytCenter: TLayout;
-    RoundRect3: TRoundRect;
-    ShadowEffect9: TShadowEffect;
-    Image3: TImage;
     Layout1: TLayout;
     Layout3: TLayout;
     StyleBook1: TStyleBook;
@@ -45,8 +32,6 @@ type
     Rectangle2: TRectangle;
     Label9: TLabel;
     Label10: TLabel;
-    edtPesquisa: TEdit;
-    Layout2: TLayout;
     ConectMarthi: TFDConnection;
     qryCadCell: TFDQuery;
     qryImagensCell: TFDQuery;
@@ -58,12 +43,9 @@ type
     lytGlobal: TLayout;
     lytToten: TLayout;
     Rectangle8: TRectangle;
-    Rectangle9: TRectangle;
     Rectangle10: TRectangle;
     Rectangle11: TRectangle;
-    Layout8: TLayout;
     dtsCadCell: TBindSourceDB;
-    Layout4: TLayout;
     FBLink: TFDPhysFBDriverLink;
     qryCapacidades: TFDQuery;
     qryCapacidadesARMAZENAMENTO_DESC: TStringField;
@@ -82,22 +64,29 @@ type
     qryDadosCorARMAZENAMENTO_ID: TIntegerField;
     qryConfig: TFDQuery;
     qryConfigAPI_KEY_WHATSAPP: TStringField;
-    btnFechar: TRoundRect;
-    Label4: TLabel;
-    ShadowEffect1: TShadowEffect;
     ShadowEffect7: TShadowEffect;
-    Rectangle3: TRectangle;
-    Rectangle5: TRectangle;
     ShadowEffect8: TShadowEffect;
     Label3: TLabel;
     Label5: TLabel;
+    btnIphone: TRectangle;
+    img1: TImage;
+    ShadowEffect4: TShadowEffect;
+    Label1: TLabel;
+    btnXiaomi: TRectangle;
+    img2: TImage;
+    ShadowEffect5: TShadowEffect;
+    Label2: TLabel;
+    Rectangle3: TRectangle;
+    img3: TImage;
+    Layout2: TLayout;
+    edtPesquisa: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaExit(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
     procedure btnIphoneClick(Sender: TObject);
     procedure btnXiaomiClick(Sender: TObject);
-    procedure btnFecharClick(Sender: TObject);
   private
     { Private declarations }
     procedure CarregarDados;
@@ -403,7 +392,6 @@ begin
     else
       Frame.Visible := False; // Esconde os frames que não correspondem
   end;
-
 end;
 
 procedure TTotemPrincipalfrm.CarregarCapacidades(Frame: TFrameTotem; CellID: Integer);

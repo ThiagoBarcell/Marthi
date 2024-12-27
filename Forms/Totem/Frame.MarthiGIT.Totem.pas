@@ -10,7 +10,6 @@ uses
 type
   TFrameTotem = class(TFrame)
     Rectangle4: TRectangle;
-    ShadowEffect7: TShadowEffect;
     tbcTotem: TTabControl;
     TabTotemPrincipal: TTabItem;
     Layout6: TLayout;
@@ -35,10 +34,6 @@ type
     edtTelCli: TEdit;
     lbl4: TLabel;
     lbl6: TLabel;
-    btnEnviaWhatsapp: TRoundRect;
-    ShadowEffect1: TShadowEffect;
-    img1: TImage;
-    lbl1: TLabel;
     imgCell: TRectangle;
     HorzScrollBoxImagens: THorzScrollBox;
     CELL_MARCA: TLabel;
@@ -47,14 +42,15 @@ type
     Label1: TLabel;
     edtCapacidadeTel: TEdit;
     Label2: TLabel;
-    btnComprar: TRoundRect;
-    Label4: TLabel;
-    RoundRect1: TRoundRect;
+    btnComprar: TRectangle;
+    Label8: TLabel;
+    btnEnviaWhatsapp: TRectangle;
+    img1: TImage;
+    lbl1: TLabel;
+    Rectangle1: TRectangle;
     Label6: TLabel;
-    ShadowEffect2: TShadowEffect;
-    ShadowEffect3: TShadowEffect;
     procedure btnComprarClick(Sender: TObject);
-    procedure RoundRect1Click(Sender: TObject);
+    procedure Rectangle1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -68,6 +64,17 @@ implementation
 
 { TFrameTotem }
 
+procedure TFrameTotem.PreencherDados(const Nome: string; Imagem: TImage);
+begin
+  lblNomeItem.Text := Nome;
+  imgCell.Fill.Bitmap.Bitmap.Assign(Imagem);  
+end;
+
+procedure TFrameTotem.Rectangle1Click(Sender: TObject);
+begin
+  tbcTotem.ActiveTab := TabTotemPrincipal;
+end;
+
 procedure TFrameTotem.btnComprarClick(Sender: TObject);
 begin
   try
@@ -80,17 +87,6 @@ begin
     on E: Exception do
     MessageDlg('Falha no envio dos dados!', TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0);
   end;
-end;
-
-procedure TFrameTotem.PreencherDados(const Nome: string; Imagem: TImage);
-begin
-  lblNomeItem.Text := Nome;
-  imgCell.Fill.Bitmap.Bitmap.Assign(Imagem);  
-end;
-
-procedure TFrameTotem.RoundRect1Click(Sender: TObject);
-begin
-  tbcTotem.ActiveTab := TabTotemPrincipal;
 end;
 
 end.

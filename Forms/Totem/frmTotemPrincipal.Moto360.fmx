@@ -8,65 +8,68 @@ inherited TotemPrincipalfrm_Moto360: TTotemPrincipalfrm_Moto360
     inherited Rectangle8: TRectangle
       Size.Width = 240.000000000000000000
       Size.Height = 218.000000000000000000
-      inherited Layout8: TLayout
-        Size.Height = 169.000000000000000000
-        inherited Rectangle3: TRectangle
-          Size.Height = 169.000000000000000000
-        end
-      end
       inherited lytToten: TLayout
-        Size.Width = 0.000000000000000000
+        Size.Width = 240.000000000000000000
         Size.Height = 169.000000000000000000
         inherited Rectangle11: TRectangle
+          Size.Width = 240.000000000000000000
+          Size.Height = 169.000000000000000000
           inherited lytCenter: TLayout
+            Size.Width = 0.000000000000000000
+            Size.Height = 0.000000000000000000
             inherited Rectangle10: TRectangle
               inherited Layout3: TLayout
                 inherited VertScrollBox1: TVertScrollBox
-                  Viewport.Width = 3160.000000000000000000
-                  Viewport.Height = 1907.000000000000000000
+                  Viewport.Width = 3560.000000000000000000
+                  Viewport.Height = 1892.000000000000000000
                 end
               end
             end
           end
           inherited lytModelo: TLayout
-            inherited Rectangle9: TRectangle
-              inherited btnIphone: TRoundRect
-                inherited Image1: TImage
-                  inherited Label1: TLabel
-                    TextSettings.Font.StyleExt = {00070000000000000004000000}
-                  end
+            Size.Height = 0.000000000000000000
+            inherited btnIphone: TRectangle
+              Margins.Left = 5.000000000000000000
+              Position.X = 20.000000000000000000
+              Size.Width = 225.000000000000000000
+              inherited img1: TImage
+                inherited Label1: TLabel
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
                 end
               end
-              inherited btnXiaomi: TRoundRect
-                inherited Image2: TImage
-                  inherited Label2: TLabel
-                    TextSettings.Font.StyleExt = {00070000000000000004000000}
-                  end
+            end
+            inherited btnXiaomi: TRectangle
+              Margins.Left = 5.000000000000000000
+              Position.X = 20.000000000000000000
+              Size.Width = 225.000000000000000000
+              inherited img2: TImage
+                inherited Label2: TLabel
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
                 end
               end
             end
           end
           inherited lytTop: TLayout
+            Size.Width = 240.000000000000000000
+            inherited Rectangle1: TRectangle
+              Fill.Kind = Gradient
+              Size.Width = 240.000000000000000000
+            end
             inherited Layout1: TLayout
-              inherited RoundRect3: TRoundRect
+              Size.Width = 200.000000000000000000
+              inherited Rectangle3: TRectangle
+                Size.Width = 200.000000000000000000
+                inherited img3: TImage
+                  Position.X = 145.000000000000000000
+                end
                 inherited Layout2: TLayout
+                  Size.Width = 145.000000000000000000
                   inherited edtPesquisa: TEdit
+                    Size.Width = 125.000000000000000000
                     Size.Height = 32.000000000000000000
                   end
                 end
               end
-            end
-          end
-        end
-      end
-      inherited Layout4: TLayout
-        Position.X = 40.000000000000000000
-        Size.Height = 169.000000000000000000
-        inherited Rectangle5: TRectangle
-          Size.Height = 169.000000000000000000
-          inherited btnFechar: TRoundRect
-            inherited Label4: TLabel
-              TextSettings.Font.StyleExt = {00070000000000000004000000}
             end
           end
         end

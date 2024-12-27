@@ -16,18 +16,18 @@ File_13=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Setup\Forms\SetUpLookUpDMFrm.pas
 File_14=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Vendas\Forms\Report\VenPlanilhaSepReportFrm.pas',0,1,7497,95,7522,0,0,,
 
 [Modules]
-Module0=C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
-Module1=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
+Module0=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
+Module1=C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
 Module2=default.htm
 Module3=C:\Sistemas\Marthi GIT\Forms\untFuncoes.pas
 Module4=C:\Sistemas\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
 Count=5
 EditWindowCount=1
 
-[C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas]
+[C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas]
 ModuleType=TSourceModule
 
-[C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas]
+[C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas]
 ModuleType=TSourceModule
 
 [default.htm]
@@ -41,7 +41,7 @@ ModuleType=TSourceModule
 
 [EditWindow0]
 ViewCount=5
-CurrentEditView=C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
+CurrentEditView=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 View0=0
 View1=1
 View2=2
@@ -82,9 +82,9 @@ WelcomePageURL=bds:/default.htm
 [View1]
 CustomEditViewType=TEditView
 Module=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
-CursorX=28
-CursorY=280
-TopLine=268
+CursorX=7
+CursorY=394
+TopLine=379
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -104,9 +104,9 @@ EditViewName=C:\Sistemas\Marthi GIT\Forms\untFuncoes.pas
 [View3]
 CustomEditViewType=TEditView
 Module=C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
-CursorX=41
-CursorY=81
-TopLine=62
+CursorX=43
+CursorY=75
+TopLine=73
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -151,9 +151,8 @@ Dockable=1
 StayOnTop=0
 
 [Breakpoints]
-Count=2
-Breakpoint0='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',135,'',0,1,'',1,0,0,'',1,'','','',0,''
-Breakpoint1='C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas',73,'',0,1,'',1,0,0,'',1,'','','',0,''
+Count=1
+Breakpoint0='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',124,'',0,1,'',1,0,0,'',1,'','','',0,''
 
 [EmbarcaderoWin32Debugger_AddressBreakpoints]
 Count=0
@@ -245,12 +244,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=1908
-Height=8002
+Width=2012
+Height=8480
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1908
-ClientHeight=8002
+ClientWidth=2012
+ClientHeight=8480
 TBDockHeight=7157
 LRDockWidth=1999
 Dockable=1
@@ -297,8 +296,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Height,
-ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,LiveBindings=0,Margins=1,Padding=0,Position=0,RotationCenter=0,Scale=0,Size=0,StyledSettings=0,TextSettings=0,Touch=0,TouchTargetExpansion=0
+SelectedItem=Fill.Kind,
+ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,LiveBindings=0,Margins=0,Padding=0,Position=0,RotationCenter=0,Scale=0,Size=0,StyledSettings=0,TextSettings=1,Touch=0,TouchTargetExpansion=0,TextSettings.Font=1,TextSettings.Font.Style=1,Corners=0,Fill=1,Sides=0,Stroke=0,Fill.Bitmap=0,Fill.Resource=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -780,8 +779,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=8
-Top=8
+Left=1191
+Top=115
 Width=2025
 Height=8480
 MaxLeft=-1
@@ -828,14 +827,14 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=8
-Top=8
+Left=1193
+Top=115
 Width=2012
 Height=8480
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1908
-ClientHeight=8002
+ClientWidth=2012
+ClientHeight=8480
 TBDockHeight=8480
 LRDockWidth=2012
 Dockable=1
