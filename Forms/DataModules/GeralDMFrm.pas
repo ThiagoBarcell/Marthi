@@ -124,7 +124,8 @@ end;
 
 procedure TfrmGeralDM.qryCadCellNewRecord(DataSet: TDataSet);
 begin
-  qryCadCellCELL_ID.AsInteger  := ProximoNumero( 'GEN_CAD_CELL_ID' );
+  qryCadCellCELL_ID.AsInteger := ProximoNumero( 'GEN_CAD_CELL_ID' );
+  qryCadCellCELL_MARCA.AsInteger := 0;
   qryCadCellDAT_CAD.AsDateTime := Now;
   qryCadCellDAT_ALT.AsDateTime := Now;
   qryCadCellCELL_STATUS.AsInteger := 1; //Status ativo

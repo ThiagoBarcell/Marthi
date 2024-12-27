@@ -22,6 +22,11 @@ public
   procedure AbreQrysInfo( lQryArmazenamento, lQryCondicao, lQryCor : TFDQuery );
   Procedure ConectaBD_Ini( lConexao : TFDConnection; lLinkFB : TFDPhysFBDriverLink );
   procedure EnviarMsgWhatsApp( sAPIKEYEMP, sTelefoneFrom, sTelefoneTo : String; sMensagem : WideString = ''; sCaminhoAnexo : String = ''; lEviarMensagemPDF : Boolean = False );
+  procedure ReplicaCelular(lQryCell: TFDQuery; lConnectionBD : TFDConnection );
+
+  //Functions
+  function CriaQuery ( Conexao : TFDConnection ): TFDQuery;
+  function NextID( lGenerator : string; lConexaoBD : TFDConnection ) : Integer;
 
 private
 
@@ -98,6 +103,15 @@ begin
 
   lConexao.Params.Text := lParams;
 
+end;
+
+function TFuncoesUteis.CriaQuery( Conexao : TFDConnection ): TFDQuery;
+var
+  lQry : TFDQuery;
+begin
+  lQry := TFDQuery.Create(nil);
+  lQry.Connection := Conexao;
+  Result := lQry;
 end;
 
 procedure TFuncoesUteis.EnviarMsgWhatsApp(sAPIKEYEMP, sTelefoneFrom, sTelefoneTo: String; sMensagem: WideString; sCaminhoAnexo: String; lEviarMensagemPDF: Boolean);
@@ -233,5 +247,44 @@ begin
 
 end;
 
+function TFuncoesUteis.NextID(lGenerator: string;
+  lConexaoBD: TFDConnection): Integer;
+var
+  oqryNovoNum : TFDQuery;
+begin
+  oqryNovoNum := TFDQuery.Create(nil);
+  oqryNovoNum.Connection := lConexaoBD;
+  try
+    oqryNovoNum.Close;
+    oqryNovoNum.SQL.Clear;
+    oqryNovoNum.SQL.Add( 'SELECT GEN_ID(' + lGenerator + ',1) AS ID_ATUAL FROM RDB$DATABASE' );
+    oqryNovoNum.Open;
+  finally
+    Result := oqryNovoNum.FieldByName( 'ID_ATUAL' ).AsInteger;
+    FreeAndNil(oqryNovoNum);
+  end;
+end;
+
+procedure TFuncoesUteis.ReplicaCelular(lQryCell: TFDQuery; lConnectionBD : TFDConnection );
+var
+  lQryReplicacao : TFDQuery;
+begin
+  try
+    lQryReplicacao := CriaQuery( lConnectionBD );
+    lQryReplicacao.Close;
+    lQryReplicacao.SQL.Clear;
+    lQryReplicacao.SQL.Add( 'INSERT INTO CAD_CELL (CELL_ID, CELL_MARCA, CELL_DESC, CELL_PROCESSAMENTO,' +
+      'CELL_MEM_RAM, CELL_CAM_PRINC, CELL_CAM_FRONT, CELL_OBS, DAT_CAD, ' +
+      ' DAT_ALT, CELL_STATUS, CELL_REFERENCIA) ' +
+      ' VALUES (' + IntToStr( NextID( 'GEN_CAD_CELL_ID', lConnectionBD ) ) + ' , ' + lQryCell.FieldByName( 'CELL_MARCA' ).AsString +
+      ', ' + QuotedStr( lQryCell.FieldByName( 'CELL_DESC' ).AsString + ' - Duplicado ' ) + ', ' + QuotedStr( lQryCell.FieldByName( 'CELL_PROCESSAMENTO' ).AsString ) +
+      ', ' + QuotedStr( lQryCell.FieldByName( 'CELL_MEM_RAM' ).AsString ) + ' , ' + QuotedStr( lQryCell.FieldByName( 'CELL_CAM_PRINC' ).AsString ) +
+      ', ' + QuotedStr( lQryCell.FieldByName( 'CELL_CAM_FRONT' ).AsString ) + ' , ' + QuotedStr( lQryCell.FieldByName( 'CELL_OBS' ).AsString ) + ' , ' +
+      'CURRENT_DATE, CURRENT_DATE, 1, ' + QuotedStr( 'REPLICADO' ) + ');' );
+    lQryReplicacao.ExecSQL;
+  finally
+    lQryReplicacao.Free;
+  end;
+end;
 
 end.

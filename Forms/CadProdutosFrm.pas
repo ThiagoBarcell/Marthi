@@ -103,6 +103,8 @@ type
     edtFiltroReferencia: TcxTextEdit;
     imgStatus: TcxImageList;
     btnConfiguracao: TcxButton;
+    ppmGridCadastro: TPopupMenu;
+    Duplicarregistro1: TMenuItem;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
@@ -133,6 +135,7 @@ type
     procedure lblTituloMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
     procedure btnExcluirClick(Sender: TObject);
+    procedure Duplicarregistro1Click(Sender: TObject);
   private
     procedure AbreTelaInfo( iCod : Integer ) ;
     { Private declarations }
@@ -274,6 +277,12 @@ begin
       MemoryStream.Free;
     end
   end
+end;
+
+procedure TfrmCadProdutos.Duplicarregistro1Click(Sender: TObject);
+begin
+  Funcoes.ReplicaCelular( frmGeralDM.qryCadCell, frmGeralDM.ConectMarthi );
+  frmGeralDM.qryCadCell.Refresh;
 end;
 
 procedure TfrmCadProdutos.FormCreate(Sender: TObject);

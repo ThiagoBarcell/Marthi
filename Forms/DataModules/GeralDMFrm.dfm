@@ -2,7 +2,7 @@ object frmGeralDM: TfrmGeralDM
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   Height = 266
-  Width = 752
+  Width = 673
   object ConectMarthi: TFDConnection
     Params.Strings = (
       'User_Name=SYSDBA'
