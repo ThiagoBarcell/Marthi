@@ -9,18 +9,21 @@ inherited TotemPrincipalfrm_Moto360: TTotemPrincipalfrm_Moto360
       Size.Width = 240.000000000000000000
       Size.Height = 218.000000000000000000
       inherited Layout8: TLayout
-        Size.Height = 218.000000000000000000
+        Size.Height = 169.000000000000000000
+        inherited Rectangle3: TRectangle
+          Size.Height = 169.000000000000000000
+        end
       end
       inherited lytToten: TLayout
         Size.Width = 0.000000000000000000
-        Size.Height = 218.000000000000000000
+        Size.Height = 169.000000000000000000
         inherited Rectangle11: TRectangle
           inherited lytCenter: TLayout
             inherited Rectangle10: TRectangle
               inherited Layout3: TLayout
                 inherited VertScrollBox1: TVertScrollBox
                   Viewport.Width = 3160.000000000000000000
-                  Viewport.Height = 1905.000000000000000000
+                  Viewport.Height = 1907.000000000000000000
                 end
               end
             end
@@ -43,16 +46,6 @@ inherited TotemPrincipalfrm_Moto360: TTotemPrincipalfrm_Moto360
               end
             end
           end
-          inherited lytRodape: TLayout
-            inherited Rectangle2: TRectangle
-              inherited Label10: TLabel
-                TextSettings.Font.StyleExt = {00070000000000000004000000}
-              end
-              inherited Label9: TLabel
-                TextSettings.Font.StyleExt = {00070000000000000004000000}
-              end
-            end
-          end
           inherited lytTop: TLayout
             inherited Layout1: TLayout
               inherited RoundRect3: TRoundRect
@@ -68,7 +61,32 @@ inherited TotemPrincipalfrm_Moto360: TTotemPrincipalfrm_Moto360
       end
       inherited Layout4: TLayout
         Position.X = 40.000000000000000000
-        Size.Height = 218.000000000000000000
+        Size.Height = 169.000000000000000000
+        inherited Rectangle5: TRectangle
+          Size.Height = 169.000000000000000000
+          inherited btnFechar: TRoundRect
+            inherited Label4: TLabel
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+            end
+          end
+        end
+      end
+      inherited lytRodape: TLayout
+        Position.Y = 169.000000000000000000
+        Size.Width = 240.000000000000000000
+        inherited Rectangle2: TRectangle
+          Fill.Gradient.StartPosition.X = 1.000000000000000000
+          Size.Width = 240.000000000000000000
+          inherited Label9: TLabel
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+          end
+        end
+        inherited Label3: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+        inherited Label5: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
       end
     end
   end

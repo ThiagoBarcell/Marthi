@@ -1,0 +1,641 @@
+unit frmTotemPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, Winapi.ShellAPI,
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Effects, FMX.Layouts, FMX.Edit,
+  FMX.ListBox, FMX.TabControl, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
+  FireDAC.Phys.FBDef, FireDAC.FMXUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, Data.Bind.EngExt, Fmx.Bind.DBEngExt,
+  System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.Components,
+  Data.Bind.DBScope, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Frame.MarthiGIT.Totem, System.Math, System.IniFiles, Untfuncoes,
+  FireDAC.Phys.IBBase, MyVirtualKeyboard;
+
+type
+  TTotemPrincipalfrm = class(TForm)
+    Rectangle1: TRectangle;
+    btnIphone: TRoundRect;
+    Label1: TLabel;
+    Image1: TImage;
+    ShadowEffect2: TShadowEffect;
+    ShadowEffect3: TShadowEffect;
+    ShadowEffect4: TShadowEffect;
+    btnXiaomi: TRoundRect;
+    Label2: TLabel;
+    Image2: TImage;
+    ShadowEffect5: TShadowEffect;
+    ShadowEffect6: TShadowEffect;
+    VertScrollBox1: TVertScrollBox;
+    lytTop: TLayout;
+    lytModelo: TLayout;
+    lytCenter: TLayout;
+    RoundRect3: TRoundRect;
+    ShadowEffect9: TShadowEffect;
+    Image3: TImage;
+    Layout1: TLayout;
+    Layout3: TLayout;
+    StyleBook1: TStyleBook;
+    lytRodape: TLayout;
+    Rectangle2: TRectangle;
+    Label9: TLabel;
+    Label10: TLabel;
+    edtPesquisa: TEdit;
+    Layout2: TLayout;
+    ConectMarthi: TFDConnection;
+    qryCadCell: TFDQuery;
+    qryImagensCell: TFDQuery;
+    qryImagensCellCELL_ID: TIntegerField;
+    qryImagensCellSEQUENCIA: TIntegerField;
+    qryImagensCellIMAGE: TBlobField;
+    dtsImagensCell: TBindSourceDB;
+    BindingsList1: TBindingsList;
+    lytGlobal: TLayout;
+    lytToten: TLayout;
+    Rectangle8: TRectangle;
+    Rectangle9: TRectangle;
+    Rectangle10: TRectangle;
+    Rectangle11: TRectangle;
+    Layout8: TLayout;
+    dtsCadCell: TBindSourceDB;
+    Layout4: TLayout;
+    FBLink: TFDPhysFBDriverLink;
+    qryCapacidades: TFDQuery;
+    qryCapacidadesARMAZENAMENTO_DESC: TStringField;
+    qryCores: TFDQuery;
+    qryCoresCOR_DESC: TStringField;
+    Rectangle4: TRectangle;
+    qryDadosCor: TFDQuery;
+    qryDadosCorCELL_VAL_UNIT: TFMTBCDField;
+    qryDadosCorCELL_VAL_PARC: TFMTBCDField;
+    qryDadosCorARMAZENAMENTO_DESC: TStringField;
+    qryCapacidadesARMAZENAMENTO_ID: TIntegerField;
+    qryCoresCOR_ID: TIntegerField;
+    qryCadCellCELL_ID: TIntegerField;
+    qryCadCellCELL_DESC: TStringField;
+    qryCadCellCELL_MARCA: TIntegerField;
+    qryDadosCorARMAZENAMENTO_ID: TIntegerField;
+    qryConfig: TFDQuery;
+    qryConfigAPI_KEY_WHATSAPP: TStringField;
+    btnFechar: TRoundRect;
+    Label4: TLabel;
+    ShadowEffect1: TShadowEffect;
+    procedure FormCreate(Sender: TObject);
+    procedure edtPesquisaEnter(Sender: TObject);
+    procedure edtPesquisaExit(Sender: TObject);
+    procedure edtPesquisaTyping(Sender: TObject);
+    procedure btnIphoneClick(Sender: TObject);
+    procedure btnXiaomiClick(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure CarregarDados;
+    procedure AjustarAlturaScrollBox(ScrollBox: TVertScrollBox);
+    procedure CarregarImagensHorizontais(Frame: TFrameTotem; CellID: Integer);
+    procedure CarregarCapacidades(Frame: TFrameTotem; CellID: Integer);
+    procedure CarregarCores(Frame: TFrameTotem; CellID: Integer);
+    procedure MostrarTecladoVirtual;
+    procedure OcultarTecladoVirtual;
+    procedure CorChange(Sender: TObject);
+    procedure CapacidadeChange(Sender: TObject);
+    procedure EnviaWhatsapp(Sender: TObject);
+    procedure OnEnterNomeCli(Sender: TObject);
+    procedure OnEnterTelCli(Sender: TObject);
+  public
+    { Public declarations }
+  end;
+
+var
+  TotemPrincipalfrm: TTotemPrincipalfrm;
+  IsKeyboardShown: Boolean = False;
+
+implementation
+
+{$R *.fmx}
+{$R *.Surface.fmx MSWINDOWS}
+{$R *.Moto360.fmx ANDROID}
+{$R *.iPhone55in.fmx IOS}
+{$R *.iPad.fmx IOS}
+{$R *.Windows.fmx MSWINDOWS}
+
+{ TTotemPrincipalfrm }
+
+procedure TTotemPrincipalfrm.CapacidadeChange(Sender: TObject);
+var
+  ComboBox: TComboBox;
+  CapacidadeID, CorID: Integer;
+  qryDados: TFDQuery;
+  ParentObject: TFmxObject;
+  Frame: TFrameTotem;
+begin
+  ComboBox := Sender as TComboBox;
+
+  // Encontra o Frame pai do ComboBox
+  ParentObject := ComboBox.Parent;
+  while (ParentObject <> nil) and not (ParentObject is TFrameTotem) do
+    ParentObject := ParentObject.Parent;
+
+  if not (ParentObject is TFrameTotem) then
+    Exit;
+
+  Frame := TFrameTotem(ParentObject);
+
+  // Verifica se uma capacidade foi selecionada
+  if ComboBox.ItemIndex = -1 then
+    Exit;
+
+  // Obtém o ID da capacidade selecionada
+  CapacidadeID := Integer(ComboBox.Items.Objects[ComboBox.ItemIndex]);
+
+  // Obtém o ID da cor selecionada
+  if Frame.cbbCor.ItemIndex >= 0 then
+    CorID := Integer(Frame.cbbCor.Items.Objects[Frame.cbbCor.ItemIndex])
+  else
+    Exit;
+
+   qryDados := TFDQuery.Create(nil);
+  try
+    qryDados.Connection := ConectMarthi; // Substitua pelo seu componente de conexão
+    qryDados.SQL.Text :=
+      'SELECT CELL_ITENS.CELL_VAL_UNIT, CELL_ITENS.CELL_VAL_PARC ' +
+      'FROM CELL_ITENS ' +
+      'WHERE CELL_ITENS.COR_ID = :COR_ID AND CELL_ITENS.ARMAZENAMENTO_ID = :ARMAZENAMENTO_ID';
+    qryDados.ParamByName('COR_ID').AsInteger := CorID;
+    qryDados.ParamByName('ARMAZENAMENTO_ID').AsInteger := CapacidadeID;
+    qryDados.Open;
+
+    if not qryDados.IsEmpty then
+    begin
+      Frame.lblValorAVista.Text := Format('R$ %.2f', [qryDados.FieldByName('CELL_VAL_UNIT').AsFloat]);
+      Frame.lblValorAPrazo.Text := '12 X ' + Format('R$ %.2f', [qryDados.FieldByName('CELL_VAL_PARC').AsFloat]);
+    end
+    else
+    begin
+      Frame.lblValorAVista.Text := 'R$ 0,00';
+      Frame.lblValorAPrazo.Text := 'R$ 0,00';
+    end;
+  finally
+    qryDados.Free;
+  end;
+end;
+
+procedure TTotemPrincipalfrm.CorChange(Sender: TObject);
+var
+  ComboBox: TComboBox;
+  CorID: Integer;
+  ParentObject: TFmxObject;
+  Frame: TFrameTotem;
+begin
+  ComboBox := Sender as TComboBox;
+
+  // Encontra o Frame pai do ComboBox
+  ParentObject := ComboBox.Parent;
+  while (ParentObject <> nil) and not (ParentObject is TFrameTotem) do
+    ParentObject := ParentObject.Parent;
+
+  if not (ParentObject is TFrameTotem) then
+    Exit;
+
+  Frame := TFrameTotem(ParentObject);
+
+  // Verifica se uma capacidade foi selecionada
+  if ComboBox.ItemIndex = -1 then
+    Exit;
+
+  // Obtém o ID da cor selecionada
+  if Frame.cbbCor.ItemIndex >= 0 then
+    CorID := Integer(Frame.cbbCor.Items.Objects[Frame.cbbCor.ItemIndex])
+  else
+    Exit;
+
+  try
+    qryDadosCor.ParamByName('COR_ID').AsInteger := CorID;
+    qryDadosCor.Open;
+
+    // Atualiza os labels e o ComboBox de capacidade
+    if not qryDadosCor.IsEmpty then
+    begin
+      Frame.lblValorAVista.Text := Format('R$ %.2f', [qryDadosCor.FieldByName('CELL_VAL_UNIT').AsFloat]);
+      Frame.lblValorAPrazo.Text := '12 X ' + Format('R$ %.2f', [qryDadosCor.FieldByName('CELL_VAL_PARC').AsFloat]);
+
+      Frame.cbbCapacidade.OnChange := nil;
+      Frame.cbbCapacidade.Items.Clear;
+      while not qryDadosCor.Eof do
+      begin
+        Frame.cbbCapacidade.Items.AddObject(qryDadosCor.FieldByName('ARMAZENAMENTO_DESC').AsString,
+                        TObject(qryDadosCor.FieldByName('ARMAZENAMENTO_ID').AsInteger));
+        qryDadosCor.Next;
+      end;
+
+      // Seleciona automaticamente o primeiro item, se houver
+      if Frame.cbbCapacidade.Items.Count > 0 then
+        Frame.cbbCapacidade.ItemIndex := 0;
+    end
+    else
+    begin
+      Frame.lblValorAVista.Text := 'R$ 0,00';
+      Frame.lblValorAPrazo.Text := 'R$ 0,00';
+      Frame.cbbCapacidade.Items.Clear;
+    end;
+  finally
+    Frame.cbbCapacidade.OnChange := CapacidadeChange;
+    qryDadosCor.Close;
+  end;
+end;
+
+procedure TTotemPrincipalfrm.CarregarDados;
+var
+  Frame: TFrameTotem;
+  Cont, CellID: Integer;
+  CorID: Integer;
+begin
+  qryCadCell.Close;
+  qryCadCell.Open;
+
+  Cont := 0;
+  while VertScrollBox1.Content.ControlsCount > 0 do
+    VertScrollBox1.Content.Controls[0].Free;
+
+  dtsCadCell.DataSet.First;
+  while not dtsCadCell.DataSet.Eof do
+  begin
+    Inc(Cont);
+    Frame := TFrameTotem.Create(VertScrollBox1);
+    Frame.Name := 'Frame' + IntToStr(Cont);
+    Frame.Parent := VertScrollBox1;
+    Frame.Align := TAlignLayout.Top;
+    Frame.tbcTotem.ActiveTab := Frame.TabTotemPrincipal;
+
+    Frame.Margins.Top := 5;
+    Frame.Margins.Bottom := 5;
+
+    Frame.lblNomeItem.Text := dtsCadCell.DataSet.FieldByName('CELL_DESC').AsString;
+
+    CellID := dtsCadCell.DataSet.FieldByName('CELL_ID').AsInteger;
+    CarregarImagensHorizontais(Frame, CellID);
+    CarregarCapacidades(Frame, CellID);
+    CarregarCores(Frame, CellID);
+
+    Frame.CELL_MARCA.Text := dtsCadCell.DataSet.FieldByName('CELL_MARCA').AsString;
+
+    // Obtém o ID da cor selecionada
+    if Frame.cbbCor.ItemIndex >= 0 then
+      CorID := Integer(Frame.cbbCor.Items.Objects[Frame.cbbCor.ItemIndex])
+    else
+      Exit;
+
+    try
+      qryDadosCor.ParamByName('COR_ID').AsInteger := CorID;
+      qryDadosCor.Open;
+
+      // Atualiza os labels e o ComboBox de capacidade
+      if not qryDadosCor.IsEmpty then
+      begin
+        Frame.lblValorAVista.Text := Format('R$ %.2f', [qryDadosCor.FieldByName('CELL_VAL_UNIT').AsFloat]);
+        Frame.lblValorAPrazo.Text := '12 X ' + Format('R$ %.2f', [qryDadosCor.FieldByName('CELL_VAL_PARC').AsFloat]);
+      end
+      else
+      begin
+        Frame.lblValorAVista.Text := 'R$ 0,00';
+        Frame.lblValorAPrazo.Text := 'R$ 0,00';
+      end;
+    finally
+      qryDadosCor.Close;
+    end;
+
+    // Atribuir o evento OnChange
+    Frame.cbbCor.OnChange := CorChange;
+    Frame.cbbCapacidade.OnChange := CapacidadeChange;
+    Frame.btnEnviaWhatsapp.OnClick := EnviaWhatsapp;
+    Frame.edtNomeCli.OnEnter := OnEnterNomeCli;
+    Frame.edtTelCli.OnEnter := OnEnterTelCli;
+
+    dtsCadCell.DataSet.Next;
+  end;
+
+  AjustarAlturaScrollBox(VertScrollBox1);
+end;
+
+procedure TTotemPrincipalfrm.MostrarTecladoVirtual;
+begin
+  ShellExecute(0, 'open', 'C:\Windows\System32\osk.exe', nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TTotemPrincipalfrm.OcultarTecladoVirtual;
+var
+  hwnd: Winapi.Windows.HWND;
+begin
+  hwnd := FindWindow(nil, 'Teclado Virtual');
+  if hwnd <> 0 then
+    PostMessage(hwnd, WM_CLOSE, 0, 0);
+end;
+
+procedure TTotemPrincipalfrm.OnEnterNomeCli(Sender: TObject);
+begin
+  if not IsKeyboardShown then
+  begin
+    ShowKeyboardOn(TEdit(Sender));
+    IsKeyboardShown := True; // Marca como exibido
+  end
+  else
+    IsKeyboardShown := False;
+end;
+
+procedure TTotemPrincipalfrm.OnEnterTelCli(Sender: TObject);
+begin
+  if not IsKeyboardShown then
+  begin
+    ShowKeyboardOn(TEdit(Sender));
+    IsKeyboardShown := True; // Marca como exibido
+  end
+  else
+    IsKeyboardShown := False;
+end;
+
+procedure TTotemPrincipalfrm.btnFecharClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TTotemPrincipalfrm.btnIphoneClick(Sender: TObject);
+var
+  Frame: TFrameTotem;
+  i: Integer;
+begin
+  // Filtra os frames para exibir apenas os com CELL_MARCA = 0 (iPhone)
+  for i := 0 to VertScrollBox1.Content.ControlsCount - 1 do
+  begin
+    Frame := TFrameTotem(VertScrollBox1.Content.Controls[i]);
+
+    // Verifica se o frame corresponde à marca iPhone (CELL_MARCA = 0)
+    if (StrToInt(Frame.CELL_MARCA.Text) = 0) then
+      Frame.Visible := True
+    else
+      Frame.Visible := False; // Esconde os frames que não correspondem
+  end;
+
+end;
+
+procedure TTotemPrincipalfrm.btnXiaomiClick(Sender: TObject);
+var
+  Frame: TFrameTotem;
+  i: Integer;
+begin
+  // Filtra os frames para exibir apenas os com CELL_MARCA = 1 (Xiaomi)
+  for i := 0 to VertScrollBox1.Content.ControlsCount - 1 do
+  begin
+    Frame := TFrameTotem(VertScrollBox1.Content.Controls[i]);
+
+    // Verifica se o frame corresponde à marca Xiaomi (CELL_MARCA = 1)
+    if (StrToInt(Frame.CELL_MARCA.Text) = 1) then
+      Frame.Visible := True
+    else
+      Frame.Visible := False; // Esconde os frames que não correspondem
+  end;
+
+end;
+
+procedure TTotemPrincipalfrm.CarregarCapacidades(Frame: TFrameTotem; CellID: Integer);
+var
+  ComboBox: TComboBox;
+begin
+  // Localiza o ComboBox de capacidade no frame
+  ComboBox := Frame.FindComponent('cbbCapacidade') as TComboBox;
+  if not Assigned(ComboBox) then
+    Exit;
+
+  qryCapacidades.Close;
+  qryCapacidades.ParamByName('CELL_ID').AsInteger := CellID;
+  qryCapacidades.Open;
+
+  ComboBox.Items.Clear;
+  while not qryCapacidades.Eof do
+  begin
+
+    ComboBox.Items.AddObject(qryCapacidades.FieldByName('ARMAZENAMENTO_DESC').AsString,
+                        TObject(qryCapacidades.FieldByName('ARMAZENAMENTO_ID').AsInteger));
+    qryCapacidades.Next;
+  end;
+
+  if ComboBox.Items.Count > 0 then
+    ComboBox.ItemIndex := 0; // Seleciona o primeiro item por padrão
+end;
+
+procedure TTotemPrincipalfrm.CarregarCores(Frame: TFrameTotem; CellID: Integer);
+var
+  ComboBox: TComboBox;
+begin
+  // Localiza o ComboBox de cor no frame
+  ComboBox := Frame.FindComponent('cbbCor') as TComboBox;
+  if not Assigned(ComboBox) then
+    Exit;
+
+  qryCores.Close;
+  qryCores.ParamByName('CELL_ID').AsInteger := CellID;
+  qryCores.Open;
+
+  ComboBox.Items.Clear;
+  while not qryCores.Eof do
+  begin
+    ComboBox.Items.AddObject(qryCores.FieldByName('COR_DESC').AsString,
+                        TObject(qryCores.FieldByName('COR_ID').AsInteger));
+    qryCores.Next;
+  end;
+
+  if ComboBox.Items.Count > 0 then
+    ComboBox.ItemIndex := 0; // Seleciona o primeiro item por padrão
+end;
+
+procedure TTotemPrincipalfrm.CarregarImagensHorizontais(Frame: TFrameTotem; CellID: Integer);
+var
+  ImageQuery: TFDQuery; // Ajuste para o componente de banco que você usa
+  ImageStream: TMemoryStream;
+  BlobField: TBlobField;
+  CloneRect: TRectangle;
+  CurrentLeft: Single;
+  imgWidth, imgHeight : double;
+begin
+  Frame.HorzScrollBoxImagens.BeginUpdate; // Evita flickering
+  try
+    //Frame.HorzScrollBoxImagens.Content.DeleteChildren; // Remove conteúdos antigos
+    CurrentLeft := 0;
+
+    ImageQuery := TFDQuery.Create(nil);
+    try
+      ImageQuery.Connection := ConectMarthi; // Substitua pela sua conexão
+      ImageQuery.SQL.Text := 'SELECT IMAGE FROM CELL_IMAGES WHERE CELL_ID = :CELL_ID';
+      ImageQuery.ParamByName('CELL_ID').AsInteger := CellID;
+      ImageQuery.Open;
+
+      while not ImageQuery.Eof do
+      begin
+        // Clona o retângulo `imgCell` existente no Frame
+        CloneRect := TRectangle.Create(Frame.HorzScrollBoxImagens);
+        CloneRect.Parent := Frame.HorzScrollBoxImagens;
+        CloneRect.Width := Frame.imgCell.Width;
+        CloneRect.Height := Frame.imgCell.Height;
+        CloneRect.Margins.Top := 0;
+        CloneRect.Margins.Left := 0;
+        CloneRect.Margins.Right := 3;
+        CloneRect.Margins.Bottom := 0;
+        CloneRect.Position.X := CurrentLeft; // Posição horizontal
+        CloneRect.Position.Y := 0; // Centralizado verticalmente
+        CloneRect.Stroke.Kind := Frame.imgCell.Stroke.Kind;
+        CloneRect.Stroke.Color := Frame.imgCell.Stroke.Color;
+        CloneRect.Stroke.Thickness := 0;
+        CloneRect.Fill.Kind := TBrushKind.Bitmap; // Define o preenchimento como bitmap
+        CloneRect.Fill.Bitmap.WrapMode := TWrapMode.TileStretch; // Define o preenchimento como bitmap
+        CloneRect.Corners := [TCorner.TopLeft, TCorner.BottomLeft];
+        CloneRect.SendToBack;
+
+        // Carrega a imagem do banco
+        BlobField := ImageQuery.FieldByName('IMAGE') as TBlobField;
+        if not BlobField.IsNull then
+        begin
+          ImageStream := TMemoryStream.Create;
+          try
+            BlobField.SaveToStream(ImageStream);
+            ImageStream.Position := 0;
+            CloneRect.Fill.Bitmap.Bitmap.LoadFromStream(ImageStream); // Aplica a imagem
+          finally
+            ImageStream.Free;
+          end;
+        end
+        else
+        begin
+          // Caso não haja imagem, usa cor padrão
+          CloneRect.Fill.Kind := TBrushKind.Solid;
+          CloneRect.Fill.Color := TAlphaColors.Gray;
+        end;
+
+        // Ajusta a posição para a próxima imagem
+        CurrentLeft := CurrentLeft + CloneRect.Width + 10; // Margem entre imagens
+
+        ImageQuery.Next;
+      end;
+    finally
+      ImageQuery.Free;
+    end;
+  finally
+    Frame.HorzScrollBoxImagens.EndUpdate; // Atualiza interface
+  end;
+end;
+
+procedure TTotemPrincipalfrm.edtPesquisaEnter(Sender: TObject);
+begin
+  if not IsKeyboardShown then
+  begin
+    ShowKeyboardOn(TEdit(Sender));
+    IsKeyboardShown := True; // Marca como exibido
+  end
+  else
+    IsKeyboardShown := False;
+end;
+
+procedure TTotemPrincipalfrm.edtPesquisaExit(Sender: TObject);
+begin
+//  IsKeyboardShown := False; // Permite exibir novamente
+end;
+
+procedure TTotemPrincipalfrm.edtPesquisaTyping(Sender: TObject);
+var
+  Frame: TFrameTotem;
+  i: Integer;
+  SearchText: string;
+begin
+  // Obtém o texto digitado
+  SearchText := edtPesquisa.Text.Trim;
+
+  // Se o campo de pesquisa estiver vazio, mostra todos os frames
+  if SearchText = '' then
+  begin
+    // Torna todos os frames visíveis
+    for i := 0 to VertScrollBox1.Content.ControlsCount - 1 do
+    begin
+      Frame := TFrameTotem(VertScrollBox1.Content.Controls[i]);
+      Frame.Visible := True;
+    end;
+  end
+  else
+  begin
+    // Filtra a consulta com base no texto digitado
+    qryCadCell.Filtered := False;
+    qryCadCell.Filter := Format('CELL_DESC LIKE %s', [QuotedStr('%' + SearchText + '%')]);
+    qryCadCell.Filtered := True;
+
+    // Percorre os frames no ScrollBox e ajusta a visibilidade com base no filtro
+    for i := 0 to VertScrollBox1.Content.ControlsCount - 1 do
+    begin
+      Frame := TFrameTotem(VertScrollBox1.Content.Controls[i]);
+
+      // Verifica se o texto do campo edtPesquisa está na descrição do Frame
+      if Frame.lblNomeItem.Text.ToLower.Contains(SearchText.ToLower) then
+        Frame.Visible := True  // Torna o frame visível se o texto contiver a descrição
+      else
+        Frame.Visible := False; // Torna o frame invisível caso contrário
+    end;
+  end;
+end;
+
+procedure TTotemPrincipalfrm.EnviaWhatsapp(Sender: TObject);
+var
+  Frame: TFrameTotem;
+  lFuncoes : TFuncoesUteis;
+  ParentObject: TFmxObject;
+  btn : TRoundRect;
+begin
+  btn := Sender as TRoundRect;
+
+  // Encontra o Frame pai do ComboBox
+  ParentObject := btn.Parent;
+  while (ParentObject <> nil) and not (ParentObject is TFrameTotem) do
+    ParentObject := ParentObject.Parent;
+
+  if not (ParentObject is TFrameTotem) then
+    Exit;
+
+  Frame := TFrameTotem(ParentObject);
+
+  lFuncoes.EnviarMsgWhatsApp( '8404a52b-690a-422f-be65-3281d55ac4b9', '24981244253', Frame.edtTelCli.Text,
+                              'Oi Tudo Bem !! ' + #13 + #13 + 'Sou o ' + Frame.edtNomeCli.Text + #13 +
+                              'Acabei de escolher o celular ' + Frame.lblTITULOCEL.Text +
+                              ', aqui no Totem do Shopping no valor de R$ ' + Frame.edtValorTel.Text + 'Á Vista ' +
+                              'e em 12 X R$ 600,00.' + #13 + #13 +
+                              'Poderia me dar mais informações sobre o produto?' , '', False );
+end;
+
+procedure TTotemPrincipalfrm.AjustarAlturaScrollBox(ScrollBox: TVertScrollBox);
+var
+  I: Integer;
+  AlturaTotal: Single;
+begin
+  AlturaTotal := 0;
+
+  // Calcula a altura total dos componentes dentro do Content
+  for I := 0 to ScrollBox.Content.ControlsCount - 1 do
+  begin
+    AlturaTotal := Max(AlturaTotal, ScrollBox.Content.Controls[I].Position.Y + ScrollBox.Content.Controls[I].Height);
+  end;
+
+  // Ajusta a altura do conteúdo para incluir todos os elementos
+  ScrollBox.Content.Height := AlturaTotal;
+end;
+
+procedure TTotemPrincipalfrm.FormCreate(Sender: TObject);
+var
+ oIniCaminhos : tinifile;
+ lFuncoes : TFuncoesUteis;
+ sCaminhoIni, sCaminhoApp  : string;
+begin
+
+  lFuncoes.ConectaBD_Ini( ConectMarthi, FBLink );
+
+  CarregarDados;
+end;
+
+end.

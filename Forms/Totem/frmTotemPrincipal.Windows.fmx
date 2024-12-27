@@ -9,7 +9,7 @@ inherited TotemPrincipalfrm_Windows: TTotemPrincipalfrm_Windows
               inherited Layout3: TLayout
                 inherited VertScrollBox1: TVertScrollBox
                   Viewport.Width = 3160.000000000000000000
-                  Viewport.Height = 1905.000000000000000000
+                  Viewport.Height = 1907.000000000000000000
                 end
               end
             end
@@ -32,16 +32,29 @@ inherited TotemPrincipalfrm_Windows: TTotemPrincipalfrm_Windows
               end
             end
           end
-          inherited lytRodape: TLayout
-            inherited Rectangle2: TRectangle
-              inherited Label10: TLabel
-                TextSettings.Font.StyleExt = {00070000000000000004000000}
-              end
-              inherited Label9: TLabel
-                TextSettings.Font.StyleExt = {00070000000000000004000000}
-              end
+        end
+      end
+      inherited Layout4: TLayout
+        inherited Rectangle5: TRectangle
+          inherited btnFechar: TRoundRect
+            inherited Label4: TLabel
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
             end
           end
+        end
+      end
+      inherited lytRodape: TLayout
+        inherited Rectangle2: TRectangle
+          Fill.Gradient.StartPosition.X = 1.000000000000000000
+          inherited Label9: TLabel
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+          end
+        end
+        inherited Label3: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+        inherited Label5: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
         end
       end
     end

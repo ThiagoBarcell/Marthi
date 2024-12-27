@@ -1,0 +1,97 @@
+unit Frame.MarthiGIT.Totem;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls, FMX.Objects, FMX.Edit, FMX.Controls.Presentation, FMX.ListBox, FMX.Layouts, FMX.TabControl, FMX.Effects,
+  FireDAC.Comp.Client;
+
+type
+  TFrameTotem = class(TFrame)
+    Rectangle4: TRectangle;
+    ShadowEffect7: TShadowEffect;
+    tbcTotem: TTabControl;
+    TabTotemPrincipal: TTabItem;
+    Layout6: TLayout;
+    Layout7: TLayout;
+    Layout5: TLayout;
+    Rectangle5: TRectangle;
+    cbbCapacidade: TComboBox;
+    Label5: TLabel;
+    Layout4: TLayout;
+    Rectangle6: TRectangle;
+    cbbCor: TComboBox;
+    Label3: TLabel;
+    lblNomeItem: TLabel;
+    lblValorAVista: TLabel;
+    Label7: TLabel;
+    lblValorAPrazo: TLabel;
+    TabTotemCliente: TTabItem;
+    Layout9: TLayout;
+    lblTITULOCEL: TLabel;
+    edtNomeCli: TEdit;
+    lbl3: TLabel;
+    edtTelCli: TEdit;
+    lbl4: TLabel;
+    lbl6: TLabel;
+    btnEnviaWhatsapp: TRoundRect;
+    ShadowEffect1: TShadowEffect;
+    img1: TImage;
+    lbl1: TLabel;
+    imgCell: TRectangle;
+    HorzScrollBoxImagens: THorzScrollBox;
+    CELL_MARCA: TLabel;
+    edtValorTel: TEdit;
+    edtCorTel: TEdit;
+    Label1: TLabel;
+    edtCapacidadeTel: TEdit;
+    Label2: TLabel;
+    btnComprar: TRoundRect;
+    Label4: TLabel;
+    RoundRect1: TRoundRect;
+    Label6: TLabel;
+    ShadowEffect2: TShadowEffect;
+    ShadowEffect3: TShadowEffect;
+    procedure btnComprarClick(Sender: TObject);
+    procedure RoundRect1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    procedure PreencherDados(const Nome: string; Imagem: TImage);
+    { Public declarations }
+  end;
+
+implementation
+
+{$R *.fmx}
+
+{ TFrameTotem }
+
+procedure TFrameTotem.btnComprarClick(Sender: TObject);
+begin
+  try
+    edtCorTel.Text := cbbCor.Items[cbbCor.ItemIndex];
+    edtValorTel.Text := lblValorAVista.Text;
+    edtCapacidadeTel.Text := cbbCapacidade.Items[cbbCapacidade.ItemIndex];
+    lblTITULOCEL.Text := lblNomeItem.Text;
+    tbcTotem.ActiveTab := TabTotemCliente;
+  except
+    on E: Exception do
+    MessageDlg('Falha no envio dos dados!', TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0);
+
+  end;
+end;
+
+procedure TFrameTotem.PreencherDados(const Nome: string; Imagem: TImage);
+begin
+  lblNomeItem.Text := Nome;
+  imgCell.Fill.Bitmap.Bitmap.Assign(Imagem);  
+end;
+
+procedure TFrameTotem.RoundRect1Click(Sender: TObject);
+begin
+  tbcTotem.ActiveTab := TabTotemPrincipal;
+end;
+
+end.

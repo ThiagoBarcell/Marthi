@@ -9,30 +9,33 @@ inherited TotemPrincipalfrm_iPhone55in: TTotemPrincipalfrm_iPhone55in
       Size.Width = 414.000000000000000000
       Size.Height = 736.000000000000000000
       inherited Layout8: TLayout
-        Size.Height = 736.000000000000000000
+        Size.Height = 687.000000000000000000
+        inherited Rectangle3: TRectangle
+          Size.Height = 687.000000000000000000
+        end
       end
       inherited lytToten: TLayout
         Size.Width = 14.000000000000000000
-        Size.Height = 736.000000000000000000
+        Size.Height = 687.000000000000000000
         inherited Rectangle11: TRectangle
           Size.Width = 14.000000000000000000
-          Size.Height = 736.000000000000000000
+          Size.Height = 687.000000000000000000
           inherited lytCenter: TLayout
             Size.Width = 0.000000000000000000
-            Size.Height = 481.000000000000000000
+            Size.Height = 482.000000000000000000
             inherited Rectangle10: TRectangle
               inherited Layout3: TLayout
                 inherited VertScrollBox1: TVertScrollBox
                   Viewport.Width = 3160.000000000000000000
-                  Viewport.Height = 1905.000000000000000000
+                  Viewport.Height = 1907.000000000000000000
                 end
               end
             end
           end
           inherited lytModelo: TLayout
-            Size.Height = 481.000000000000000000
+            Size.Height = 482.000000000000000000
             inherited Rectangle9: TRectangle
-              Size.Height = 476.000000000000000000
+              Size.Height = 477.000000000000000000
               inherited btnIphone: TRoundRect
                 inherited Image1: TImage
                   inherited Label1: TLabel
@@ -46,19 +49,6 @@ inherited TotemPrincipalfrm_iPhone55in: TTotemPrincipalfrm_iPhone55in
                     TextSettings.Font.StyleExt = {00070000000000000004000000}
                   end
                 end
-              end
-            end
-          end
-          inherited lytRodape: TLayout
-            Position.Y = 686.000000000000000000
-            Size.Width = 14.000000000000000000
-            inherited Rectangle2: TRectangle
-              Size.Width = 14.000000000000000000
-              inherited Label10: TLabel
-                TextSettings.Font.StyleExt = {00070000000000000004000000}
-              end
-              inherited Label9: TLabel
-                TextSettings.Font.StyleExt = {00070000000000000004000000}
               end
             end
           end
@@ -82,7 +72,32 @@ inherited TotemPrincipalfrm_iPhone55in: TTotemPrincipalfrm_iPhone55in
       end
       inherited Layout4: TLayout
         Position.X = 214.000000000000000000
-        Size.Height = 736.000000000000000000
+        Size.Height = 687.000000000000000000
+        inherited Rectangle5: TRectangle
+          Size.Height = 687.000000000000000000
+          inherited btnFechar: TRoundRect
+            inherited Label4: TLabel
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+            end
+          end
+        end
+      end
+      inherited lytRodape: TLayout
+        Position.Y = 687.000000000000000000
+        Size.Width = 414.000000000000000000
+        inherited Rectangle2: TRectangle
+          Fill.Gradient.StartPosition.X = 1.000000000000000000
+          Size.Width = 414.000000000000000000
+          inherited Label9: TLabel
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+          end
+        end
+        inherited Label3: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+        inherited Label5: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
       end
     end
   end

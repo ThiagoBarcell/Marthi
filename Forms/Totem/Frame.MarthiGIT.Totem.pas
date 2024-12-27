@@ -27,7 +27,6 @@ type
     lblValorAVista: TLabel;
     Label7: TLabel;
     lblValorAPrazo: TLabel;
-    btnComprar: TRectangle;
     TabTotemCliente: TTabItem;
     Layout9: TLayout;
     lblTITULOCEL: TLabel;
@@ -39,19 +38,24 @@ type
     btnEnviaWhatsapp: TRoundRect;
     ShadowEffect1: TShadowEffect;
     img1: TImage;
-    ShadowEffect8: TShadowEffect;
     lbl1: TLabel;
     imgCell: TRectangle;
     HorzScrollBoxImagens: THorzScrollBox;
     CELL_MARCA: TLabel;
-    Rectangle1: TRectangle;
     edtValorTel: TEdit;
     edtCorTel: TEdit;
     Label1: TLabel;
     edtCapacidadeTel: TEdit;
     Label2: TLabel;
+    btnComprar: TRoundRect;
+    Label4: TLabel;
+    RoundRect1: TRoundRect;
+    Label6: TLabel;
+    ShadowEffect2: TShadowEffect;
+    ShadowEffect3: TShadowEffect;
+    ShadowEffect4: TShadowEffect;
     procedure btnComprarClick(Sender: TObject);
-    procedure Rectangle1Click(Sender: TObject);
+    procedure RoundRect1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -67,11 +71,16 @@ implementation
 
 procedure TFrameTotem.btnComprarClick(Sender: TObject);
 begin
-  tbcTotem.ActiveTab := TabTotemCliente;
-  edtCorTel.Text := cbbCor.Items[cbbCor.ItemIndex];
-  edtValorTel.Text := lblValorAVista.Text;
-  edtCapacidadeTel.Text := cbbCapacidade.Items[cbbCapacidade.ItemIndex];
-  lblTITULOCEL.Text := lblNomeItem.Text;
+  try
+    edtCorTel.Text := cbbCor.Items[cbbCor.ItemIndex];
+    edtValorTel.Text := lblValorAVista.Text;
+    edtCapacidadeTel.Text := cbbCapacidade.Items[cbbCapacidade.ItemIndex];
+    lblTITULOCEL.Text := lblNomeItem.Text;
+    tbcTotem.ActiveTab := TabTotemCliente;
+  except
+    on E: Exception do
+    MessageDlg('Falha no envio dos dados!', TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0);
+  end;
 end;
 
 procedure TFrameTotem.PreencherDados(const Nome: string; Imagem: TImage);
@@ -80,7 +89,7 @@ begin
   imgCell.Fill.Bitmap.Bitmap.Assign(Imagem);  
 end;
 
-procedure TFrameTotem.Rectangle1Click(Sender: TObject);
+procedure TFrameTotem.RoundRect1Click(Sender: TObject);
 begin
   tbcTotem.ActiveTab := TabTotemPrincipal;
 end;

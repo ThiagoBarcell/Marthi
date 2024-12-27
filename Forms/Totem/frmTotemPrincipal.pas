@@ -63,7 +63,6 @@ type
     Rectangle11: TRectangle;
     Layout8: TLayout;
     dtsCadCell: TBindSourceDB;
-    Rectangle3: TRectangle;
     Layout4: TLayout;
     FBLink: TFDPhysFBDriverLink;
     qryCapacidades: TFDQuery;
@@ -83,13 +82,22 @@ type
     qryDadosCorARMAZENAMENTO_ID: TIntegerField;
     qryConfig: TFDQuery;
     qryConfigAPI_KEY_WHATSAPP: TStringField;
+    btnFechar: TRoundRect;
+    Label4: TLabel;
+    ShadowEffect1: TShadowEffect;
+    ShadowEffect7: TShadowEffect;
+    Rectangle3: TRectangle;
+    Rectangle5: TRectangle;
+    ShadowEffect8: TShadowEffect;
+    Label3: TLabel;
+    Label5: TLabel;
     procedure FormCreate(Sender: TObject);
-    procedure Rectangle3Click(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaExit(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);
     procedure btnIphoneClick(Sender: TObject);
     procedure btnXiaomiClick(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
   private
     { Private declarations }
     procedure CarregarDados;
@@ -102,6 +110,8 @@ type
     procedure CorChange(Sender: TObject);
     procedure CapacidadeChange(Sender: TObject);
     procedure EnviaWhatsapp(Sender: TObject);
+    procedure OnEnterNomeCli(Sender: TObject);
+    procedure OnEnterTelCli(Sender: TObject);
   public
     { Public declarations }
   end;
@@ -265,6 +275,7 @@ begin
     Frame.Name := 'Frame' + IntToStr(Cont);
     Frame.Parent := VertScrollBox1;
     Frame.Align := TAlignLayout.Top;
+    Frame.tbcTotem.ActiveTab := Frame.TabTotemPrincipal;
 
     Frame.Margins.Top := 5;
     Frame.Margins.Bottom := 5;
@@ -307,8 +318,8 @@ begin
     Frame.cbbCor.OnChange := CorChange;
     Frame.cbbCapacidade.OnChange := CapacidadeChange;
     Frame.btnEnviaWhatsapp.OnClick := EnviaWhatsapp;
-
-    Frame.tbcTotem.ActiveTab := Frame.TabTotemPrincipal;
+    Frame.edtNomeCli.OnEnter := OnEnterNomeCli;
+    Frame.edtTelCli.OnEnter := OnEnterTelCli;
 
     dtsCadCell.DataSet.Next;
   end;
@@ -328,6 +339,33 @@ begin
   hwnd := FindWindow(nil, 'Teclado Virtual');
   if hwnd <> 0 then
     PostMessage(hwnd, WM_CLOSE, 0, 0);
+end;
+
+procedure TTotemPrincipalfrm.OnEnterNomeCli(Sender: TObject);
+begin
+  if not IsKeyboardShown then
+  begin
+    ShowKeyboardOn(TEdit(Sender));
+    IsKeyboardShown := True; // Marca como exibido
+  end
+  else
+    IsKeyboardShown := False;
+end;
+
+procedure TTotemPrincipalfrm.OnEnterTelCli(Sender: TObject);
+begin
+  if not IsKeyboardShown then
+  begin
+    ShowKeyboardOn(TEdit(Sender));
+    IsKeyboardShown := True; // Marca como exibido
+  end
+  else
+    IsKeyboardShown := False;
+end;
+
+procedure TTotemPrincipalfrm.btnFecharClick(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TTotemPrincipalfrm.btnIphoneClick(Sender: TObject);
@@ -496,7 +534,7 @@ end;
 
 procedure TTotemPrincipalfrm.edtPesquisaEnter(Sender: TObject);
 begin
-   if not IsKeyboardShown then
+  if not IsKeyboardShown then
   begin
     ShowKeyboardOn(TEdit(Sender));
     IsKeyboardShown := True; // Marca como exibido
@@ -570,8 +608,11 @@ begin
   Frame := TFrameTotem(ParentObject);
 
   lFuncoes.EnviarMsgWhatsApp( '8404a52b-690a-422f-be65-3281d55ac4b9', '24981244253', Frame.edtTelCli.Text,
-                                   'Olá acabei de escolher o meu celular no Totem do Shoping' + #13 +
-                                   'Meu nome é ' + Frame.edtNomeCli.Text + ' escolhi o celular ' + Frame.lblTITULOCEL.Text, '', False );
+                              'Oi Tudo Bem !! ' + #13 + #13 + 'Sou o ' + Frame.edtNomeCli.Text + #13 +
+                              'Acabei de escolher o celular ' + Frame.lblTITULOCEL.Text +
+                              ', aqui no Totem do Shopping no valor de R$ ' + Frame.edtValorTel.Text + 'Á Vista ' +
+                              'e em 12 X R$ 600,00.' + #13 + #13 +
+                              'Poderia me dar mais informações sobre o produto?' , '', False );
 end;
 
 procedure TTotemPrincipalfrm.AjustarAlturaScrollBox(ScrollBox: TVertScrollBox);
@@ -601,11 +642,6 @@ begin
   lFuncoes.ConectaBD_Ini( ConectMarthi, FBLink );
 
   CarregarDados;
-end;
-
-procedure TTotemPrincipalfrm.Rectangle3Click(Sender: TObject);
-begin
-  Close;
 end;
 
 end.
