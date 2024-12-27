@@ -53,7 +53,6 @@ type
     Label6: TLabel;
     ShadowEffect2: TShadowEffect;
     ShadowEffect3: TShadowEffect;
-    ShadowEffect4: TShadowEffect;
     procedure btnComprarClick(Sender: TObject);
     procedure RoundRect1Click(Sender: TObject);
   private
