@@ -102,6 +102,7 @@ type
     tabFiltroReferencia: TcxTabSheet;
     edtFiltroReferencia: TcxTextEdit;
     imgStatus: TcxImageList;
+    btnConfiguracao: TcxButton;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
