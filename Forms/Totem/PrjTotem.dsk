@@ -244,12 +244,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=2012
-Height=8480
+Width=2025
+Height=8211
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2012
-ClientHeight=8480
+ClientWidth=2025
+ClientHeight=8211
 TBDockHeight=7157
 LRDockWidth=1999
 Dockable=1
@@ -296,8 +296,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Caption,
-ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,Border=0,Fill=0,FormFactor=0
+SelectedItem=TextSettings.Font.Family,
+ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,Corners=1,Fill=1,LiveBindings=0,Margins=0,Padding=0,Position=0,RotationCenter=0,Scale=0,Sides=0,Size=0,Stroke=1,Touch=0,Fill.Bitmap=0,Fill.Resource=0,Stroke.Bitmap=0,Stroke.Resource=0,BitmapMargins=0,StyledSettings=0,TextSettings=1,TouchTargetExpansion=0,TextSettings.Font=1,TextSettings.Font.Style=1
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -827,14 +827,14 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=1193
-Top=115
-Width=2012
-Height=8480
+Left=3
+Top=23
+Width=2025
+Height=8211
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2012
-ClientHeight=8480
+ClientWidth=2025
+ClientHeight=8211
 TBDockHeight=8480
 LRDockWidth=2012
 Dockable=1

@@ -16,32 +16,32 @@ File_13=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Setup\Forms\SetUpLookUpDMFrm.pas
 File_14=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Vendas\Forms\Report\VenPlanilhaSepReportFrm.pas',0,1,7497,95,7522,0,0,,
 
 [Modules]
-Module0=C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
-Module1=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
-Module2=C:\Sistemas\Marthi GIT\Forms\untFuncoes.pas
-Module3=default.htm
+Module0=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
+Module1=C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
+Module2=default.htm
+Module3=C:\Sistemas\Marthi GIT\Forms\untFuncoes.pas
 Module4=C:\Sistemas\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
 Count=5
 EditWindowCount=1
 
-[C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas]
-ModuleType=TSourceModule
-
 [C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas]
 ModuleType=TSourceModule
 
-[C:\Sistemas\Marthi GIT\Forms\untFuncoes.pas]
+[C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas]
 ModuleType=TSourceModule
 
 [default.htm]
 ModuleType=TURLModule
+
+[C:\Sistemas\Marthi GIT\Forms\untFuncoes.pas]
+ModuleType=TSourceModule
 
 [C:\Sistemas\Marthi GIT\Forms\DataModules\GeralDMFrm.pas]
 ModuleType=TSourceModule
 
 [EditWindow0]
 ViewCount=5
-CurrentEditView=C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
+CurrentEditView=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 View0=0
 View1=1
 View2=2
@@ -244,12 +244,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=2025
-Height=8211
+Width=2012
+Height=8480
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2025
-ClientHeight=8211
+ClientWidth=2012
+ClientHeight=8480
 TBDockHeight=7157
 LRDockWidth=1999
 Dockable=1
@@ -296,8 +296,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Name,
-ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,Corners=0,Fill=1,LiveBindings=0,Margins=1,Padding=0,Position=0,RotationCenter=0,Scale=0,Sides=0,Size=0,Stroke=1,Touch=0,Stroke.Bitmap=0,Stroke.Resource=0,TouchTargetExpansion=0,FormFactor=0,BitmapMargins=0,Fill.Bitmap=0,Fill.Resource=0,StyledSettings=0,TextSettings=1,TextSettings.Font=1,TextSettings.Font.Style=1
+SelectedItem=Caption,
+ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,Border=0,Fill=0,FormFactor=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -827,14 +827,14 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=3
-Top=23
-Width=2025
-Height=8211
+Left=1193
+Top=115
+Width=2012
+Height=8480
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2025
-ClientHeight=8211
+ClientWidth=2012
+ClientHeight=8480
 TBDockHeight=8480
 LRDockWidth=2012
 Dockable=1
