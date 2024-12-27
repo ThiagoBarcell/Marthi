@@ -57,21 +57,20 @@ inherited TotemPrincipalfrm_Surface: TTotemPrincipalfrm_Surface
           end
           inherited lytTop: TLayout
             Size.Width = 1080.000000000000000000
-            inherited Rectangle1: TRectangle
-              Fill.Kind = Gradient
+            inherited Rectangle5: TRectangle
               Size.Width = 1080.000000000000000000
             end
             inherited Layout1: TLayout
               Size.Width = 1040.000000000000000000
               inherited Rectangle3: TRectangle
                 Size.Width = 1040.000000000000000000
-                inherited img3: TImage
-                  Position.X = 985.000000000000000000
-                end
                 inherited Layout2: TLayout
-                  Size.Width = 985.000000000000000000
+                  Size.Width = 1040.000000000000000000
                   inherited edtPesquisa: TEdit
-                    Size.Width = 965.000000000000000000
+                    Size.Width = 1020.000000000000000000
+                  end
+                  inherited img3: TImage
+                    Position.X = 989.000000000000000000
                   end
                 end
               end

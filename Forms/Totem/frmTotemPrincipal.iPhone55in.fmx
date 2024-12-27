@@ -57,22 +57,21 @@ inherited TotemPrincipalfrm_iPhone55in: TTotemPrincipalfrm_iPhone55in
           end
           inherited lytTop: TLayout
             Size.Width = 414.000000000000000000
-            inherited Rectangle1: TRectangle
-              Fill.Kind = Gradient
+            inherited Rectangle5: TRectangle
               Size.Width = 414.000000000000000000
             end
             inherited Layout1: TLayout
               Size.Width = 374.000000000000000000
               inherited Rectangle3: TRectangle
                 Size.Width = 374.000000000000000000
-                inherited img3: TImage
-                  Position.X = 319.000000000000000000
-                end
                 inherited Layout2: TLayout
-                  Size.Width = 319.000000000000000000
+                  Size.Width = 374.000000000000000000
                   inherited edtPesquisa: TEdit
-                    Size.Width = 299.000000000000000000
+                    Size.Width = 354.000000000000000000
                     Size.Height = 29.000000000000000000
+                  end
+                  inherited img3: TImage
+                    Position.X = 323.000000000000000000
                   end
                 end
               end

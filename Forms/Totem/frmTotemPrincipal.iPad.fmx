@@ -57,22 +57,21 @@ inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
           end
           inherited lytTop: TLayout
             Size.Width = 768.000000000000000000
-            inherited Rectangle1: TRectangle
-              Fill.Kind = Gradient
+            inherited Rectangle5: TRectangle
               Size.Width = 768.000000000000000000
             end
             inherited Layout1: TLayout
               Size.Width = 728.000000000000000000
               inherited Rectangle3: TRectangle
                 Size.Width = 728.000000000000000000
-                inherited img3: TImage
-                  Position.X = 673.000000000000000000
-                end
                 inherited Layout2: TLayout
-                  Size.Width = 673.000000000000000000
+                  Size.Width = 728.000000000000000000
                   inherited edtPesquisa: TEdit
-                    Size.Width = 653.000000000000000000
+                    Size.Width = 708.000000000000000000
                     Size.Height = 29.000000000000000000
+                  end
+                  inherited img3: TImage
+                    Position.X = 677.000000000000000000
                   end
                 end
               end

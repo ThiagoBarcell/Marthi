@@ -83,8 +83,8 @@ WelcomePageURL=bds:/default.htm
 CustomEditViewType=TEditView
 Module=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 CursorX=7
-CursorY=394
-TopLine=379
+CursorY=393
+TopLine=378
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -152,7 +152,7 @@ StayOnTop=0
 
 [Breakpoints]
 Count=1
-Breakpoint0='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',124,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint0='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',123,'',0,1,'',1,0,0,'',1,'','','',0,''
 
 [EmbarcaderoWin32Debugger_AddressBreakpoints]
 Count=0
@@ -296,8 +296,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Fill.Kind,
-ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,LiveBindings=0,Margins=0,Padding=0,Position=0,RotationCenter=0,Scale=0,Size=0,StyledSettings=0,TextSettings=1,Touch=0,TouchTargetExpansion=0,TextSettings.Font=1,TextSettings.Font.Style=1,Corners=0,Fill=1,Sides=0,Stroke=0,Fill.Bitmap=0,Fill.Resource=0
+SelectedItem=Caption,
+ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,Border=0,Fill=0,FormFactor=0
 
 [ClassBrowserTool]
 PercentageSizes=1

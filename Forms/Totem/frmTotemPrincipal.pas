@@ -19,13 +19,10 @@ uses
 
 type
   TTotemPrincipalfrm = class(TForm)
-    Rectangle1: TRectangle;
-    ShadowEffect3: TShadowEffect;
     VertScrollBox1: TVertScrollBox;
     lytTop: TLayout;
     lytModelo: TLayout;
     lytCenter: TLayout;
-    Layout1: TLayout;
     Layout3: TLayout;
     StyleBook1: TStyleBook;
     lytRodape: TLayout;
@@ -76,10 +73,12 @@ type
     img2: TImage;
     ShadowEffect5: TShadowEffect;
     Label2: TLabel;
+    Rectangle5: TRectangle;
+    Layout1: TLayout;
     Rectangle3: TRectangle;
-    img3: TImage;
     Layout2: TLayout;
     edtPesquisa: TEdit;
+    img3: TImage;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaExit(Sender: TObject);
