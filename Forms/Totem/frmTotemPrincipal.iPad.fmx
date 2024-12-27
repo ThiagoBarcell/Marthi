@@ -12,19 +12,25 @@ inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
         Size.Height = 1024.000000000000000000
       end
       inherited lytToten: TLayout
-        Size.Width = 168.000000000000000000
+        Size.Width = 368.000000000000000000
         Size.Height = 1024.000000000000000000
         inherited Rectangle11: TRectangle
-          Size.Width = 168.000000000000000000
+          Size.Width = 368.000000000000000000
           Size.Height = 1024.000000000000000000
           inherited lytCenter: TLayout
-            Size.Width = 0.000000000000000000
+            Size.Width = 103.000000000000000000
             Size.Height = 769.000000000000000000
             inherited Rectangle10: TRectangle
+              Size.Width = 88.000000000000000000
+              Size.Height = 769.000000000000000000
               inherited Layout3: TLayout
+                Size.Width = 88.000000000000000000
+                Size.Height = 769.000000000000000000
                 inherited VertScrollBox1: TVertScrollBox
-                  Viewport.Width = 2960.000000000000000000
-                  Viewport.Height = 1905.000000000000000000
+                  Size.Width = 88.000000000000000000
+                  Size.Height = 769.000000000000000000
+                  Viewport.Width = 88.000000000000000000
+                  Viewport.Height = 769.000000000000000000
                 end
               end
             end
@@ -51,9 +57,9 @@ inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
           end
           inherited lytRodape: TLayout
             Position.Y = 974.000000000000000000
-            Size.Width = 168.000000000000000000
+            Size.Width = 368.000000000000000000
             inherited Rectangle2: TRectangle
-              Size.Width = 168.000000000000000000
+              Size.Width = 368.000000000000000000
               inherited Label10: TLabel
                 TextSettings.Font.StyleExt = {00070000000000000004000000}
               end
@@ -63,21 +69,21 @@ inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
             end
           end
           inherited lytTop: TLayout
-            Size.Width = 168.000000000000000000
+            Size.Width = 368.000000000000000000
             inherited Rectangle1: TRectangle
-              Size.Width = 168.000000000000000000
+              Size.Width = 368.000000000000000000
             end
             inherited Layout1: TLayout
-              Size.Width = 138.000000000000000000
+              Size.Width = 338.000000000000000000
               inherited RoundRect3: TRoundRect
-                Size.Width = 128.000000000000000000
+                Size.Width = 328.000000000000000000
                 inherited Image3: TImage
-                  Position.X = 73.000000000000000000
+                  Position.X = 273.000000000000000000
                 end
                 inherited Layout2: TLayout
-                  Size.Width = 73.000000000000000000
+                  Size.Width = 273.000000000000000000
                   inherited edtPesquisa: TEdit
-                    Size.Width = 53.000000000000000000
+                    Size.Width = 253.000000000000000000
                     Size.Height = 29.000000000000000000
                   end
                 end
@@ -87,7 +93,7 @@ inherited TotemPrincipalfrm_iPad: TTotemPrincipalfrm_iPad
         end
       end
       inherited Layout4: TLayout
-        Position.X = 468.000000000000000000
+        Position.X = 568.000000000000000000
         Size.Height = 1024.000000000000000000
       end
     end

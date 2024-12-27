@@ -15,7 +15,7 @@ uses
   System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.Components,
   Data.Bind.DBScope, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   Frame.MarthiGIT.Totem, System.Math, System.IniFiles, Untfuncoes,
-  FireDAC.Phys.IBBase;
+  FireDAC.Phys.IBBase, MyVirtualKeyboard;
 
 type
   TTotemPrincipalfrm = class(TForm)
@@ -108,6 +108,7 @@ type
 
 var
   TotemPrincipalfrm: TTotemPrincipalfrm;
+  IsKeyboardShown: Boolean = False;
 
 implementation
 
@@ -307,6 +308,8 @@ begin
     Frame.cbbCapacidade.OnChange := CapacidadeChange;
     Frame.btnEnviaWhatsapp.OnClick := EnviaWhatsapp;
 
+    Frame.tbcTotem.ActiveTab := Frame.TabTotemPrincipal;
+
     dtsCadCell.DataSet.Next;
   end;
 
@@ -493,12 +496,18 @@ end;
 
 procedure TTotemPrincipalfrm.edtPesquisaEnter(Sender: TObject);
 begin
-  MostrarTecladoVirtual;
+   if not IsKeyboardShown then
+  begin
+    ShowKeyboardOn(TEdit(Sender));
+    IsKeyboardShown := True; // Marca como exibido
+  end
+  else
+    IsKeyboardShown := False;
 end;
 
 procedure TTotemPrincipalfrm.edtPesquisaExit(Sender: TObject);
 begin
-  OcultarTecladoVirtual;
+//  IsKeyboardShown := False; // Permite exibir novamente
 end;
 
 procedure TTotemPrincipalfrm.edtPesquisaTyping(Sender: TObject);
@@ -544,10 +553,25 @@ end;
 procedure TTotemPrincipalfrm.EnviaWhatsapp(Sender: TObject);
 var
   Frame: TFrameTotem;
+  lFuncoes : TFuncoesUteis;
+  ParentObject: TFmxObject;
+  btn : TRoundRect;
 begin
-//  TFuncoesUteis.EnviarMsgWhatsApp( qryConfigAPI_KEY_WHATSAPP.AsString, '24981244253', Frame.edtTelCli.Text,
-//                                   'Olá acabei de escolher o meu celular no Totem' + #13 +
-//                                   Frame.lblTITULOCEL.Text, '' );
+  btn := Sender as TRoundRect;
+
+  // Encontra o Frame pai do ComboBox
+  ParentObject := btn.Parent;
+  while (ParentObject <> nil) and not (ParentObject is TFrameTotem) do
+    ParentObject := ParentObject.Parent;
+
+  if not (ParentObject is TFrameTotem) then
+    Exit;
+
+  Frame := TFrameTotem(ParentObject);
+
+  lFuncoes.EnviarMsgWhatsApp( '8404a52b-690a-422f-be65-3281d55ac4b9', '24981244253', Frame.edtTelCli.Text,
+                                   'Olá acabei de escolher o meu celular no Totem do Shoping' + #13 +
+                                   'Meu nome é ' + Frame.edtNomeCli.Text + ' escolhi o celular ' + Frame.lblTITULOCEL.Text, '', False );
 end;
 
 procedure TTotemPrincipalfrm.AjustarAlturaScrollBox(ScrollBox: TVertScrollBox);

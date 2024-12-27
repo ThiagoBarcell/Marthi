@@ -598,21 +598,21 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
       Stroke.Thickness = 0.000000000000000000
       object Layout8: TLayout
         Align = Left
-        Size.Width = 300.000000000000000000
+        Size.Width = 200.000000000000000000
         Size.Height = 2160.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
       end
       object lytToten: TLayout
         Align = Client
-        Size.Width = 3240.000000000000000000
+        Size.Width = 3440.000000000000000000
         Size.Height = 2160.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         object Rectangle11: TRectangle
           Align = Client
           Fill.Color = claWhite
-          Size.Width = 3240.000000000000000000
+          Size.Width = 3440.000000000000000000
           Size.Height = 2160.000000000000000000
           Size.PlatformDefault = False
           Stroke.Thickness = 0.000000000000000000
@@ -620,32 +620,32 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
             Align = Client
             Padding.Right = 15.000000000000000000
             Margins.Top = 60.000000000000000000
-            Size.Width = 2975.000000000000000000
+            Size.Width = 3175.000000000000000000
             Size.Height = 1905.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
             object Rectangle10: TRectangle
               Align = Client
               Fill.Color = claWhite
-              Size.Width = 2960.000000000000000000
+              Size.Width = 3160.000000000000000000
               Size.Height = 1905.000000000000000000
               Size.PlatformDefault = False
               Stroke.Thickness = 0.000000000000000000
               object Layout3: TLayout
                 Align = Client
-                Size.Width = 2960.000000000000000000
+                Size.Width = 3160.000000000000000000
                 Size.Height = 1905.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 0
                 object VertScrollBox1: TVertScrollBox
                   Align = Client
-                  Size.Width = 2960.000000000000000000
+                  Size.Width = 3160.000000000000000000
                   Size.Height = 1905.000000000000000000
                   Size.PlatformDefault = False
                   StyleLookup = 'scrollboxstyle'
                   TabOrder = 0
                   ShowScrollBars = False
-                  Viewport.Width = 2960.000000000000000000
+                  Viewport.Width = 3160.000000000000000000
                   Viewport.Height = 1905.000000000000000000
                 end
               end
@@ -839,7 +839,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
           object lytRodape: TLayout
             Align = Bottom
             Position.Y = 2110.000000000000000000
-            Size.Width = 3240.000000000000000000
+            Size.Width = 3440.000000000000000000
             Size.Height = 50.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
@@ -859,7 +859,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
               Fill.Gradient.StartPosition.Y = 1.000000000000000000
               Fill.Gradient.StopPosition.X = 0.499999970197677600
               Fill.Gradient.StopPosition.Y = 0.000000000000000000
-              Size.Width = 3240.000000000000000000
+              Size.Width = 3440.000000000000000000
               Size.Height = 50.000000000000000000
               Size.PlatformDefault = False
               Stroke.Color = claWhite
@@ -7525,7 +7525,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
           end
           object lytTop: TLayout
             Align = Top
-            Size.Width = 3240.000000000000000000
+            Size.Width = 3440.000000000000000000
             Size.Height = 145.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 3
@@ -7545,7 +7545,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
               Fill.Gradient.StartPosition.Y = 1.000000000000000000
               Fill.Gradient.StopPosition.X = 0.499999970197677600
               Fill.Gradient.StopPosition.Y = 0.000000000000000000
-              Size.Width = 3240.000000000000000000
+              Size.Width = 3440.000000000000000000
               Size.Height = 177.000000000000000000
               Size.PlatformDefault = False
               Stroke.Thickness = 0.000000000000000000
@@ -7564,7 +7564,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
               Margins.Right = 15.000000000000000000
               Position.X = 15.000000000000000000
               Position.Y = 147.000000000000000000
-              Size.Width = 3210.000000000000000000
+              Size.Width = 3410.000000000000000000
               Size.Height = 46.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
@@ -7574,7 +7574,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                 Margins.Left = 5.000000000000000000
                 Margins.Top = 5.000000000000000000
                 Margins.Right = 5.000000000000000000
-                Size.Width = 3200.000000000000000000
+                Size.Width = 3400.000000000000000000
                 Size.Height = 41.000000000000000000
                 Size.PlatformDefault = False
                 Stroke.Thickness = 0.000000000000000000
@@ -7622,7 +7622,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                   Cursor = crHandPoint
                   Margins.Top = 10.000000000000000000
                   Margins.Bottom = 10.000000000000000000
-                  Position.X = 3145.000000000000000000
+                  Position.X = 3345.000000000000000000
                   Position.Y = 10.000000000000000000
                   RotationAngle = 90.000000000000000000
                   Size.Width = 55.000000000000000000
@@ -7631,7 +7631,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                 end
                 object Layout2: TLayout
                   Align = Client
-                  Size.Width = 3145.000000000000000000
+                  Size.Width = 3345.000000000000000000
                   Size.Height = 41.000000000000000000
                   Size.PlatformDefault = False
                   TabOrder = 0
@@ -7640,11 +7640,10 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
                     Align = Contents
                     StyleLookup = 'transparentedit'
                     TabOrder = 0
-                    KeyboardType = PhonePad
                     ReturnKeyType = Done
                     ClipParent = True
                     Margins.Left = 20.000000000000000000
-                    Size.Width = 3125.000000000000000000
+                    Size.Width = 3325.000000000000000000
                     Size.Height = 41.000000000000000000
                     Size.PlatformDefault = False
                     CheckSpelling = True
@@ -7661,8 +7660,8 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
       end
       object Layout4: TLayout
         Align = Right
-        Position.X = 3540.000000000000000000
-        Size.Width = 300.000000000000000000
+        Position.X = 3640.000000000000000000
+        Size.Width = 200.000000000000000000
         Size.Height = 2160.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2

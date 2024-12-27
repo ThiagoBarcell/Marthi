@@ -12,24 +12,24 @@ inherited TotemPrincipalfrm_Surface: TTotemPrincipalfrm_Surface
         Size.Height = 1920.000000000000000000
       end
       inherited lytToten: TLayout
-        Size.Width = 480.000000000000000000
+        Size.Width = 680.000000000000000000
         Size.Height = 1920.000000000000000000
         inherited Rectangle11: TRectangle
-          Size.Width = 480.000000000000000000
+          Size.Width = 680.000000000000000000
           Size.Height = 1920.000000000000000000
           inherited lytCenter: TLayout
-            Size.Width = 215.000000000000000000
+            Size.Width = 415.000000000000000000
             Size.Height = 1665.000000000000000000
             inherited Rectangle10: TRectangle
-              Size.Width = 200.000000000000000000
+              Size.Width = 400.000000000000000000
               Size.Height = 1665.000000000000000000
               inherited Layout3: TLayout
-                Size.Width = 200.000000000000000000
+                Size.Width = 400.000000000000000000
                 Size.Height = 1665.000000000000000000
                 inherited VertScrollBox1: TVertScrollBox
-                  Size.Width = 200.000000000000000000
+                  Size.Width = 400.000000000000000000
                   Size.Height = 1665.000000000000000000
-                  Viewport.Width = 200.000000000000000000
+                  Viewport.Width = 400.000000000000000000
                   Viewport.Height = 1665.000000000000000000
                 end
               end
@@ -57,9 +57,9 @@ inherited TotemPrincipalfrm_Surface: TTotemPrincipalfrm_Surface
           end
           inherited lytRodape: TLayout
             Position.Y = 1870.000000000000000000
-            Size.Width = 480.000000000000000000
+            Size.Width = 680.000000000000000000
             inherited Rectangle2: TRectangle
-              Size.Width = 480.000000000000000000
+              Size.Width = 680.000000000000000000
               inherited Label10: TLabel
                 TextSettings.Font.StyleExt = {00070000000000000004000000}
               end
@@ -69,21 +69,21 @@ inherited TotemPrincipalfrm_Surface: TTotemPrincipalfrm_Surface
             end
           end
           inherited lytTop: TLayout
-            Size.Width = 480.000000000000000000
+            Size.Width = 680.000000000000000000
             inherited Rectangle1: TRectangle
-              Size.Width = 480.000000000000000000
+              Size.Width = 680.000000000000000000
             end
             inherited Layout1: TLayout
-              Size.Width = 450.000000000000000000
+              Size.Width = 650.000000000000000000
               inherited RoundRect3: TRoundRect
-                Size.Width = 440.000000000000000000
+                Size.Width = 640.000000000000000000
                 inherited Image3: TImage
-                  Position.X = 385.000000000000000000
+                  Position.X = 585.000000000000000000
                 end
                 inherited Layout2: TLayout
-                  Size.Width = 385.000000000000000000
+                  Size.Width = 585.000000000000000000
                   inherited edtPesquisa: TEdit
-                    Size.Width = 365.000000000000000000
+                    Size.Width = 565.000000000000000000
                   end
                 end
               end
@@ -92,7 +92,7 @@ inherited TotemPrincipalfrm_Surface: TTotemPrincipalfrm_Surface
         end
       end
       inherited Layout4: TLayout
-        Position.X = 780.000000000000000000
+        Position.X = 880.000000000000000000
         Size.Height = 1920.000000000000000000
       end
     end
