@@ -973,7 +973,7 @@ object frmCadProdutos: TfrmCadProdutos
                   end>
                 Properties.ListSource = frmGeralDM.dtsCellCor
                 HeaderAlignmentHorz = taCenter
-                Width = 99
+                Width = 85
               end
               object cxGridDBTableViewCell_ItensColumnCODICAO_ID: TcxGridDBColumn
                 Caption = 'Condi'#231#227'o'
@@ -988,23 +988,7 @@ object frmCadProdutos: TfrmCadProdutos
                   end>
                 Properties.ListSource = frmGeralDM.dtsCellCondicao
                 HeaderAlignmentHorz = taCenter
-                Width = 110
-              end
-              object cxGridDBTableViewCell_ItensColumn1: TcxGridDBColumn
-                Caption = 'Tipo de pre'#231'o'
-                DataBinding.FieldName = 'TP_PRECO_ID'
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'TP_PRECO_ID'
-                Properties.ListColumns = <
-                  item
-                    Caption = 'Tipos de pre'#231'os'
-                    FieldName = 'TP_PRECO_DESC'
-                  end>
-                Properties.ListSource = frmGeralDM.dtsCellTpPreco
-                FooterAlignmentHorz = taCenter
-                GroupSummaryAlignment = taCenter
-                HeaderAlignmentHorz = taCenter
-                Width = 127
+                Width = 97
               end
               object cxGridDBTableViewCell_ItensColumnCELL_VAL_UNIT: TcxGridDBColumn
                 Caption = 'Valor Unit'#225'rio'
@@ -1012,7 +996,7 @@ object frmCadProdutos: TfrmCadProdutos
                 PropertiesClassName = 'TcxCurrencyEditProperties'
                 Properties.Alignment.Horz = taRightJustify
                 HeaderAlignmentHorz = taCenter
-                Width = 101
+                Width = 92
               end
               object cxGridDBTableViewCell_ItensColumnCELL_VAL_PARC: TcxGridDBColumn
                 Caption = 'Valor Parcelado'
@@ -1020,7 +1004,7 @@ object frmCadProdutos: TfrmCadProdutos
                 PropertiesClassName = 'TcxCurrencyEditProperties'
                 Properties.Alignment.Horz = taRightJustify
                 HeaderAlignmentHorz = taCenter
-                Width = 107
+                Width = 97
               end
               object cxGridDBTableViewCell_ItensColumnCELL_PARCELAS: TcxGridDBColumn
                 Caption = 'Parcelas'
@@ -1029,7 +1013,9 @@ object frmCadProdutos: TfrmCadProdutos
                 FooterAlignmentHorz = taCenter
                 GroupSummaryAlignment = taCenter
                 HeaderAlignmentHorz = taCenter
-                Width = 82
+                Width = 65
+              end
+              object cxGridDBTableViewCell_ItensColumn1: TcxGridDBColumn
               end
             end
             object grdLevelCell_Itens: TcxGridLevel

@@ -32,7 +32,7 @@ type
     tabTpPreco: TcxTabSheet;
     grdTpPreco: TcxGrid;
     grdTpPrecoDBTableView: TcxGridDBTableView;
-    grdTpPrecoDBColumn: TcxGridDBColumn;
+    cxGridDBColumn1: TcxGridDBColumn;
     grdTpPrecoLevel: TcxGridLevel;
   private
     { Private declarations }
@@ -71,12 +71,6 @@ begin
           PgeCadastroComp.ActivePageIndex := iInformacao;
           frmGeralDM.qryCellCor.Close;
           frmGeralDM.qryCellCor.Open;
-        end;
-
-    3 : begin
-          PgeCadastroComp.ActivePageIndex := iInformacao;
-          frmGeralDM.qryCellTpPreco.Close;
-          frmGeralDM.qryCellTpPreco.Open;
         end;
   end;
 end;

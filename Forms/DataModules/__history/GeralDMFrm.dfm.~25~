@@ -287,7 +287,7 @@ object frmGeralDM: TfrmGeralDM
       FixedChar = True
       Size = 25
     end
-    object qryCellItensTP_PRECO_ID: TIntegerField
+    object qryCellItensTP_PRECO_ID: TSmallintField
       FieldName = 'TP_PRECO_ID'
       Origin = 'TP_PRECO_ID'
     end
@@ -455,7 +455,7 @@ object frmGeralDM: TfrmGeralDM
     Top = 72
   end
   object qryCellTpPreco: TFDQuery
-    OnNewRecord = qryCellTpPrecoNewRecord
+    OnNewRecord = qryCellCorNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellTpPreco
     SQL.Strings = (

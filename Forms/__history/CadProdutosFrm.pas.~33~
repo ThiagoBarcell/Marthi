@@ -105,9 +105,8 @@ type
     btnConfiguracao: TcxButton;
     ppmGridCadastro: TPopupMenu;
     Duplicarregistro1: TMenuItem;
-    cxGridDBTableViewCell_ItensColumnCELL_PARCELAS: TcxGridDBColumn;
-    btnCadTpPreco: TcxButton;
     cxGridDBTableViewCell_ItensColumn1: TcxGridDBColumn;
+    btnCadTpPreco: TcxButton;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
@@ -196,8 +195,7 @@ begin
   try
     CadInformacoes.ShowModal;
   finally
-    Funcoes.AbreQrysInfo( frmGeralDM.qryCellArmazenamento,
-      frmGeralDM.qryCellCondicao, frmGeralDM.qryCellCor, frmGeralDM.qryCellTpPreco );
+    Funcoes.AbreQrysInfo( frmGeralDM.qryCellArmazenamento, frmGeralDM.qryCellCondicao, frmGeralDM.qryCellCor );
     FreeAndNil( CadInformacoes );
   end;
 end;
@@ -347,7 +345,7 @@ procedure TfrmCadProdutos.tabCadastroShow(Sender: TObject);
 begin
   //ImageCell.Picture := NIL;
   lblTitulo.Caption := 'Cadastro de Celulares';
-  Funcoes.AbreQrysInfo( frmGeralDM.qryCellArmazenamento, frmGeralDM.qryCellCondicao, frmGeralDM.qryCellCor, frmGeralDM.qryCellTpPreco);
+  Funcoes.AbreQrysInfo( frmGeralDM.qryCellArmazenamento, frmGeralDM.qryCellCondicao, frmGeralDM.qryCellCor );
 
   ImageCell.Picture.Assign( ImgUteis.Items[0].Picture);
 end;

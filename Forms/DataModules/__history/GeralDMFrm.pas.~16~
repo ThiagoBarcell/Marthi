@@ -76,7 +76,6 @@ type
     procedure qryCellArmazenamentoNewRecord(DataSet: TDataSet);
     procedure qryCellCondicaoNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
-    procedure qryCellTpPrecoNewRecord(DataSet: TDataSet);
   private
   lFuncoes: TFuncoesUteis;
     { Private declarations }
@@ -159,11 +158,6 @@ begin
   qryCellItensITEM_ID.AsInteger := ProximoNumero( 'GEN_CELL_ITENS_ID' );
   qryCellItensCELL_ID.AsInteger := qryCadCellCELL_ID.AsInteger;
 
-end;
-
-procedure TfrmGeralDM.qryCellTpPrecoNewRecord(DataSet: TDataSet);
-begin
-  qryCellTpPrecoTP_PRECO_ID.AsInteger := ProximoNumero( 'GEN_CELL_TP_PRECOS_ID' );
 end;
 
 end.

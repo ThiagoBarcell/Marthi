@@ -6,8 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, Vcl.Menus, dxSkinsCore, dxSkinsDefaultPainters,
-  Vcl.StdCtrls, cxButtons, dxGDIPlusClasses, Vcl.ExtCtrls, GeralDMFrm,
-  dxBarBuiltInMenu, cxControls, cxPC;
+  Vcl.StdCtrls, cxButtons, dxGDIPlusClasses, Vcl.ExtCtrls, GeralDMFrm;
 
 type
   TfrmConfigurações = class(TForm)
@@ -15,13 +14,7 @@ type
     Image1: TImage;
     lblTitulo: TLabel;
     btnFechar: TcxButton;
-    pgeConfiguracoes: TcxPageControl;
-    pagConfigurações: TcxTabSheet;
-    pagWhatsApp: TcxTabSheet;
-    pnlButtons: TPanel;
-    btnCancel: TcxButton;
-    cxButton1: TcxButton;
-    Label1: TLabel;
+    pnlCentral: TPanel;
     procedure btnFecharClick(Sender: TObject);
   private
     { Private declarations }

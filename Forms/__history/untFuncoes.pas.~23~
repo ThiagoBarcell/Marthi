@@ -44,7 +44,7 @@ begin
   lQryCor.Close;
   lQryCor.Open;
   lQryTpPreco.Close;
-  lQryTpPreco.Open;
+  lQryTpPreco.Open;;
 end;
 
 Procedure TFuncoesUteis.ConectaBD_Ini( lConexao : TFDConnection; lLinkFB : TFDPhysFBDriverLink );

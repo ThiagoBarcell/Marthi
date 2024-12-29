@@ -72,12 +72,6 @@ begin
           frmGeralDM.qryCellCor.Close;
           frmGeralDM.qryCellCor.Open;
         end;
-
-    3 : begin
-          PgeCadastroComp.ActivePageIndex := iInformacao;
-          frmGeralDM.qryCellTpPreco.Close;
-          frmGeralDM.qryCellTpPreco.Open;
-        end;
   end;
 end;
 

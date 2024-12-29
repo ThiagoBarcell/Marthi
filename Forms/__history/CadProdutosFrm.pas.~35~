@@ -347,7 +347,7 @@ procedure TfrmCadProdutos.tabCadastroShow(Sender: TObject);
 begin
   //ImageCell.Picture := NIL;
   lblTitulo.Caption := 'Cadastro de Celulares';
-  Funcoes.AbreQrysInfo( frmGeralDM.qryCellArmazenamento, frmGeralDM.qryCellCondicao, frmGeralDM.qryCellCor, frmGeralDM.qryCellTpPreco);
+  Funcoes.AbreQrysInfo( frmGeralDM.qryCellArmazenamento, frmGeralDM.qryCellCondicao, frmGeralDM.qryCellCor );
 
   ImageCell.Picture.Assign( ImgUteis.Items[0].Picture);
 end;

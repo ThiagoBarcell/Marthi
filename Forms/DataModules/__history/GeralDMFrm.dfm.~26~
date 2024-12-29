@@ -455,7 +455,7 @@ object frmGeralDM: TfrmGeralDM
     Top = 72
   end
   object qryCellTpPreco: TFDQuery
-    OnNewRecord = qryCellTpPrecoNewRecord
+    OnNewRecord = qryCellCorNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellTpPreco
     SQL.Strings = (

@@ -257,9 +257,9 @@ object frmCadInformacoes: TfrmCadInformacoes
           OptionsView.ColumnAutoWidth = True
           OptionsView.GroupByBox = False
           OptionsView.HeaderHeight = 30
-          object grdTpPrecoDBColumn: TcxGridDBColumn
+          object cxGridDBColumn1: TcxGridDBColumn
             Caption = 'Tipos de Pre'#231'o'
-            DataBinding.FieldName = 'TP_PRECO_DESC'
+            DataBinding.FieldName = 'DESC_TP_PRECO'
             HeaderAlignmentHorz = taCenter
           end
         end

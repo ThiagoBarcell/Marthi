@@ -18,10 +18,6 @@ type
     pgeConfiguracoes: TcxPageControl;
     pagConfigurações: TcxTabSheet;
     pagWhatsApp: TcxTabSheet;
-    pnlButtons: TPanel;
-    btnCancel: TcxButton;
-    cxButton1: TcxButton;
-    Label1: TLabel;
     procedure btnFecharClick(Sender: TObject);
   private
     { Private declarations }

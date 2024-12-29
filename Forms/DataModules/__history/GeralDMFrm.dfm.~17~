@@ -2,7 +2,7 @@ object frmGeralDM: TfrmGeralDM
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   Height = 266
-  Width = 736
+  Width = 673
   object ConectMarthi: TFDConnection
     Params.Strings = (
       'User_Name=SYSDBA'
@@ -10,9 +10,7 @@ object frmGeralDM: TfrmGeralDM
       'Server=localhost'
       'Port=3050'
       'Protocol=TCPIP'
-      'Database=C:\MarthiGIT\Marthi DataBase\DataBase\MARTHIDB.FDB'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 56
     Top = 16
@@ -217,7 +215,6 @@ object frmGeralDM: TfrmGeralDM
       end>
   end
   object qryCellItens: TFDQuery
-    Active = True
     OnNewRecord = qryCellItensNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellItens
@@ -230,8 +227,7 @@ object frmGeralDM: TfrmGeralDM
       '  CODICAO_ID,'
       '  CELL_VAL_UNIT,'
       '  CELL_VAL_PARC,'
-      '  CELL_PARCELAS,'
-      '  TP_PRECO_ID'
+      '  CELL_PARCELAS'
       ''
       'FROM CELL_ITENS'
       ''
@@ -243,7 +239,6 @@ object frmGeralDM: TfrmGeralDM
         Name = 'CELL_ID'
         DataType = ftInteger
         ParamType = ptInput
-        Value = Null
       end>
     object qryCellItensITEM_ID: TIntegerField
       FieldName = 'ITEM_ID'
@@ -287,10 +282,6 @@ object frmGeralDM: TfrmGeralDM
       FixedChar = True
       Size = 25
     end
-    object qryCellItensTP_PRECO_ID: TIntegerField
-      FieldName = 'TP_PRECO_ID'
-      Origin = 'TP_PRECO_ID'
-    end
   end
   object dtsCellItens: TDataSource
     DataSet = qryCellItens
@@ -300,6 +291,7 @@ object frmGeralDM: TfrmGeralDM
   object qryCellCor: TFDQuery
     OnNewRecord = qryCellCorNewRecord
     Connection = ConectMarthi
+    UpdateObject = upsCellCor
     SQL.Strings = (
       'SELECT * FROM CELL_CORES')
     Left = 377
@@ -336,7 +328,6 @@ object frmGeralDM: TfrmGeralDM
     end
   end
   object qryCellCondicao: TFDQuery
-    Active = True
     OnNewRecord = qryCellCondicaoNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellCondicao
@@ -418,7 +409,7 @@ object frmGeralDM: TfrmGeralDM
     DeleteSQL.Strings = (
       'DELETE FROM CELL_CONDICOES'
       'WHERE CONDICAO_ID = :OLD_CONDICAO_ID')
-    Left = 570
+    Left = 578
     Top = 133
   end
   object upsCellItens: TFDUpdateSQL
@@ -426,12 +417,10 @@ object frmGeralDM: TfrmGeralDM
     InsertSQL.Strings = (
       
         'INSERT INTO CELL_ITENS ( ITEM_ID, CELL_ID, ARMAZENAMENTO_ID, COR' +
-        '_ID, CODICAO_ID, CELL_VAL_UNIT, CELL_VAL_PARC, CELL_PARCELAS,TP_' +
-        'PRECO_ID )'
+        '_ID, CODICAO_ID, CELL_VAL_UNIT, CELL_VAL_PARC, CELL_PARCELAS )'
       
         'VALUES ( :ITEM_ID, :CELL_ID, :ARMAZENAMENTO_ID, :COR_ID, :CODICA' +
-        'O_ID, :CELL_VAL_UNIT, :CELL_VAL_PARC, :CELL_PARCELAS, :TP_PRECO_' +
-        'ID );')
+        'O_ID, :CELL_VAL_UNIT, :CELL_VAL_PARC, :CELL_PARCELAS );')
     ModifySQL.Strings = (
       'UPDATE CELL_ITENS'
       'SET ITEM_ID = :ITEM_ID,'
@@ -441,8 +430,7 @@ object frmGeralDM: TfrmGeralDM
       '    CODICAO_ID = :CODICAO_ID,'
       '    CELL_VAL_UNIT = :CELL_VAL_UNIT,'
       '    CELL_VAL_PARC = :CELL_VAL_PARC,'
-      '    CELL_PARCELAS = :CELL_PARCELAS,'
-      '    TP_PRECO_ID = :TP_PRECO_ID'
+      '    CELL_PARCELAS = :CELL_PARCELAS'
       'WHERE ITEM_ID = :OLD_ITEM_ID')
     DeleteSQL.Strings = (
       'DELETE FROM CELL_ITENS'
@@ -453,47 +441,5 @@ object frmGeralDM: TfrmGeralDM
   object FBLink: TFDPhysFBDriverLink
     Left = 56
     Top = 72
-  end
-  object qryCellTpPreco: TFDQuery
-    OnNewRecord = qryCellTpPrecoNewRecord
-    Connection = ConectMarthi
-    UpdateObject = upsCellTpPreco
-    SQL.Strings = (
-      'SELECT * FROM CELL_TP_PRECOS')
-    Left = 649
-    Top = 15
-    object qryCellTpPrecoTP_PRECO_ID: TIntegerField
-      FieldName = 'TP_PRECO_ID'
-      Origin = 'TP_PRECO_ID'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object qryCellTpPrecoTP_PRECO_DESC: TStringField
-      FieldName = 'TP_PRECO_DESC'
-      Origin = 'TP_PRECO_DESC'
-      Size = 50
-    end
-  end
-  object dtsCellTpPreco: TDataSource
-    DataSet = qryCellTpPreco
-    Left = 648
-    Top = 72
-  end
-  object upsCellTpPreco: TFDUpdateSQL
-    Connection = ConectMarthi
-    InsertSQL.Strings = (
-      
-        'INSERT INTO CELL_TP_PRECOS (TP_PRECO_ID, TP_PRECO_DESC) VALUES (' +
-        ':TP_PRECO_ID, :TP_PRECO_DESC);')
-    ModifySQL.Strings = (
-      'UPDATE CELL_TP_PRECOS'
-      'SET TP_PRECO_ID = :TP_PRECO_ID,'
-      '    TP_PRECO_DESC = :TP_PRECO_DESC'
-      'WHERE TP_PRECO_ID = :OLD_TP_PRECO_ID')
-    DeleteSQL.Strings = (
-      'DELETE FROM CELL_TP_PRECOS'
-      'WHERE TP_PRECO_ID = :OLD_TP_PRECO_ID')
-    Left = 648
-    Top = 133
   end
 end

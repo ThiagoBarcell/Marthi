@@ -29,11 +29,6 @@ type
     grdCadastroCondicaoDBTableViewColumn1: TcxGridDBColumn;
     grdCadastroArmazenamentoDBTableViewColumn2: TcxGridDBColumn;
     grdCadastroCorDBTableViewColumn1: TcxGridDBColumn;
-    tabTpPreco: TcxTabSheet;
-    grdTpPreco: TcxGrid;
-    grdTpPrecoDBTableView: TcxGridDBTableView;
-    grdTpPrecoDBColumn: TcxGridDBColumn;
-    grdTpPrecoLevel: TcxGridLevel;
   private
     { Private declarations }
   public
@@ -71,12 +66,6 @@ begin
           PgeCadastroComp.ActivePageIndex := iInformacao;
           frmGeralDM.qryCellCor.Close;
           frmGeralDM.qryCellCor.Open;
-        end;
-
-    3 : begin
-          PgeCadastroComp.ActivePageIndex := iInformacao;
-          frmGeralDM.qryCellTpPreco.Close;
-          frmGeralDM.qryCellTpPreco.Open;
         end;
   end;
 end;

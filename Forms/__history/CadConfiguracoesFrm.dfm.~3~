@@ -6513,13 +6513,6 @@
       Caption = 'WhatsApp-API'
       ImageIndex = 1
       ExplicitHeight = 269
-      object Label1: TLabel
-        Left = 40
-        Top = 96
-        Width = 91
-        Height = 13
-        Caption = 'API Key WhatsApp'
-      end
     end
   end
   object pnlButtons: TPanel

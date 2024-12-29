@@ -105,8 +105,6 @@ type
     btnConfiguracao: TcxButton;
     ppmGridCadastro: TPopupMenu;
     Duplicarregistro1: TMenuItem;
-    cxGridDBTableViewCell_ItensColumnCELL_PARCELAS: TcxGridDBColumn;
-    btnCadTpPreco: TcxButton;
     cxGridDBTableViewCell_ItensColumn1: TcxGridDBColumn;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
@@ -139,7 +137,6 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure btnExcluirClick(Sender: TObject);
     procedure Duplicarregistro1Click(Sender: TObject);
-    procedure btnCadTpPrecoClick(Sender: TObject);
   private
     procedure AbreTelaInfo( iCod : Integer ) ;
     { Private declarations }
@@ -196,8 +193,7 @@ begin
   try
     CadInformacoes.ShowModal;
   finally
-    Funcoes.AbreQrysInfo( frmGeralDM.qryCellArmazenamento,
-      frmGeralDM.qryCellCondicao, frmGeralDM.qryCellCor, frmGeralDM.qryCellTpPreco );
+    Funcoes.AbreQrysInfo( frmGeralDM.qryCellArmazenamento, frmGeralDM.qryCellCondicao, frmGeralDM.qryCellCor );
     FreeAndNil( CadInformacoes );
   end;
 end;
@@ -210,11 +206,6 @@ end;
 procedure TfrmCadProdutos.btnCadCorClick(Sender: TObject);
 begin
   AbreTelaInfo( 2 );
-end;
-
-procedure TfrmCadProdutos.btnCadTpPrecoClick(Sender: TObject);
-begin
-  AbreTelaInfo( 3 )
 end;
 
 procedure TfrmCadProdutos.btnConsultaProdutosClick(Sender: TObject);
@@ -347,7 +338,7 @@ procedure TfrmCadProdutos.tabCadastroShow(Sender: TObject);
 begin
   //ImageCell.Picture := NIL;
   lblTitulo.Caption := 'Cadastro de Celulares';
-  Funcoes.AbreQrysInfo( frmGeralDM.qryCellArmazenamento, frmGeralDM.qryCellCondicao, frmGeralDM.qryCellCor, frmGeralDM.qryCellTpPreco);
+  Funcoes.AbreQrysInfo( frmGeralDM.qryCellArmazenamento, frmGeralDM.qryCellCondicao, frmGeralDM.qryCellCor );
 
   ImageCell.Picture.Assign( ImgUteis.Items[0].Picture);
 end;

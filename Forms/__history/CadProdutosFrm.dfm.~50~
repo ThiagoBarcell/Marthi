@@ -994,11 +994,11 @@ object frmCadProdutos: TfrmCadProdutos
                 Caption = 'Tipo de pre'#231'o'
                 DataBinding.FieldName = 'TP_PRECO_ID'
                 PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'TP_PRECO_ID'
+                Properties.KeyFieldNames = 'ID_TP_PRECO'
                 Properties.ListColumns = <
                   item
-                    Caption = 'Tipos de pre'#231'os'
-                    FieldName = 'TP_PRECO_DESC'
+                    Caption = 'Tipos de pre'#231'o'
+                    FieldName = 'DESC_TP_PRECO'
                   end>
                 Properties.ListSource = frmGeralDM.dtsCellTpPreco
                 FooterAlignmentHorz = taCenter

@@ -3,7 +3,7 @@
   Top = 0
   BorderStyle = bsNone
   Caption = 'frmConfigura'#231#245'es'
-  ClientHeight = 349
+  ClientHeight = 338
   ClientWidth = 470
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -6493,66 +6493,23 @@
     Left = 0
     Top = 41
     Width = 470
-    Height = 263
+    Height = 297
     Align = alClient
     TabOrder = 1
     Properties.ActivePage = pagWhatsApp
     Properties.CustomButtons.Buttons = <>
     ExplicitTop = 0
-    ExplicitHeight = 297
-    ClientRectBottom = 259
+    ClientRectBottom = 293
     ClientRectLeft = 4
     ClientRectRight = 466
     ClientRectTop = 24
     object pagConfigurações: TcxTabSheet
       Caption = 'Configura'#231#245'es'
       ImageIndex = 0
-      ExplicitHeight = 269
     end
     object pagWhatsApp: TcxTabSheet
       Caption = 'WhatsApp-API'
       ImageIndex = 1
-      ExplicitHeight = 269
-      object Label1: TLabel
-        Left = 40
-        Top = 96
-        Width = 91
-        Height = 13
-        Caption = 'API Key WhatsApp'
-      end
-    end
-  end
-  object pnlButtons: TPanel
-    Left = 0
-    Top = 304
-    Width = 470
-    Height = 45
-    Align = alBottom
-    BevelOuter = bvNone
-    TabOrder = 2
-    object btnCancel: TcxButton
-      Left = 234
-      Top = 0
-      Width = 234
-      Height = 45
-      Align = alLeft
-      Caption = 'Cancelar'
-      TabOrder = 0
-      ExplicitLeft = 236
-      ExplicitTop = 1
-      ExplicitHeight = 43
-    end
-    object cxButton1: TcxButton
-      Left = 0
-      Top = 0
-      Width = 234
-      Height = 45
-      Align = alLeft
-      Caption = 'Salvar'
-      TabOrder = 1
-      ExplicitLeft = 1
-      ExplicitTop = 1
-      ExplicitHeight = 43
     end
   end
 end
