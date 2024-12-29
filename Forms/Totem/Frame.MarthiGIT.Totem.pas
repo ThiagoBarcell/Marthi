@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls, FMX.Objects, FMX.Edit, FMX.Controls.Presentation, FMX.ListBox, FMX.Layouts, FMX.TabControl, FMX.Effects,
-  FireDAC.Comp.Client;
+  FireDAC.Comp.Client, FMX.Colors, FMX.ComboEdit, FMX.Filter.Effects;
 
 type
   TFrameTotem = class(TFrame)
@@ -14,18 +14,15 @@ type
     TabTotemPrincipal: TTabItem;
     Layout6: TLayout;
     Layout7: TLayout;
-    Layout5: TLayout;
+    lytCapacidade: TLayout;
     Rectangle5: TRectangle;
     cbbCapacidade: TComboBox;
     Label5: TLabel;
-    Layout4: TLayout;
+    lytCor: TLayout;
     Rectangle6: TRectangle;
     cbbCor: TComboBox;
     Label3: TLabel;
     lblNomeItem: TLabel;
-    lblValorAVista: TLabel;
-    Label7: TLabel;
-    lblValorAPrazo: TLabel;
     TabTotemCliente: TTabItem;
     Layout9: TLayout;
     lblTITULOCEL: TLabel;
@@ -44,11 +41,22 @@ type
     Label2: TLabel;
     btnComprar: TRectangle;
     Label8: TLabel;
+    Rectangle1: TRectangle;
+    Label6: TLabel;
+    Layout1: TLayout;
+    lytRetirada: TLayout;
+    Rectangle2: TRectangle;
+    cbbRetirada: TComboBox;
+    Label4: TLabel;
+    lblValorAPrazo: TLabel;
+    lblValorAVista: TLabel;
+    Label7: TLabel;
+    ShadowEffect1: TShadowEffect;
+    Rectangle3: TRectangle;
     btnEnviaWhatsapp: TRectangle;
     img1: TImage;
     lbl1: TLabel;
-    Rectangle1: TRectangle;
-    Label6: TLabel;
+    StyleBook1: TStyleBook;
     procedure btnComprarClick(Sender: TObject);
     procedure Rectangle1Click(Sender: TObject);
   private

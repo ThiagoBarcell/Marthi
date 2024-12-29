@@ -15,7 +15,8 @@ uses
   System.Rtti, System.Bindings.Outputs, Fmx.Bind.Editors, Data.Bind.Components,
   Data.Bind.DBScope, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   Frame.MarthiGIT.Totem, System.Math, System.IniFiles, Untfuncoes,
-  FireDAC.Phys.IBBase, MyVirtualKeyboard;
+  FireDAC.Phys.IBBase, MyVirtualKeyboard, FMX.Filter.Effects, FMX.Ani,
+  System.Math.Vectors, FMX.Controls3D, FMX.Objects3D;
 
 type
   TTotemPrincipalfrm = class(TForm)
@@ -26,9 +27,6 @@ type
     Layout3: TLayout;
     StyleBook1: TStyleBook;
     lytRodape: TLayout;
-    Rectangle2: TRectangle;
-    Label9: TLabel;
-    Label10: TLabel;
     ConectMarthi: TFDConnection;
     qryCadCell: TFDQuery;
     qryImagensCell: TFDQuery;
@@ -59,26 +57,35 @@ type
     qryCadCellCELL_DESC: TStringField;
     qryCadCellCELL_MARCA: TIntegerField;
     qryDadosCorARMAZENAMENTO_ID: TIntegerField;
-    qryConfig: TFDQuery;
-    qryConfigAPI_KEY_WHATSAPP: TStringField;
     ShadowEffect7: TShadowEffect;
     ShadowEffect8: TShadowEffect;
     Label3: TLabel;
     Label5: TLabel;
     btnIphone: TRectangle;
     img1: TImage;
-    ShadowEffect4: TShadowEffect;
     Label1: TLabel;
     btnXiaomi: TRectangle;
     img2: TImage;
-    ShadowEffect5: TShadowEffect;
     Label2: TLabel;
     Rectangle5: TRectangle;
     Layout1: TLayout;
     Rectangle3: TRectangle;
     Layout2: TLayout;
-    edtPesquisa: TEdit;
     img3: TImage;
+    qryRetirada: TFDQuery;
+    qryRetiradaTP_PRECO_ID: TIntegerField;
+    qryRetiradaTP_PRECO_DESC: TStringField;
+    Label4: TLabel;
+    Label6: TLabel;
+    edtPesquisa: TEdit;
+    ShadowEffect1: TShadowEffect;
+    ShadowEffect2: TShadowEffect;
+    Rectangle2: TRectangle;
+    Label10: TLabel;
+    Label9: TLabel;
+    Rectangle1: TRectangle;
+    qryDadosCorTP_PRECO_ID: TIntegerField;
+    qryDadosCorTP_PRECO_DESC: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaExit(Sender: TObject);
@@ -86,17 +93,19 @@ type
     procedure btnFecharClick(Sender: TObject);
     procedure btnIphoneClick(Sender: TObject);
     procedure btnXiaomiClick(Sender: TObject);
+    procedure Rectangle1Click(Sender: TObject);
   private
     { Private declarations }
     procedure CarregarDados;
     procedure AjustarAlturaScrollBox(ScrollBox: TVertScrollBox);
     procedure CarregarImagensHorizontais(Frame: TFrameTotem; CellID: Integer);
-    procedure CarregarCapacidades(Frame: TFrameTotem; CellID: Integer);
-    procedure CarregarCores(Frame: TFrameTotem; CellID: Integer);
+    procedure CarregaComboBox(Frame: TFrameTotem;
+  CellID: Integer; FindCombo, FieldID, FieldDesc : string; oQuery: TFDQuery);
     procedure MostrarTecladoVirtual;
     procedure OcultarTecladoVirtual;
     procedure CorChange(Sender: TObject);
     procedure CapacidadeChange(Sender: TObject);
+    procedure RetiradaChange(Sender: TObject);
     procedure EnviaWhatsapp(Sender: TObject);
     procedure OnEnterNomeCli(Sender: TObject);
     procedure OnEnterTelCli(Sender: TObject);
@@ -272,8 +281,15 @@ begin
 
     CellID := dtsCadCell.DataSet.FieldByName('CELL_ID').AsInteger;
     CarregarImagensHorizontais(Frame, CellID);
-    CarregarCapacidades(Frame, CellID);
-    CarregarCores(Frame, CellID);
+    // Preenche Combobox de cor
+    CarregaComboBox(Frame,CellID,'cbbCor', 'COR_ID', 'COR_DESC',qryCores);
+    // Preenche Combobox de Capacidade
+    CarregaComboBox(Frame,CellID,'cbbCapacidade', 'ARMAZENAMENTO_ID', 'ARMAZENAMENTO_DESC',qryCapacidades);
+    // Preenche Combobox de Retirada
+    CarregaComboBox(Frame,CellID,'cbbRetirada', 'TP_PRECO_ID', 'TP_PRECO_DESC',qryRetirada);
+
+//    CarregarCapacidades(Frame, CellID);
+//    CarregarCores(Frame, CellID);
 
     Frame.CELL_MARCA.Text := dtsCadCell.DataSet.FieldByName('CELL_MARCA').AsString;
 
@@ -305,7 +321,10 @@ begin
     // Atribuir o evento OnChange
     Frame.cbbCor.OnChange := CorChange;
     Frame.cbbCapacidade.OnChange := CapacidadeChange;
+    Frame.cbbRetirada.OnChange := RetiradaChange;
+    // Atribuir o evento OnClick
     Frame.btnEnviaWhatsapp.OnClick := EnviaWhatsapp;
+    // Atribuir o evento OnEnter
     Frame.edtNomeCli.OnEnter := OnEnterNomeCli;
     Frame.edtTelCli.OnEnter := OnEnterTelCli;
 
@@ -351,6 +370,80 @@ begin
     IsKeyboardShown := False;
 end;
 
+procedure TTotemPrincipalfrm.Rectangle1Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TTotemPrincipalfrm.RetiradaChange(Sender: TObject);
+var
+  ComboBox: TComboBox;
+  CapacidadeID, CorID, RetiradaID: Integer;
+  qryDados: TFDQuery;
+  ParentObject: TFmxObject;
+  Frame: TFrameTotem;
+begin
+  ComboBox := Sender as TComboBox;
+
+  // Encontra o Frame pai do ComboBox
+  ParentObject := ComboBox.Parent;
+  while (ParentObject <> nil) and not (ParentObject is TFrameTotem) do
+    ParentObject := ParentObject.Parent;
+
+  if not (ParentObject is TFrameTotem) then
+    Exit;
+
+  Frame := TFrameTotem(ParentObject);
+
+  // Verifica se uma capacidade foi selecionada
+  if ComboBox.ItemIndex = -1 then
+    Exit;
+
+  // Obtém o ID da capacidade selecionada
+  RetiradaID := Integer(ComboBox.Items.Objects[ComboBox.ItemIndex]);
+
+  // Obtém o ID da cor selecionada
+  if Frame.cbbCor.ItemIndex >= 0 then
+    CorID := Integer(Frame.cbbCor.Items.Objects[Frame.cbbCor.ItemIndex])
+  else
+    Exit;
+
+   // Obtém o ID da capacidade selecionada
+  if Frame.cbbCapacidade.ItemIndex >= 0 then
+    CapacidadeID := Integer(Frame.cbbCapacidade.Items.Objects[Frame.cbbCapacidade.ItemIndex])
+  else
+    Exit;
+
+   qryDados := TFDQuery.Create(nil);
+  try
+    qryDados.Connection := ConectMarthi; // Substitua pelo seu componente de conexão
+    qryDados.SQL.Text :=
+      'SELECT CELL_ITENS.CELL_VAL_UNIT, CELL_ITENS.CELL_VAL_PARC ' +
+      'FROM CELL_ITENS ' +
+      'WHERE CELL_ITENS.COR_ID = :COR_ID ' +
+      '  AND CELL_ITENS.ARMAZENAMENTO_ID = :ARMAZENAMENTO_ID' +
+      '  AND CELL_ITENS.TP_PRECO_ID  = :TP_PRECO_ID';
+    qryDados.ParamByName('COR_ID').AsInteger := CorID;
+    qryDados.ParamByName('ARMAZENAMENTO_ID').AsInteger := CapacidadeID;
+    qryDados.ParamByName('TP_PRECO_ID').AsInteger := RetiradaID;
+    qryDados.Open;
+
+    if not qryDados.IsEmpty then
+    begin
+      Frame.lblValorAVista.Text := Format('R$ %.2f', [qryDados.FieldByName('CELL_VAL_UNIT').AsFloat]);
+      Frame.lblValorAPrazo.Text := '12 X ' + Format('R$ %.2f', [qryDados.FieldByName('CELL_VAL_PARC').AsFloat]);
+    end
+    else
+    begin
+      Frame.lblValorAVista.Text := 'R$ 0,00';
+      Frame.lblValorAPrazo.Text := 'R$ 0,00';
+    end;
+  finally
+    qryDados.Free;
+  end;
+
+end;
+
 procedure TTotemPrincipalfrm.btnFecharClick(Sender: TObject);
 begin
   Close;
@@ -393,55 +486,31 @@ begin
   end;
 end;
 
-procedure TTotemPrincipalfrm.CarregarCapacidades(Frame: TFrameTotem; CellID: Integer);
-var
-  ComboBox: TComboBox;
-begin
-  // Localiza o ComboBox de capacidade no frame
-  ComboBox := Frame.FindComponent('cbbCapacidade') as TComboBox;
-  if not Assigned(ComboBox) then
-    Exit;
-
-  qryCapacidades.Close;
-  qryCapacidades.ParamByName('CELL_ID').AsInteger := CellID;
-  qryCapacidades.Open;
-
-  ComboBox.Items.Clear;
-  while not qryCapacidades.Eof do
-  begin
-
-    ComboBox.Items.AddObject(qryCapacidades.FieldByName('ARMAZENAMENTO_DESC').AsString,
-                        TObject(qryCapacidades.FieldByName('ARMAZENAMENTO_ID').AsInteger));
-    qryCapacidades.Next;
-  end;
-
-  if ComboBox.Items.Count > 0 then
-    ComboBox.ItemIndex := 0; // Seleciona o primeiro item por padrão
-end;
-
-procedure TTotemPrincipalfrm.CarregarCores(Frame: TFrameTotem; CellID: Integer);
+procedure TTotemPrincipalfrm.CarregaComboBox(Frame: TFrameTotem;
+  CellID: Integer; FindCombo, FieldID, FieldDesc : string; oQuery: TFDQuery);
 var
   ComboBox: TComboBox;
 begin
   // Localiza o ComboBox de cor no frame
-  ComboBox := Frame.FindComponent('cbbCor') as TComboBox;
+  ComboBox := Frame.FindComponent(FindCombo) as TComboBox;
   if not Assigned(ComboBox) then
     Exit;
 
-  qryCores.Close;
-  qryCores.ParamByName('CELL_ID').AsInteger := CellID;
-  qryCores.Open;
+  oQuery.Close;
+  oQuery.ParamByName('CELL_ID').AsInteger := CellID;
+  oQuery.Open;
 
   ComboBox.Items.Clear;
-  while not qryCores.Eof do
+  while not oQuery.Eof do
   begin
-    ComboBox.Items.AddObject(qryCores.FieldByName('COR_DESC').AsString,
-                        TObject(qryCores.FieldByName('COR_ID').AsInteger));
-    qryCores.Next;
+    ComboBox.Items.AddObject(oQuery.FieldByName(FieldDesc).AsString,
+                        TObject(oQuery.FieldByName(FieldID).AsInteger));
+    oQuery.Next;
   end;
 
   if ComboBox.Items.Count > 0 then
     ComboBox.ItemIndex := 0; // Seleciona o primeiro item por padrão
+
 end;
 
 procedure TTotemPrincipalfrm.CarregarImagensHorizontais(Frame: TFrameTotem; CellID: Integer);
@@ -472,10 +541,10 @@ begin
         CloneRect.Parent := Frame.HorzScrollBoxImagens;
         CloneRect.Width := Frame.imgCell.Width;
         CloneRect.Height := Frame.imgCell.Height;
-        CloneRect.Margins.Top := 0;
-        CloneRect.Margins.Left := 0;
+        CloneRect.Margins.Top := 5;
+        CloneRect.Margins.Left := 5;
         CloneRect.Margins.Right := 3;
-        CloneRect.Margins.Bottom := 0;
+        CloneRect.Margins.Bottom := 5;
         CloneRect.Position.X := CurrentLeft; // Posição horizontal
         CloneRect.Position.Y := 0; // Centralizado verticalmente
         CloneRect.Stroke.Kind := Frame.imgCell.Stroke.Kind;
@@ -483,8 +552,10 @@ begin
         CloneRect.Stroke.Thickness := 0;
         CloneRect.Fill.Kind := TBrushKind.Bitmap; // Define o preenchimento como bitmap
         CloneRect.Fill.Bitmap.WrapMode := TWrapMode.TileStretch; // Define o preenchimento como bitmap
-        CloneRect.Corners := [TCorner.TopLeft, TCorner.BottomLeft];
+        //CloneRect.Corners := [TCorner.TopLeft, TCorner.BottomLeft];
         CloneRect.SendToBack;
+        CloneRect.YRadius := 10;
+        CloneRect.XRadius := 10;
 
         // Carrega a imagem do banco
         BlobField := ImageQuery.FieldByName('IMAGE') as TBlobField;
