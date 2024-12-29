@@ -1,0 +1,101 @@
+inherited TotemPrincipalfrm_Surface: TTotemPrincipalfrm_Surface
+  ClientHeight = 1920
+  ClientWidth = 1080
+  DesignerMasterStyle = 0
+  inherited lytGlobal: TLayout
+    Size.Width = 1080.000000000000000000
+    Size.Height = 1920.000000000000000000
+    inherited Rectangle8: TRectangle
+      Size.Width = 1080.000000000000000000
+      Size.Height = 1920.000000000000000000
+      inherited lytToten: TLayout
+        Size.Width = 1080.000000000000000000
+        Size.Height = 1871.000000000000000000
+        inherited Rectangle11: TRectangle
+          Size.Width = 1080.000000000000000000
+          Size.Height = 1871.000000000000000000
+          inherited lytCenter: TLayout
+            Size.Width = 815.000000000000000000
+            Size.Height = 1666.000000000000000000
+            inherited Rectangle10: TRectangle
+              Size.Width = 800.000000000000000000
+              Size.Height = 1666.000000000000000000
+              inherited Layout3: TLayout
+                Size.Width = 800.000000000000000000
+                Size.Height = 1651.000000000000000000
+                inherited VertScrollBox1: TVertScrollBox
+                  Size.Width = 800.000000000000000000
+                  Size.Height = 1651.000000000000000000
+                  Viewport.Width = 800.000000000000000000
+                  Viewport.Height = 1651.000000000000000000
+                end
+              end
+            end
+          end
+          inherited lytModelo: TLayout
+            Size.Height = 1666.000000000000000000
+            inherited btnIphone: TRectangle
+              Margins.Left = 5.000000000000000000
+              Position.X = 20.000000000000000000
+              Size.Width = 225.000000000000000000
+              inherited img1: TImage
+                inherited Label1: TLabel
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                end
+              end
+            end
+            inherited btnXiaomi: TRectangle
+              Margins.Left = 5.000000000000000000
+              Position.X = 20.000000000000000000
+              Size.Width = 225.000000000000000000
+              inherited img2: TImage
+                inherited Label2: TLabel
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                end
+              end
+            end
+          end
+          inherited lytTop: TLayout
+            Size.Width = 1080.000000000000000000
+            inherited Rectangle1: TRectangle
+              Fill.Kind = Gradient
+              Size.Width = 1080.000000000000000000
+            end
+            inherited Layout1: TLayout
+              Size.Width = 1040.000000000000000000
+              inherited Rectangle3: TRectangle
+                Size.Width = 1040.000000000000000000
+                inherited img3: TImage
+                  Position.X = 985.000000000000000000
+                end
+                inherited Layout2: TLayout
+                  Size.Width = 985.000000000000000000
+                  inherited edtPesquisa: TEdit
+                    Size.Width = 965.000000000000000000
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+      inherited lytRodape: TLayout
+        Position.Y = 1871.000000000000000000
+        Size.Width = 1080.000000000000000000
+        inherited Rectangle2: TRectangle
+          Fill.Gradient.StartPosition.X = 1.000000000000000000
+          Size.Width = 1080.000000000000000000
+          inherited Label9: TLabel
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+          end
+        end
+        inherited Label3: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+        inherited Label5: TLabel
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+        end
+      end
+    end
+  end
+end
