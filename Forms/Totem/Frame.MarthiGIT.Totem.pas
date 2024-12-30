@@ -57,6 +57,19 @@ type
     img1: TImage;
     lbl1: TLabel;
     StyleBook1: TStyleBook;
+    Layout2: TLayout;
+    Rectangle7: TRectangle;
+    Label9: TLabel;
+    cbb1: TComboBox;
+    Layout3: TLayout;
+    Rectangle8: TRectangle;
+    Layout4: TLayout;
+    Label10: TLabel;
+    cbb2: TComboBox;
+    ListBoxItem1: TListBoxItem;
+    ListBoxItem2: TListBoxItem;
+    CircDireita: TCircle;
+    CircEsquerda: TCircle;
     procedure btnComprarClick(Sender: TObject);
     procedure Rectangle1Click(Sender: TObject);
   private

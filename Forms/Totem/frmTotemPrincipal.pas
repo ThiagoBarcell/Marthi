@@ -86,6 +86,7 @@ type
     Rectangle1: TRectangle;
     qryDadosCorTP_PRECO_ID: TIntegerField;
     qryDadosCorTP_PRECO_DESC: TStringField;
+    qryDadosCorCELL_PARCELAS: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaExit(Sender: TObject);
@@ -94,6 +95,7 @@ type
     procedure btnIphoneClick(Sender: TObject);
     procedure btnXiaomiClick(Sender: TObject);
     procedure Rectangle1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
     procedure CarregarDados;
@@ -109,6 +111,10 @@ type
     procedure EnviaWhatsapp(Sender: TObject);
     procedure OnEnterNomeCli(Sender: TObject);
     procedure OnEnterTelCli(Sender: TObject);
+    procedure AtualizarBotoesNavegacao(Frame: TFrameTotem);
+    procedure BotaoDireitaClick(Sender: TObject);
+    procedure BotaoEsquerdaClick(Sender: TObject);
+    procedure ViewportPositionChange(Sender: TObject; const OldViewportPosition, NewViewportPosition: TPointF; const ContentSizeChanged: Boolean);
   public
     { Public declarations }
   end;
@@ -165,7 +171,7 @@ begin
   try
     qryDados.Connection := ConectMarthi; // Substitua pelo seu componente de conexão
     qryDados.SQL.Text :=
-      'SELECT CELL_ITENS.CELL_VAL_UNIT, CELL_ITENS.CELL_VAL_PARC ' +
+      'SELECT CELL_ITENS.CELL_VAL_UNIT, CELL_ITENS.CELL_VAL_PARC, CELL_ITENS.CELL_PARCELAS ' +
       'FROM CELL_ITENS ' +
       'WHERE CELL_ITENS.COR_ID = :COR_ID AND CELL_ITENS.ARMAZENAMENTO_ID = :ARMAZENAMENTO_ID';
     qryDados.ParamByName('COR_ID').AsInteger := CorID;
@@ -175,7 +181,7 @@ begin
     if not qryDados.IsEmpty then
     begin
       Frame.lblValorAVista.Text := Format('R$ %.2f', [qryDados.FieldByName('CELL_VAL_UNIT').AsFloat]);
-      Frame.lblValorAPrazo.Text := '12 X ' + Format('R$ %.2f', [qryDados.FieldByName('CELL_VAL_PARC').AsFloat]);
+      Frame.lblValorAPrazo.Text := qryDados.FieldByName('CELL_PARCELAS').AsString + ' X ' + Format('R$ %.2f', [qryDados.FieldByName('CELL_VAL_PARC').AsFloat]);
     end
     else
     begin
@@ -224,7 +230,7 @@ begin
     if not qryDadosCor.IsEmpty then
     begin
       Frame.lblValorAVista.Text := Format('R$ %.2f', [qryDadosCor.FieldByName('CELL_VAL_UNIT').AsFloat]);
-      Frame.lblValorAPrazo.Text := '12 X ' + Format('R$ %.2f', [qryDadosCor.FieldByName('CELL_VAL_PARC').AsFloat]);
+      Frame.lblValorAPrazo.Text := qryDadosCor.FieldByName('CELL_PARCELAS').AsString + ' X ' + Format('R$ %.2f', [qryDadosCor.FieldByName('CELL_VAL_PARC').AsFloat]);
 
       Frame.cbbCapacidade.OnChange := nil;
       Frame.cbbCapacidade.Items.Clear;
@@ -307,7 +313,7 @@ begin
       if not qryDadosCor.IsEmpty then
       begin
         Frame.lblValorAVista.Text := Format('R$ %.2f', [qryDadosCor.FieldByName('CELL_VAL_UNIT').AsFloat]);
-        Frame.lblValorAPrazo.Text := '12 X ' + Format('R$ %.2f', [qryDadosCor.FieldByName('CELL_VAL_PARC').AsFloat]);
+        Frame.lblValorAPrazo.Text := qryDadosCor.FieldByName('CELL_PARCELAS').AsString + ' X ' + Format('R$ %.2f', [qryDadosCor.FieldByName('CELL_VAL_PARC').AsFloat]);
       end
       else
       begin
@@ -322,8 +328,10 @@ begin
     Frame.cbbCor.OnChange := CorChange;
     Frame.cbbCapacidade.OnChange := CapacidadeChange;
     Frame.cbbRetirada.OnChange := RetiradaChange;
+
     // Atribuir o evento OnClick
     Frame.btnEnviaWhatsapp.OnClick := EnviaWhatsapp;
+
     // Atribuir o evento OnEnter
     Frame.edtNomeCli.OnEnter := OnEnterNomeCli;
     Frame.edtTelCli.OnEnter := OnEnterTelCli;
@@ -444,6 +452,71 @@ begin
 
 end;
 
+procedure TTotemPrincipalfrm.AtualizarBotoesNavegacao(Frame: TFrameTotem);
+var
+  ScrollBox: THorzScrollBox;
+begin
+  // Verifica se o Frame e o HorzScrollBoxImagens não são nulos
+  if not Assigned(Frame) then
+    raise Exception.Create('Frame não está inicializado.');
+
+  ScrollBox := Frame.HorzScrollBoxImagens;
+
+  if not Assigned(ScrollBox) then
+    raise Exception.Create('HorzScrollBoxImagens não está inicializado.');
+
+  // Verifica se há conteúdo para rolar à esquerda
+  Frame.CircEsquerda.Visible := ScrollBox.ViewportPosition.X > 0;
+
+  // Verifica se há conteúdo para rolar à direita
+  Frame.CircDireita.Visible :=
+    ScrollBox.ViewportPosition.X + ScrollBox.Width < ScrollBox.Content.Width;
+end;
+
+procedure TTotemPrincipalfrm.BotaoDireitaClick(Sender: TObject);
+var
+  Frame: TFrameTotem;
+begin
+  if Sender is TCircle then
+  begin
+    Frame := TFrameTotem(TCircle(Sender).Parent); // Obtém o frame a partir do botão
+    with Frame.HorzScrollBoxImagens do
+    begin
+      ViewportPosition := PointF(
+        ViewportPosition.X + 100, // Avança 100 pixels para a direita
+        ViewportPosition.Y
+      );
+    end;
+    AtualizarBotoesNavegacao(Frame); // Atualiza a visibilidade dos botões
+  end;
+end;
+
+procedure TTotemPrincipalfrm.BotaoEsquerdaClick(Sender: TObject);
+var
+  Frame: TFrameTotem;
+begin
+  if Sender is TCircle then
+  begin
+    Frame := TFrameTotem(TCircle(Sender).Parent); // Obtém o frame a partir do botão
+    with Frame.HorzScrollBoxImagens do
+    begin
+      ViewportPosition := PointF(
+        ViewportPosition.X - 100, // Retrocede 100 pixels para a esquerda
+        ViewportPosition.Y
+      );
+    end;
+    AtualizarBotoesNavegacao(Frame); // Atualiza a visibilidade dos botões
+  end;
+end;
+
+procedure TTotemPrincipalfrm.ViewportPositionChange(Sender: TObject; const OldViewportPosition, NewViewportPosition: TPointF; const ContentSizeChanged: Boolean);
+var
+  Frame: TFrameTotem;
+begin
+  Frame := TFrameTotem(THorzScrollBox(Sender).Parent);
+  AtualizarBotoesNavegacao(Frame);
+end;
+
 procedure TTotemPrincipalfrm.btnFecharClick(Sender: TObject);
 begin
   Close;
@@ -466,6 +539,12 @@ begin
       Frame.Visible := False; // Esconde os frames que não correspondem
   end;
 
+  // Altera a cor de btnXiaomi para White
+  btnXiaomi.Fill.Color := TAlphaColors.White;
+
+  // Reseta a cor de btnIphone para Mintcream
+  btnIphone.Fill.Color := TAlphaColors.Mintcream;
+
 end;
 
 procedure TTotemPrincipalfrm.btnXiaomiClick(Sender: TObject);
@@ -484,6 +563,12 @@ begin
     else
       Frame.Visible := False; // Esconde os frames que não correspondem
   end;
+
+  // Altera a cor de btnXiaomi para #FFF0EEE8
+  btnXiaomi.Fill.Color := TAlphaColors.Mintcream;
+
+  // Reseta a cor de btnIphone para branco
+  btnIphone.Fill.Color := TAlphaColors.White;
 end;
 
 procedure TTotemPrincipalfrm.CarregaComboBox(Frame: TFrameTotem;
@@ -515,28 +600,40 @@ end;
 
 procedure TTotemPrincipalfrm.CarregarImagensHorizontais(Frame: TFrameTotem; CellID: Integer);
 var
-  ImageQuery: TFDQuery; // Ajuste para o componente de banco que você usa
+  ImageQuery: TFDQuery;
   ImageStream: TMemoryStream;
   BlobField: TBlobField;
   CloneRect: TRectangle;
   CurrentLeft: Single;
-  imgWidth, imgHeight : double;
+  TotalWidth: Single;
 begin
-  Frame.HorzScrollBoxImagens.BeginUpdate; // Evita flickering
+  // Verifica se o HorzScrollBoxImagens está inicializado
+  if not Assigned(Frame.HorzScrollBoxImagens) then
+  begin
+    raise Exception.Create('HorzScrollBoxImagens não está inicializado.');
+  end;
+
+  // Verifica se o conteúdo da HorzScrollBoxImagens foi configurado corretamente
+  if not Assigned(Frame.HorzScrollBoxImagens.Content) then
+  begin
+    raise Exception.Create('Conteúdo do HorzScrollBoxImagens não está inicializado.');
+  end;
+
+  Frame.HorzScrollBoxImagens.BeginUpdate;
   try
-    //Frame.HorzScrollBoxImagens.Content.DeleteChildren; // Remove conteúdos antigos
+    Frame.HorzScrollBoxImagens.Content.DeleteChildren;
     CurrentLeft := 0;
+    TotalWidth := 0;
 
     ImageQuery := TFDQuery.Create(nil);
     try
-      ImageQuery.Connection := ConectMarthi; // Substitua pela sua conexão
+      ImageQuery.Connection := ConectMarthi;
       ImageQuery.SQL.Text := 'SELECT IMAGE FROM CELL_IMAGES WHERE CELL_ID = :CELL_ID';
       ImageQuery.ParamByName('CELL_ID').AsInteger := CellID;
       ImageQuery.Open;
 
       while not ImageQuery.Eof do
       begin
-        // Clona o retângulo `imgCell` existente no Frame
         CloneRect := TRectangle.Create(Frame.HorzScrollBoxImagens);
         CloneRect.Parent := Frame.HorzScrollBoxImagens;
         CloneRect.Width := Frame.imgCell.Width;
@@ -545,19 +642,15 @@ begin
         CloneRect.Margins.Left := 5;
         CloneRect.Margins.Right := 3;
         CloneRect.Margins.Bottom := 5;
-        CloneRect.Position.X := CurrentLeft; // Posição horizontal
-        CloneRect.Position.Y := 0; // Centralizado verticalmente
-        CloneRect.Stroke.Kind := Frame.imgCell.Stroke.Kind;
-        CloneRect.Stroke.Color := Frame.imgCell.Stroke.Color;
-        CloneRect.Stroke.Thickness := 0;
-        CloneRect.Fill.Kind := TBrushKind.Bitmap; // Define o preenchimento como bitmap
-        CloneRect.Fill.Bitmap.WrapMode := TWrapMode.TileStretch; // Define o preenchimento como bitmap
-        //CloneRect.Corners := [TCorner.TopLeft, TCorner.BottomLeft];
-        CloneRect.SendToBack;
-        CloneRect.YRadius := 10;
+        CloneRect.Position.X := CurrentLeft;
+        CloneRect.Position.Y := 0;
+        CloneRect.Stroke.Assign(Frame.imgCell.Stroke);
+        CloneRect.Fill.Kind := TBrushKind.Bitmap;
+        CloneRect.Fill.Bitmap.WrapMode := TWrapMode.TileStretch;
+        CloneRect.SetBounds(CloneRect.Position.X, CloneRect.Position.Y, CloneRect.Width, CloneRect.Height);
         CloneRect.XRadius := 10;
+        CloneRect.YRadius := 10;
 
-        // Carrega a imagem do banco
         BlobField := ImageQuery.FieldByName('IMAGE') as TBlobField;
         if not BlobField.IsNull then
         begin
@@ -565,28 +658,38 @@ begin
           try
             BlobField.SaveToStream(ImageStream);
             ImageStream.Position := 0;
-            CloneRect.Fill.Bitmap.Bitmap.LoadFromStream(ImageStream); // Aplica a imagem
+            CloneRect.Fill.Bitmap.Bitmap.LoadFromStream(ImageStream);
           finally
             ImageStream.Free;
           end;
         end
         else
         begin
-          // Caso não haja imagem, usa cor padrão
           CloneRect.Fill.Kind := TBrushKind.Solid;
           CloneRect.Fill.Color := TAlphaColors.Gray;
         end;
 
-        // Ajusta a posição para a próxima imagem
-        CurrentLeft := CurrentLeft + CloneRect.Width + 10; // Margem entre imagens
+        CurrentLeft := CurrentLeft + CloneRect.Width + 10;
+        TotalWidth := CurrentLeft;
 
         ImageQuery.Next;
       end;
+
+      Frame.HorzScrollBoxImagens.Content.Width := TotalWidth;
     finally
       ImageQuery.Free;
     end;
+
+    // Atualiza os botões de navegação
+//    AtualizarBotoesNavegacao(Frame);
+
+    // Configura os eventos dos botões de navegação
+//    Frame.CircDireita.OnClick := BotaoDireitaClick;
+//    Frame.CircEsquerda.OnClick := BotaoEsquerdaClick;
+   // Frame.HorzScrollBoxImagens.OnViewportPositionChange := ViewportPositionChange;
+
   finally
-    Frame.HorzScrollBoxImagens.EndUpdate; // Atualiza interface
+    Frame.HorzScrollBoxImagens.EndUpdate;
   end;
 end;
 
@@ -651,9 +754,9 @@ var
   Frame: TFrameTotem;
   lFuncoes : TFuncoesUteis;
   ParentObject: TFmxObject;
-  btn : TRoundRect;
+  btn : TRectangle;
 begin
-  btn := Sender as TRoundRect;
+  btn := Sender as TRectangle;
 
   // Encontra o Frame pai do ComboBox
   ParentObject := btn.Parent;
@@ -664,6 +767,20 @@ begin
     Exit;
 
   Frame := TFrameTotem(ParentObject);
+
+  if Frame.edtNomeCli.Text = '' then
+  begin
+    MessageDlg('Informe seu nome !', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
+    Frame.edtNomeCli.SetFocus;
+    Abort;
+  end;
+
+  if Frame.edtTelCli.Text = '' then
+  begin
+    MessageDlg('Informe seu Telefone !', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
+    Frame.edtTelCli.SetFocus;
+    Abort;
+  end;
 
   lFuncoes.EnviarMsgWhatsApp( '8404a52b-690a-422f-be65-3281d55ac4b9', '24981244253', Frame.edtTelCli.Text,
                               'Oi Tudo Bem !! ' + #13 + #13 + 'Sou o ' + Frame.edtNomeCli.Text + #13 +
@@ -699,6 +816,13 @@ begin
 
   lFuncoes.ConectaBD_Ini( ConectMarthi, FBLink );
 
+  // Define a cor inicial para btnIphone
+  btnIphone.Fill.Color := TAlphaColors.Mintcream; // Cor inicial
+  btnXiaomi.Fill.Color := TAlphaColors.White; // Cor inicial
+end;
+
+procedure TTotemPrincipalfrm.FormShow(Sender: TObject);
+begin
   CarregarDados;
 end;
 
