@@ -101,8 +101,7 @@ type
     procedure CarregarDados;
     procedure AjustarAlturaScrollBox(ScrollBox: TVertScrollBox);
     procedure CarregarImagensHorizontais(Frame: TFrameTotem; CellID: Integer);
-    procedure CarregaComboBox(Frame: TFrameTotem;
-  CellID: Integer; FindCombo, FieldID, FieldDesc : string; oQuery: TFDQuery);
+    procedure CarregaComboBox(Frame: TFrameTotem; CellID: Integer; FindCombo, FieldID, FieldDesc : string; oQuery: TFDQuery);
     procedure MostrarTecladoVirtual;
     procedure OcultarTecladoVirtual;
     procedure CorChange(Sender: TObject);
@@ -173,9 +172,12 @@ begin
     qryDados.SQL.Text :=
       'SELECT CELL_ITENS.CELL_VAL_UNIT, CELL_ITENS.CELL_VAL_PARC, CELL_ITENS.CELL_PARCELAS ' +
       'FROM CELL_ITENS ' +
-      'WHERE CELL_ITENS.COR_ID = :COR_ID AND CELL_ITENS.ARMAZENAMENTO_ID = :ARMAZENAMENTO_ID';
+      'WHERE CELL_ITENS.COR_ID = :COR_ID ' +
+      '  AND CELL_ITENS.ARMAZENAMENTO_ID = :ARMAZENAMENTO_ID' +
+      '  AND CELL_ITENS.CELL_ID = :CELL_ID';
     qryDados.ParamByName('COR_ID').AsInteger := CorID;
     qryDados.ParamByName('ARMAZENAMENTO_ID').AsInteger := CapacidadeID;
+    qryDados.ParamByName('CELL_ID').AsInteger := StrToInt(Frame.CELL_ID.Text);
     qryDados.Open;
 
     if not qryDados.IsEmpty then
@@ -224,6 +226,7 @@ begin
 
   try
     qryDadosCor.ParamByName('COR_ID').AsInteger := CorID;
+    qryDadosCor.ParamByName('CELL_ID').AsInteger := StrToInt(Frame.CELL_ID.Text);
     qryDadosCor.Open;
 
     // Atualiza os labels e o ComboBox de capacidade
@@ -294,10 +297,8 @@ begin
     // Preenche Combobox de Retirada
     CarregaComboBox(Frame,CellID,'cbbRetirada', 'TP_PRECO_ID', 'TP_PRECO_DESC',qryRetirada);
 
-//    CarregarCapacidades(Frame, CellID);
-//    CarregarCores(Frame, CellID);
-
     Frame.CELL_MARCA.Text := dtsCadCell.DataSet.FieldByName('CELL_MARCA').AsString;
+    Frame.CELL_ID.Text := dtsCadCell.DataSet.FieldByName('CELL_ID').AsString;
 
     // Obtém o ID da cor selecionada
     if Frame.cbbCor.ItemIndex >= 0 then
@@ -307,6 +308,7 @@ begin
 
     try
       qryDadosCor.ParamByName('COR_ID').AsInteger := CorID;
+      qryDadosCor.ParamByName('CELL_ID').AsInteger := qryCadCellCELL_ID.AsInteger;
       qryDadosCor.Open;
 
       // Atualiza os labels e o ComboBox de capacidade
@@ -430,10 +432,12 @@ begin
       'FROM CELL_ITENS ' +
       'WHERE CELL_ITENS.COR_ID = :COR_ID ' +
       '  AND CELL_ITENS.ARMAZENAMENTO_ID = :ARMAZENAMENTO_ID' +
-      '  AND CELL_ITENS.TP_PRECO_ID  = :TP_PRECO_ID';
+      '  AND CELL_ITENS.TP_PRECO_ID  = :TP_PRECO_ID' +
+      '  AND CELL_ITENS.CELL_ID  = :CELL_ID';
     qryDados.ParamByName('COR_ID').AsInteger := CorID;
     qryDados.ParamByName('ARMAZENAMENTO_ID').AsInteger := CapacidadeID;
     qryDados.ParamByName('TP_PRECO_ID').AsInteger := RetiradaID;
+    qryDados.ParamByName('CELL_ID').AsInteger := StrToInt(Frame.CELL_ID.Text);
     qryDados.Open;
 
     if not qryDados.IsEmpty then
@@ -469,21 +473,33 @@ begin
   Frame.CircEsquerda.Visible := ScrollBox.ViewportPosition.X > 0;
 
   // Verifica se há conteúdo para rolar à direita
-  Frame.CircDireita.Visible :=
-    ScrollBox.ViewportPosition.X + ScrollBox.Width < ScrollBox.Content.Width;
+  Frame.CircDireita.Visible := ScrollBox.ViewportPosition.X + ScrollBox.Width < ScrollBox.Content.Width;
+
 end;
 
 procedure TTotemPrincipalfrm.BotaoDireitaClick(Sender: TObject);
 var
   Frame: TFrameTotem;
+  ParentObject: TFmxObject;
+  Circle : TCircle;
 begin
-  if Sender is TCircle then
+  Circle := Sender as TCircle;
+
+  // Encontra o Frame pai do ComboBox
+  ParentObject := Circle.Parent;
+  while (ParentObject <> nil) and not (ParentObject is TFrameTotem) do
+    ParentObject := ParentObject.Parent;
+
+  if not (ParentObject is TFrameTotem) then
+    Exit;
+
+  Frame := TFrameTotem(ParentObject);
+
   begin
-    Frame := TFrameTotem(TCircle(Sender).Parent); // Obtém o frame a partir do botão
     with Frame.HorzScrollBoxImagens do
     begin
       ViewportPosition := PointF(
-        ViewportPosition.X + 100, // Avança 100 pixels para a direita
+        ViewportPosition.X + 200, // Avança 100 pixels para a direita
         ViewportPosition.Y
       );
     end;
@@ -494,14 +510,26 @@ end;
 procedure TTotemPrincipalfrm.BotaoEsquerdaClick(Sender: TObject);
 var
   Frame: TFrameTotem;
+  ParentObject: TFmxObject;
+  Circle : TCircle;
 begin
-  if Sender is TCircle then
+  Circle := Sender as TCircle;
+
+  // Encontra o Frame pai do ComboBox
+  ParentObject := Circle.Parent;
+  while (ParentObject <> nil) and not (ParentObject is TFrameTotem) do
+    ParentObject := ParentObject.Parent;
+
+  if not (ParentObject is TFrameTotem) then
+    Exit;
+
+  Frame := TFrameTotem(ParentObject);
+
   begin
-    Frame := TFrameTotem(TCircle(Sender).Parent); // Obtém o frame a partir do botão
     with Frame.HorzScrollBoxImagens do
     begin
       ViewportPosition := PointF(
-        ViewportPosition.X - 100, // Retrocede 100 pixels para a esquerda
+        ViewportPosition.X - 200, // Avança 100 pixels para a direita
         ViewportPosition.Y
       );
     end;
@@ -512,8 +540,20 @@ end;
 procedure TTotemPrincipalfrm.ViewportPositionChange(Sender: TObject; const OldViewportPosition, NewViewportPosition: TPointF; const ContentSizeChanged: Boolean);
 var
   Frame: TFrameTotem;
+  ParentObject: TFmxObject;
+  HorzScrollBox : THorzScrollBox;
 begin
-  Frame := TFrameTotem(THorzScrollBox(Sender).Parent);
+  HorzScrollBox := Sender as THorzScrollBox;
+
+  // Encontra o Frame pai do ComboBox
+  ParentObject := HorzScrollBox.Parent;
+  while (ParentObject <> nil) and not (ParentObject is TFrameTotem) do
+    ParentObject := ParentObject.Parent;
+
+  if not (ParentObject is TFrameTotem) then
+    Exit;
+
+  Frame := TFrameTotem(ParentObject);
   AtualizarBotoesNavegacao(Frame);
 end;
 
@@ -681,12 +721,12 @@ begin
     end;
 
     // Atualiza os botões de navegação
-//    AtualizarBotoesNavegacao(Frame);
+    AtualizarBotoesNavegacao(Frame);
 
     // Configura os eventos dos botões de navegação
-//    Frame.CircDireita.OnClick := BotaoDireitaClick;
-//    Frame.CircEsquerda.OnClick := BotaoEsquerdaClick;
-   // Frame.HorzScrollBoxImagens.OnViewportPositionChange := ViewportPositionChange;
+    Frame.CircDireita.OnClick := BotaoDireitaClick;
+    Frame.CircEsquerda.OnClick := BotaoEsquerdaClick;
+//    Frame.HorzScrollBoxImagens.OnViewportPositionChange := ViewportPositionChange;
 
   finally
     Frame.HorzScrollBoxImagens.EndUpdate;

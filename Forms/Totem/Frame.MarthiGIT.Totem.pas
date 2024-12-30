@@ -33,7 +33,6 @@ type
     lbl6: TLabel;
     imgCell: TRectangle;
     HorzScrollBoxImagens: THorzScrollBox;
-    CELL_MARCA: TLabel;
     edtValorTel: TEdit;
     edtCorTel: TEdit;
     Label1: TLabel;
@@ -68,6 +67,8 @@ type
     cbb2: TComboBox;
     ListBoxItem1: TListBoxItem;
     ListBoxItem2: TListBoxItem;
+    CELL_ID: TLabel;
+    CELL_MARCA: TLabel;
     CircDireita: TCircle;
     CircEsquerda: TCircle;
     procedure btnComprarClick(Sender: TObject);
