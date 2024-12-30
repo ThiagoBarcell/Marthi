@@ -82,13 +82,13 @@ WelcomePageURL=bds:/default.htm
 [View1]
 CustomEditViewType=TEditView
 Module=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
-CursorX=55
-CursorY=309
-TopLine=283
+CursorX=61
+CursorY=522
+TopLine=513
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
+EditViewName=Borland.FormDesignerView
 
 [View2]
 CustomEditViewType=TEditView
@@ -104,9 +104,9 @@ EditViewName=C:\Sistemas\Marthi GIT\Forms\untFuncoes.pas
 [View3]
 CustomEditViewType=TEditView
 Module=C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
-CursorX=43
-CursorY=75
-TopLine=73
+CursorX=41
+CursorY=35
+TopLine=38
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -293,6 +293,11 @@ LRDockWidth=1895
 Dockable=1
 StayOnTop=0
 SplitPos=111
+
+[PropInspDesignerSelection]
+ArrangeBy=Name
+SelectedItem=Name,
+ExpandedItems=Anchors=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,Padding=0,Position=0,RotationCenter=0,Scale=0,Size=1,Touch=0,TouchTargetExpansion=0,ConnectedStoredUsage=0,FetchOptions=0,FormatOptions=0,Params=0,ResourceOptions=0
 
 [ClassBrowserTool]
 PercentageSizes=1
