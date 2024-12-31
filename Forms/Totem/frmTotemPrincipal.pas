@@ -89,7 +89,6 @@ type
     qryDadosCorCELL_PARCELAS: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
-    procedure edtPesquisaExit(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnIphoneClick(Sender: TObject);
@@ -473,7 +472,8 @@ begin
   Frame.CircEsquerda.Visible := ScrollBox.ViewportPosition.X > 0;
 
   // Verifica se há conteúdo para rolar à direita
-  Frame.CircDireita.Visible := ScrollBox.ViewportPosition.X + ScrollBox.Width < ScrollBox.Content.Width;
+  Frame.CircDireita.Visible := ( ScrollBox.ViewportPosition.X + ScrollBox.Width <= ScrollBox.Content.Width ) AND
+                               ( StrToInt(Frame.TOT_IMAGEM.Text) > 1 ) ;
 
 end;
 
@@ -499,7 +499,7 @@ begin
     with Frame.HorzScrollBoxImagens do
     begin
       ViewportPosition := PointF(
-        ViewportPosition.X + 200, // Avança 100 pixels para a direita
+        ViewportPosition.X + 205, // Avança 100 pixels para a direita
         ViewportPosition.Y
       );
     end;
@@ -529,7 +529,7 @@ begin
     with Frame.HorzScrollBoxImagens do
     begin
       ViewportPosition := PointF(
-        ViewportPosition.X - 200, // Avança 100 pixels para a direita
+        ViewportPosition.X - 205, // Avança 100 pixels para a direita
         ViewportPosition.Y
       );
     end;
@@ -583,7 +583,7 @@ begin
   btnXiaomi.Fill.Color := TAlphaColors.White;
 
   // Reseta a cor de btnIphone para Mintcream
-  btnIphone.Fill.Color := TAlphaColors.Mintcream;
+  btnIphone.Fill.Color := TAlphaColors.Snow;
 
 end;
 
@@ -605,7 +605,7 @@ begin
   end;
 
   // Altera a cor de btnXiaomi para #FFF0EEE8
-  btnXiaomi.Fill.Color := TAlphaColors.Mintcream;
+  btnXiaomi.Fill.Color := TAlphaColors.Snow;
 
   // Reseta a cor de btnIphone para branco
   btnIphone.Fill.Color := TAlphaColors.White;
@@ -671,6 +671,7 @@ begin
       ImageQuery.SQL.Text := 'SELECT IMAGE FROM CELL_IMAGES WHERE CELL_ID = :CELL_ID';
       ImageQuery.ParamByName('CELL_ID').AsInteger := CellID;
       ImageQuery.Open;
+      Frame.TOT_IMAGEM.Text := IntToStr(ImageQuery.RecordCount);
 
       while not ImageQuery.Eof do
       begin
@@ -726,7 +727,7 @@ begin
     // Configura os eventos dos botões de navegação
     Frame.CircDireita.OnClick := BotaoDireitaClick;
     Frame.CircEsquerda.OnClick := BotaoEsquerdaClick;
-//    Frame.HorzScrollBoxImagens.OnViewportPositionChange := ViewportPositionChange;
+    Frame.HorzScrollBoxImagens.OnViewportPositionChange := ViewportPositionChange;
 
   finally
     Frame.HorzScrollBoxImagens.EndUpdate;
@@ -742,11 +743,6 @@ begin
   end
   else
     IsKeyboardShown := False;
-end;
-
-procedure TTotemPrincipalfrm.edtPesquisaExit(Sender: TObject);
-begin
-//  IsKeyboardShown := False; // Permite exibir novamente
 end;
 
 procedure TTotemPrincipalfrm.edtPesquisaTyping(Sender: TObject);

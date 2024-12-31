@@ -71,6 +71,7 @@ type
     CELL_MARCA: TLabel;
     CircDireita: TCircle;
     CircEsquerda: TCircle;
+    TOT_IMAGEM: TLabel;
     procedure btnComprarClick(Sender: TObject);
     procedure Rectangle1Click(Sender: TObject);
   private
