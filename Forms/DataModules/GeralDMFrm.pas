@@ -69,6 +69,12 @@ type
     qryCellTpPrecoTP_PRECO_ID: TIntegerField;
     qryCellTpPrecoTP_PRECO_DESC: TStringField;
     qryCellItensTP_PRECO_ID: TIntegerField;
+    qryCellTabPrecos: TFDQuery;
+    qryCellTabPrecosCELL_PARCELAS: TIntegerField;
+    qryCellTabPrecosCELL_VAL_PORC: TBCDField;
+    dtsCellTabPrecos: TDataSource;
+    upsCellTabPrecos: TFDUpdateSQL;
+    qryCellTabPrecosCELL_TAB_PRECO_ID: TIntegerField;
     procedure qryCadCellNewRecord(DataSet: TDataSet);
     procedure qryCadCellAfterScroll(DataSet: TDataSet);
     procedure qryCellItensNewRecord(DataSet: TDataSet);
@@ -77,6 +83,7 @@ type
     procedure qryCellCondicaoNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
     procedure qryCellTpPrecoNewRecord(DataSet: TDataSet);
+    procedure qryCellTabPrecosNewRecord(DataSet: TDataSet);
   private
   lFuncoes: TFuncoesUteis;
     { Private declarations }
@@ -159,6 +166,11 @@ begin
   qryCellItensITEM_ID.AsInteger := ProximoNumero( 'GEN_CELL_ITENS_ID' );
   qryCellItensCELL_ID.AsInteger := qryCadCellCELL_ID.AsInteger;
 
+end;
+
+procedure TfrmGeralDM.qryCellTabPrecosNewRecord(DataSet: TDataSet);
+begin
+  qryCellTabPrecosCELL_TAB_PRECO_ID.AsInteger := ProximoNumero( 'GEN_CELL_TAB_PRECOS_ID' );
 end;
 
 procedure TfrmGeralDM.qryCellTpPrecoNewRecord(DataSet: TDataSet);

@@ -119,7 +119,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Forms\CadConfiguracoesFrm.pas">
-            <Form>frmConfigurações</Form>
+            <Form>frmConfiguracoes</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

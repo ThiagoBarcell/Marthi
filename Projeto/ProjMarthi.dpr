@@ -6,7 +6,7 @@ uses
   GeralDMFrm in '..\Forms\DataModules\GeralDMFrm.pas' {frmGeralDM: TDataModule},
   untFuncoes in '..\Forms\untFuncoes.pas',
   CadInformarcoesFrm in '..\Forms\CadInformarcoesFrm.pas' {frmCadInformacoes},
-  CadConfiguracoesFrm in '..\Forms\CadConfiguracoesFrm.pas' {frmConfigurações};
+  CadConfiguracoesFrm in '..\Forms\CadConfiguracoesFrm.pas' {frmConfiguracoes};
 
 {$R *.res}
 

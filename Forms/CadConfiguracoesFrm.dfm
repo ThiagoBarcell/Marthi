@@ -1,8 +1,8 @@
-﻿object frmConfigurações: TfrmConfigurações
+﻿object frmConfiguracoes: TfrmConfiguracoes
   Left = 0
   Top = 0
   BorderStyle = bsNone
-  Caption = 'frmConfigura'#231#245'es'
+  Caption = 'frmConfiguracoes'
   ClientHeight = 349
   ClientWidth = 470
   Color = clBtnFace
@@ -12,6 +12,7 @@
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
   object pnlFaixaTop: TPanel
@@ -23,6 +24,7 @@
     Color = 2364674
     ParentBackground = False
     TabOrder = 0
+    OnMouseDown = pnlFaixaTopMouseDown
     object Image1: TImage
       Left = 1
       Top = 1
@@ -6495,30 +6497,94 @@
     Width = 470
     Height = 263
     Align = alClient
-    TabOrder = 1
-    Properties.ActivePage = pagWhatsApp
+    TabOrder = 2
+    Properties.ActivePage = pagTabPrecos
     Properties.CustomButtons.Buttons = <>
-    ExplicitTop = 0
-    ExplicitHeight = 297
+    Properties.HideTabs = True
     ClientRectBottom = 259
     ClientRectLeft = 4
     ClientRectRight = 466
-    ClientRectTop = 24
+    ClientRectTop = 4
     object pagConfigurações: TcxTabSheet
       Caption = 'Configura'#231#245'es'
       ImageIndex = 0
-      ExplicitHeight = 269
     end
     object pagWhatsApp: TcxTabSheet
       Caption = 'WhatsApp-API'
       ImageIndex = 1
-      ExplicitHeight = 269
       object Label1: TLabel
         Left = 40
         Top = 96
         Width = 91
         Height = 13
         Caption = 'API Key WhatsApp'
+      end
+    end
+    object pagTabPrecos: TcxTabSheet
+      Caption = 'Tabela de pre'#231'os'
+      ImageIndex = 2
+      object grdTabPreco: TcxGrid
+        Left = 0
+        Top = 0
+        Width = 462
+        Height = 255
+        Align = alClient
+        BevelInner = bvNone
+        BevelOuter = bvNone
+        TabOrder = 0
+        LookAndFeel.Kind = lfOffice11
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.SkinName = 'UserSkin'
+        object grdTabPrecoDBTableView: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Buttons.First.Visible = True
+          Navigator.Buttons.PriorPage.Visible = True
+          Navigator.Buttons.Prior.Visible = True
+          Navigator.Buttons.Next.Visible = True
+          Navigator.Buttons.NextPage.Visible = True
+          Navigator.Buttons.Last.Visible = True
+          Navigator.Buttons.Insert.Visible = True
+          Navigator.Buttons.Append.Visible = False
+          Navigator.Buttons.Delete.Visible = True
+          Navigator.Buttons.Edit.Enabled = False
+          Navigator.Buttons.Edit.Visible = False
+          Navigator.Buttons.Post.Visible = True
+          Navigator.Buttons.Cancel.Visible = True
+          Navigator.Buttons.Refresh.Enabled = False
+          Navigator.Buttons.Refresh.Visible = False
+          Navigator.Buttons.SaveBookmark.Enabled = False
+          Navigator.Buttons.SaveBookmark.Visible = False
+          Navigator.Buttons.GotoBookmark.Enabled = False
+          Navigator.Buttons.GotoBookmark.Visible = False
+          Navigator.Buttons.Filter.Enabled = False
+          Navigator.Buttons.Filter.Visible = False
+          Navigator.Visible = True
+          DataController.DataSource = frmGeralDM.dtsCellTabPrecos
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsBehavior.GoToNextCellOnEnter = True
+          OptionsData.Appending = True
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          OptionsView.HeaderHeight = 30
+          object grdTpPrecoDBColumn: TcxGridDBColumn
+            Caption = 'Parcelas'
+            DataBinding.FieldName = 'CELL_PARCELAS'
+            HeaderAlignmentHorz = taCenter
+            Width = 190
+          end
+          object grdTabPrecoDBTableViewColumn1: TcxGridDBColumn
+            Caption = 'Porcentagem( acr'#233'scimo )'
+            DataBinding.FieldName = 'CELL_VAL_PORC'
+            FooterAlignmentHorz = taCenter
+            HeaderAlignmentHorz = taCenter
+            Width = 270
+          end
+        end
+        object grdTabPrecoLevel: TcxGridLevel
+          GridView = grdTabPrecoDBTableView
+        end
       end
     end
   end
@@ -6529,7 +6595,7 @@
     Height = 45
     Align = alBottom
     BevelOuter = bvNone
-    TabOrder = 2
+    TabOrder = 1
     object btnCancel: TcxButton
       Left = 234
       Top = 0
@@ -6538,9 +6604,6 @@
       Align = alLeft
       Caption = 'Cancelar'
       TabOrder = 0
-      ExplicitLeft = 236
-      ExplicitTop = 1
-      ExplicitHeight = 43
     end
     object cxButton1: TcxButton
       Left = 0
@@ -6550,9 +6613,6 @@
       Align = alLeft
       Caption = 'Salvar'
       TabOrder = 1
-      ExplicitLeft = 1
-      ExplicitTop = 1
-      ExplicitHeight = 43
     end
   end
 end

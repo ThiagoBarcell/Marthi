@@ -1,8 +1,8 @@
 object frmGeralDM: TfrmGeralDM
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 266
-  Width = 736
+  Height = 633
+  Width = 954
   object ConectMarthi: TFDConnection
     Params.Strings = (
       'User_Name=SYSDBA'
@@ -147,8 +147,8 @@ object frmGeralDM: TfrmGeralDM
         'INSERT INTO CELL_IMAGES ( CELL_IMAGES.CELL_ID, CELL_IMAGES.SEQUE' +
         'NCIA, CELL_IMAGES.IMAGE ) VALUES ( :CELL_ID, :SEQUENCIA, :IMAGE ' +
         ')')
-    Left = 216
-    Top = 136
+    Left = 728
+    Top = 80
     ParamData = <
       item
         Name = 'CELL_ID'
@@ -204,8 +204,8 @@ object frmGeralDM: TfrmGeralDM
       'DELETE FROM CELL_IMAGES'
       'WHERE( CELL_ID = :CELL_ID )'
       '  AND( SEQUENCIA = :SEQUENCIA )')
-    Left = 216
-    Top = 184
+    Left = 736
+    Top = 16
     ParamData = <
       item
         Name = 'CELL_ID'
@@ -217,7 +217,6 @@ object frmGeralDM: TfrmGeralDM
       end>
   end
   object qryCellItens: TFDQuery
-    Active = True
     OnNewRecord = qryCellItensNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellItens
@@ -336,7 +335,6 @@ object frmGeralDM: TfrmGeralDM
     end
   end
   object qryCellCondicao: TFDQuery
-    Active = True
     OnNewRecord = qryCellCondicaoNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellCondicao
@@ -495,5 +493,57 @@ object frmGeralDM: TfrmGeralDM
       'WHERE TP_PRECO_ID = :OLD_TP_PRECO_ID')
     Left = 648
     Top = 133
+  end
+  object qryCellTabPrecos: TFDQuery
+    Active = True
+    OnNewRecord = qryCellTabPrecosNewRecord
+    Connection = ConectMarthi
+    UpdateObject = upsCellTabPrecos
+    SQL.Strings = (
+      'SELECT'
+      '  CELL_TAB_PRECO_ID,'
+      '  CELL_PARCELAS,'
+      '  CELL_VAL_PORC'
+      'FROM CELL_TAB_PRECOS')
+    Left = 48
+    Top = 208
+    object qryCellTabPrecosCELL_PARCELAS: TIntegerField
+      FieldName = 'CELL_PARCELAS'
+      Origin = 'CELL_PARCELAS'
+    end
+    object qryCellTabPrecosCELL_VAL_PORC: TBCDField
+      FieldName = 'CELL_VAL_PORC'
+      Origin = 'CELL_VAL_PORC'
+      Precision = 18
+    end
+    object qryCellTabPrecosCELL_TAB_PRECO_ID: TIntegerField
+      FieldName = 'CELL_TAB_PRECO_ID'
+      Origin = 'CELL_TAB_PRECO_ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+  end
+  object dtsCellTabPrecos: TDataSource
+    DataSet = qryCellTabPrecos
+    Left = 48
+    Top = 264
+  end
+  object upsCellTabPrecos: TFDUpdateSQL
+    Connection = ConectMarthi
+    InsertSQL.Strings = (
+      
+        'INSERT INTO CELL_TAB_PRECOS (CELL_TAB_PRECO_ID, CELL_PARCELAS, C' +
+        'ELL_VAL_PORC)'
+      '  VALUES ( :CELL_TAB_PRECO_ID, :CELL_PARCELAS, :CELL_VAL_PORC);')
+    ModifySQL.Strings = (
+      'UPDATE CELL_TAB_PRECOS'
+      'SET CELL_PARCELAS = :CELL_PARCELAS,'
+      '    CELL_VAL_PORC = :CELL_VAL_PORC'
+      'WHERE (CELL_TAB_PRECO_ID = :OLD_CELL_TAB_PRECO_ID);')
+    DeleteSQL.Strings = (
+      'DELETE FROM CELL_TAB_PRECOS'
+      'WHERE (CELL_TAB_PRECO_ID = :OLD_CELL_TAB_PRECO_ID);')
+    Left = 46
+    Top = 326
   end
 end

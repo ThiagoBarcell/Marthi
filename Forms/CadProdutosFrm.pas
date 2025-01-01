@@ -14,7 +14,7 @@ uses
   Data.DB, cxDBData, cxRadioGroup, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, dxBevel,
   GeralDMFrm, Vcl.ComCtrls, Jpeg, untFuncoes, cxCurrencyEdit, CadInformarcoesFrm,
-  cxDBLookupComboBox, dxGDIPlusClasses, FireDAC.Stan.Param;
+  cxDBLookupComboBox, dxGDIPlusClasses, FireDAC.Stan.Param, CadConfiguracoesFrm;
 
 const
   OffsetMemoryStream : Int64 = 0;
@@ -108,6 +108,7 @@ type
     cxGridDBTableViewCell_ItensColumnCELL_PARCELAS: TcxGridDBColumn;
     btnCadTpPreco: TcxButton;
     cxGridDBTableViewCell_ItensColumn1: TcxGridDBColumn;
+    btnTabPrecos: TcxButton;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
@@ -140,8 +141,11 @@ type
     procedure btnExcluirClick(Sender: TObject);
     procedure Duplicarregistro1Click(Sender: TObject);
     procedure btnCadTpPrecoClick(Sender: TObject);
+    procedure btnConfiguracaoClick(Sender: TObject);
+    procedure btnTabPrecosClick(Sender: TObject);
   private
     procedure AbreTelaInfo( iCod : Integer ) ;
+    procedure AbreConfTabelaPrecos( lCod : Integer );
     { Private declarations }
   public
   Funcoes : TFuncoesUteis;
@@ -202,6 +206,27 @@ begin
   end;
 end;
 
+procedure TfrmCadProdutos.AbreConfTabelaPrecos( lCod : Integer );
+var
+  lConfig : TfrmConfiguracoes;
+begin
+  lConfig := TfrmConfiguracoes.Create( Self );
+  try
+    case lCod of
+     1 :
+      begin //Tabela de preços
+        lConfig.pgeConfiguracoes.ActivePageIndex := 2;
+        lConfig.pnlButtons.Visible := False;
+        frmGeralDM.qryCellTabPrecos.Close;
+        frmGeralDM.qryCellTabPrecos.Open;
+      end;
+
+    end;
+  finally
+    lConfig.Show;
+  end;
+end;
+
 procedure TfrmCadProdutos.btnCadCondicaoClick(Sender: TObject);
 begin
   AbreTelaInfo( 1 )
@@ -215,6 +240,11 @@ end;
 procedure TfrmCadProdutos.btnCadTpPrecoClick(Sender: TObject);
 begin
   AbreTelaInfo( 3 )
+end;
+
+procedure TfrmCadProdutos.btnConfiguracaoClick(Sender: TObject);
+begin
+  AbreConfTabelaPrecos( 0 );
 end;
 
 procedure TfrmCadProdutos.btnConsultaProdutosClick(Sender: TObject);
@@ -249,6 +279,11 @@ begin
   Application.MessageBox( 'Salvo com sucesso', 'Aviso', MB_ICONEXCLAMATION + MB_OK );
 
   btnVoltar.Click;
+end;
+
+procedure TfrmCadProdutos.btnTabPrecosClick(Sender: TObject);
+begin
+  AbreConfTabelaPrecos( 1 );
 end;
 
 procedure TfrmCadProdutos.btnVoltarClick(Sender: TObject);
