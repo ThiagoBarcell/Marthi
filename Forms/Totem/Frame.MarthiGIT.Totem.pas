@@ -72,6 +72,7 @@ type
     CircDireita: TCircle;
     CircEsquerda: TCircle;
     TOT_IMAGEM: TLabel;
+    lblTOT_WIDTH: TLabel;
     procedure btnComprarClick(Sender: TObject);
     procedure Rectangle1Click(Sender: TObject);
   private

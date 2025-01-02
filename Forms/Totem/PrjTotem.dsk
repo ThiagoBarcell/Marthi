@@ -18,9 +18,9 @@ File_14=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Vendas\Forms\Report\VenPlanilhaS
 [Modules]
 Module0=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 Module1=C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
-Module2=C:\Sistemas\Marthi GIT\Forms\untFuncoes.pas
-Module3=C:\Sistemas\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
-Module4=default.htm
+Module2=default.htm
+Module3=C:\Sistemas\Marthi GIT\Forms\untFuncoes.pas
+Module4=C:\Sistemas\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
 Count=5
 EditWindowCount=1
 
@@ -30,14 +30,14 @@ ModuleType=TSourceModule
 [C:\Sistemas\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas]
 ModuleType=TSourceModule
 
+[default.htm]
+ModuleType=TURLModule
+
 [C:\Sistemas\Marthi GIT\Forms\untFuncoes.pas]
 ModuleType=TSourceModule
 
 [C:\Sistemas\Marthi GIT\Forms\DataModules\GeralDMFrm.pas]
 ModuleType=TSourceModule
-
-[default.htm]
-ModuleType=TURLModule
 
 [EditWindow0]
 ViewCount=5
@@ -82,13 +82,13 @@ WelcomePageURL=bds:/default.htm
 [View1]
 CustomEditViewType=TEditView
 Module=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
-CursorX=61
-CursorY=522
-TopLine=513
+CursorX=3
+CursorY=390
+TopLine=387
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=Borland.FormDesignerView
+EditViewName=C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 
 [View2]
 CustomEditViewType=TEditView
@@ -151,8 +151,9 @@ Dockable=1
 StayOnTop=0
 
 [Breakpoints]
-Count=1
+Count=2
 Breakpoint0='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',123,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint1='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',478,'',0,1,'',1,0,0,'',1,'','','',0,''
 
 [EmbarcaderoWin32Debugger_AddressBreakpoints]
 Count=0
@@ -231,7 +232,7 @@ MaxLeft=-1
 MaxTop=-1
 ClientWidth=9896
 ClientHeight=0
-TBDockHeight=1189
+TBDockHeight=1740
 LRDockWidth=2767
 Dockable=1
 StayOnTop=0
@@ -244,12 +245,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=2012
-Height=8480
+Width=1908
+Height=8002
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2012
-ClientHeight=8480
+ClientWidth=1908
+ClientHeight=8002
 TBDockHeight=7157
 LRDockWidth=1999
 Dockable=1
@@ -288,7 +289,7 @@ MaxLeft=-1
 MaxTop=-1
 ClientWidth=1895
 ClientHeight=4963
-TBDockHeight=6875
+TBDockHeight=8199
 LRDockWidth=1895
 Dockable=1
 StayOnTop=0
@@ -296,8 +297,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Name,
-ExpandedItems=Anchors=0,LiveBindings=0,"LiveBindings Designer=0",Margins=0,Padding=0,Position=0,RotationCenter=0,Scale=0,Size=1,Touch=0,TouchTargetExpansion=0,ConnectedStoredUsage=0,FetchOptions=0,FormatOptions=0,Params=0,ResourceOptions=0
+SelectedItem=Action,OnClick
+ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,Border=0,Fill=0,FormFactor=0,LiveBindings=0,Margins=1,Padding=0,Position=0,RotationCenter=0,Scale=0,Size=0,StyledSettings=0,TextSettings=0,Touch=0,TouchTargetExpansion=0,Sides=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -305,8 +306,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=-33
-Top=-145
+Left=-8
+Top=-116
 Width=1849
 Height=3137
 MaxLeft=-1
@@ -381,8 +382,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=0
-Top=0
+Left=-16
+Top=251
 Width=273
 Height=368
 MaxLeft=-1
@@ -438,6 +439,7 @@ Column0Width=145
 Column1Width=100
 Column2Width=115
 Column3Width=227
+Column4Width=10
 
 [LocalVarsWindow]
 PercentageSizes=1
@@ -486,11 +488,11 @@ State=0
 Left=0
 Top=0
 Width=2337
-Height=1140
+Height=1054
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2337
-ClientHeight=1140
+ClientHeight=1054
 TBDockHeight=2500
 LRDockWidth=3398
 Dockable=1
@@ -505,11 +507,11 @@ State=0
 Left=0
 Top=0
 Width=2337
-Height=1140
+Height=895
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2337
-ClientHeight=1140
+ClientHeight=895
 TBDockHeight=2316
 LRDockWidth=2826
 Dockable=1
@@ -543,11 +545,11 @@ State=0
 Left=0
 Top=0
 Width=2337
-Height=1054
+Height=1140
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2337
-ClientHeight=1054
+ClientHeight=1140
 TBDockHeight=1152
 LRDockWidth=3678
 Dockable=1
@@ -586,8 +588,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=0
-Top=0
+Left=307
+Top=634
 Width=2858
 Height=3211
 MaxLeft=-1
@@ -756,7 +758,7 @@ Visible=0
 Docked=1
 State=0
 Left=8
-Top=8
+Top=808
 Width=3822
 Height=1422
 MaxLeft=-1
@@ -811,7 +813,7 @@ MaxLeft=-1
 MaxTop=-1
 ClientWidth=1895
 ClientHeight=2843
-TBDockHeight=6875
+TBDockHeight=8199
 LRDockWidth=1895
 Dockable=1
 StayOnTop=0
@@ -833,8 +835,8 @@ Width=2012
 Height=8480
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2012
-ClientHeight=8480
+ClientWidth=1908
+ClientHeight=8002
 TBDockHeight=8480
 LRDockWidth=2012
 Dockable=1
