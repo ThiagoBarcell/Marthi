@@ -16,7 +16,7 @@ uses
   Data.Bind.DBScope, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   Frame.MarthiGIT.Totem, System.Math, System.IniFiles, Untfuncoes,
   FireDAC.Phys.IBBase, MyVirtualKeyboard, FMX.Filter.Effects, FMX.Ani,
-  System.Math.Vectors, FMX.Controls3D, FMX.Objects3D;
+  System.Math.Vectors, FMX.Controls3D, FMX.Objects3D, Marthi.PedeSenha;
 
 type
   TTotemPrincipalfrm = class(TForm)
@@ -83,19 +83,21 @@ type
     Rectangle2: TRectangle;
     Label10: TLabel;
     Label9: TLabel;
-    Rectangle1: TRectangle;
     qryDadosCorTP_PRECO_ID: TIntegerField;
     qryDadosCorTP_PRECO_DESC: TStringField;
     qryDadosCorCELL_PARCELAS: TStringField;
     qryDadosCorITEM_ID: TIntegerField;
+    qryConfig: TFDQuery;
+    qryConfigAPI_KEY_WHATSAPP: TStringField;
+    qryConfigSENHA_ACESSO: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnIphoneClick(Sender: TObject);
     procedure btnXiaomiClick(Sender: TObject);
-    procedure Rectangle1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Rectangle2DblClick(Sender: TObject);
   private
     { Private declarations }
     procedure CarregarDados;
@@ -401,9 +403,28 @@ begin
     IsKeyboardShown := False;
 end;
 
-procedure TTotemPrincipalfrm.Rectangle1Click(Sender: TObject);
+procedure TTotemPrincipalfrm.Rectangle2DblClick(Sender: TObject);
+var
+  PedeSenhaMarthi : TfrmPedeSenhaMarthi;
 begin
-  close;
+  qryConfig.Close;
+  qryConfig.Open;
+
+  try
+    PedeSenhaMarthi := TfrmPedeSenhaMarthi.Create(Self);
+    PedeSenhaMarthi.Senha := qryConfigSENHA_ACESSO.AsString;
+    PedeSenhaMarthi.Autenticacao := False;
+
+    PedeSenhaMarthi.ShowModal;
+    PedeSenhaMarthi.edtSenha.SetFocus;
+
+    if PedeSenhaMarthi.Autenticacao = True then
+      Close;
+
+  finally
+    FreeAndNil(PedeSenhaMarthi);
+  end;
+
 end;
 
 procedure TTotemPrincipalfrm.RetiradaChange(Sender: TObject);
