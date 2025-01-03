@@ -87,6 +87,7 @@ type
     qryDadosCorTP_PRECO_ID: TIntegerField;
     qryDadosCorTP_PRECO_DESC: TStringField;
     qryDadosCorCELL_PARCELAS: TStringField;
+    qryDadosCorITEM_ID: TIntegerField;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);
@@ -106,6 +107,7 @@ type
     procedure CorChange(Sender: TObject);
     procedure CapacidadeChange(Sender: TObject);
     procedure RetiradaChange(Sender: TObject);
+    procedure ParcelasChange(Sender: TObject);
     procedure EnviaWhatsapp(Sender: TObject);
     procedure OnEnterNomeCli(Sender: TObject);
     procedure OnEnterTelCli(Sender: TObject);
@@ -113,6 +115,8 @@ type
     procedure BotaoDireitaClick(Sender: TObject);
     procedure BotaoEsquerdaClick(Sender: TObject);
     procedure ViewportPositionChange(Sender: TObject; const OldViewportPosition, NewViewportPosition: TPointF; const ContentSizeChanged: Boolean);
+    procedure PreencherParcelas(ComboBox: TComboBox; CELL_ID, ITEM_ID,
+      CELL_TP_PRECO: Integer; ValorAVista: Double);
   public
     { Public declarations }
   end;
@@ -263,7 +267,7 @@ procedure TTotemPrincipalfrm.CarregarDados;
 var
   Frame: TFrameTotem;
   Cont, CellID: Integer;
-  CorID: Integer;
+  CorID, CapacidadeID, RetiradaID: Integer;
 begin
   qryCadCell.Close;
   qryCadCell.Open;
@@ -290,18 +294,28 @@ begin
     CellID := dtsCadCell.DataSet.FieldByName('CELL_ID').AsInteger;
     CarregarImagensHorizontais(Frame, CellID);
     // Preenche Combobox de cor
-    CarregaComboBox(Frame,CellID,'cbbCor', 'COR_ID', 'COR_DESC',qryCores);
+    CarregaComboBox(Frame, CellID, 'cbbCor', 'COR_ID', 'COR_DESC', qryCores);
     // Preenche Combobox de Capacidade
-    CarregaComboBox(Frame,CellID,'cbbCapacidade', 'ARMAZENAMENTO_ID', 'ARMAZENAMENTO_DESC',qryCapacidades);
+    CarregaComboBox(Frame, CellID, 'cbbCapacidade', 'ARMAZENAMENTO_ID', 'ARMAZENAMENTO_DESC', qryCapacidades);
     // Preenche Combobox de Retirada
-    CarregaComboBox(Frame,CellID,'cbbRetirada', 'TP_PRECO_ID', 'TP_PRECO_DESC',qryRetirada);
+    CarregaComboBox(Frame, CellID, 'cbbRetirada', 'TP_PRECO_ID', 'TP_PRECO_DESC', qryRetirada);
 
     Frame.CELL_MARCA.Text := dtsCadCell.DataSet.FieldByName('CELL_MARCA').AsString;
     Frame.CELL_ID.Text := dtsCadCell.DataSet.FieldByName('CELL_ID').AsString;
 
-    // Obtém o ID da cor selecionada
+    // Obtém o ID dos itens selecionados
     if Frame.cbbCor.ItemIndex >= 0 then
       CorID := Integer(Frame.cbbCor.Items.Objects[Frame.cbbCor.ItemIndex])
+    else
+      Exit;
+
+    if Frame.cbbCapacidade.ItemIndex >= 0 then
+      CapacidadeID := Integer(Frame.cbbCapacidade.Items.Objects[Frame.cbbCapacidade.ItemIndex])
+    else
+      Exit;
+
+    if Frame.cbbRetirada.ItemIndex >= 0 then
+      RetiradaID := Integer(Frame.cbbRetirada.Items.Objects[Frame.cbbRetirada.ItemIndex])
     else
       Exit;
 
@@ -309,6 +323,13 @@ begin
       qryDadosCor.ParamByName('COR_ID').AsInteger := CorID;
       qryDadosCor.ParamByName('CELL_ID').AsInteger := qryCadCellCELL_ID.AsInteger;
       qryDadosCor.Open;
+
+      // Preenche o ComboBox de Parcelas
+      PreencherParcelas(Frame.cbbParcelas,
+                        qryCadCellCELL_ID.AsInteger,
+                        qryDadosCor.FieldByName('ITEM_ID').AsInteger,
+                        RetiradaID,
+                        qryDadosCor.FieldByName('CELL_VAL_UNIT').AsFloat);
 
       // Atualiza os labels e o ComboBox de capacidade
       if not qryDadosCor.IsEmpty then
@@ -325,10 +346,11 @@ begin
       qryDadosCor.Close;
     end;
 
-    // Atribuir o evento OnChange
+    // Atribuir os eventos OnChange
     Frame.cbbCor.OnChange := CorChange;
     Frame.cbbCapacidade.OnChange := CapacidadeChange;
     Frame.cbbRetirada.OnChange := RetiradaChange;
+    Frame.cbbParcelas.OnChange := ParcelasChange;
 
     // Atribuir o evento OnClick
     Frame.btnEnviaWhatsapp.OnClick := EnviaWhatsapp;
@@ -427,7 +449,7 @@ begin
   try
     qryDados.Connection := ConectMarthi; // Substitua pelo seu componente de conexão
     qryDados.SQL.Text :=
-      'SELECT CELL_ITENS.CELL_VAL_UNIT, CELL_ITENS.CELL_VAL_PARC ' +
+      'SELECT CELL_ITENS.ITEM_ID, CELL_ITENS.CELL_VAL_UNIT, CELL_ITENS.CELL_VAL_PARC ' +
       'FROM CELL_ITENS ' +
       'WHERE CELL_ITENS.COR_ID = :COR_ID ' +
       '  AND CELL_ITENS.ARMAZENAMENTO_ID = :ARMAZENAMENTO_ID' +
@@ -443,6 +465,13 @@ begin
     begin
       Frame.lblValorAVista.Text := Format('R$ %.2f', [qryDados.FieldByName('CELL_VAL_UNIT').AsFloat]);
       Frame.lblValorAPrazo.Text := '12 X ' + Format('R$ %.2f', [qryDados.FieldByName('CELL_VAL_PARC').AsFloat]);
+
+      // Preencher o ComboBox de Parcelas
+      PreencherParcelas(Frame.cbbParcelas,
+                        StrToInt(Frame.CELL_ID.Text),
+                        qryDados.FieldByName('ITEM_ID').AsInteger,
+                        RetiradaID,
+                        qryDados.FieldByName('CELL_VAL_UNIT').AsFloat);
     end
     else
     begin
@@ -453,6 +482,107 @@ begin
     qryDados.Free;
   end;
 
+end;
+
+procedure TTotemPrincipalfrm.ParcelasChange(Sender: TObject);
+var
+  qryDadosParcela: TFDQuery;
+  descricao: string;
+  ComboBox: TComboBox;
+  ParcelaID: Integer;
+  ParentObject: TFmxObject;
+  Frame: TFrameTotem;
+begin
+  ComboBox := Sender as TComboBox;
+
+  // Encontra o Frame pai do ComboBox
+  ParentObject := ComboBox.Parent;
+  while (ParentObject <> nil) and not (ParentObject is TFrameTotem) do
+    ParentObject := ParentObject.Parent;
+
+  if not (ParentObject is TFrameTotem) then
+    Exit;
+
+  Frame := TFrameTotem(ParentObject);
+
+  // Verifica se uma capacidade foi selecionada
+  if ComboBox.ItemIndex = -1 then
+    Exit;
+
+  // Obtém o ID da capacidade selecionada
+  ParcelaID := Integer(ComboBox.Items.Objects[ComboBox.ItemIndex]);
+
+  qryDadosParcela := TFDQuery.Create(nil);
+  try
+    qryDadosParcela.Connection := ConectMarthi; // Substitua pelo seu componente de conexão
+    qryDadosParcela.SQL.Text :=
+      'SELECT ' +
+      '  CELL_VAL_ITENS_PARC.CELL_PARCELA, ' +
+      '  CELL_VAL_ITENS_PARC.CELL_VAL_PARCELA ' +
+      'FROM CELL_VAL_ITENS_PARC ' +
+      'WHERE CELL_VAL_ITENS_PARC.CELL_VAL_ITENS_PARC_ID = :CELL_VAL_ITENS_PARC_ID';
+    qryDadosParcela.ParamByName('CELL_VAL_ITENS_PARC_ID').AsInteger := ParcelaID;
+    qryDadosParcela.Open;
+
+    // Adiciona o valor à vista como o primeiro item
+    if ComboBox.ItemIndex = 0 then
+      descricao := '1 X ' + Frame.lblValorAVista.Text
+    else
+      descricao := qryDadosParcela.FieldByName('CELL_PARCELA').AsString + ' X ' +
+                   Format('R$ %.2f', [qryDadosParcela.FieldByName('CELL_VAL_PARCELA').AsFloat]);
+
+    Frame.edtValorTel.Text := descricao;
+
+  finally
+    qryDadosParcela.Free;
+  end;
+end;
+
+procedure TTotemPrincipalfrm.PreencherParcelas(ComboBox: TComboBox; CELL_ID, ITEM_ID, CELL_TP_PRECO: Integer; ValorAVista: Double);
+var
+  qryDadosParcela: TFDQuery;
+  descricao: string;
+begin
+  ComboBox.Items.Clear; // Limpa o ComboBox antes de preencher
+
+  qryDadosParcela := TFDQuery.Create(nil);
+  try
+    qryDadosParcela.Connection := ConectMarthi; // Substitua pelo seu componente de conexão
+    qryDadosParcela.SQL.Text :=
+      'SELECT ' +
+      ' CELL_VAL_ITENS_PARC.CELL_VAL_ITENS_PARC_ID, ' +
+      ' CELL_VAL_ITENS_PARC.CELL_PARCELA, ' +
+      ' CELL_VAL_ITENS_PARC.CELL_VAL_PARCELA ' +
+      'FROM CELL_VAL_ITENS_PARC ' +
+      'WHERE CELL_VAL_ITENS_PARC.CELL_ID = :CELL_ID ' +
+      '  AND CELL_VAL_ITENS_PARC.ITEM_ID = :ITEM_ID ' +
+      '  AND CELL_VAL_ITENS_PARC.CELL_TP_PRECO = :CELL_TP_PRECO';
+    qryDadosParcela.ParamByName('CELL_ID').AsInteger := CELL_ID;
+    qryDadosParcela.ParamByName('ITEM_ID').AsInteger := ITEM_ID;
+    qryDadosParcela.ParamByName('CELL_TP_PRECO').AsInteger := CELL_TP_PRECO;
+    qryDadosParcela.Open;
+
+    // Adiciona o valor à vista como o primeiro item
+    //descricao := '1 X ' + Format('R$ %.2f', [ValorAVista]);
+    descricao := '1 X ';
+    ComboBox.Items.AddObject(descricao, TObject(1)); // 1 representa uma parcela à vista
+
+    // Adiciona as parcelas vindas do SQL
+    while not qryDadosParcela.Eof do
+    begin
+      descricao := qryDadosParcela.FieldByName('CELL_PARCELA').AsString + ' X ';// +
+                   //Format('R$ %.2f', [qryDadosParcela.FieldByName('CELL_VAL_PARCELA').AsFloat]);
+      ComboBox.Items.AddObject(descricao, TObject(qryDadosParcela.FieldByName('CELL_VAL_ITENS_PARC_ID').AsInteger));
+      qryDadosParcela.Next;
+    end;
+
+    // Define o primeiro item como selecionado
+    if ComboBox.Items.Count > 0 then
+      ComboBox.ItemIndex := 0;
+
+  finally
+    qryDadosParcela.Free;
+  end;
 end;
 
 procedure TTotemPrincipalfrm.AtualizarBotoesNavegacao(Frame: TFrameTotem);
@@ -824,9 +954,8 @@ begin
 
   lFuncoes.EnviarMsgWhatsApp( '8404a52b-690a-422f-be65-3281d55ac4b9', '24981244253', Frame.edtTelCli.Text,
                               'Oi Tudo Bem !! ' + #13 + #13 + 'Sou o ' + Frame.edtNomeCli.Text + #13 +
-                              'Acabei de escolher o celular ' + Frame.lblTITULOCEL.Text +
-                              ', aqui no Totem do Shopping no valor de R$ ' + Frame.edtValorTel.Text + 'Á Vista ' +
-                              'e em 12 X R$ 600,00.' + #13 + #13 +
+                              'Acabei de escolher um celular ' + Frame.lblTITULOCEL.Text +
+                              ', aqui no Totem do Shopping no valor de ' + Frame.edtValorTel.Text + Frame.cbbMododePagamento.Items[Frame.cbbMododePagamento.ItemIndex] +
                               'Poderia me dar mais informações sobre o produto?' , '', False );
 end;
 
