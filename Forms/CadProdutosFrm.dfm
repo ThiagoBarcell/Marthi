@@ -955,6 +955,17 @@ object frmCadProdutos: TfrmCadProdutos
               OptionsData.Appending = True
               OptionsView.GroupByBox = False
               OptionsView.HeaderHeight = 30
+              object cxGridDBTableViewCell_ItensColumn1: TcxGridDBColumn
+                Caption = 'ID'
+                DataBinding.FieldName = 'ITEM_ID'
+                PropertiesClassName = 'TcxLabelProperties'
+                Properties.Alignment.Horz = taCenter
+                Properties.Alignment.Vert = taVCenter
+                FooterAlignmentHorz = taCenter
+                GroupSummaryAlignment = taCenter
+                HeaderAlignmentHorz = taCenter
+                Width = 36
+              end
               object cxGridDBTableViewCell_ItensColumnARMAZENAMENTO_ID: TcxGridDBColumn
                 Caption = 'Armazenamento'
                 DataBinding.FieldName = 'ARMAZENAMENTO_ID'

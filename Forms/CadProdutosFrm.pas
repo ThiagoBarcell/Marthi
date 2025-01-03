@@ -110,6 +110,7 @@ type
     btnCadTpPreco: TcxButton;
     cxGridDBTableViewCell_ItensColumnTP_PRECO_ID: TcxGridDBColumn;
     btnTabPrecos: TcxButton;
+    cxGridDBTableViewCell_ItensColumn1: TcxGridDBColumn;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);

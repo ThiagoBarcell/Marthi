@@ -3,7 +3,7 @@ object frmCadProdutos: TfrmCadProdutos
   Top = 0
   BorderStyle = bsNone
   Caption = 'Cadastro de Produtos'
-  ClientHeight = 704
+  ClientHeight = 710
   ClientWidth = 1132
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -21,7 +21,7 @@ object frmCadProdutos: TfrmCadProdutos
     Left = 0
     Top = 0
     Width = 1132
-    Height = 704
+    Height = 710
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
@@ -29,13 +29,13 @@ object frmCadProdutos: TfrmCadProdutos
       Left = 0
       Top = 41
       Width = 1132
-      Height = 663
+      Height = 669
       Align = alClient
       TabOrder = 0
       Properties.ActivePage = tabCadastro
       Properties.CustomButtons.Buttons = <>
       LookAndFeel.NativeStyle = False
-      ClientRectBottom = 663
+      ClientRectBottom = 669
       ClientRectRight = 1132
       ClientRectTop = 0
       object tabConsulta: TcxTabSheet
@@ -43,6 +43,8 @@ object frmCadProdutos: TfrmCadProdutos
         ImageIndex = 0
         TabVisible = False
         OnShow = tabConsultaShow
+        ExplicitWidth = 0
+        ExplicitHeight = 663
         object pnlTop: TPanel
           Left = 0
           Top = 0
@@ -196,6 +198,8 @@ object frmCadProdutos: TfrmCadProdutos
               object tabFiltroCadastro: TcxTabSheet
                 Caption = 'cxTabSheet1'
                 ImageIndex = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object Label2: TLabel
                   Left = 261
                   Top = 13
@@ -225,6 +229,8 @@ object frmCadProdutos: TfrmCadProdutos
               object tabFiltroDesc: TcxTabSheet
                 Caption = 'tabFiltroDesc'
                 ImageIndex = 1
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object edtFiltroDesc: TcxTextEdit
                   Left = 32
                   Top = 7
@@ -234,6 +240,8 @@ object frmCadProdutos: TfrmCadProdutos
               end
               object tabFiltroReferencia: TcxTabSheet
                 ImageIndex = 2
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object edtFiltroReferencia: TcxTextEdit
                   Left = 32
                   Top = 7
@@ -289,7 +297,7 @@ object frmCadProdutos: TfrmCadProdutos
           Left = 3
           Top = 76
           Width = 1126
-          Height = 584
+          Height = 590
           Align = alClient
           BevelInner = bvNone
           BevelOuter = bvNone
@@ -298,6 +306,7 @@ object frmCadProdutos: TfrmCadProdutos
           LookAndFeel.Kind = lfUltraFlat
           LookAndFeel.NativeStyle = False
           LookAndFeel.SkinName = 'UserSkin'
+          ExplicitHeight = 584
           object grdConsultaProdDBTableView: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             Navigator.Buttons.First.Visible = True
@@ -404,7 +413,7 @@ object frmCadProdutos: TfrmCadProdutos
           Left = 0
           Top = 0
           Width = 1132
-          Height = 663
+          Height = 669
           Align = alClient
           BevelOuter = bvNone
           Color = clWhite
@@ -412,10 +421,10 @@ object frmCadProdutos: TfrmCadProdutos
           TabOrder = 0
           DesignSize = (
             1132
-            663)
+            669)
           object dxBevel1: TdxBevel
             Left = 0
-            Top = 584
+            Top = 590
             Width = 1132
             Height = 3
             Align = alBottom
@@ -715,7 +724,7 @@ object frmCadProdutos: TfrmCadProdutos
           end
           object Panel1: TPanel
             Left = 0
-            Top = 587
+            Top = 593
             Width = 1132
             Height = 76
             Align = alBottom
@@ -908,7 +917,7 @@ object frmCadProdutos: TfrmCadProdutos
           object grdCell_Itens: TcxGrid
             Left = 22
             Top = 410
-            Width = 540
+            Width = 539
             Height = 171
             TabOrder = 23
             LookAndFeel.Kind = lfOffice11
@@ -944,7 +953,6 @@ object frmCadProdutos: TfrmCadProdutos
               DataController.Summary.SummaryGroups = <>
               OptionsBehavior.GoToNextCellOnEnter = True
               OptionsData.Appending = True
-              OptionsView.ColumnAutoWidth = True
               OptionsView.GroupByBox = False
               OptionsView.HeaderHeight = 30
               object cxGridDBTableViewCell_ItensColumnARMAZENAMENTO_ID: TcxGridDBColumn
@@ -974,7 +982,7 @@ object frmCadProdutos: TfrmCadProdutos
                   end>
                 Properties.ListSource = frmGeralDM.dtsCellCor
                 HeaderAlignmentHorz = taCenter
-                Width = 85
+                Width = 99
               end
               object cxGridDBTableViewCell_ItensColumnCODICAO_ID: TcxGridDBColumn
                 Caption = 'Condi'#231#227'o'
@@ -989,7 +997,23 @@ object frmCadProdutos: TfrmCadProdutos
                   end>
                 Properties.ListSource = frmGeralDM.dtsCellCondicao
                 HeaderAlignmentHorz = taCenter
-                Width = 97
+                Width = 110
+              end
+              object cxGridDBTableViewCell_ItensColumnTP_PRECO_ID: TcxGridDBColumn
+                Caption = 'Tipo de pre'#231'o'
+                DataBinding.FieldName = 'TP_PRECO_ID'
+                PropertiesClassName = 'TcxLookupComboBoxProperties'
+                Properties.KeyFieldNames = 'TP_PRECO_ID'
+                Properties.ListColumns = <
+                  item
+                    Caption = 'Tipos de pre'#231'os'
+                    FieldName = 'TP_PRECO_DESC'
+                  end>
+                Properties.ListSource = frmGeralDM.dtsCellTpPreco
+                FooterAlignmentHorz = taCenter
+                GroupSummaryAlignment = taCenter
+                HeaderAlignmentHorz = taCenter
+                Width = 127
               end
               object cxGridDBTableViewCell_ItensColumnCELL_VAL_UNIT: TcxGridDBColumn
                 Caption = 'Valor Unit'#225'rio'
@@ -997,7 +1021,17 @@ object frmCadProdutos: TfrmCadProdutos
                 PropertiesClassName = 'TcxCurrencyEditProperties'
                 Properties.Alignment.Horz = taRightJustify
                 HeaderAlignmentHorz = taCenter
-                Width = 92
+                Width = 101
+              end
+              object cxGridDBTableViewCell_ItensColumnCELL_PARCELAS: TcxGridDBColumn
+                Caption = 'Parcelas'
+                DataBinding.FieldName = 'CELL_PARCELAS'
+                PropertiesClassName = 'TcxCalcEditProperties'
+                Properties.OnValidate = cxGridDBTableViewCell_ItensColumnCELL_PARCELASPropertiesValidate
+                FooterAlignmentHorz = taCenter
+                GroupSummaryAlignment = taCenter
+                HeaderAlignmentHorz = taCenter
+                Width = 82
               end
               object cxGridDBTableViewCell_ItensColumnCELL_VAL_PARC: TcxGridDBColumn
                 Caption = 'Valor Parcelado'
@@ -1005,16 +1039,7 @@ object frmCadProdutos: TfrmCadProdutos
                 PropertiesClassName = 'TcxCurrencyEditProperties'
                 Properties.Alignment.Horz = taRightJustify
                 HeaderAlignmentHorz = taCenter
-                Width = 97
-              end
-              object cxGridDBTableViewCell_ItensColumn1: TcxGridDBColumn
-                Caption = 'Parcelas'
-                DataBinding.FieldName = 'CELL_PARCELAS'
-                PropertiesClassName = 'TcxTextEditProperties'
-                FooterAlignmentHorz = taCenter
-                GroupSummaryAlignment = taCenter
-                HeaderAlignmentHorz = taCenter
-                Width = 65
+                Width = 107
               end
             end
             object grdLevelCell_Itens: TcxGridLevel
@@ -7783,6 +7808,40 @@ object frmCadProdutos: TfrmCadProdutos
         PaintStyle = bpsGlyph
         TabOrder = 1
         Visible = False
+        OnClick = btnConfiguracaoClick
+      end
+      object btnTabPrecos: TcxButton
+        AlignWithMargins = True
+        Left = 996
+        Top = 4
+        Width = 40
+        Height = 33
+        Align = alRight
+        Colors.Default = 13879482
+        LookAndFeel.Kind = lfFlat
+        LookAndFeel.NativeStyle = False
+        OptionsImage.Glyph.SourceDPI = 96
+        OptionsImage.Glyph.Data = {
+          89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+          F80000000473424954080808087C0864880000000970485973000000B1000000
+          B101C62D498D0000001974455874536F667477617265007777772E696E6B7363
+          6170652E6F72679BEE3C1A0000019D494441544889ADD63D6854411405E04FB1
+          5A446C6C151511C11F886964C5140A0A06626165994ED218C4CACA4248A3F6D6
+          622182A650A2958895F9414562B09010B0091A434044B3AC1633915D779C376F
+          C98129E6CE7DE7DC39F3F7E8C6027ED7682D4CC860CB3FFD161EE045EEA30EDC
+          4103B771B5E48316C60AC9E11BDEA18D5BA984AD15040D7CC24026E73E2E635C
+          9851B1C0313CC15E4C62E83F7943D889F7B8A2624D3A2D7A232CFA046E627722
+          FF19563ADA77FC2C15F88C87388E037A37440A6391E32F7216DDC00866F011F7
+          0A047A9013B88B5D18C4755C92B6298B6D99B14624DE81A382BFAB9B29B01D4D
+          9CC01C2E626D330596711AAF318AB775C9AB04E0078EF4435C2270010713F175
+          61472DE33C0E0BE765B2AEC0351C4AC4DB91F0A9703D0C60BE1F8166666C0367
+          AA127202E7A4F77D1B8FF1250AECC312A60A0AEABA2A66A41F995F82F7F032C6
+          A663BFE7AAC8CD60B0A0A05355093981B3D89388B7F1085F8573B21F8B785E50
+          50974573D216AD6338E6BC8AB1D9D8AF6551EE15DBC0C9AA84944053A8B21F54
+          6EED0FEAFDB6A4DA7C27E11F15E87BE7FFB7E3BF0000000049454E44AE426082}
+        PaintStyle = bpsGlyph
+        TabOrder = 2
+        OnClick = btnTabPrecosClick
       end
     end
   end
