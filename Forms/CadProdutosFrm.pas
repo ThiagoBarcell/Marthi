@@ -14,7 +14,8 @@ uses
   Data.DB, cxDBData, cxRadioGroup, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, dxBevel,
   GeralDMFrm, Vcl.ComCtrls, Jpeg, untFuncoes, cxCurrencyEdit, CadInformarcoesFrm,
-  cxDBLookupComboBox, dxGDIPlusClasses, FireDAC.Stan.Param, CadConfiguracoesFrm;
+  cxDBLookupComboBox, dxGDIPlusClasses, FireDAC.Stan.Param, CadConfiguracoesFrm,
+  dxNumericWheelPicker, cxCalc;
 
 const
   OffsetMemoryStream : Int64 = 0;
@@ -107,7 +108,7 @@ type
     Duplicarregistro1: TMenuItem;
     cxGridDBTableViewCell_ItensColumnCELL_PARCELAS: TcxGridDBColumn;
     btnCadTpPreco: TcxButton;
-    cxGridDBTableViewCell_ItensColumn1: TcxGridDBColumn;
+    cxGridDBTableViewCell_ItensColumnTP_PRECO_ID: TcxGridDBColumn;
     btnTabPrecos: TcxButton;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
@@ -143,6 +144,9 @@ type
     procedure btnCadTpPrecoClick(Sender: TObject);
     procedure btnConfiguracaoClick(Sender: TObject);
     procedure btnTabPrecosClick(Sender: TObject);
+    procedure cxGridDBTableViewCell_ItensColumnCELL_PARCELASPropertiesValidate(
+      Sender: TObject; var DisplayValue: Variant; var ErrorText: TCaption;
+      var Error: Boolean);
   private
     procedure AbreTelaInfo( iCod : Integer ) ;
     procedure AbreConfTabelaPrecos( lCod : Integer );
@@ -294,6 +298,24 @@ end;
 procedure TfrmCadProdutos.cbxFiltrosPropertiesChange(Sender: TObject);
 begin
   pgeFiltros.ActivePageIndex := cbxFiltros.ItemIndex;
+end;
+
+procedure TfrmCadProdutos.cxGridDBTableViewCell_ItensColumnCELL_PARCELASPropertiesValidate(
+  Sender: TObject; var DisplayValue: Variant; var ErrorText: TCaption;
+  var Error: Boolean);
+begin
+  if Application.MessageBox( 'Deseja Atualizar a coluna de valor parcelado,' + #13 +
+    'baseado na porcentagem da tabela de preço ?' , 'Aviso', mb_yesno + mb_iconquestion ) = ID_YES
+  then
+  begin
+    frmGeralDM.qryCellItensCELL_VAL_PARC.AsFloat := Funcoes.CalculaParcela( frmGeralDM.ConectMarthi, DisplayValue, frmGeralDM.qryCellItensCELL_VAL_UNIT.AsFloat );
+    frmGeralDM.qryCellItensCELL_PARCELAS.AsInteger := DisplayValue;
+  end;
+
+  //Sempre será criado os valores na tabela para termos baseado no calculo
+  Funcoes.CriaParcelas( frmGeralDM.ConectMarthi, frmGeralDM.qryCellItensCELL_ID.AsInteger ,
+    frmGeralDM.qryCellItensITEM_ID.AsInteger, frmGeralDM.qryCellItensTP_PRECO_ID.AsInteger,
+    frmGeralDM.qryCellItensCELL_VAL_UNIT.AsFloat );
 end;
 
 procedure TfrmCadProdutos.cxGridImagesDBTableViewImageCellClick(

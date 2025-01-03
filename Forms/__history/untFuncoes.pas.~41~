@@ -66,8 +66,8 @@ begin
     lQryDelValParc.Close;
     lQryDelValParc.SQL.Clear;
     lQryDelValParc.SQL.Add( ' DELETE FROM CELL_VAL_ITENS_PARC ' +
-      ' WHERE CELL_ID = ' + IntToStr( lCellID ) +
-      ' AND ITEM_ID = ' + IntToStr( lItemID ) );
+      ' WHERE CELL_ID = ' + lCellID +
+      ' AND ITEM_ID = ' + lItemID );
     lQryDelValParc.ExecSQL;
 
     lQryInsValParc.SQL.Clear;

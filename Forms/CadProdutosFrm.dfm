@@ -25,7 +25,6 @@ object frmCadProdutos: TfrmCadProdutos
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitHeight = 704
     object PgeCadastroComp: TcxPageControl
       Left = 0
       Top = 41
@@ -36,7 +35,6 @@ object frmCadProdutos: TfrmCadProdutos
       Properties.ActivePage = tabCadastro
       Properties.CustomButtons.Buttons = <>
       LookAndFeel.NativeStyle = False
-      ExplicitHeight = 663
       ClientRectBottom = 669
       ClientRectRight = 1132
       ClientRectTop = 0
@@ -45,6 +43,7 @@ object frmCadProdutos: TfrmCadProdutos
         ImageIndex = 0
         TabVisible = False
         OnShow = tabConsultaShow
+        ExplicitWidth = 0
         ExplicitHeight = 663
         object pnlTop: TPanel
           Left = 0
@@ -199,6 +198,8 @@ object frmCadProdutos: TfrmCadProdutos
               object tabFiltroCadastro: TcxTabSheet
                 Caption = 'cxTabSheet1'
                 ImageIndex = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object Label2: TLabel
                   Left = 261
                   Top = 13
@@ -228,6 +229,8 @@ object frmCadProdutos: TfrmCadProdutos
               object tabFiltroDesc: TcxTabSheet
                 Caption = 'tabFiltroDesc'
                 ImageIndex = 1
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object edtFiltroDesc: TcxTextEdit
                   Left = 32
                   Top = 7
@@ -237,6 +240,8 @@ object frmCadProdutos: TfrmCadProdutos
               end
               object tabFiltroReferencia: TcxTabSheet
                 ImageIndex = 2
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object edtFiltroReferencia: TcxTextEdit
                   Left = 32
                   Top = 7
@@ -404,7 +409,6 @@ object frmCadProdutos: TfrmCadProdutos
         ImageIndex = 0
         TabVisible = False
         OnShow = tabCadastroShow
-        ExplicitHeight = 663
         object pnlCadastroDeProduto: TPanel
           Left = 0
           Top = 0
@@ -415,8 +419,6 @@ object frmCadProdutos: TfrmCadProdutos
           Color = clWhite
           ParentBackground = False
           TabOrder = 0
-          ExplicitLeft = 16
-          ExplicitTop = 2
           DesignSize = (
             1132
             669)
@@ -728,7 +730,6 @@ object frmCadProdutos: TfrmCadProdutos
             Align = alBottom
             BevelOuter = bvNone
             TabOrder = 21
-            ExplicitTop = 587
             object btnSalvar: TcxButton
               AlignWithMargins = True
               Left = 3
@@ -998,7 +999,7 @@ object frmCadProdutos: TfrmCadProdutos
                 HeaderAlignmentHorz = taCenter
                 Width = 110
               end
-              object cxGridDBTableViewCell_ItensColumn1: TcxGridDBColumn
+              object cxGridDBTableViewCell_ItensColumnTP_PRECO_ID: TcxGridDBColumn
                 Caption = 'Tipo de pre'#231'o'
                 DataBinding.FieldName = 'TP_PRECO_ID'
                 PropertiesClassName = 'TcxLookupComboBoxProperties'
@@ -1022,6 +1023,16 @@ object frmCadProdutos: TfrmCadProdutos
                 HeaderAlignmentHorz = taCenter
                 Width = 101
               end
+              object cxGridDBTableViewCell_ItensColumnCELL_PARCELAS: TcxGridDBColumn
+                Caption = 'Parcelas'
+                DataBinding.FieldName = 'CELL_PARCELAS'
+                PropertiesClassName = 'TcxCalcEditProperties'
+                Properties.OnValidate = cxGridDBTableViewCell_ItensColumnCELL_PARCELASPropertiesValidate
+                FooterAlignmentHorz = taCenter
+                GroupSummaryAlignment = taCenter
+                HeaderAlignmentHorz = taCenter
+                Width = 82
+              end
               object cxGridDBTableViewCell_ItensColumnCELL_VAL_PARC: TcxGridDBColumn
                 Caption = 'Valor Parcelado'
                 DataBinding.FieldName = 'CELL_VAL_PARC'
@@ -1029,16 +1040,6 @@ object frmCadProdutos: TfrmCadProdutos
                 Properties.Alignment.Horz = taRightJustify
                 HeaderAlignmentHorz = taCenter
                 Width = 107
-              end
-              object cxGridDBTableViewCell_ItensColumnCELL_PARCELAS: TcxGridDBColumn
-                Caption = 'Parcelas'
-                DataBinding.FieldName = 'CELL_PARCELAS'
-                PropertiesClassName = 'TcxTextEditProperties'
-                Visible = False
-                FooterAlignmentHorz = taCenter
-                GroupSummaryAlignment = taCenter
-                HeaderAlignmentHorz = taCenter
-                Width = 82
               end
             end
             object grdLevelCell_Itens: TcxGridLevel

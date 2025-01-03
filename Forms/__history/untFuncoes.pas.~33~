@@ -23,9 +23,6 @@ public
   Procedure ConectaBD_Ini( lConexao : TFDConnection; lLinkFB : TFDPhysFBDriverLink );
   procedure EnviarMsgWhatsApp( sAPIKEYEMP, sTelefoneFrom, sTelefoneTo : String; sMensagem : WideString = ''; sCaminhoAnexo : String = ''; lEviarMensagemPDF : Boolean = False );
   procedure ReplicaCelular(lQryCell: TFDQuery; lConnectionBD : TFDConnection );
-  Procedure CriaParcelas( lConexao: TFDConnection; lCellID, lItemID, lTpPreco : Integer ;
-  lValUnitario : Double);
-
 
   //Functions
   function CriaQuery ( Conexao : TFDConnection ): TFDQuery;
@@ -33,6 +30,7 @@ public
   function CalculaParcela( lConexao: TFDConnection; lParcelas : Integer;
   lValorTot : Double ): Double;
 
+private
 
 end;
 
@@ -51,60 +49,12 @@ begin
   lQryTpPreco.Open;
 end;
 
-Procedure TFuncoesUteis.CriaParcelas( lConexao: TFDConnection; lCellID, lItemID, lTpPreco : Integer ;
-  lValUnitario : Double);
-var
-  lQryConsultaParc : TFDQuery;
-  lQryInsValParc : TFDQuery;
-  lQryDelValParc : TFDQuery;
+Procedure TFuncoesUteis.CriaParcelas( lConexao: TFDConnection; lParcelas : Integer;
+  lValorTot : Double );
 begin
-  lQryConsultaParc := CriaQuery( lConexao );
-  lQryInsValParc := CriaQuery( lConexao );
-  lQryDelValParc := CriaQuery( lConexao );
-  try
-    //Limpa a tabela do campo específico primeiro
-    lQryDelValParc.Close;
-    lQryDelValParc.SQL.Clear;
-    lQryDelValParc.SQL.Add( ' DELETE FROM CELL_VAL_ITENS_PARC ' +
-      ' WHERE CELL_ID = ' + IntToStr( lCellID ) +
-      ' AND ITEM_ID = ' + IntToStr( lItemID ) );
-    lQryDelValParc.ExecSQL;
 
-    lQryInsValParc.SQL.Clear;
-    lQryInsValParc.SQL.Add( ' INSERT INTO CELL_VAL_ITENS_PARC (CELL_VAL_ITENS_PARC_ID, CELL_ID, ' +
-      ' ITEM_ID, CELL_TP_PRECO, CELL_PARCELA, CELL_VAL_PARCELA) ' +
-      ' VALUES ( :CELL_VAL_ITENS_PARC_ID , :CELL_ID, :ITEM_ID , :CELL_TP_PRECO, ' +
-      ' :CELL_PARCELA, :CELL_VAL_PARCELA) ' );
-
-    lQryConsultaParc.Close;
-    lQryConsultaParc.SQL.Clear;
-    lQryConsultaParc.SQL.Add( ' SELECT * FROM CELL_TAB_PRECOS ' );
-    lQryConsultaParc.Open;
-
-    //Se a tabela está preenchida corretamente
-    if not ( lQryConsultaParc.IsEmpty ) then
-    begin
-      //Seta o primeiro registro da tabela
-      lQryConsultaParc.First;
-      while not lQryConsultaParc.Eof do
-      begin
-        lQryInsValParc.Close;
-        lQryInsValParc.ParamByName( 'CELL_VAL_ITENS_PARC_ID' ).AsInteger := NextID( 'GEN_CELL_VAL_ITENS_PARC_ID', lConexao );
-        lQryInsValParc.ParamByName( 'CELL_ID' ).AsInteger := lCellID;
-        lQryInsValParc.ParamByName( 'ITEM_ID' ).AsInteger := lItemID;
-        lQryInsValParc.ParamByName( 'CELL_TP_PRECO' ).AsInteger := lTpPreco;
-        lQryInsValParc.ParamByName( 'CELL_PARCELA' ).AsInteger := lQryConsultaParc.FieldByName( 'CELL_PARCELAS' ).AsInteger;
-        lQryInsValParc.ParamByName( 'CELL_VAL_PARCELA' ).AsFloat := CalculaParcela( lConexao, lQryConsultaParc.FieldByName( 'CELL_PARCELAS' ).AsInteger, lValUnitario );
-        lQryInsValParc.ExecSQL;
-
-        lQryConsultaParc.Next;
-      end;
-    end;
-  finally
-    lQryConsultaParc.Free;
-    lQryInsValParc.Free;
-  end;
 end;
+
 
 function TFuncoesUteis.CalculaParcela( lConexao: TFDConnection; lParcelas : Integer;
   lValorTot : Double ): Double;
@@ -129,10 +79,7 @@ begin
       lValorParc := lValorTot * ( lPorcentagem / 100 );
       lValorGeralTotal := lValorTot + lValorParc;
       lValorGetalParcela := Trunc( lValorGeralTotal / lParcelas );
-    end
-    else
-    lValorGetalParcela := 0;
-
+    end;
     Result := lValorGetalParcela;
   finally
     lQryParcelas.Free;

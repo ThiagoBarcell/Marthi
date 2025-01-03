@@ -19,7 +19,7 @@ type TFuncoesUteis = class
 
 public
   //Procedures
-  procedure AbreQrysInfo( lQryArmazenamento, lQryCondicao, lQryCor : TFDQuery );
+  procedure AbreQrysInfo( lQryArmazenamento, lQryCondicao, lQryCor, lQryTpPreco : TFDQuery );
   Procedure ConectaBD_Ini( lConexao : TFDConnection; lLinkFB : TFDPhysFBDriverLink );
   procedure EnviarMsgWhatsApp( sAPIKEYEMP, sTelefoneFrom, sTelefoneTo : String; sMensagem : WideString = ''; sCaminhoAnexo : String = ''; lEviarMensagemPDF : Boolean = False );
   procedure ReplicaCelular(lQryCell: TFDQuery; lConnectionBD : TFDConnection );
@@ -27,6 +27,8 @@ public
   //Functions
   function CriaQuery ( Conexao : TFDConnection ): TFDQuery;
   function NextID( lGenerator : string; lConexaoBD : TFDConnection ) : Integer;
+  function CalculaParcela( lConexao: TFDConnection; lParcelas : Integer;
+  lValorTot : Double ): Double;
 
 private
 
@@ -35,7 +37,7 @@ end;
 implementation
 { TFuncoesUteis }
 
-procedure TFuncoesUteis.AbreQrysInfo( lQryArmazenamento, lQryCondicao, lQryCor : TFDQuery );
+procedure TFuncoesUteis.AbreQrysInfo( lQryArmazenamento, lQryCondicao, lQryCor, lQryTpPreco : TFDQuery );
 begin
   lQryArmazenamento.Close;
   lQryArmazenamento.Open;
@@ -43,6 +45,34 @@ begin
   lQryCondicao.Open;
   lQryCor.Close;
   lQryCor.Open;
+  lQryTpPreco.Close;
+  lQryTpPreco.Open;
+end;
+
+function TFuncoesUteis.CalculaParcela( lConexao: TFDConnection; lParcelas : Integer;
+  lValorTot : Double ): Double;
+var
+  lQryParcelas : TFDQuery;
+  lValorParc : Double;
+  lPorcentagem : Double;
+begin
+  lQryParcelas := CriaQuery( lConexao );
+  try
+    lQryParcelas.Close;
+    lQryParcelas.SQL.Clear;
+    lQryParcelas.SQL.Add( ' SELECT * FROM CELL_TAB_PRECOS ' +
+      ' WHERE CELL_PARCELAS = ' + IntToStr( lParcelas ) );
+    lQryParcelas.Open;
+
+    if not( lQryParcelas.IsEmpty ) then
+    begin
+      lPorcentagem := lQryParcelas.FieldByName( 'CELL_VAL_PORC' ).AsFloat;
+      lValorParc := lValorTot * ( lPorcentagem / 100 );
+    end;
+    Result := lValorParc;
+  finally
+    lQryParcelas.Free;
+  end;
 end;
 
 Procedure TFuncoesUteis.ConectaBD_Ini( lConexao : TFDConnection; lLinkFB : TFDPhysFBDriverLink );
@@ -111,6 +141,7 @@ var
 begin
   lQry := TFDQuery.Create(nil);
   lQry.Connection := Conexao;
+  Result := lQry;
 end;
 
 procedure TFuncoesUteis.EnviarMsgWhatsApp(sAPIKEYEMP, sTelefoneFrom, sTelefoneTo: String; sMensagem: WideString; sCaminhoAnexo: String; lEviarMensagemPDF: Boolean);
