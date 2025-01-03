@@ -10,9 +10,7 @@ object frmGeralDM: TfrmGeralDM
       'Server=localhost'
       'Port=3050'
       'Protocol=TCPIP'
-      'Database=C:\MarthiGIT\Marthi DataBase\DataBase\MARTHIDB.FDB'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 56
     Top = 16
@@ -495,7 +493,6 @@ object frmGeralDM: TfrmGeralDM
     Top = 133
   end
   object qryCellTabPrecos: TFDQuery
-    Active = True
     OnNewRecord = qryCellTabPrecosNewRecord
     Connection = ConectMarthi
     UpdateObject = upsCellTabPrecos

@@ -6,7 +6,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{7736F4D4-2FA2-45FA-9344-4469D3FA23A3}
 AppName=Marthi - Totem
-AppVerName=Marthi - Executáveis 25.01.01
+AppVerName=Marthi - Executáveis
 AppPublisher=Marthi System
 AppPublisherURL=
 AppSupportURL=
@@ -14,7 +14,7 @@ AppUpdatesURL=
 DefaultDirName=C:\Marthi
 DefaultGroupName=Marthi
 AllowNoIcons=true
-OutputDir=..\..\Marthi\25.01.01
+OutputDir=..\..\Marthi\Instalador
 OutputBaseFilename=Marthi
 SetupIconFile=Logo\LogoReduzidaIcone.ico
 Password=
@@ -45,7 +45,7 @@ Name: quicklaunchicon; Description: {cm:CreateQuickLaunchIcon}; GroupDescription
 
 [Files]
 Source: MarthiTotem.exe; DestDir: \Marthi\; Flags: ignoreversion overwritereadonly replacesameversion; Tasks: ; Languages: 
-Source: ProjMarthi.exe; DestDir: \Marthi\; Flags: ignoreversion overwritereadonly replacesameversion; Tasks: ; Languages: 
+Source: MarthiCadastros.exe; DestDir: \Marthi\; Flags: ignoreversion overwritereadonly replacesameversion; Tasks: ; Languages: 
 Source: caminhos.ini; DestDir: \Marthi\; Flags: ignoreversion overwritereadonly replacesameversion
 Source: Marthi DataBase\DataBase\MARTHIDB.FDB; DestDir: \Marthi\Marthi DataBase\DataBase\; Flags: ignoreversion overwritereadonly replacesameversion
 Source: Dependencias\*; DestDir: \Marthi\Dependencias\; Flags: ignoreversion overwritereadonly replacesameversion
