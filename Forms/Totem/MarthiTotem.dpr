@@ -16,6 +16,5 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmGeralDM, frmGeralDM);
   Application.CreateForm(TTotemPrincipalfrm, TotemPrincipalfrm);
-  Application.CreateForm(TfrmPedeSenhaMarthi, frmPedeSenhaMarthi);
   Application.Run;
 end.
