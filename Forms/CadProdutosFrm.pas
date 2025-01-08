@@ -218,9 +218,17 @@ begin
   lConfig := TfrmConfiguracoes.Create( Self );
   try
     case lCod of
-     1 :
+      0 :
+      begin
+        lConfig.pgeConfiguracoes.ActivePageIndex := 0;
+        lConfig.pnlButtons.Visible := True;
+        frmGeralDM.qryConfiguracoes.Close;
+        frmGeralDM.qryConfiguracoes.Open;
+      end;
+
+      1 :
       begin //Tabela de preços
-        lConfig.pgeConfiguracoes.ActivePageIndex := 2;
+        lConfig.pgeConfiguracoes.ActivePageIndex := 1;
         lConfig.pnlButtons.Visible := False;
         frmGeralDM.qryCellTabPrecos.Close;
         frmGeralDM.qryCellTabPrecos.Open;

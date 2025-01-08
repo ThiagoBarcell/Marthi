@@ -75,6 +75,12 @@ type
     dtsCellTabPrecos: TDataSource;
     upsCellTabPrecos: TFDUpdateSQL;
     qryCellTabPrecosCELL_TAB_PRECO_ID: TIntegerField;
+    qryConfiguracoes: TFDQuery;
+    qryConfiguracoesAPI_KEY_WHATSAPP: TStringField;
+    qryConfiguracoesCELL_RECEPTOR_WHATSAPP: TStringField;
+    qryConfiguracoesSENHA_ACESSO: TStringField;
+    dtsConfiguracoes: TDataSource;
+    upsConfiguracoes: TFDUpdateSQL;
     procedure qryCadCellNewRecord(DataSet: TDataSet);
     procedure qryCadCellAfterScroll(DataSet: TDataSet);
     procedure qryCellItensNewRecord(DataSet: TDataSet);

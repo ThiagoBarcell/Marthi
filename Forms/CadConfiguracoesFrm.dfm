@@ -3,8 +3,8 @@
   Top = 0
   BorderStyle = bsNone
   Caption = 'frmConfiguracoes'
-  ClientHeight = 349
-  ClientWidth = 470
+  ClientHeight = 536
+  ClientWidth = 573
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,13 +18,14 @@
   object pnlFaixaTop: TPanel
     Left = 0
     Top = 0
-    Width = 470
+    Width = 573
     Height = 41
     Align = alTop
     Color = 2364674
     ParentBackground = False
     TabOrder = 0
     OnMouseDown = pnlFaixaTopMouseDown
+    ExplicitWidth = 470
     object Image1: TImage
       Left = 1
       Top = 1
@@ -6462,7 +6463,7 @@
     end
     object btnFechar: TcxButton
       AlignWithMargins = True
-      Left = 426
+      Left = 529
       Top = 4
       Width = 40
       Height = 33
@@ -6489,45 +6490,115 @@
       PaintStyle = bpsGlyph
       TabOrder = 0
       OnClick = btnFecharClick
+      ExplicitLeft = 426
     end
   end
   object pgeConfiguracoes: TcxPageControl
     Left = 0
     Top = 41
-    Width = 470
-    Height = 263
+    Width = 573
+    Height = 450
     Align = alClient
     TabOrder = 2
-    Properties.ActivePage = pagTabPrecos
+    Properties.ActivePage = pagConfigurações
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ClientRectBottom = 259
+    ExplicitWidth = 470
+    ExplicitHeight = 263
+    ClientRectBottom = 446
     ClientRectLeft = 4
-    ClientRectRight = 466
+    ClientRectRight = 569
     ClientRectTop = 4
     object pagConfigurações: TcxTabSheet
       Caption = 'Configura'#231#245'es'
       ImageIndex = 0
-    end
-    object pagWhatsApp: TcxTabSheet
-      Caption = 'WhatsApp-API'
-      ImageIndex = 1
-      object Label1: TLabel
-        Left = 40
-        Top = 96
-        Width = 91
-        Height = 13
-        Caption = 'API Key WhatsApp'
+      object pgeConfigGeral: TcxPageControl
+        Left = 0
+        Top = 0
+        Width = 565
+        Height = 442
+        Align = alClient
+        TabOrder = 0
+        Properties.ActivePage = tabConfigWhatsApp
+        Properties.CustomButtons.Buttons = <>
+        ExplicitLeft = 120
+        ExplicitTop = 128
+        ExplicitWidth = 289
+        ExplicitHeight = 193
+        ClientRectBottom = 438
+        ClientRectLeft = 4
+        ClientRectRight = 561
+        ClientRectTop = 24
+        object tabConfigGeral: TcxTabSheet
+          Caption = 'Configura'#231#245'es'
+          ImageIndex = 1
+          ExplicitLeft = -28
+          ExplicitTop = 25
+          object Label1: TLabel
+            Left = 27
+            Top = 200
+            Width = 98
+            Height = 13
+            Caption = 'Senha fecha totem :'
+          end
+          object edtSENHA_ACESSO: TcxDBTextEdit
+            Left = 131
+            Top = 197
+            DataBinding.DataField = 'SENHA_ACESSO'
+            DataBinding.DataSource = frmGeralDM.dtsConfiguracoes
+            Properties.CharCase = ecUpperCase
+            TabOrder = 0
+            Width = 321
+          end
+        end
+        object tabConfigWhatsApp: TcxTabSheet
+          Caption = 'WhatsApp'
+          ImageIndex = 0
+          ExplicitLeft = 3
+          ExplicitTop = 25
+          object Label2: TLabel
+            Left = 35
+            Top = 120
+            Width = 97
+            Height = 13
+            Caption = 'WhatsGW API-KEY :'
+          end
+          object Label3: TLabel
+            Left = 44
+            Top = 224
+            Width = 88
+            Height = 13
+            Caption = 'Numero receptor :'
+          end
+          object edtAPI_KEY_WHATSAPP: TcxDBTextEdit
+            Left = 139
+            Top = 117
+            DataBinding.DataField = 'API_KEY_WHATSAPP'
+            DataBinding.DataSource = frmGeralDM.dtsConfiguracoes
+            TabOrder = 0
+            Width = 321
+          end
+          object edtCELL_RECEPTOR_WHATSAPP: TcxDBTextEdit
+            Left = 139
+            Top = 221
+            DataBinding.DataField = 'CELL_RECEPTOR_WHATSAPP'
+            DataBinding.DataSource = frmGeralDM.dtsConfiguracoes
+            TabOrder = 1
+            Width = 321
+          end
+        end
       end
     end
     object pagTabPrecos: TcxTabSheet
       Caption = 'Tabela de pre'#231'os'
       ImageIndex = 2
+      ExplicitWidth = 462
+      ExplicitHeight = 255
       object grdTabPreco: TcxGrid
         Left = 0
         Top = 0
-        Width = 462
-        Height = 255
+        Width = 565
+        Height = 442
         Align = alClient
         BevelInner = bvNone
         BevelOuter = bvNone
@@ -6535,6 +6606,8 @@
         LookAndFeel.Kind = lfOffice11
         LookAndFeel.NativeStyle = False
         LookAndFeel.SkinName = 'UserSkin'
+        ExplicitWidth = 462
+        ExplicitHeight = 255
         object grdTabPrecoDBTableView: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.First.Visible = True
@@ -6590,29 +6663,66 @@
   end
   object pnlButtons: TPanel
     Left = 0
-    Top = 304
-    Width = 470
+    Top = 491
+    Width = 573
     Height = 45
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitTop = 304
+    ExplicitWidth = 470
     object btnCancel: TcxButton
-      Left = 234
+      Left = 286
       Top = 0
-      Width = 234
+      Width = 286
       Height = 45
       Align = alLeft
       Caption = 'Cancelar'
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000018000000180803000000D7A9CD
+        CA0000000373424954080808DBE14FE000000009704859730000018400000184
+        01971E7CA60000001974455874536F667477617265007777772E696E6B736361
+        70652E6F72679BEE3C1A00000066504C5445FFFFFF0000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000004EE8365300000021
+        74524E530002040F12162328292A2D484B5C5E767D7F90B2B3C1C6CAD0D6E6E8
+        EAF3F7F8FAB8FD42A2000000B249444154289175925D1B82200C850F14A18682
+        999094C2FEFF9FECC28FF4B1ED6EEF78CEC6D980399469BB18BBD628EC43BA4C
+        34F6FD48949DFCF12290AFB50084AE3D8562E5CD94AC581361D3D42CEFA7A1DC
+        EB96C35400800CE9C081320509C0915DF2DB5AB1E40095FDAC7F4F8FAD8FCF0A
+        86EA857FAA4DAC268396F48943538B6E14270E3176883D802AD1FBB5C4F302A0
+        8F7C8195629BB3E3B21FFC59A2AE074B781359DBF945F1ABE58F017FCEE70B8F
+        7713357219E2DF0000000049454E44AE426082}
       TabOrder = 0
+      OnClick = btnCancelClick
+      ExplicitLeft = 285
     end
     object cxButton1: TcxButton
       Left = 0
       Top = 0
-      Width = 234
+      Width = 286
       Height = 45
       Align = alLeft
       Caption = 'Salvar'
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000018000000180806000000E0773D
+        F80000000473424954080808087C086488000000097048597300000B1500000B
+        15018099D8830000001974455874536F667477617265007777772E696E6B7363
+        6170652E6F72679BEE3C1A0000010B494441544889EDD4B12E444114C6F1DFAC
+        151295621385627B215148741A22A1D4A9B40A9528C433A8BC8257506925649F
+        424221B6169160143BC5BAEEDE3B7657219CE42BCEDCF9BEFF2DCE1C314675C2
+        0A5E11FBB496E36DC8AB194C14CE66738CB980A1EB1FF0070021CDF9D70F214C
+        E1486F3CDBD82B5CB9C23D5EB01F637C2E0DAA7960E73E3FAE329D5566D400A6
+        7153117E8DC9A101093287BB92F047CCD7FA3377D1329EFAC2DFB09EE5CDB994
+        203B784F80935CDFC0291A3059C758C26ECC34061C603BF59731C6D36C62F94F
+        1C6223B5174D2C60331D3C8C129E6AB12FEFF6F7AF8A1F07340B7D2B84B03A62
+        66AB0AB09534B66AA03BCEC04275E9ADE28EFAADF95D75D0FE00B82B822B6955
+        A9E20000000049454E44AE426082}
       TabOrder = 1
+      OnClick = cxButton1Click
     end
   end
 end
