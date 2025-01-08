@@ -16,7 +16,8 @@ uses
   Data.Bind.DBScope, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
   Frame.MarthiGIT.Totem, System.Math, System.IniFiles, Untfuncoes,
   FireDAC.Phys.IBBase, MyVirtualKeyboard, FMX.Filter.Effects, FMX.Ani,
-  System.Math.Vectors, FMX.Controls3D, FMX.Objects3D, Marthi.PedeSenha;
+  System.Math.Vectors, FMX.Controls3D, FMX.Objects3D, Marthi.PedeSenha,
+  Marthi.TecladoVirtual;
 
 type
   TTotemPrincipalfrm = class(TForm)
@@ -891,13 +892,23 @@ end;
 
 procedure TTotemPrincipalfrm.edtPesquisaEnter(Sender: TObject);
 begin
-  if not IsKeyboardShown then
-  begin
-    ShowKeyboardOn(TEdit(Sender));
-    IsKeyboardShown := True; // Marca como exibido
-  end
-  else
-    IsKeyboardShown := False;
+  if not Assigned(TecladoVirtualfrm) then
+    TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+
+  // Posiciona o teclado próximo ao TEdit
+  TecladoVirtualfrm.Left := Round(TEdit(Sender).AbsoluteRect.Left);
+  TecladoVirtualfrm.Top := Round(TEdit(Sender).AbsoluteRect.Bottom + 50);
+  TecladoVirtualfrm.Show;
+
+  // Vincula o TEdit ativo para o teclado
+  TecladoVirtualfrm.Tag := NativeInt(Sender);
+//  if not IsKeyboardShown then
+//  begin
+//    ShowKeyboardOn(TEdit(Sender));
+//    IsKeyboardShown := True; // Marca como exibido
+//  end
+//  else
+//    IsKeyboardShown := False;
 end;
 
 procedure TTotemPrincipalfrm.edtPesquisaTyping(Sender: TObject);

@@ -9,7 +9,7 @@ uses
   untFuncoes in '..\untFuncoes.pas',
   MyVirtualKeyboard in 'MyVirtualKeyboard.pas',
   Marthi.PedeSenha in 'Marthi.PedeSenha.pas' {frmPedeSenhaMarthi},
-  Marthi.TecladoVirtual in 'Marthi.TecladoVirtual.pas' {Form1};
+  Marthi.TecladoVirtual in 'Marthi.TecladoVirtual.pas' {TecladoVirtualfrm};
 
 {$R *.res}
 
@@ -17,6 +17,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmGeralDM, frmGeralDM);
   Application.CreateForm(TTotemPrincipalfrm, TotemPrincipalfrm);
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TTecladoVirtualfrm, TecladoVirtualfrm);
   Application.Run;
 end.

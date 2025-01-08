@@ -5,140 +5,235 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
-  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Objects;
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Objects, FMX.TabControl,
+  FMX.Edit;
 
 type
-  TForm1 = class(TForm)
-    Rectangle1: TRectangle;
-    Rectangle3: TRectangle;
+  TTecladoVirtualfrm = class(TForm)
+    RecTeclado: TRectangle;
+    KeyQ: TRectangle;
     Rectangle12: TRectangle;
     lblQ: TLabel;
     Rectangle2: TRectangle;
     Rectangle4: TRectangle;
-    Rectangle5: TRectangle;
-    Label1: TLabel;
+    KeyW: TRectangle;
+    lblW: TLabel;
     Rectangle6: TRectangle;
-    Rectangle7: TRectangle;
-    Label2: TLabel;
+    KeyO: TRectangle;
+    lblO: TLabel;
     Rectangle8: TRectangle;
-    Rectangle9: TRectangle;
-    Label3: TLabel;
+    KeyR: TRectangle;
+    lblR: TLabel;
     Rectangle10: TRectangle;
-    Rectangle11: TRectangle;
-    Label4: TLabel;
+    KeyY: TRectangle;
+    lblY: TLabel;
     Rectangle13: TRectangle;
-    Rectangle14: TRectangle;
-    Label5: TLabel;
+    KeyI: TRectangle;
+    lblI: TLabel;
     Rectangle15: TRectangle;
-    Rectangle16: TRectangle;
-    Label6: TLabel;
+    KeyU: TRectangle;
+    lblU: TLabel;
     Rectangle17: TRectangle;
-    Rectangle18: TRectangle;
-    Label7: TLabel;
+    KeyE: TRectangle;
+    lblE: TLabel;
     Rectangle19: TRectangle;
-    Rectangle20: TRectangle;
-    Label8: TLabel;
+    KeyT: TRectangle;
+    lblT: TLabel;
     Rectangle21: TRectangle;
-    Rectangle22: TRectangle;
-    Label9: TLabel;
+    KeyP: TRectangle;
+    lblP: TLabel;
     Rectangle25: TRectangle;
-    Rectangle26: TRectangle;
-    Label11: TLabel;
+    KeyAgudo: TRectangle;
+    lblAgudo: TLabel;
     Rectangle23: TRectangle;
     Rectangle24: TRectangle;
-    Rectangle27: TRectangle;
-    Label10: TLabel;
+    KeyZ: TRectangle;
+    lblZ: TLabel;
     Rectangle28: TRectangle;
-    Rectangle29: TRectangle;
-    Label12: TLabel;
+    KeyX: TRectangle;
+    lblX: TLabel;
     Rectangle30: TRectangle;
-    Rectangle31: TRectangle;
-    Label13: TLabel;
+    KeyPonto: TRectangle;
+    lblPonto: TLabel;
     Rectangle32: TRectangle;
-    Rectangle33: TRectangle;
-    Label14: TLabel;
+    KeyN: TRectangle;
+    lblN: TLabel;
     Rectangle34: TRectangle;
-    Rectangle35: TRectangle;
-    Label15: TLabel;
+    KeyVirgula: TRectangle;
+    lblVirgula: TLabel;
     Rectangle36: TRectangle;
-    Rectangle37: TRectangle;
-    Label16: TLabel;
+    KeyV: TRectangle;
+    lblV: TLabel;
     Rectangle38: TRectangle;
-    Rectangle39: TRectangle;
-    Label17: TLabel;
+    KeyM: TRectangle;
+    lblM: TLabel;
     Rectangle40: TRectangle;
-    Rectangle41: TRectangle;
-    Label18: TLabel;
+    KeyC: TRectangle;
+    lblC: TLabel;
     Rectangle42: TRectangle;
-    Rectangle43: TRectangle;
-    Label19: TLabel;
+    KeyB: TRectangle;
+    lblB: TLabel;
     Rectangle44: TRectangle;
-    Rectangle45: TRectangle;
+    KeyQShifit: TRectangle;
     Label20: TLabel;
-    Rectangle46: TRectangle;
-    Rectangle47: TRectangle;
-    Label21: TLabel;
     Rectangle48: TRectangle;
     Rectangle49: TRectangle;
-    Rectangle50: TRectangle;
-    Label23: TLabel;
+    KeyA: TRectangle;
+    lblA: TLabel;
     Rectangle51: TRectangle;
-    Rectangle52: TRectangle;
-    Label24: TLabel;
+    KeyS: TRectangle;
+    lblS: TLabel;
     Rectangle53: TRectangle;
-    Rectangle54: TRectangle;
-    Label25: TLabel;
+    KeyL: TRectangle;
+    lblL: TLabel;
     Rectangle55: TRectangle;
-    Rectangle56: TRectangle;
-    Label26: TLabel;
+    KeyH: TRectangle;
+    lblH: TLabel;
     Rectangle57: TRectangle;
-    Rectangle58: TRectangle;
-    Label27: TLabel;
+    KeyK: TRectangle;
+    lblK: TLabel;
     Rectangle59: TRectangle;
-    Rectangle60: TRectangle;
-    Label28: TLabel;
+    KeyF: TRectangle;
+    lblF: TLabel;
     Rectangle61: TRectangle;
-    Rectangle62: TRectangle;
-    Label29: TLabel;
+    KeyJ: TRectangle;
+    lblJ: TLabel;
     Rectangle63: TRectangle;
-    Rectangle64: TRectangle;
-    Label30: TLabel;
+    KeyD: TRectangle;
+    lblD: TLabel;
     Rectangle65: TRectangle;
-    Rectangle66: TRectangle;
-    Label31: TLabel;
+    KeyG: TRectangle;
+    lblG: TLabel;
     Rectangle67: TRectangle;
-    Rectangle68: TRectangle;
-    Label32: TLabel;
+    Key«: TRectangle;
+    lbl«: TLabel;
     Rectangle69: TRectangle;
-    Rectangle70: TRectangle;
-    Label33: TLabel;
-    Label34: TLabel;
+    KeyAcentos: TRectangle;
+    lblTiu: TLabel;
+    lblCircunflexo: TLabel;
     Rectangle71: TRectangle;
     Rectangle72: TRectangle;
-    Rectangle73: TRectangle;
+    KeyDelete: TRectangle;
     Label22: TLabel;
-    Rectangle86: TRectangle;
+    KeySpace: TRectangle;
     Label35: TLabel;
-    Rectangle76: TRectangle;
+    RecEnter: TRectangle;
     Label37: TLabel;
-    Rectangle77: TRectangle;
+    KeyNumeric: TRectangle;
     Label38: TLabel;
     Rectangle74: TRectangle;
-    Rectangle75: TRectangle;
+    KeyQBackSpace: TRectangle;
     Label36: TLabel;
+    KeySetaEsquerda: TRectangle;
+    KeySetaDireita: TRectangle;
+    KeyEnter: TRectangle;
+    RecSetas: TRectangle;
+    tbcTeclado: TTabControl;
+    TabABC: TTabItem;
+    TabNumeric: TTabItem;
+    Rectangle1: TRectangle;
+    Rectangle3: TRectangle;
+    Rectangle5: TRectangle;
+    Key7: TRectangle;
+    Label21: TLabel;
+    Rectangle9: TRectangle;
+    Key8: TRectangle;
+    Label39: TLabel;
+    Rectangle35: TRectangle;
+    Key9: TRectangle;
+    Label45: TLabel;
+    Rectangle50: TRectangle;
+    Rectangle52: TRectangle;
+    Key1: TRectangle;
+    Label49: TLabel;
+    Rectangle56: TRectangle;
+    Key2: TRectangle;
+    Label50: TLabel;
     Rectangle78: TRectangle;
-    Rectangle79: TRectangle;
+    Key3: TRectangle;
+    Label56: TLabel;
+    Rectangle84: TRectangle;
+    Rectangle85: TRectangle;
+    Key4: TRectangle;
+    Label59: TLabel;
+    Rectangle87: TRectangle;
+    Key5: TRectangle;
+    Label60: TLabel;
+    Rectangle99: TRectangle;
+    Key6: TRectangle;
+    Label66: TLabel;
+    Rectangle107: TRectangle;
+    Rectangle108: TRectangle;
+    KeyDeleteNumber: TRectangle;
+    Label71: TLabel;
+    Rectangle111: TRectangle;
+    KeyBackSpaceNumber: TRectangle;
+    Label73: TLabel;
+    Rectangle14: TRectangle;
+    Key0: TRectangle;
+    Label40: TLabel;
+    Rectangle18: TRectangle;
+    KeyVirgulaNumber: TRectangle;
+    Label41: TLabel;
+    Rectangle22: TRectangle;
+    KeyEnterNumber: TRectangle;
+    Label42: TLabel;
+    KeyLetras: TRectangle;
+    Label43: TLabel;
+    Rectangle29: TRectangle;
+    KeySetaDireitaNumber: TRectangle;
+    KeySetaEsquerdaNumber: TRectangle;
+    procedure KeyQClick(Sender: TObject);
   private
     { Private declarations }
+    procedure KeyClick(Sender: TObject);
   public
     { Public declarations }
   end;
 
 var
-  Form1: TForm1;
+  TecladoVirtualfrm: TTecladoVirtualfrm;
 
 implementation
 
 {$R *.fmx}
+
+{ TTecladoVirtualfrm }
+
+procedure TTecladoVirtualfrm.KeyClick(Sender: TObject);
+var
+  ActiveEdit: TEdit;
+  Rectangle: TRectangle;
+  LabelInside: TLabel;
+  Child: TComponent;
+begin
+  if Tag <> 0 then
+  begin
+    ActiveEdit := TEdit(Tag);
+    if Sender is TRectangle then
+    begin
+      Rectangle := Sender as TRectangle;
+
+      // Busca diretamente pelos filhos do TRectangle
+      for Child in Rectangle.Children do
+      begin
+        if (Child is TLabel) and (Copy(TLabel(Child).Name, 1, 3) = 'lbl') then
+        begin
+          LabelInside := TLabel(Child);
+          ActiveEdit.Text := ActiveEdit.Text + LabelInside.Text;
+          Exit; // Sai ao encontrar
+        end;
+      end;
+
+      // Caso n„o encontre nenhum label com nome adequado
+      ShowMessage('Nenhum label encontrado com prefixo "lbl".');
+    end;
+  end;
+end;
+
+procedure TTecladoVirtualfrm.KeyQClick(Sender: TObject);
+begin
+  KeyClick(Sender);
+end;
 
 end.

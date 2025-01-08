@@ -17,26 +17,31 @@ File_14=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Vendas\Forms\Report\VenPlanilhaS
 
 [Modules]
 Module0=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
-Module1=C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
+Module1=C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas
 Module2=default.htm
-Count=3
+Module3=C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
+Count=4
 EditWindowCount=1
 
 [C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas]
 ModuleType=TSourceModule
 
-[C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas]
+[C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas]
 ModuleType=TSourceModule
 
 [default.htm]
 ModuleType=TURLModule
 
+[C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas]
+ModuleType=TSourceModule
+
 [EditWindow0]
-ViewCount=3
+ViewCount=4
 CurrentEditView=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 View0=0
 View1=1
 View2=2
+View3=3
 PercentageSizes=1
 Create=1
 Visible=1
@@ -74,13 +79,24 @@ CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 CursorX=37
 CursorY=986
-TopLine=984
+TopLine=981
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
+EditViewName=Borland.FormDesignerView
 
 [View2]
+CustomEditViewType=TEditView
+Module=C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Borland.FormDesignerView
+
+[View3]
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
 CursorX=1
@@ -214,12 +230,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=2012
-Height=8480
+Width=1908
+Height=8002
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2012
-ClientHeight=8480
+ClientWidth=1908
+ClientHeight=8002
 TBDockHeight=7157
 LRDockWidth=1999
 Dockable=1
@@ -266,8 +282,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Name,
-ExpandedItems=ConnectedStoredUsage=0,FetchOptions=0,FormatOptions=0,"LiveBindings Designer=0",Params=0,ResourceOptions=0
+SelectedItem=Name,LookupDataSet
+ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,DataBinding=0,LiveBindings=0,Margins=0,Constraints=0,Font=0,GlassFrame=0,BackgroundBitmaps=0,DataController=0,DateTimeHandling=0,EditForm=0,FilterBox=0,Filtering=0,FilterRow=0,FindPanel=0,FixedDataRows=0,Navigator=0,NewItemRow=0,Styles=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -276,7 +292,7 @@ Visible=0
 Docked=1
 State=0
 Left=-8
-Top=-8
+Top=-116
 Width=1849
 Height=3137
 MaxLeft=-1
@@ -351,8 +367,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=0
-Top=0
+Left=-16
+Top=251
 Width=273
 Height=368
 MaxLeft=-1
@@ -408,6 +424,7 @@ Column0Width=145
 Column1Width=100
 Column2Width=115
 Column3Width=227
+Column4Width=10
 
 [LocalVarsWindow]
 PercentageSizes=1
@@ -556,8 +573,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=0
-Top=0
+Left=307
+Top=634
 Width=2858
 Height=3211
 MaxLeft=-1
@@ -726,7 +743,7 @@ Visible=0
 Docked=1
 State=0
 Left=8
-Top=8
+Top=808
 Width=3822
 Height=1422
 MaxLeft=-1
@@ -803,8 +820,8 @@ Width=2012
 Height=8480
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2012
-ClientHeight=8480
+ClientWidth=1908
+ClientHeight=8002
 TBDockHeight=8480
 LRDockWidth=2012
 Dockable=1
