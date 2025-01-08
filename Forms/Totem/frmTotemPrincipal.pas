@@ -733,11 +733,11 @@ begin
       Frame.Visible := False; // Esconde os frames que não correspondem
   end;
 
+  // Reseta a cor de btnIphone para Mintcream
+  btnIphone.Fill.Color := TAlphaColors.Lavenderblush;
+
   // Altera a cor de btnXiaomi para White
   btnXiaomi.Fill.Color := TAlphaColors.White;
-
-  // Reseta a cor de btnIphone para Mintcream
-  btnIphone.Fill.Color := TAlphaColors.Snow;
 
 end;
 
@@ -759,7 +759,7 @@ begin
   end;
 
   // Altera a cor de btnXiaomi para #FFF0EEE8
-  btnXiaomi.Fill.Color := TAlphaColors.Snow;
+  btnXiaomi.Fill.Color := TAlphaColors.Lavenderblush;
 
   // Reseta a cor de btnIphone para branco
   btnIphone.Fill.Color := TAlphaColors.White;
@@ -1007,7 +1007,7 @@ begin
   lFuncoes.ConectaBD_Ini( ConectMarthi, FBLink );
 
   // Define a cor inicial para btnIphone
-  btnIphone.Fill.Color := TAlphaColors.Mintcream; // Cor inicial
+  btnIphone.Fill.Color := TAlphaColors.Lavenderblush; // Cor inicial
   btnXiaomi.Fill.Color := TAlphaColors.White; // Cor inicial
 end;
 

@@ -8,7 +8,8 @@ uses
   Frame.MarthiGIT.Totem in 'Frame.MarthiGIT.Totem.pas' {FrameTotem: TFrame},
   untFuncoes in '..\untFuncoes.pas',
   MyVirtualKeyboard in 'MyVirtualKeyboard.pas',
-  Marthi.PedeSenha in 'Marthi.PedeSenha.pas' {frmPedeSenhaMarthi};
+  Marthi.PedeSenha in 'Marthi.PedeSenha.pas' {frmPedeSenhaMarthi},
+  Marthi.TecladoVirtual in 'Marthi.TecladoVirtual.pas' {Form1};
 
 {$R *.res}
 
@@ -16,5 +17,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrmGeralDM, frmGeralDM);
   Application.CreateForm(TTotemPrincipalfrm, TotemPrincipalfrm);
+  Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.
