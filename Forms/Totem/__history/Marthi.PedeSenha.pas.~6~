@@ -1,0 +1,37 @@
+unit Marthi.PedeSenha;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.ListBox, FMX.StdCtrls, FMX.Controls.Presentation, FMX.Edit, FMX.Layouts, FMX.Effects, FMX.Objects;
+
+type
+  TfrmPedeSenhaMarthi = class(TForm)
+    Rectangle4: TRectangle;
+    ShadowEffect1: TShadowEffect;
+    Principal: TLayout;
+    edtNomeCli: TEdit;
+    lbl3: TLabel;
+    btnCancelar: TRectangle;
+    lbl12: TLabel;
+    btnConfirmar: TRectangle;
+    lbl15: TLabel;
+    lbl13: TLabel;
+    lbl14: TLabel;
+    lbl16: TLabel;
+    Rectangle2: TRectangle;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPedeSenhaMarthi: TfrmPedeSenhaMarthi;
+
+implementation
+
+{$R *.fmx}
+
+end.

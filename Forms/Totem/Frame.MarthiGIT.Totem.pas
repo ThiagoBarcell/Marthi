@@ -59,12 +59,12 @@ type
     Layout2: TLayout;
     Rectangle7: TRectangle;
     Label9: TLabel;
-    cbb1: TComboBox;
+    cbbMododePagamento: TComboBox;
     Layout3: TLayout;
     Rectangle8: TRectangle;
     Layout4: TLayout;
     Label10: TLabel;
-    cbb2: TComboBox;
+    cbbParcelas: TComboBox;
     ListBoxItem1: TListBoxItem;
     ListBoxItem2: TListBoxItem;
     CELL_ID: TLabel;
@@ -75,6 +75,7 @@ type
     lblTOT_WIDTH: TLabel;
     procedure btnComprarClick(Sender: TObject);
     procedure Rectangle1Click(Sender: TObject);
+    procedure cbbMododePagamentoChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -87,6 +88,23 @@ implementation
 {$R *.fmx}
 
 { TFrameTotem }
+
+procedure TFrameTotem.cbbMododePagamentoChange(Sender: TObject);
+begin
+  if cbbMododePagamento.ItemIndex = 0 then
+  begin
+    // À Vista
+    cbbParcelas.Enabled := False;
+    edtValorTel.Text := lblValorAVista.Text;
+  end
+  else if cbbMododePagamento.ItemIndex = 1 then
+  begin
+    // Parcelado
+    cbbParcelas.Enabled := True;
+    cbbParcelas.ItemIndex := 0;
+    edtValorTel.Text := '1 X ' + lblValorAVista.Text;
+  end;
+end;
 
 procedure TFrameTotem.PreencherDados(const Nome: string; Imagem: TImage);
 begin
