@@ -43,8 +43,6 @@ object frmCadProdutos: TfrmCadProdutos
         ImageIndex = 0
         TabVisible = False
         OnShow = tabConsultaShow
-        ExplicitWidth = 0
-        ExplicitHeight = 663
         object pnlTop: TPanel
           Left = 0
           Top = 0
@@ -198,8 +196,6 @@ object frmCadProdutos: TfrmCadProdutos
               object tabFiltroCadastro: TcxTabSheet
                 Caption = 'cxTabSheet1'
                 ImageIndex = 0
-                ExplicitWidth = 0
-                ExplicitHeight = 0
                 object Label2: TLabel
                   Left = 261
                   Top = 13
@@ -229,8 +225,6 @@ object frmCadProdutos: TfrmCadProdutos
               object tabFiltroDesc: TcxTabSheet
                 Caption = 'tabFiltroDesc'
                 ImageIndex = 1
-                ExplicitWidth = 0
-                ExplicitHeight = 0
                 object edtFiltroDesc: TcxTextEdit
                   Left = 32
                   Top = 7
@@ -240,8 +234,6 @@ object frmCadProdutos: TfrmCadProdutos
               end
               object tabFiltroReferencia: TcxTabSheet
                 ImageIndex = 2
-                ExplicitWidth = 0
-                ExplicitHeight = 0
                 object edtFiltroReferencia: TcxTextEdit
                   Left = 32
                   Top = 7
@@ -306,7 +298,6 @@ object frmCadProdutos: TfrmCadProdutos
           LookAndFeel.Kind = lfUltraFlat
           LookAndFeel.NativeStyle = False
           LookAndFeel.SkinName = 'UserSkin'
-          ExplicitHeight = 584
           object grdConsultaProdDBTableView: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             Navigator.Buttons.First.Visible = True
@@ -7818,7 +7809,6 @@ object frmCadProdutos: TfrmCadProdutos
           043C65A1170000000049454E44AE426082}
         PaintStyle = bpsGlyph
         TabOrder = 1
-        Visible = False
         OnClick = btnConfiguracaoClick
       end
       object btnTabPrecos: TcxButton

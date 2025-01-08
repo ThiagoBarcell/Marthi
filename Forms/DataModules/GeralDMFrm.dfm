@@ -543,4 +543,52 @@ object frmGeralDM: TfrmGeralDM
     Left = 46
     Top = 326
   end
+  object qryConfiguracoes: TFDQuery
+    Connection = ConectMarthi
+    UpdateObject = upsConfiguracoes
+    SQL.Strings = (
+      'SELECT'
+      '  API_KEY_WHATSAPP,'
+      '  CELL_RECEPTOR_WHATSAPP,'
+      '  SENHA_ACESSO'
+      '  FROM CELL_CONFIG')
+    Left = 160
+    Top = 208
+    object qryConfiguracoesAPI_KEY_WHATSAPP: TStringField
+      FieldName = 'API_KEY_WHATSAPP'
+      Origin = 'API_KEY_WHATSAPP'
+      Size = 255
+    end
+    object qryConfiguracoesCELL_RECEPTOR_WHATSAPP: TStringField
+      FieldName = 'CELL_RECEPTOR_WHATSAPP'
+      Origin = 'CELL_RECEPTOR_WHATSAPP'
+    end
+    object qryConfiguracoesSENHA_ACESSO: TStringField
+      FieldName = 'SENHA_ACESSO'
+      Origin = 'SENHA_ACESSO'
+      Size = 50
+    end
+  end
+  object dtsConfiguracoes: TDataSource
+    DataSet = qryConfiguracoes
+    Left = 160
+    Top = 264
+  end
+  object upsConfiguracoes: TFDUpdateSQL
+    Connection = ConectMarthi
+    InsertSQL.Strings = (
+      
+        'INSERT INTO CELL_CONFIG (API_KEY_WHATSAPP, CELL_RECEPTOR_WHATSAP' +
+        'P, SENHA_ACESSO)'
+      
+        'VALUES (:API_KEY_WHATSAPP, :CELL_RECEPTOR_WHATSAPP, :SENHA_ACESS' +
+        'O);')
+    ModifySQL.Strings = (
+      'UPDATE CELL_CONFIG'
+      'SET API_KEY_WHATSAPP = :API_KEY_WHATSAPP,'
+      '  CELL_RECEPTOR_WHATSAPP = :CELL_RECEPTOR_WHATSAPP,'
+      '  SENHA_ACESSO = :SENHA_ACESSO')
+    Left = 160
+    Top = 328
+  end
 end
