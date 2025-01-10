@@ -42,6 +42,7 @@ type
     procedure btnConfirmarClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
     procedure edtSenhaEnter(Sender: TObject);
+    procedure edtSenhaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -74,7 +75,7 @@ begin
     MessageDlg('Senha Invalida !', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
 end;
 
-procedure TfrmPedeSenhaMarthi.edtSenhaEnter(Sender: TObject);
+procedure TfrmPedeSenhaMarthi.edtSenhaClick(Sender: TObject);
 begin
   if not Assigned(TecladoVirtualfrm) then
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
@@ -88,6 +89,11 @@ begin
 
   // Exibe o teclado
   TecladoVirtualfrm.Show;
+end;
+
+procedure TfrmPedeSenhaMarthi.edtSenhaEnter(Sender: TObject);
+begin
+  
 //  if not IsKeyboardShown then
 //  begin
 //    ShowKeyboardOn(TEdit(Sender));

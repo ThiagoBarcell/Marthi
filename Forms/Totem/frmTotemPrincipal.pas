@@ -101,6 +101,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure Rectangle2DblClick(Sender: TObject);
     procedure KeyQClick(Sender: TObject);
+    procedure edtPesquisaClick(Sender: TObject);
   private
     { Private declarations }
     procedure CarregarDados;
@@ -114,8 +115,8 @@ type
     procedure RetiradaChange(Sender: TObject);
     procedure ParcelasChange(Sender: TObject);
     procedure EnviaWhatsapp(Sender: TObject);
-    procedure OnEnterNomeCli(Sender: TObject);
-    procedure OnEnterTelCli(Sender: TObject);
+    procedure OnClickNomeCli(Sender: TObject);
+    procedure OnClickTelCli(Sender: TObject);
     procedure AtualizarBotoesNavegacao(Frame: TFrameTotem);
     procedure BotaoDireitaClick(Sender: TObject);
     procedure BotaoEsquerdaClick(Sender: TObject);
@@ -362,8 +363,8 @@ begin
     Frame.btnEnviaWhatsapp.OnClick := EnviaWhatsapp;
 
     // Atribuir o evento OnEnter
-    Frame.edtNomeCli.OnEnter := OnEnterNomeCli;
-    Frame.edtTelCli.OnEnter := OnEnterTelCli;
+    Frame.edtNomeCli.OnClick := OnClickNomeCli;
+    Frame.edtTelCli.OnClick := OnClickTelCli;
 
     dtsCadCell.DataSet.Next;
   end;
@@ -385,7 +386,7 @@ begin
     PostMessage(hwnd, WM_CLOSE, 0, 0);
 end;
 
-procedure TTotemPrincipalfrm.OnEnterNomeCli(Sender: TObject);
+procedure TTotemPrincipalfrm.OnClickNomeCli(Sender: TObject);
 begin
   if not Assigned(TecladoVirtualfrm) then
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
@@ -409,7 +410,7 @@ begin
 //    IsKeyboardShown := False;
 end;
 
-procedure TTotemPrincipalfrm.OnEnterTelCli(Sender: TObject);
+procedure TTotemPrincipalfrm.OnClickTelCli(Sender: TObject);
 begin
   if not Assigned(TecladoVirtualfrm) then
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
@@ -975,9 +976,8 @@ begin
   KeyClick(Sender);
 end;
 
-procedure TTotemPrincipalfrm.edtPesquisaEnter(Sender: TObject);
+procedure TTotemPrincipalfrm.edtPesquisaClick(Sender: TObject);
 begin
-
   if not Assigned(TecladoVirtualfrm) then
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
 
@@ -990,6 +990,12 @@ begin
 
   // Exibe o teclado
   TecladoVirtualfrm.Show;
+end;
+
+procedure TTotemPrincipalfrm.edtPesquisaEnter(Sender: TObject);
+begin
+
+  
 //
 //  // Opcional: Força o foco no TEdit
 //  TEdit(Sender).SetFocus;

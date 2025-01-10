@@ -44,9 +44,6 @@ type
     Rectangle21: TRectangle;
     KeyP: TRectangle;
     lblP: TLabel;
-    Rectangle25: TRectangle;
-    KeyAgudo: TRectangle;
-    lblAgudo: TLabel;
     Rectangle23: TRectangle;
     Rectangle24: TRectangle;
     KeyZ: TRectangle;
@@ -75,9 +72,6 @@ type
     Rectangle42: TRectangle;
     KeyB: TRectangle;
     lblB: TLabel;
-    Rectangle44: TRectangle;
-    KeyQShifit: TRectangle;
-    Label20: TLabel;
     Rectangle48: TRectangle;
     Rectangle49: TRectangle;
     KeyA: TRectangle;
@@ -109,10 +103,6 @@ type
     Rectangle67: TRectangle;
     KeyÇ: TRectangle;
     lblÇ: TLabel;
-    Rectangle69: TRectangle;
-    KeyAcentos: TRectangle;
-    lblTiu: TLabel;
-    lblCircunflexo: TLabel;
     Rectangle71: TRectangle;
     Rectangle72: TRectangle;
     KeyDelete: TRectangle;
@@ -123,7 +113,6 @@ type
     KeyQBackSpace: TRectangle;
     lblBackSpace: TLabel;
     Rectangle1: TRectangle;
-    Rectangle3: TRectangle;
     Rectangle5: TRectangle;
     Key7: TRectangle;
     lbl7: TLabel;
@@ -143,7 +132,6 @@ type
     Rectangle78: TRectangle;
     Key3: TRectangle;
     lbl3: TLabel;
-    Rectangle84: TRectangle;
     Rectangle85: TRectangle;
     Key4: TRectangle;
     lbl4: TLabel;
@@ -153,13 +141,15 @@ type
     Rectangle99: TRectangle;
     Key6: TRectangle;
     lbl6: TLabel;
-    Rectangle107: TRectangle;
     Rectangle14: TRectangle;
     Key0: TRectangle;
     lbl0: TLabel;
     RecEnter: TRectangle;
     KeyEnter: TRectangle;
     lblEnter: TLabel;
+    KeytraçoPrin: TRectangle;
+    Keytraço: TRectangle;
+    lbltraço: TLabel;
     procedure KeyQClick(Sender: TObject);
     private
     FTargetEdit: TEdit;
@@ -209,7 +199,7 @@ begin
           // Processa teclas especiais
           if KeyAction = 'Enter' then
           begin
-            FTargetEdit.Text := FTargetEdit.Text + sLineBreak;
+            close;
           end
           else if KeyAction = 'Space' then
           begin
