@@ -51,18 +51,18 @@ Coordinates=377,80,82,33
 Coordinates=742,662,69,33
 Visible=True
 
-[Rectangle11]
-Coordinates=742,717,75,33
-
 [lytToten]
 Coordinates=603,857,54,33
 
 [lytGlobal]
 Coordinates=584,904,58,33
 
-[Rectangle10]
-Coordinates=742,827,75,33
-
 [dtsImagensCell]
 Coordinates=590,637,92,123
+
+[RecTop]
+Coordinates=742,717,75,33
+
+[RecCenter]
+Coordinates=742,827,75,33
 

@@ -81,8 +81,8 @@ begin
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
 
   // Posiciona o teclado próximo ao TEdit
-  TecladoVirtualfrm.Left := Round(TEdit(Sender).AbsoluteRect.Left);
-  TecladoVirtualfrm.Top := Round(TEdit(Sender).AbsoluteRect.Bottom);
+  TecladoVirtualfrm.Left := Round(TEdit(Sender).AbsoluteRect.Left) + 300;
+  TecladoVirtualfrm.Top := Round(TEdit(Sender).AbsoluteRect.Bottom) + 300;
 
   // Associa explicitamente o TEdit ao teclado virtual
   TecladoVirtualfrm.SetTargetEdit(TEdit(Sender));

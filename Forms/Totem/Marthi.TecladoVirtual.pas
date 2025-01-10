@@ -11,7 +11,7 @@ uses
 type
   TTecladoVirtualfrm = class(TForm)
     Rectangle11: TRectangle;
-    Rectangle7: TRectangle;
+    RecBotoesLetras: TRectangle;
     RecTeclado: TRectangle;
     Rectangle2: TRectangle;
     Rectangle12: TRectangle;
@@ -112,7 +112,7 @@ type
     Rectangle74: TRectangle;
     KeyQBackSpace: TRectangle;
     lblBackSpace: TLabel;
-    Rectangle1: TRectangle;
+    RecBotoesNumericos: TRectangle;
     Rectangle5: TRectangle;
     Key7: TRectangle;
     lbl7: TLabel;

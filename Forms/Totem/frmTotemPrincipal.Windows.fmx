@@ -3,9 +3,9 @@ inherited TotemPrincipalfrm_Windows: TTotemPrincipalfrm_Windows
   inherited lytGlobal: TLayout
     inherited Rectangle8: TRectangle
       inherited lytToten: TLayout
-        inherited Rectangle11: TRectangle
+        inherited RecTop: TRectangle
           inherited lytCenter: TLayout
-            inherited Rectangle10: TRectangle
+            inherited RecCenter: TRectangle
               inherited Layout3: TLayout
                 inherited VertScrollBox1: TVertScrollBox
                   Viewport.Width = 1560.000000000000000000
@@ -44,7 +44,7 @@ inherited TotemPrincipalfrm_Windows: TTotemPrincipalfrm_Windows
           end
           inherited lytTop: TLayout
             inherited Layout1: TLayout
-              inherited Rectangle3: TRectangle
+              inherited recEdit: TRectangle
                 inherited Layout2: TLayout
                   inherited img3: TImage
                     MultiResBitmap.Height = 43

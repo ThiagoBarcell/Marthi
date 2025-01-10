@@ -39,8 +39,8 @@ type
     lytGlobal: TLayout;
     lytToten: TLayout;
     Rectangle8: TRectangle;
-    Rectangle10: TRectangle;
-    Rectangle11: TRectangle;
+    RecCenter: TRectangle;
+    RecTop: TRectangle;
     dtsCadCell: TBindSourceDB;
     FBLink: TFDPhysFBDriverLink;
     qryCapacidades: TFDQuery;
@@ -70,7 +70,7 @@ type
     Label2: TLabel;
     Rectangle5: TRectangle;
     Layout1: TLayout;
-    Rectangle3: TRectangle;
+    recEdit: TRectangle;
     Layout2: TLayout;
     img3: TImage;
     qryRetirada: TFDQuery;
@@ -100,7 +100,6 @@ type
     procedure btnXiaomiClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Rectangle2DblClick(Sender: TObject);
-    procedure KeyQClick(Sender: TObject);
     procedure edtPesquisaClick(Sender: TObject);
   private
     { Private declarations }
@@ -123,7 +122,6 @@ type
     procedure ViewportPositionChange(Sender: TObject; const OldViewportPosition, NewViewportPosition: TPointF; const ContentSizeChanged: Boolean);
     procedure PreencherParcelas(ComboBox: TComboBox; CELL_ID, ITEM_ID,
       CELL_TP_PRECO: Integer; ValorAVista: Double);
-    procedure KeyClick(Sender: TObject);
   public
     { Public declarations }
   end;
@@ -387,13 +385,29 @@ begin
 end;
 
 procedure TTotemPrincipalfrm.OnClickNomeCli(Sender: TObject);
+var
+  Edit : TEdit;
+  ParentObject: TFmxObject;
+  Frame: TFrameTotem;
 begin
+  Edit := Sender as TEdit;
+
+  // Encontra o Frame pai do ComboBox
+  ParentObject := Edit.Parent;
+  while (ParentObject <> nil) and not (ParentObject is TFrameTotem) do
+    ParentObject := ParentObject.Parent;
+
+  if not (ParentObject is TFrameTotem) then
+    Exit;
+
+  Frame := TFrameTotem(ParentObject);
+
   if not Assigned(TecladoVirtualfrm) then
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
 
   // Posiciona o teclado próximo ao TEdit
   TecladoVirtualfrm.Left := Round(TEdit(Sender).AbsoluteRect.Left);
-  TecladoVirtualfrm.Top := Round(TEdit(Sender).AbsoluteRect.Bottom);
+  TecladoVirtualfrm.Top := Round(Frame.RecFrame.AbsoluteRect.Bottom);
 
   // Associa explicitamente o TEdit ao teclado virtual
   TecladoVirtualfrm.SetTargetEdit(TEdit(Sender));
@@ -411,13 +425,29 @@ begin
 end;
 
 procedure TTotemPrincipalfrm.OnClickTelCli(Sender: TObject);
+var
+  Edit : TEdit;
+  ParentObject: TFmxObject;
+  Frame: TFrameTotem;
 begin
+  Edit := Sender as TEdit;
+
+  // Encontra o Frame pai do ComboBox
+  ParentObject := Edit.Parent;
+  while (ParentObject <> nil) and not (ParentObject is TFrameTotem) do
+    ParentObject := ParentObject.Parent;
+
+  if not (ParentObject is TFrameTotem) then
+    Exit;
+
+  Frame := TFrameTotem(ParentObject);
+
   if not Assigned(TecladoVirtualfrm) then
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
 
   // Posiciona o teclado próximo ao TEdit
   TecladoVirtualfrm.Left := Round(TEdit(Sender).AbsoluteRect.Left);
-  TecladoVirtualfrm.Top := Round(TEdit(Sender).AbsoluteRect.Bottom);
+  TecladoVirtualfrm.Top := Round(Frame.RecFrame.AbsoluteRect.Bottom);
 
   // Associa explicitamente o TEdit ao teclado virtual
   TecladoVirtualfrm.SetTargetEdit(TEdit(Sender));
@@ -919,71 +949,14 @@ begin
   end;
 end;
 
-procedure TTotemPrincipalfrm.KeyClick(Sender: TObject);
-var
-  Rectangle: TRectangle;
-  LabelInside: TLabel;
-  Child: TComponent;
-  KeyAction: string;
-begin
-  if Sender is TRectangle then
-  begin
-    Rectangle := Sender as TRectangle;
-
-    // Busca diretamente pelos filhos do TRectangle
-    for Child in Rectangle.Children do
-    begin
-      if (Child is TLabel) and (Copy(TLabel(Child).Name, 1, 3) = 'lbl') then
-      begin
-        LabelInside := TLabel(Child);
-        KeyAction := LabelInside.Text;
-
-        // Processa teclas especiais
-        if KeyAction = 'Enter' then
-        begin
-          edtPesquisa.Text := edtPesquisa.Text + sLineBreak;
-        end
-        else if KeyAction = 'Space' then
-        begin
-          edtPesquisa.Text := edtPesquisa.Text + ' ';
-        end
-        else if KeyAction = 'BackSpace' then
-        begin
-          if Length(edtPesquisa.Text) > 0 then
-            edtPesquisa.Text := Copy(edtPesquisa.Text, 1, Length(edtPesquisa.Text) - 1);
-        end
-        else if KeyAction = 'Delete' then
-        begin
-          edtPesquisa.Text := '';
-        end
-        else
-        begin
-          edtPesquisa.Text := edtPesquisa.Text + KeyAction;
-        end;
-
-        // Dispara manualmente o evento Typing
-        edtPesquisaTyping(edtPesquisa);  // Chama o evento de digitação diretamente
-        Exit;
-      end;
-    end;
-
-    ShowMessage('Nenhum label encontrado com prefixo "lbl".');
-  end;
-end;
-
-procedure TTotemPrincipalfrm.KeyQClick(Sender: TObject);
-begin
-  KeyClick(Sender);
-end;
-
 procedure TTotemPrincipalfrm.edtPesquisaClick(Sender: TObject);
 begin
   if not Assigned(TecladoVirtualfrm) then
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
 
   // Posiciona o teclado próximo ao TEdit
-  TecladoVirtualfrm.Left := Round(TEdit(Sender).AbsoluteRect.Left);
-  TecladoVirtualfrm.Top := Round(TEdit(Sender).AbsoluteRect.Bottom);
+  TecladoVirtualfrm.Left := Round(recEdit.AbsoluteRect.Left);
+  TecladoVirtualfrm.Top := Round(RecCenter.AbsoluteRect.Top + 10);
 
   // Associa explicitamente o TEdit ao teclado virtual
   TecladoVirtualfrm.SetTargetEdit(TEdit(Sender));

@@ -11,13 +11,13 @@ inherited TotemPrincipalfrm_Surface: TTotemPrincipalfrm_Surface
       inherited lytToten: TLayout
         Size.Width = 1080.000000000000000000
         Size.Height = 1871.000000000000000000
-        inherited Rectangle11: TRectangle
+        inherited RecTop: TRectangle
           Size.Width = 1080.000000000000000000
           Size.Height = 1871.000000000000000000
           inherited lytCenter: TLayout
             Size.Width = 815.000000000000000000
             Size.Height = 1667.000000000000000000
-            inherited Rectangle10: TRectangle
+            inherited RecCenter: TRectangle
               Size.Width = 800.000000000000000000
               Size.Height = 1667.000000000000000000
               inherited Layout3: TLayout
@@ -68,7 +68,7 @@ inherited TotemPrincipalfrm_Surface: TTotemPrincipalfrm_Surface
             end
             inherited Layout1: TLayout
               Size.Width = 1040.000000000000000000
-              inherited Rectangle3: TRectangle
+              inherited recEdit: TRectangle
                 Size.Width = 1040.000000000000000000
                 inherited Layout2: TLayout
                   Size.Width = 1040.000000000000000000

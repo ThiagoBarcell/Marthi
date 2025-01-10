@@ -11,13 +11,13 @@ inherited TotemPrincipalfrm_Moto360: TTotemPrincipalfrm_Moto360
       inherited lytToten: TLayout
         Size.Width = 240.000000000000000000
         Size.Height = 169.000000000000000000
-        inherited Rectangle11: TRectangle
+        inherited RecTop: TRectangle
           Size.Width = 240.000000000000000000
           Size.Height = 169.000000000000000000
           inherited lytCenter: TLayout
             Size.Width = 0.000000000000000000
             Size.Height = 0.000000000000000000
-            inherited Rectangle10: TRectangle
+            inherited RecCenter: TRectangle
               inherited Layout3: TLayout
                 inherited VertScrollBox1: TVertScrollBox
                   Viewport.Width = 1560.000000000000000000
@@ -62,7 +62,7 @@ inherited TotemPrincipalfrm_Moto360: TTotemPrincipalfrm_Moto360
             end
             inherited Layout1: TLayout
               Size.Width = 200.000000000000000000
-              inherited Rectangle3: TRectangle
+              inherited recEdit: TRectangle
                 Size.Width = 200.000000000000000000
                 inherited Layout2: TLayout
                   Size.Width = 200.000000000000000000

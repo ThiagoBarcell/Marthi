@@ -3,33 +3,36 @@
   Top = 0
   BorderStyle = None
   Caption = 'Form1'
-  ClientHeight = 328
-  ClientWidth = 717
+  ClientHeight = 291
+  ClientWidth = 703
+  Position = Designed
+  Quality = HighQuality
+  Transparency = True
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
   object Rectangle11: TRectangle
-    Align = Client
+    Align = Contents
     Fill.Color = xF5F5F5F5
-    Size.Width = 717.000000000000000000
-    Size.Height = 328.000000000000000000
+    Size.Width = 703.000000000000000000
+    Size.Height = 291.000000000000000000
     Size.PlatformDefault = False
     Stroke.Kind = None
     XRadius = 5.000000000000000000
     YRadius = 5.000000000000000000
-    object Rectangle7: TRectangle
+    object RecBotoesLetras: TRectangle
       Align = Top
       Fill.Color = xF5F5F5F5
       Position.Y = 65.000000000000000000
-      Size.Width = 717.000000000000000000
+      Size.Width = 703.000000000000000000
       Size.Height = 197.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None
       object RecTeclado: TRectangle
         Align = Client
         Fill.Color = xF5F5F5F5
-        Size.Width = 717.000000000000000000
+        Size.Width = 703.000000000000000000
         Size.Height = 197.000000000000000000
         Size.PlatformDefault = False
         Stroke.Kind = None
@@ -44,7 +47,7 @@
           Margins.Bottom = 3.000000000000000000
           Position.X = 3.000000000000000000
           Position.Y = 3.000000000000000000
-          Size.Width = 711.000000000000000000
+          Size.Width = 697.000000000000000000
           Size.Height = 60.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
@@ -488,7 +491,7 @@
           Margins.Bottom = 3.000000000000000000
           Position.X = 3.000000000000000000
           Position.Y = 135.000000000000000000
-          Size.Width = 711.000000000000000000
+          Size.Width = 697.000000000000000000
           Size.Height = 60.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
@@ -776,7 +779,7 @@
           Margins.Bottom = 3.000000000000000000
           Position.X = 3.000000000000000000
           Position.Y = 69.000000000000000000
-          Size.Width = 711.000000000000000000
+          Size.Width = 697.000000000000000000
           Size.Height = 60.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
@@ -1213,10 +1216,10 @@
         end
       end
     end
-    object Rectangle1: TRectangle
+    object RecBotoesNumericos: TRectangle
       Align = Top
       Fill.Color = xF5F5F5F5
-      Size.Width = 717.000000000000000000
+      Size.Width = 703.000000000000000000
       Size.Height = 65.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None
@@ -1231,7 +1234,7 @@
         Margins.Bottom = 3.000000000000000000
         Position.X = 3.000000000000000000
         Position.Y = 3.000000000000000000
-        Size.Width = 711.000000000000000000
+        Size.Width = 697.000000000000000000
         Size.Height = 62.000000000000000000
         Size.PlatformDefault = False
         Stroke.Kind = None
@@ -1716,7 +1719,7 @@
       Margins.Bottom = 3.000000000000000000
       Position.X = 3.000000000000000000
       Position.Y = 265.000000000000000000
-      Size.Width = 711.000000000000000000
+      Size.Width = 697.000000000000000000
       Size.Height = 60.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None

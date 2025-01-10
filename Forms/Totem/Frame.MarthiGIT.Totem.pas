@@ -9,7 +9,7 @@ uses
 
 type
   TFrameTotem = class(TFrame)
-    Rectangle4: TRectangle;
+    RecFrame: TRectangle;
     tbcTotem: TTabControl;
     TabTotemPrincipal: TTabItem;
     Layout6: TLayout;

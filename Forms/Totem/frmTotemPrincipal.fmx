@@ -604,7 +604,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
         Size.Height = 1112.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
-        object Rectangle11: TRectangle
+        object RecTop: TRectangle
           Align = Client
           Fill.Color = xF5F5F5F5
           Size.Width = 1840.000000000000000000
@@ -619,7 +619,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
             Size.Height = 908.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
-            object Rectangle10: TRectangle
+            object RecCenter: TRectangle
               Align = Client
               Fill.Color = xF5F5F5F5
               Size.Width = 1560.000000000000000000
@@ -871,7 +871,7 @@ object TotemPrincipalfrm: TTotemPrincipalfrm
               Size.Height = 53.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
-              object Rectangle3: TRectangle
+              object recEdit: TRectangle
                 Align = Client
                 Fill.Color = claWhite
                 Size.Width = 1800.000000000000000000
