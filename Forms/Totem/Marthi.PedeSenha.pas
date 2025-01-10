@@ -20,7 +20,8 @@ uses
   FMX.Layouts,
   FMX.Effects,
   FMX.Objects,
-  MyVirtualKeyboard;
+  MyVirtualKeyboard,
+  Marthi.TecladoVirtual;
 
 type
   TfrmPedeSenhaMarthi = class(TForm)
@@ -75,13 +76,25 @@ end;
 
 procedure TfrmPedeSenhaMarthi.edtSenhaEnter(Sender: TObject);
 begin
-  if not IsKeyboardShown then
-  begin
-    ShowKeyboardOn(TEdit(Sender));
-    IsKeyboardShown := True; // Marca como exibido
-  end
-  else
-    IsKeyboardShown := False;
+  if not Assigned(TecladoVirtualfrm) then
+    TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+
+  // Posiciona o teclado próximo ao TEdit
+  TecladoVirtualfrm.Left := Round(TEdit(Sender).AbsoluteRect.Left);
+  TecladoVirtualfrm.Top := Round(TEdit(Sender).AbsoluteRect.Bottom);
+
+  // Associa explicitamente o TEdit ao teclado virtual
+  TecladoVirtualfrm.SetTargetEdit(TEdit(Sender));
+
+  // Exibe o teclado
+  TecladoVirtualfrm.Show;
+//  if not IsKeyboardShown then
+//  begin
+//    ShowKeyboardOn(TEdit(Sender));
+//    IsKeyboardShown := True; // Marca como exibido
+//  end
+//  else
+//    IsKeyboardShown := False;
 end;
 
 procedure TfrmPedeSenhaMarthi.FormKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);

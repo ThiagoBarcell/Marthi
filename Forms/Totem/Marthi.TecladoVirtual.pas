@@ -1,4 +1,4 @@
-unit Marthi.TecladoVirtual;
+Ôªøunit Marthi.TecladoVirtual;
 
 interface
 
@@ -6,30 +6,32 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Objects, FMX.TabControl,
-  FMX.Edit;
+  FMX.Edit, FMX.Platform, FMX.VirtualKeyboard;
 
 type
   TTecladoVirtualfrm = class(TForm)
+    Rectangle11: TRectangle;
+    Rectangle7: TRectangle;
     RecTeclado: TRectangle;
-    KeyQ: TRectangle;
-    Rectangle12: TRectangle;
-    lblQ: TLabel;
     Rectangle2: TRectangle;
+    Rectangle12: TRectangle;
+    KeyQ: TRectangle;
+    lblQ: TLabel;
     Rectangle4: TRectangle;
     KeyW: TRectangle;
     lblW: TLabel;
     Rectangle6: TRectangle;
     KeyO: TRectangle;
     lblO: TLabel;
-    Rectangle8: TRectangle;
-    KeyR: TRectangle;
-    lblR: TLabel;
     Rectangle10: TRectangle;
     KeyY: TRectangle;
     lblY: TLabel;
     Rectangle13: TRectangle;
     KeyI: TRectangle;
     lblI: TLabel;
+    Rectangle8: TRectangle;
+    KeyR: TRectangle;
+    lblR: TLabel;
     Rectangle15: TRectangle;
     KeyU: TRectangle;
     lblU: TLabel;
@@ -105,8 +107,8 @@ type
     KeyG: TRectangle;
     lblG: TLabel;
     Rectangle67: TRectangle;
-    Key«: TRectangle;
-    lbl«: TLabel;
+    Key√á: TRectangle;
+    lbl√á: TLabel;
     Rectangle69: TRectangle;
     KeyAcentos: TRectangle;
     lblTiu: TLabel;
@@ -114,80 +116,58 @@ type
     Rectangle71: TRectangle;
     Rectangle72: TRectangle;
     KeyDelete: TRectangle;
-    Label22: TLabel;
+    lblDelete: TLabel;
     KeySpace: TRectangle;
-    Label35: TLabel;
-    RecEnter: TRectangle;
-    Label37: TLabel;
-    KeyNumeric: TRectangle;
-    Label38: TLabel;
+    lblSpace: TLabel;
     Rectangle74: TRectangle;
     KeyQBackSpace: TRectangle;
-    Label36: TLabel;
-    KeySetaEsquerda: TRectangle;
-    KeySetaDireita: TRectangle;
-    KeyEnter: TRectangle;
-    RecSetas: TRectangle;
-    tbcTeclado: TTabControl;
-    TabABC: TTabItem;
-    TabNumeric: TTabItem;
+    lblBackSpace: TLabel;
     Rectangle1: TRectangle;
     Rectangle3: TRectangle;
     Rectangle5: TRectangle;
     Key7: TRectangle;
-    Label21: TLabel;
+    lbl7: TLabel;
     Rectangle9: TRectangle;
     Key8: TRectangle;
-    Label39: TLabel;
+    lbl8: TLabel;
     Rectangle35: TRectangle;
     Key9: TRectangle;
-    Label45: TLabel;
+    lbl9: TLabel;
     Rectangle50: TRectangle;
     Rectangle52: TRectangle;
     Key1: TRectangle;
-    Label49: TLabel;
+    lbl1: TLabel;
     Rectangle56: TRectangle;
     Key2: TRectangle;
-    Label50: TLabel;
+    lbl2: TLabel;
     Rectangle78: TRectangle;
     Key3: TRectangle;
-    Label56: TLabel;
+    lbl3: TLabel;
     Rectangle84: TRectangle;
     Rectangle85: TRectangle;
     Key4: TRectangle;
-    Label59: TLabel;
+    lbl4: TLabel;
     Rectangle87: TRectangle;
     Key5: TRectangle;
-    Label60: TLabel;
+    lbl5: TLabel;
     Rectangle99: TRectangle;
     Key6: TRectangle;
-    Label66: TLabel;
+    lbl6: TLabel;
     Rectangle107: TRectangle;
-    Rectangle108: TRectangle;
-    KeyDeleteNumber: TRectangle;
-    Label71: TLabel;
-    Rectangle111: TRectangle;
-    KeyBackSpaceNumber: TRectangle;
-    Label73: TLabel;
     Rectangle14: TRectangle;
     Key0: TRectangle;
-    Label40: TLabel;
-    Rectangle18: TRectangle;
-    KeyVirgulaNumber: TRectangle;
-    Label41: TLabel;
-    Rectangle22: TRectangle;
-    KeyEnterNumber: TRectangle;
-    Label42: TLabel;
-    KeyLetras: TRectangle;
-    Label43: TLabel;
-    Rectangle29: TRectangle;
-    KeySetaDireitaNumber: TRectangle;
-    KeySetaEsquerdaNumber: TRectangle;
+    lbl0: TLabel;
+    RecEnter: TRectangle;
+    KeyEnter: TRectangle;
+    lblEnter: TLabel;
     procedure KeyQClick(Sender: TObject);
-  private
+    private
+    FTargetEdit: TEdit;
     { Private declarations }
     procedure KeyClick(Sender: TObject);
+
   public
+    procedure SetTargetEdit(ATargetEdit: TEdit);
     { Public declarations }
   end;
 
@@ -200,16 +180,20 @@ implementation
 
 { TTecladoVirtualfrm }
 
+procedure TTecladoVirtualfrm.SetTargetEdit(ATargetEdit: TEdit);
+begin
+  FTargetEdit := ATargetEdit;
+end;
+
 procedure TTecladoVirtualfrm.KeyClick(Sender: TObject);
 var
-  ActiveEdit: TEdit;
   Rectangle: TRectangle;
   LabelInside: TLabel;
   Child: TComponent;
+  KeyAction: string;
 begin
-  if Tag <> 0 then
+  if Assigned(FTargetEdit) then
   begin
-    ActiveEdit := TEdit(Tag);
     if Sender is TRectangle then
     begin
       Rectangle := Sender as TRectangle;
@@ -220,15 +204,44 @@ begin
         if (Child is TLabel) and (Copy(TLabel(Child).Name, 1, 3) = 'lbl') then
         begin
           LabelInside := TLabel(Child);
-          ActiveEdit.Text := ActiveEdit.Text + LabelInside.Text;
-          Exit; // Sai ao encontrar
+          KeyAction := LabelInside.Text;
+
+          // Processa teclas especiais
+          if KeyAction = 'Enter' then
+          begin
+            FTargetEdit.Text := FTargetEdit.Text + sLineBreak;
+          end
+          else if KeyAction = 'Space' then
+          begin
+            FTargetEdit.Text := FTargetEdit.Text + ' ';
+          end
+          else if KeyAction = 'BackSpace' then
+          begin
+            if Length(FTargetEdit.Text) > 0 then
+              FTargetEdit.Text := Copy(FTargetEdit.Text, 1, Length(FTargetEdit.Text) - 1);
+          end
+          else if KeyAction = 'Delete' then
+          begin
+            FTargetEdit.Text := '';
+          end
+          else
+          begin
+            FTargetEdit.Text := FTargetEdit.Text + KeyAction;
+          end;
+
+          // Chama o evento OnTyping de FTargetEdit
+          if Assigned(FTargetEdit.OnTyping) then
+            FTargetEdit.OnTyping(FTargetEdit);  // Dispara o evento Typing manualmente
+
+          Exit;
         end;
       end;
 
-      // Caso n„o encontre nenhum label com nome adequado
       ShowMessage('Nenhum label encontrado com prefixo "lbl".');
     end;
-  end;
+  end
+  else
+    ShowMessage('Nenhum controle de texto associado.');
 end;
 
 procedure TTecladoVirtualfrm.KeyQClick(Sender: TObject);

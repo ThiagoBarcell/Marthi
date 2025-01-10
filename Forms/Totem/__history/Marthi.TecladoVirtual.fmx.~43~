@@ -1,0 +1,2583 @@
+﻿object TecladoVirtualfrm: TTecladoVirtualfrm
+  Left = 0
+  Top = 0
+  BorderStyle = None
+  Caption = 'Form1'
+  ClientHeight = 265
+  ClientWidth = 848
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object tbcTeclado: TTabControl
+    Align = Client
+    FullSize = True
+    Size.Width = 848.000000000000000000
+    Size.Height = 265.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'tabcontrolstyle'
+    TabIndex = 0
+    TabOrder = 0
+    TabPosition = None
+    Sizes = (
+      848s
+      265s
+      848s
+      265s)
+    object TabABC: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 8.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      object RecTeclado: TRectangle
+        Align = Client
+        Fill.Color = xF5F5F5F5
+        Size.Width = 848.000000000000000000
+        Size.Height = 265.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 5.000000000000000000
+        YRadius = 5.000000000000000000
+        object Rectangle2: TRectangle
+          Align = Top
+          Fill.Color = xF5F5F5F5
+          Margins.Left = 3.000000000000000000
+          Margins.Top = 3.000000000000000000
+          Margins.Right = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Position.X = 3.000000000000000000
+          Position.Y = 3.000000000000000000
+          Size.Width = 842.000000000000000000
+          Size.Height = 60.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+          object Rectangle12: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyQ: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblQ: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'Q'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle4: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 65.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyW: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblW: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'W'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle6: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 520.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyO: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblO: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'O'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle10: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 325.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyY: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblY: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'Y'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle13: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 455.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyI: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblI: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'I'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle8: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 195.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyR: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblR: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'R'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle15: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 390.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyU: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblU: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'U'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle17: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 130.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyE: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblE: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'E'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle19: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 260.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyT: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblT: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'T'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle21: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 585.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyP: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblP: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'P'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle25: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 650.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyAgudo: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblAgudo: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = '`'
+                TabOrder = 0
+              end
+            end
+          end
+        end
+        object Rectangle23: TRectangle
+          Align = Top
+          Fill.Color = xF5F5F5F5
+          Margins.Left = 3.000000000000000000
+          Margins.Top = 3.000000000000000000
+          Margins.Right = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Position.X = 3.000000000000000000
+          Position.Y = 135.000000000000000000
+          Size.Width = 842.000000000000000000
+          Size.Height = 60.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+          object Rectangle24: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyZ: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblZ: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'Z'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle28: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 65.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyX: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblX: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'X'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle30: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 520.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyPonto: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblPonto: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = '.'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle32: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 325.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyN: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblN: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'N'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle34: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 455.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyVirgula: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblVirgula: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = ','
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle36: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 195.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyV: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblV: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'V'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle38: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 390.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyM: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblM: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'M'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle40: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 130.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyC: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblC: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'C'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle42: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 260.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyB: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblB: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'B'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle44: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 585.000000000000000000
+            Size.Width = 125.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyQShifit: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 122.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Label20: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'Shift'
+                TabOrder = 0
+              end
+            end
+          end
+        end
+        object Rectangle48: TRectangle
+          Align = Top
+          Fill.Color = xF5F5F5F5
+          Margins.Left = 3.000000000000000000
+          Margins.Top = 3.000000000000000000
+          Margins.Right = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Position.X = 3.000000000000000000
+          Position.Y = 69.000000000000000000
+          Size.Width = 842.000000000000000000
+          Size.Height = 60.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+          object Rectangle49: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyA: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblA: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'A'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle51: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 65.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyS: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblS: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'S'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle53: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 520.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyL: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblL: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'L'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle55: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 325.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyH: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblH: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'H'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle57: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 455.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyK: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblK: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'K'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle59: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 195.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyF: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblF: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'F'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle61: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 390.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyJ: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblJ: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'J'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle63: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 130.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyD: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblD: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'D'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle65: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 260.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyG: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblG: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'G'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle67: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 585.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyÇ: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblÇ: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = #199
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle69: TRectangle
+            Align = Left
+            Cursor = crHandPoint
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 650.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyAcentos: TRectangle
+              Align = Contents
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object lblTiu: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Margins.Bottom = 10.000000000000000000
+                Size.Width = 57.000000000000000000
+                Size.Height = 41.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = '~'
+                TabOrder = 0
+              end
+              object lblCircunflexo: TLabel
+                Align = Top
+                StyledSettings = [Style]
+                Size.Width = 57.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = '^'
+                TabOrder = 1
+              end
+            end
+          end
+        end
+        object Rectangle71: TRectangle
+          Align = Top
+          Fill.Color = xF5F5F5F5
+          Margins.Left = 3.000000000000000000
+          Margins.Top = 3.000000000000000000
+          Margins.Right = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Position.X = 3.000000000000000000
+          Position.Y = 201.000000000000000000
+          Size.Width = 842.000000000000000000
+          Size.Height = 60.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+          object Rectangle72: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Size.Width = 147.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyDelete: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF4F4FBC
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 144.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblDelete: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 156.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 25.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'Delete'
+                TabOrder = 0
+              end
+            end
+          end
+          object KeySpace: TRectangle
+            Align = Left
+            Cursor = crHandPoint
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 152.000000000000000000
+            Size.Width = 408.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            OnClick = KeyQClick
+            object lblSpace: TLabel
+              Align = Center
+              StyledSettings = [Style]
+              Size.Width = 156.000000000000000000
+              Size.Height = 35.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Family = 'Arial'
+              TextSettings.Font.Size = 30.000000000000000000
+              TextSettings.FontColor = claWhite
+              TextSettings.HorzAlign = Center
+              Text = 'Space'
+              TabOrder = 0
+            end
+          end
+          object Rectangle74: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 565.000000000000000000
+            Size.Width = 147.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyQBackSpace: TRectangle
+              Align = Contents
+              Cursor = crHandPoint
+              Fill.Color = xFF4F4FBC
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 144.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              OnClick = KeyQClick
+              object lblBackSpace: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 156.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 25.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'BackSpace'
+                TabOrder = 0
+              end
+            end
+          end
+        end
+      end
+      object KeyNumeric: TRectangle
+        Cursor = crHandPoint
+        Fill.Color = xFF525252
+        Margins.Right = 5.000000000000000000
+        Margins.Bottom = 200.000000000000000000
+        Position.X = 718.000000000000000000
+        Position.Y = 3.000000000000000000
+        Size.Width = 127.000000000000000000
+        Size.Height = 62.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 5.000000000000000000
+        YRadius = 5.000000000000000000
+        object Label38: TLabel
+          Align = Center
+          StyledSettings = [Style]
+          Size.Width = 156.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Family = 'Arial'
+          TextSettings.Font.Size = 25.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = 'Numeric'
+          TabOrder = 0
+        end
+      end
+      object RecEnter: TRectangle
+        Fill.Color = xFF525252
+        Margins.Right = 5.000000000000000000
+        Margins.Bottom = 200.000000000000000000
+        Position.X = 718.000000000000000000
+        Position.Y = 70.000000000000000000
+        Size.Width = 127.000000000000000000
+        Size.Height = 126.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 5.000000000000000000
+        YRadius = 5.000000000000000000
+        object KeyEnter: TRectangle
+          Align = Contents
+          Cursor = crHandPoint
+          Fill.Color = xFF4F4FBC
+          Margins.Left = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Size.Width = 124.000000000000000000
+          Size.Height = 123.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+          OnClick = KeyQClick
+          object lblEnter: TLabel
+            Align = Center
+            StyledSettings = [Style]
+            Size.Width = 156.000000000000000000
+            Size.Height = 35.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Family = 'Arial'
+            TextSettings.Font.Size = 30.000000000000000000
+            TextSettings.FontColor = claWhite
+            TextSettings.HorzAlign = Center
+            Text = 'Enter'
+            TabOrder = 0
+          end
+        end
+      end
+      object RecSetas: TRectangle
+        Fill.Color = xFF525252
+        Margins.Right = 5.000000000000000000
+        Position.X = 719.000000000000000000
+        Position.Y = 200.000000000000000000
+        Size.Width = 128.000000000000000000
+        Size.Height = 61.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 5.000000000000000000
+        YRadius = 5.000000000000000000
+        object KeySetaDireita: TRectangle
+          Align = Right
+          Cursor = crHandPoint
+          Fill.Bitmap.Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000040000000400806000000AA6971
+            DE000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            09E349444154785EED5ADF8B5D5715DEE7DC3B334DC42A5AB1060B4A41AB35A8
+            51C454C5E621224255AC51B42FD244045F46FF01A7F317D43C284A4B9F54D06A
+            35CF166D4168852AA25653D4626D49DF459A64E6DE735CDFF7AD7DF68F736E7A
+            037DA9DE75EE5EDFFAD65A7B9FB5D63D77329399B0918D6C64231BD9C84636B2
+            91FF53691C33E99BB3BBF77D3C34CD679AD0DFBE6CC2B159688F78F05525CBD0
+            5D9EF5E15268DA3F5BA3171EB87FEF710F0D520CE0ABDFD83BB1E8DBEFCCDAF0
+            61F0A66DB842CF974BB2288C8D7D933BFA2A2FCF49498E9958307A9B26953CD8
+            86B49C473F74878D1DA949F784D95F7FF0FCFE1FDC9106707677EF7316FC4133
+            6F8FCC77B6C27C67CE206FCD179469AF54E83C16481427B83DA001BD349CE771
+            6296435F95630B0D366D3B600BDBF960C38F41D8C251DDC2B61F36E1B00F2FB5
+            5D77CF43E7F77F81A339807B77F74F766DF7EBADD65A3FBA6D87C06D87FB78CA
+            66E9C97C4C809521CC18073A5FE11BF650C53890591967D260BFDC00724EB1BD
+            8797ADA965B862FACE07CEEFFDB63973E627B3D7BDF5E93F354DFBAEF9D11D1D
+            EA9D0BE220BC2053B884CE1570AC7D7488C38F5D7C395782E3B44F7B69293E20
+            93AE39043C05D1460C472D6C08DD325CBCE5F5DDF1D91D9FB8FDCB16FDDA6CDB
+            1EF9D90C47BA68084934189F0998A344438BC3727F91CFE8C847AF0C47C41574
+            4A9E6CE0E0E11E0D88E348E8128719050F778307A26B6EFACFD5F6AF18CBE779
+            D67CC6645E388FA8CD02F979739C40C469E21CCEB0C0C73E53B4132A27F2F19E
+            E433E55873E540BAA57DDDB7B5749C5ACBAEB323D4D732F477B761D17D8007A0
+            79F86D0D8F9CDB5AA5ADE2D62F50B971818F7DA6680BC1A7F6D55C3E5344D456
+            346D0D8F07B2E0106CD707ED2EED9B7BB3D8A0BFCBF652A3230E04871F3A2F26
+            1654F3B2C07A40794E5A2537459F70CCD34AFBD078D9745A18888D09DF27BCA5
+            0DF3B06D4C0DA13962B44B0E051B9348DCD06F2E5CAFC0C84DD14EA89CC8B567
+            BC2FE7DA33717F13365D3F05C6D1C73CB43BCC624F5C65E330006AB88C259EEC
+            54D47A05E639E2639F29DA42F0A97D3597CF14B1B7EF8686E6E3EAF5DD91C6C4
+            879A200B0D813A178293551C080E3F585E4C2C68DA67CAB1E62927AD929BA24F
+            38E669A57DF9C782859BF800BC192E6FA8E05331D950E038503EC5EC8EBCB930
+            2FF0DA8D89CB67CAB1E4794E5A255FF5D44130803E7F025478DEC074B36AD41B
+            24D67991273B15B55E81798E56EDABF7C4B312BFD639A688A80DA29198B0603E
+            C666CBE1881794B8E229AFDE270E04871F4C378D375FA7C0F506A49CDA678AB6
+            107C629F5505E10058325E5E797CF784D1AEF9544C3614783C33C6AEABC01197
+            CF9463C9F39CB44A6E8A3E20970907A0425737B42A16F781884FE5459EEC750A
+            9CE2698D1B35453BA17222D79E6C1F1BCF3F0258281417D18BCE380C215EF08B
+            2B0ECE90FB6B0E04871F2C163A2E70368B856605DB7A653F161A01073014C995
+            6C040050754C76E4B95DF2FA8CC863DE5481A73F7632BCFF3DEF1E78CC11E64B
+            3E538E354F3969798E0B07908A546165916543A51D79B2D319E358E2B92D9E17
+            78C3CE4EB8F7CCA7C3C913EF1D7CA6680BC1A71B2BB937EBBE7C40A6D07968CE
+            7D73BF5F5801872C822E47704F1AF9A98932CD966BE05FBAEB7438FECE5BC192
+            30B85AFC9470E36B5F13B6E6730EE6C22F1F0B8FFEE6490ECA46469FD00C5BA2
+            40E74A98F4A5337A7BE7B7ED6EF3303B71F2D47DF66D4158E227A241EA4A6369
+            C94A19D3FBEEFEE4A970F39BDE188E1EB9E1BAD7ACD5838901DF76EBDB58F0DF
+            9F7B9E0EDEC11490CCED014D631F2D0F8CF370D9D3602BFB0860321C186D1880
+            A9D8988F63AF941C1C1E86679FBF64CD648F382EE3E8303ED2E2598EFBC65C3E
+            3B82C28FC0A1FDB070E0FF738A18A2C2292E632ACF18145EE18BF61178C7DB6F
+            51B0126EA19A9226DC7CD31BC2F6F6169BFFFE8F7E1EFEF6CF7F71B036622107
+            EC36116088C0808C8833012650BED0CD0C677100F635C086A034C9B8411939F7
+            1464394EF1F5F2F2F33F75EA23E1F4473F14BEF7C347D83C33155613682A3627
+            A7FCF4E1E531F71188195FDA13D3FB478087B3509644411236F81E6DAEB8BBDC
+            AEF9544C4E407D669E77F9CA5536FFCCB378E7CB1807CF951EE7DC678A76C2F8
+            C87B0E3EFBE4E832FB46881C8A49435C37F6A9D9CB39101CFE9A03C1C948C011
+            901F1C79350782F7E1574F3C152EFEE339F7A73C66C2F0664A1C0FE39A037219
+            0600191A678225C23661712884ABB6C5610084E029268C76CD2762F838D2500C
+            6A6A5FDD28EA16967C7A18EA2E7B0262BBB0B957076491FCE62A8ECAFD2996EC
+            C8737B1C83018867BACBED9A8F63656375A3D31F0B5368A97E027025A1ED0A10
+            63BC312E1432702F8CFE9A03E560A4E004FAD33E32F7D71C082FFCD4C2C966C7
+            C3187CD86AC201B0B9A1430463388F292146588C29ADDA1687011096B1D27EF9
+            98F5495B58C672BB6E14750B6BCE3626BE067800ADBA49196238208BA5024064
+            8338909776E4B99D787D46E4EE72BBE6E398061197BFEB195747ABBE06B0515A
+            7E257137D59066C21BE3422103F7C2E8AF39500E469CAFDE47E6FE9A03E1859F
+            5A189BF5C6238F36A47A0274C91E724C921F32C4A486088B31A555DBE23000C2
+            3256DAAB633000D6A773BA68A7DC64E7EFFC3008561C0720DF2045B3590CFE2C
+            4D36941F1863B8299450C544AE55DB91E776E29367E05288B1310782C30F6D35
+            A24E5FB1DA362CC241E33F09C21F9B404BB8A2A43D6524B96545BE7E613907CA
+            C188F3C97DB089D12E39146C9E3170430E40EFFB227457ED9BE1EE45543C948E
+            174C17352B07338658F24386583608086BE0CD554059A4785964CC53ACB457C7
+            6000E299EE723BF2DC66EE25FC65C1EF5AEC32C94B471FF520A2E4B1720CE0AE
+            2C81006EC21BDA7D845E8C7321B4F24A4EE6FEC861280F01F9C5CBBC9A03C1ED
+            5A2CF1BBC1A7F04BE29F993FCC1A842579E96C9696FC79BB1C026919496E59D1
+            CF9BA310AE9CAF8EA16A0054E2E3BCC4A762B2A1C09757171C867D2D78A4FDF7
+            0BB7FD7819BAA79BD0D91704FECE9C924AB785570C98E4ED326388253F648899
+            CA232A282F34D9B1C1D8789917F97A311800A1ECCE7ECE581CD8A7BF0B178FDD
+            B8FC69FBF0C35F58CE423867FD5F699BCE8A4D4380B07EF7A099329618634EF3
+            6621B4A13808E7262CCE3A15AA685EA89D08ADBC9293B95F0942E545AE78CAEB
+            975D585C3E0861D95FB19EBFB2BFBFBFE01F05FDFEC9C75F3871C7A9BF2C42B8
+            6B1EFA2D161ABB71194AC74B4051B39129265A46925B56F497927BEB8CC4E3EE
+            DC9364621F0680DF0ADB3B6F3DBED436E19E07BFBDF7A847939CDBDD7B9F7D0E
+            BE6BFF3A9E7497EDAD0FD434D7922CD1DFA3F5C56FBB6A5470AF8848F026E2AD
+            8744BCD61F4AE6727677EF4EFBD7E1B3B6EDB86D38D6E2FF905F85629FF38336
+            742FF66DFB47EBE5C243F77FEB316BF93ADF898D6C64231BD9C84636B2918DFC
+            2F4A08FF05F180A6D35C381C4D0000000049454E44AE426082}
+          Fill.Bitmap.WrapMode = TileStretch
+          Fill.Kind = Bitmap
+          Margins.Right = 6.000000000000000000
+          Position.X = 68.000000000000000000
+          Size.Width = 54.000000000000000000
+          Size.Height = 61.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+          OnClick = KeyQClick
+        end
+        object KeySetaEsquerda: TRectangle
+          Align = Left
+          Cursor = crHandPoint
+          Fill.Bitmap.Bitmap.PNG = {
+            89504E470D0A1A0A0000000D4948445200000040000000400806000000AA6971
+            DE000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            09E449444154785EED5ADFCB1D67117E77F7FBD128682FAD4D8D5A9552296822
+            C482D0E6CA2B2D250D05A3371A2F6A85B6FF4092EFCE2BBFDC78D51F5E09DA62
+            21E89DB554B460A5120C254D458B869A56144A2BFA25F9CED9759E7966F6FDB5
+            E7E4D316417AE6EC3B33CF33F3EECECCD93DA7DF69C24A56B29295AC64252B59
+            C94ADEA3D2984D6468BEF1D0E9BB42D3DCD384E1D3F3267CB80BED3E0BFE5FC9
+            3CF43BDD102E87A67D491A3DFBE8F6A95F5868946C00DF7CF8D4C1D9D07EAF6B
+            C3E795D0A88CA1116718949A128D2C080F1E58BC7D529AB4B4ACCAC552A601E3
+            FA91EF9F9F87EEC1EF6F9FFC9D113176E291AD7B8759FF83765DDEEDB54E86D6
+            49E31290C6BD41DA14934CB1CF6930671AC73C088B10CD6394913793C722526F
+            84D9E8C698BC8DA10D7D08B3FE9FA16B8F3F76E6D4D931FEF587B6EE6C437836
+            74CD0DDD0DEBC20A2D05E60D2AAA70D9D05E1B2FF15834AE0DA39A9232161E25
+            1B4412CBC7C0DD88373284A61FAE0C6D7FD7E3DB5BBF698E1D7BB2FBE0CD2F9F
+            6FDA707BB76F5392645613459B0B641658D1024C720AFF37770364CFCD8E70E2
+            6E10E91AF974E8C3C55B6EECEF683FB0FFE2FD12B9BDDB5C0F6D2B1B240B4380
+            A32752EB3C63B9BF380607065726564AFD981B7D880E4827C5C124B3216F4C1A
+            03CF184507AA308F38DD0FADF41A6EBBFC76779F3C16F3FB70ED6E634D0B4125
+            6614E7BEE3D48F38365AC6121F2FF8724D628B294F0C61D1A2318811D38E0C0E
+            0F88A4ED6AC6188B3C441E02B5F3301C6DFBB63DD4E0434F0B585E58C4B02434
+            6278F13E45E47559CC92E1233162B122DA843AA2798CC218190D27C1B4D93496
+            8E01DF0D7299CFB5DD2C7C48AFAF2B169617499C17E9798CE5FEE2181C183FA7
+            51E63B8E3E8445B3136D4831852D59461263B3315387A0D022E2CB27C14D6D58
+            0B1B4C90AF0861F5A2C9C5B510BC50985A684D29B022E31DC3611E02E489F3BC
+            12C302830762ED6C47340FC3EE1B83C30322D6AEF931363483B4DE6ECAB79F42
+            09C485EF4C2D44971553F93946D5305011D779114FC5E84301FB393D06D126A0
+            D1098F51C6186C158B0831873A00F5AD79DC09E320C68B7B71D1F706F3223DCF
+            F1DE62706068CB3CC7D187B07ED15AAB630A9B2599C6C0331685778035EC8F01
+            7CDAE4B1904EFDE25A88615A68F02556643C136899E798F19857EE9B3A3F04AD
+            B01DD4EB3E85316A3D9220798A3D024888EFBC0F23C57A7114A2CB8AA9FC1CA3
+            6A18A818ABF396C7E84301FB393D06619BEC528EA43DF74D173148760744CBE6
+            1D7318E4D28B47DF8A319C1759E62E8FC573389ECA731C7D089BF3BA1DD30A43
+            0F078DCAF81950361AD7A2C742AB1B2FAE8518A685065F6245C63381B6CC73AC
+            21E34B0C0B0C1EC87A718FC7288CA5CCF80820337FD769EB61A4582F8E427459
+            31959F63540D03156375DEB258790EC79E07199BD55A895D9437E11D9034C515
+            EF045166739CE6A417771F0E0C8B133FF93BA3CCCDFD3AE6E700887C9957C720
+            6CD5EA1E7194E443906134A5C9D962A32916A57E6A7161298185C04321F2FAC4
+            47F787BB0F1F340C5EB3AA3CC77068718027661C5843C697185694F2EAC4C6B5
+            4EF34DEC43103136169B0429183F228CB8CE218E9C1683427485F04969FEDB5F
+            3B16DEFFBE7D550C4A8B543E62A532DF71EAE778FA1C8CC142D0B854697D906B
+            4E3CB22555CF6514B2349327D020CF0006B4598FC36A56823569F46F3DB03F3C
+            F095A36163633D5CBD762DFCF5EF6F4ACCAE5C0AEA32B794575EBD149EFCE933
+            8C6B5E6C8036C5746A5EF58837E4AD5FC76389010CCD4C6AE600F0E201C54620
+            DEE414A7560F8BCBEBD603B784078E1F0D9B9BFAA7C63B92BFBCF1B770EACC63
+            DA85F56136C524A731F3BC790CC90730F1084CDDE211F3C3F0FA8FC5A73EFE91
+            77A579179D3186AB2BC58B63F67EA89A8A41BA83771E398D9F088630732EB11C
+            99639D5425798EEFF9C39F2E85792F83F8D801BDE86C360F6FBEF58FB073E56A
+            F8D7952BCBD74EBE2EFEF1CFE1A5DFBFCA6B88925644A956AB8C02C014C33210
+            B1C2D0892337001F817ED895115C9BDE2C0B2F1E869960769AE3DE10BE70E8B3
+            E1FE2F7D313CF3FC0BE1273FFF2552358E9B07C3A3C58D44671AA7798AA07028
+            413B85494EE135D16B528B7D0D8295B09E9DB7B363DEDEF52D9E6251CAD1E6F8
+            572F9E0B8FFEF0697DE7D37D3A1F515CA59F6328F836EB918F7E89EB18F74231
+            060BB101A05616ED053A16A57EB4CC71CC3DF5BE149F7FF995F0ACDC010214D3
+            32476BAA8ACCB151E63B4EFD3A060766E139D0B4887D08B220DABCC0B8A61B15
+            A53E2DF0D4BE21ECCE660926278A56EE401665850AE34512832F312CB02205C0
+            089007469E6345C647D1016809564C2C3229B0C23127AE1C8B528EB6C671C57D
+            5A1C0AD555FAC470606881638CD6FD12E7319FC2780760B1C0E58D1193136536
+            C7694E5C39E69E7A40F063A1529BF9006614E7BEE3D4AF637060F49C3681E40E
+            D87B817131A7E444A91F2D731CD77B22278AF61D3C167034926135CAEB304C74
+            00C0E9C5F7546085634E5CC035274A7DDAE5779D168D0674953E311C18DA3C96
+            FB2946E7E300E43F0ABA4E89FFB4C088C989329BE33427AE1C8B528E36C75AB0
+            285AD6EC986B51B3A91FB10B3F0384C00074B5AD5E9C6BEF05A679E5BE7A0F2C
+            731C734FBD2FC5E3CFF57A1B4BD95A3A9035A77C89614968C4B1691D40DBB471
+            00B6F003062E2ACA0AB87E816CAA1E509AB3E83CA2D4A7059EDA475F9B4243BA
+            725F1B54121638CD63CC7D482B7F025C13A8EFBC37DFC11A862C2BD0F9B4C0B8
+            F29C720F6DB92FC7A294A3CDB136610D79E3638378C1674A81A145A477E9B27F
+            BD913B409B5EB4963C16CE89529F360E28CDA931395166739CE6C495E3858F05
+            7C5DF0738CA40697590B97F13FCA7F3B0CF619B0E02EF085BDB8A8282BE0FA05
+            B2A97A40690E577D1E51EA47CB1CC7E91E6F2E361B7D6D584958FA83FCA52A67
+            7AB195AD3F8637CCADE93D2CC858A06E6611CB0A8C2BCFD9DB80985372A2D4A7
+            25D686ED6E504F1C7D69FFB0D2BCFC690E69FBE1E9F6EDD76EFB91F47061BE2B
+            0CEE84F22E287D8B37D563911488D76481538D95989C28B325F63CDF53636D16
+            8DEB82EF186D0FA1DFE53F91B9F9C6E1A9EEC285A786CF1C3E726EDEF45F6DFA
+            76AD9137587FC29606B109E227C319DC772C57E445355328D5526826823D41C4
+            73CA3D498AC9C4794CE25E72716F92E3754AD44A0DB39DDD301BE657BB66B877
+            FB3B5B97F47E3EF7C273AF1D3A7CF78561367C79E8DB759C4DFAB7DFF2F38533
+            4DFA36081761CC2E2E3092092752EEA1CD736A0C593CD4D9B599362FEFFE8EB4
+            76FCF1335B3F03EF7195F21F4ACA97439631368866CDD2C462DCD76D184C25E4
+            F25002B831BAA308CA098135E704342A69A49EBE674DF33EFCBAE99A6F3DF1DD
+            93E79410A9B6CBB6E6C4C3A78F48E81EE9E68E3EB437C9DDF0EEFDBAF93F1479
+            CEE57BBE7F7D68DBF33282B34F6C9F7C0E23B1F04A56B29295AC64252B59C94A
+            DEC312C2BF01FDE35F7562B79A840000000049454E44AE426082}
+          Fill.Bitmap.WrapMode = TileStretch
+          Fill.Kind = Bitmap
+          Margins.Left = 6.000000000000000000
+          Position.X = 6.000000000000000000
+          Size.Width = 54.000000000000000000
+          Size.Height = 61.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+          OnClick = KeyQClick
+        end
+      end
+    end
+    object TabNumeric: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 8.000000000000000000
+      Size.Height = 8.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'TabNumeric'
+      ExplicitSize.cx = 8.000000000000000000
+      ExplicitSize.cy = 8.000000000000000000
+      object Rectangle1: TRectangle
+        Align = Client
+        Fill.Color = xF5F5F5F5
+        Size.Width = 848.000000000000000000
+        Size.Height = 265.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 5.000000000000000000
+        YRadius = 5.000000000000000000
+        object Rectangle3: TRectangle
+          Align = Top
+          Fill.Color = xF5F5F5F5
+          Margins.Left = 3.000000000000000000
+          Margins.Top = 3.000000000000000000
+          Margins.Right = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Position.X = 3.000000000000000000
+          Position.Y = 3.000000000000000000
+          Size.Width = 842.000000000000000000
+          Size.Height = 60.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+          object Rectangle5: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object Key7: TRectangle
+              Align = Contents
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Label21: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = '7'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle9: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 65.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object Key8: TRectangle
+              Align = Contents
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Label39: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = '8'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle35: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 130.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object Key9: TRectangle
+              Align = Contents
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Label45: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = '9'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle108: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 195.000000000000000000
+            Size.Width = 147.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyDeleteNumber: TRectangle
+              Align = Contents
+              Fill.Color = xFF4F4FBC
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 144.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Label71: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 156.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 25.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'Delete'
+                TabOrder = 0
+              end
+            end
+          end
+          object KeyLetras: TRectangle
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Margins.Bottom = 200.000000000000000000
+            Position.X = 347.000000000000000000
+            Size.Width = 127.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object Label43: TLabel
+              Align = Center
+              StyledSettings = [Style]
+              Size.Width = 156.000000000000000000
+              Size.Height = 35.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Family = 'Arial'
+              TextSettings.Font.Size = 25.000000000000000000
+              TextSettings.FontColor = claWhite
+              TextSettings.HorzAlign = Center
+              Text = 'Letras'
+              TabOrder = 0
+            end
+          end
+        end
+        object Rectangle50: TRectangle
+          Align = Top
+          Fill.Color = xF5F5F5F5
+          Margins.Left = 3.000000000000000000
+          Margins.Top = 3.000000000000000000
+          Margins.Right = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Position.X = 3.000000000000000000
+          Position.Y = 135.000000000000000000
+          Size.Width = 842.000000000000000000
+          Size.Height = 60.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+          object Rectangle52: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object Key1: TRectangle
+              Align = Contents
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Label49: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = '1'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle56: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 65.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object Key2: TRectangle
+              Align = Contents
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Label50: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = '2'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle78: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 130.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object Key3: TRectangle
+              Align = Contents
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Label56: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = '3'
+                TabOrder = 0
+              end
+            end
+          end
+        end
+        object Rectangle84: TRectangle
+          Align = Top
+          Fill.Color = xF5F5F5F5
+          Margins.Left = 3.000000000000000000
+          Margins.Top = 3.000000000000000000
+          Margins.Right = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Position.X = 3.000000000000000000
+          Position.Y = 69.000000000000000000
+          Size.Width = 842.000000000000000000
+          Size.Height = 60.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+          object Rectangle85: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object Key4: TRectangle
+              Align = Contents
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Label59: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = '4'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle87: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 65.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object Key5: TRectangle
+              Align = Contents
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Label60: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = '5'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle99: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 130.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object Key6: TRectangle
+              Align = Contents
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Label66: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = '6'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle111: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 195.000000000000000000
+            Size.Width = 147.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyBackSpaceNumber: TRectangle
+              Align = Contents
+              Fill.Color = xFF4F4FBC
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 144.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Label73: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 156.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 25.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = 'BackSpace'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle29: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 347.000000000000000000
+            Size.Width = 128.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeySetaDireitaNumber: TRectangle
+              Align = Right
+              Fill.Bitmap.Bitmap.PNG = {
+                89504E470D0A1A0A0000000D4948445200000040000000400806000000AA6971
+                DE000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                09E449444154785EED5ADF8B2557113EDD777E64578CA211E362400968342EEA
+                2AE244C5ECC38A085131AEA27991EC8AE0CBE83FE064FE82B80F8A9290271534
+                1ADD6783262024421451A31BD4604CD8BC8B647767EEEDB6BEEFABD3E747F79D
+                DC85BC446FF53DF5D55755E77455DDBEB3333B13D6B296B5AC652D6B59CB5AD6
+                F27F2A8D63267D736EF7BE8F87A6F94C13FADB174D38310BED310FBEAA6411BA
+                2BB33E5C0E4DFB676BF4E203F7EF3DEEA1418A017CF51B7BA7E67DFB9D591B3E
+                0CDEB40D57E8F972491685B1B16F72475FE5E53929C931130B466FD3A49207DB
+                9096F3E887EEB0B12335E99E30FBEB0F5ED8FF833BD200CEEDEE7DCE46F68366
+                B33DB6B1BD1936B63718E4ADF98232ED950A9DC70289E204B70734A09786F33C
+                4ECC72E8AB726CA1C1A66D076C613B1F6CF831085B38AA9BDBF6C3261CF4E1A5
+                59D7DDF3D085FD5FE0680EE0DEDDFD9D45DBFD7AABB5D68F6FD92170DBE13E9E
+                B2597A321F1360650833C681CE97F8863D54310E6456C69934D82F37809C536C
+                EFE1156B6A11AE9ABEF3810B7BBF6DCE9EFDC9EC756F7DFA4F4DD3BE6BE3F8B6
+                0EF5CE0571105E90295C42E70A38D63E3AC4E1C72EBE9C2BC171DAA7BDB4141F
+                9049470E014F41B411C351731B42B708976E797D777276C7276EFFB245BF36DB
+                B2477E36C3912E1A42120DC66702E628D1D0E2B0DC5FE4333AF2D12BC3117105
+                9D92271B3878B84703E23812BAC46146C1C3DDE081E89A9BFE73ADFD2BC6F279
+                9EB53163322F9C47D46681FCBC394E20E234710E6758E0639F29DA099513F978
+                4FF29972ACB97220DDC2BEEEDB5A384EAD45D7D911EA6B11FABBDB30EF3EC003
+                D03CFCB68647CE6DADD25671AB17A8DCB8C0C73E53B485E053FB6A2E9F29226A
+                2B9AB686C703997308B6EB836DE8DB37F766B1417F97EDA546471C080E3F745E
+                4C2CA8E66581F580F29CB44A6E8A3EE198A795F6A1F1B2E9B430101B539887EE
+                2D6DD80C5BC6D4109A2346BBE450B03189C40DFDE6C2D50A8CDC14ED84CA895C
+                7BC6FB72AE3D13F73761D3F553601C7D6C86769B59EC89AB6C1C06400D97B1C4
+                939D8A5AADC03C477CEC33455B083EB5AFE6F29922F6F6DDD0D07C5CBDBE3BD2
+                98F8501364A12150E74270B28A03C1E107CB8B89054DFB4C39D63CE5A4557253
+                F409C73CADB42FFF58B070131F8037C3E50D157C2A261B0A1C07CAA798DD9137
+                17E6051EDD98B87CA61C4B9EE7A455F2654F1D0403E8F3274085E70D4C37AB46
+                BD41629D1779B25351AB1598E768D5BE7A4F3C2BF1A3CE3145446D108DC48405
+                F331365B0E47BCA0C4154F79F53E712038FC60BA69BCF92A05AE3620E5D43E53
+                B485E013FBAC2A0807C092F1F2CAE3BB278C76CDA762B2A1C0E39931765D058E
+                B87CA61C4B9EE7A4557253F401B94C380015BABCA165B1B80F447C2A2FF264AF
+                52E0144F6BDCA829DA099513B9F664FBD878FE11C042A1B8885E74C66108F182
+                5F5C717086DC5F732038FC60B1D07181B3592C342BD8D62BFBB1D0083880A148
+                AE64230080AA63B223CFED92D767441EF3A60A3CF3B19DF0FEF7BC7BE0314798
+                2FF94C39D63CE5A4E5392E1C402A52859545960D9576E4C94E678C6389E7B678
+                5EE00DDBDBE1DEB39F0E3BA7DE3BF84CD116824F3756726FD67DF9804CA1F3D0
+                9CFFE67E3FB7020E59045D8EE09E34F25313659A2DD7C0BF74D79970F29DB782
+                256170B9F829E1C6D7BE266C6E6C7030177FF95878F4374F72503632FA8466D8
+                12053A57C2A42F9DD1DB3BBF6577DB08B3533BA7EFB36F0BC2023F110D52571A
+                4B4B56CA98DE77F7274F879BDFF4C670FCD80DD7BD66AD1E4C0CF8B65BDFC682
+                FFFEDCF374F00EA680646E0F681AFB6879609C87CB9E065BD9470093E1C068C3
+                004CC5C67C1C7BA5E4E0F0303CFBFC656B267BC471194787F19116CF72DC37E6
+                F2D911147E040EED878503FF9F53C410154E71195379C6A0F00A5FB48FC03BDE
+                7E8B8295700BD59434E1E69BDE10B6B636D9FCF77FF4F3F0B77FFE8B83B5110B
+                3960B7890043040664449C093081F2856E66388B03B0AF013604A549C60DCAC8
+                B9A720CB718AAF96979FFFA9D31F09673EFAA1F0BD1F3EC2E699A9B09A4053B1
+                3939E5A70F2F8FB98F40CCF8C29E98DE3F023C9C85B2240A92B0C1F76873C5DD
+                E576CDA7627202EA33F3BC2B57AFB1F9679EC53B5FC63878AEF438E73E53B413
+                C647DE73F0D9274797D93742E4504C1AE2BAB14FCD5ECE81E0F0D71C084E4602
+                8E80FCE0C8AB3910BC0FBF7AE2A970E91FCFB93FE53113863753E27818470EC8
+                65180064689C099608DB84C5A110AEDA1687011082A79830DA359F88E1E34843
+                31A8A97D75A3A85B58F2E961A8BBEC0988EDC2E65E1D9045F29BAB382AF7A758
+                B223CFED710C06209EE92EB76B3E8E958DD58D4E7F2C4CA1A5FA09C09584B62B
+                408CF1C6B850C8C0BD30FA6B0E9483918213E84FFBC8DC5F7320BCF0530B279B
+                1D0F63F061AB0907C0E6860E118CE13CA684186131A6B46A5B1C064058C64AFB
+                E563D6276D6119CBEDBA51D42DAC39DB98F81AE001B4EA266588E1802C960A00
+                910DE2405EDA91E776E2F51991BBCBED9A8F631A445CFEAE675C1D2DFB1AC046
+                69F995C4DD54439A096F8C0B850CDC0BA3BFE640391871BE7C1F99FB6B0E8417
+                7E6A616CD61B8F3CDA90EA09D0257BC831497EC810931A222CC694566D8BC300
+                08CB58692F8FC100589FCEE9A29D72939DBFF3C32058711C807C8314CD6631F8
+                B334D9507E608CE1A650421513B9566D479EDB894F9E814B21C6C61C080E3FB4
+                D5883A7DC56ADB70180E1AFF4910FED8045AC21525ED2923C92D2BF2D50BCB39
+                500E469C4FEE834D8C76C9A160F38C811B72007ADF0F4377AD0DB3EE45543C94
+                8E174C17352B07338658F24386583608086BE0CD554059A4785964CC53ACB497
+                C76000E299EE723BF2DCB62AFB70197F59F0BB16BB4CF2D2D1473D882879AC1C
+                03B82B4B20809BE086A61DBD18E74268E5959CCCFD91C3501E02F28B97793507
+                82DB355F848DD03E855F12FFCCFC6166E3889297CE6669C99FB7CB21909691E4
+                9615FDBC390AE1CAF9F218AA0640253ECE4B7C2A261B0A7C716DCE61D8D78247
+                DA7FBF70DB8F17A17BBA099D7D41E0EFCC29A9745B78C58049DE2E338658F243
+                8698A93CA282F242931D1B8C8D977991AF16830110CAEEECE78CF9C1DC305C3A
+                71E3E2A7EDC30F7F61310BE1BCF57FB56D3A2B360D01C2FADD8366CA58628C39
+                CD9B85D086E2209C9BB038EB54A8A279A17622B4F24A4EE67E25089517B9E229
+                AF5F74617EE52084457FD57AFECAFEFEFE9C7F14F4FB271F7FE1D41DA7FF7218
+                C25D1BA1DF64A1B11B97A174BC0414351B9962A26524B965457F29B9B7CE483C
+                EECE3D4926F66100F8ADB0BDF3D6E34BB326DCF3E0B7F71EF56892F3BB7BEFB3
+                CFC177ED5FC71D77D9DEFA404D7325C912FD3D5A5DFCB6CB4605F79288046F22
+                DE7A48C4A3FE50329773BB7B77DABF0E9FB56D276DC38916FF87FC2A14FB9C1F
+                B4A17BB16FDB3F5A2F171FBAFF5B8F59CBD7F94EAC652D6B59CB5AD6B296B5AC
+                E57F5142F82F0F2DA7D2078138810000000049454E44AE426082}
+              Fill.Bitmap.WrapMode = TileStretch
+              Fill.Kind = Bitmap
+              Margins.Right = 6.000000000000000000
+              Position.X = 68.000000000000000000
+              Size.Width = 54.000000000000000000
+              Size.Height = 60.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+            end
+            object KeySetaEsquerdaNumber: TRectangle
+              Align = Left
+              Fill.Bitmap.Bitmap.PNG = {
+                89504E470D0A1A0A0000000D4948445200000040000000400806000000AA6971
+                DE000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                09E849444154785EED5A5DAB5D67117ED75AE7A351D05E5A9B1AB52AA552D0B4
+                100B429B2BAFB49434148CDE68BCA80A6DFF409273E79527375EF5C32B415B2C
+                04BDB3968A16AC5482A1A4A968D1505345A158D1939CBDF75ACE33CFCC7ABFD6
+                3E39DA2248F7ECF5CECCF3CCBC6BCDCC5E6BEF9CDD8695AC64252B59C94A56B2
+                9295BC4BA5319BC8D07CF5E133F784A6B9AF09C327174DF86017DA0316FCBF92
+                45E877BA215C094DFBB2347AEEB1EDD33FB3D028D900BEF6C8E9C3F3A1FD4ED7
+                86CF28A151194323CE302835251A59121E3CB07CFBA43469695995CBA54C03C6
+                F523DFBFB008DD37BEBB7DEA3746C4D8C947B7EE1F66FDF7DA0D79B7D73A195A
+                278D4B401AF70669534C32C53EA7C19C691CF3202C42348F5146DE4C1E8B48BD
+                1166A31B63F2368636F421CCFA7F86B5F6C4E3674F9F1BE35F7978EBEE3684E7
+                42D7DCD0DDB02EACD05260DEA0A20A970DEDB7F1128F45E3DA30AA292963E151
+                B24124B17C0CDC8D78234368FAE1EAD0F6F73CB1BDF5ABE6F8F1A7BAF7DFFCCA
+                85A60DB77707362549663551B4B9406681152DC124A7F07F733740F6DDEC0827
+                EE0691AE914F873E5CBAE5C6FE8EF67D072F3D2891DBBBCDF5D0B6B241B23004
+                387A22B5CE3396FBCB637060706562A5D48FB9D187E88074521C4C321BF2C6A4
+                31F08C5174A00AF388D3FDD04AAFE1B62B6F750FC863B17800D7EE36D6B41054
+                624671EE3B4EFD8863A3652CF1F1822FD724B698F2C410162D1A831831EDC8E0
+                F08048DAAE668CB1C843E42150BB08C3B1B66FDB3B1B7CE869017B1716312C09
+                8D185EBE4F11795D16B364F8488C58AC8836A18E681EA3304646C349306D368D
+                A563C077835CE6AEB69B850FE8F575C5C2F22289F3223D8FB1DC5F1E8303E3E7
+                34CA7CC7D187B06876A20D29A6B025CB48626C3666EA10145A44FC79E86F6AC3
+                7AD860827C4508AB174D2EAE85E085C2D4426B4A811519EF180EF310204F9CE7
+                951816183C106B673BA2791876DF181C1E10B176CD8FB1A119A4F57653BEFD14
+                4A202E7C676A21BAAC98CACF31AA86818AB8CE8B782A461F0AD8CFE931883601
+                8D4E788C32C660AB58448839D401A86FCDE34E1807315EDC8B8BBE379817E979
+                8EF7178303435BE6398E3E84F58BD65A1D53D82CC934069EB128BC03AC617F0C
+                E0D3268F8574EA17D7420CD342832FB122E39940CB3CC78CC7BC72DFD4F92168
+                85EDA05EF7298C51EB9104C953EC1140427CE77D1829D68BA3105D564CE5E718
+                55C340C5589DB7778C3E14B09FD36310B6C92EE548DA73DF741183647740B46C
+                DE3187412EBD78F4AD18C3799165EEDEB1780EC753798EA30F61735EB7635A61
+                E8E1A051193F03CA46E35AF6586875E3C5B510C3B4D0E04BACC87826D096798E
+                35647C896181C103592FEEF11885B194191F0164E6EF3A6D3D8C14EBC551882E
+                2BA6F2738CAA61A062ACCEDB2B569EC3B1E741C666B5566217E54D7807244D71
+                C53B4194D91CA739E9C5DD8703C3E2C44FFECE287373BF8EF93900225FE6D531
+                085BB5BA471C25F91064184D6972B6D8688A45A99F5A5C584A6021F05088BC3E
+                F6E183E1DE23870D83D7AC2ACF311C5A1CE0891907D690F1258615A5BC3AB171
+                ADD37C13FB10448C8DC526410AC68F0823AE738823A7C5A0105D217C5C9AFFE6
+                978F87F7BEE7401583D222958F58A9CC779CFA399E3E0763B010342E555A1FE4
+                9A938F6E49D50B19852CCDE40934C83380016DD6E3B09A95604D1AFD5B0F1D0C
+                0F7DF158D8D8580FD77677C35FFEF6A6C4ECCAA5A02E734B79F5B5CBE1A91F3F
+                CBB8E6C50668534CA7E6558F7843DEFA753C9618C0D0CCA5660E002F1E506C04
+                E24D4E716AF5B0B8BC6E3D744B78E8C4B1B0B9A97F6ABC2DF9D39FFF1A4E9F7D
+                5CBBB03ECCA698E434669E378F21F900261E81A95B3C627E185EFFB1F8C4473F
+                F48E34EFA233C67075A57879CCDE0F5553314877F8EEA367F013C1207F1C1A97
+                588ECCB14EAA923CC7F7FCEE0F97C3A297417CE4905E743E5F8437FFFE8FB073
+                F55AF8D7D5AB7BAF9D7C5DFAFD1FC3CBBF7D8DD71025AD8852AD561905802986
+                65206285A113476E003E02FD309311EC4E6F9685170FC34C303BCD716F089FBD
+                F3D3E1C1CF7F2E3CFBC28BE1473FFD3952358E9B07C3A3C58D44671AA7798AA0
+                7028413B85494EE135D16B528B7D0D8295B09E9DB7B363DEDEF52D9E6251CAD1
+                E6F8172F9D0F8F7DFF197DE7D37D3A1F515CA59F6328F836EB918F7E89EB18F7
+                4231060BB101A05616ED053A16A57EB4CC71CC3DF5BE145F78E5D5F09CDC0102
+                14D332476BAA8ACCB151E63B4EFD3A060766E939D0B4887D08B220DABCC0B8A6
+                1B15A53E2DF0D4BE21CCE6F3049313452B77208BB24285F12289C19718165891
+                026004C80323CFB122E3A3E800B4042B2616991458E19813578E4529475BE3B8
+                E23E2D0E85EA2A7D623830B4C03146EB7E89F3984F61BC03B058E0DE8D119313
+                6536C7694E5C39E69E7A40F063A1529BF9006614E7BEE3D4AF637060F49C3681
+                E40ED87F817131A7E444A91F2D731CD77B22278AF66D3C167034926135CAEB30
+                4C7400C0E9C5F7556085634E5CC035274A7DDABDEF3A2D1A0DE82A7D623830B4
+                792CF7538CCEC701C83F0ABA4E89FFB4C088C989329BE33427AE1C8B528E36C7
+                5AB0285AD6EC986B59B3A91FB10B3F0384C00074B5AD5E9C6BFF05A679E5BE7A
+                0F2C731C734FBD2FC5E3CFF57A1B4BD95A3A9035A77C89614968C4B1691D40DB
+                B47100B6F003062E2ACA0AB87E816CAA1E509AB3EC3CA2D4A7059EDA475F9B42
+                43BA725F1B54121638CD63CC7D481B66F26F60C9C63BEFCD77B086217B15E87C
+                5A605C794EB987B6DC976351CAD1E6589BB086BCF1B141BCE033A5C0D022D27B
+                1BBAFE8D46EE006D7AD9DAE3B1704E94FAB47140694E8DC989329BE33427AE1C
+                2F7D2CE0EB829F632435B8CC7AB882FF50FEEB61B0CF802577812FECC5454559
+                01D72F904DD5034A73B8EAF388523F5AE6384EF77873B1D9E86BC34AC2D21FE4
+                2F5539D34BAD6CFD21BC61614DEF6341C60275338BD8ABC0B8F29CFD0D883925
+                274A7D5A626DD8EE06F5C4D197F60F2BCDCB9FE690B61F9E69DF7AFDB61F480F
+                171733617027947741E95BBCA91E8BA440BC260B9C6AACC4E444992DB1E7F99E
+                1A6BB3685C177CC7687B08FD8CFF8BCCCD370E4F77172F3E3D7CEAC8D1F3F3A6
+                FF52D3B76B8DBCC1FA13B634884D103F19CEE0BE63B9222FAA9942A996423311
+                EC09229E53EE49524C26CE6312F7928B7B931CAF53A2566A98EFCCC26C585C5B
+                6B86FBB7BFB57559EFE7F32F3EFFFA5D47EEBD38CC862F0C7DBB8EB349FFF65B
+                7EBE70A649DF06E1228CD9E5054632E144CA3DB4794E8D21CB873ADF9D6BF3FD
+                EE6247DA3AF1C4D9AD9F80F7B84AF93F4ACA97439631368866CDD2C462DCD76D
+                184C25E4F25002B831BAA308CA098135E704342A69A49EBE674D8B3EFCB2E99A
+                AF3FF9ED53E79510A9B6CBB6E6E423678E4AE83EE9E68E3EB437C9DDF0CEFDBA
+                F93F1479CEE57BBE7F6368DB0B3282734F6E9F7A1E23B1F04A56B29295AC6425
+                2B59C94ADEC512C2BF01EBCF5F7404B817260000000049454E44AE426082}
+              Fill.Bitmap.WrapMode = TileStretch
+              Fill.Kind = Bitmap
+              Margins.Left = 6.000000000000000000
+              Position.X = 6.000000000000000000
+              Size.Width = 54.000000000000000000
+              Size.Height = 60.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+            end
+          end
+        end
+        object Rectangle107: TRectangle
+          Align = Top
+          Fill.Color = xF5F5F5F5
+          Margins.Left = 3.000000000000000000
+          Margins.Top = 3.000000000000000000
+          Margins.Right = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Position.X = 3.000000000000000000
+          Position.Y = 201.000000000000000000
+          Size.Width = 842.000000000000000000
+          Size.Height = 60.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+          object Rectangle14: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Size.Width = 125.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object Key0: TRectangle
+              Align = Contents
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 122.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Label40: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = '0'
+                TabOrder = 0
+              end
+            end
+          end
+          object Rectangle18: TRectangle
+            Align = Left
+            Fill.Color = xFF525252
+            Margins.Right = 5.000000000000000000
+            Position.X = 130.000000000000000000
+            Size.Width = 60.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 5.000000000000000000
+            YRadius = 5.000000000000000000
+            object KeyVirgulaNumber: TRectangle
+              Align = Contents
+              Fill.Color = xFF7B7B90
+              Margins.Left = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 57.000000000000000000
+              Size.Height = 57.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Label41: TLabel
+                Align = Center
+                StyledSettings = [Style]
+                Size.Width = 65.000000000000000000
+                Size.Height = 35.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.Family = 'Arial'
+                TextSettings.Font.Size = 30.000000000000000000
+                TextSettings.FontColor = claWhite
+                TextSettings.HorzAlign = Center
+                Text = ','
+                TabOrder = 0
+              end
+            end
+          end
+        end
+      end
+      object Rectangle22: TRectangle
+        Fill.Color = xFF525252
+        Margins.Right = 5.000000000000000000
+        Margins.Bottom = 200.000000000000000000
+        Position.X = 198.000000000000000000
+        Position.Y = 135.000000000000000000
+        Size.Width = 147.000000000000000000
+        Size.Height = 125.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 5.000000000000000000
+        YRadius = 5.000000000000000000
+        object KeyEnterNumber: TRectangle
+          Align = Contents
+          Fill.Color = xFF4F4FBC
+          Margins.Left = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Size.Width = 144.000000000000000000
+          Size.Height = 122.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+          object Label42: TLabel
+            Align = Center
+            StyledSettings = [Style]
+            Size.Width = 156.000000000000000000
+            Size.Height = 35.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Family = 'Arial'
+            TextSettings.Font.Size = 30.000000000000000000
+            TextSettings.FontColor = claWhite
+            TextSettings.HorzAlign = Center
+            Text = 'Enter'
+            TabOrder = 0
+          end
+        end
+      end
+    end
+  end
+end

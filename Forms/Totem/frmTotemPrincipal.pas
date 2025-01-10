@@ -91,6 +91,7 @@ type
     qryConfig: TFDQuery;
     qryConfigAPI_KEY_WHATSAPP: TStringField;
     qryConfigSENHA_ACESSO: TStringField;
+    qryConfigCELL_RECEPTOR_WHATSAPP: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);
@@ -99,6 +100,7 @@ type
     procedure btnXiaomiClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Rectangle2DblClick(Sender: TObject);
+    procedure KeyQClick(Sender: TObject);
   private
     { Private declarations }
     procedure CarregarDados;
@@ -120,6 +122,7 @@ type
     procedure ViewportPositionChange(Sender: TObject; const OldViewportPosition, NewViewportPosition: TPointF; const ContentSizeChanged: Boolean);
     procedure PreencherParcelas(ComboBox: TComboBox; CELL_ID, ITEM_ID,
       CELL_TP_PRECO: Integer; ValorAVista: Double);
+    procedure KeyClick(Sender: TObject);
   public
     { Public declarations }
   end;
@@ -384,24 +387,49 @@ end;
 
 procedure TTotemPrincipalfrm.OnEnterNomeCli(Sender: TObject);
 begin
-  if not IsKeyboardShown then
-  begin
-    ShowKeyboardOn(TEdit(Sender));
-    IsKeyboardShown := True; // Marca como exibido
-  end
-  else
-    IsKeyboardShown := False;
+  if not Assigned(TecladoVirtualfrm) then
+    TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+
+  // Posiciona o teclado próximo ao TEdit
+  TecladoVirtualfrm.Left := Round(TEdit(Sender).AbsoluteRect.Left);
+  TecladoVirtualfrm.Top := Round(TEdit(Sender).AbsoluteRect.Bottom);
+
+  // Associa explicitamente o TEdit ao teclado virtual
+  TecladoVirtualfrm.SetTargetEdit(TEdit(Sender));
+
+  // Exibe o teclado
+  TecladoVirtualfrm.Show;
+
+//  if not IsKeyboardShown then
+//  begin
+//    ShowKeyboardOn(TEdit(Sender));
+//    IsKeyboardShown := True; // Marca como exibido
+//  end
+//  else
+//    IsKeyboardShown := False;
 end;
 
 procedure TTotemPrincipalfrm.OnEnterTelCli(Sender: TObject);
 begin
-  if not IsKeyboardShown then
-  begin
-    ShowKeyboardOn(TEdit(Sender));
-    IsKeyboardShown := True; // Marca como exibido
-  end
-  else
-    IsKeyboardShown := False;
+  if not Assigned(TecladoVirtualfrm) then
+    TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+
+  // Posiciona o teclado próximo ao TEdit
+  TecladoVirtualfrm.Left := Round(TEdit(Sender).AbsoluteRect.Left);
+  TecladoVirtualfrm.Top := Round(TEdit(Sender).AbsoluteRect.Bottom);
+
+  // Associa explicitamente o TEdit ao teclado virtual
+  TecladoVirtualfrm.SetTargetEdit(TEdit(Sender));
+
+  // Exibe o teclado
+  TecladoVirtualfrm.Show;
+//  if not IsKeyboardShown then
+//  begin
+//    ShowKeyboardOn(TEdit(Sender));
+//    IsKeyboardShown := True; // Marca como exibido
+//  end
+//  else
+//    IsKeyboardShown := False;
 end;
 
 procedure TTotemPrincipalfrm.Rectangle2DblClick(Sender: TObject);
@@ -890,21 +918,84 @@ begin
   end;
 end;
 
+procedure TTotemPrincipalfrm.KeyClick(Sender: TObject);
+var
+  Rectangle: TRectangle;
+  LabelInside: TLabel;
+  Child: TComponent;
+  KeyAction: string;
+begin
+  if Sender is TRectangle then
+  begin
+    Rectangle := Sender as TRectangle;
+
+    // Busca diretamente pelos filhos do TRectangle
+    for Child in Rectangle.Children do
+    begin
+      if (Child is TLabel) and (Copy(TLabel(Child).Name, 1, 3) = 'lbl') then
+      begin
+        LabelInside := TLabel(Child);
+        KeyAction := LabelInside.Text;
+
+        // Processa teclas especiais
+        if KeyAction = 'Enter' then
+        begin
+          edtPesquisa.Text := edtPesquisa.Text + sLineBreak;
+        end
+        else if KeyAction = 'Space' then
+        begin
+          edtPesquisa.Text := edtPesquisa.Text + ' ';
+        end
+        else if KeyAction = 'BackSpace' then
+        begin
+          if Length(edtPesquisa.Text) > 0 then
+            edtPesquisa.Text := Copy(edtPesquisa.Text, 1, Length(edtPesquisa.Text) - 1);
+        end
+        else if KeyAction = 'Delete' then
+        begin
+          edtPesquisa.Text := '';
+        end
+        else
+        begin
+          edtPesquisa.Text := edtPesquisa.Text + KeyAction;
+        end;
+
+        // Dispara manualmente o evento Typing
+        edtPesquisaTyping(edtPesquisa);  // Chama o evento de digitação diretamente
+        Exit;
+      end;
+    end;
+
+    ShowMessage('Nenhum label encontrado com prefixo "lbl".');
+  end;
+end;
+
+procedure TTotemPrincipalfrm.KeyQClick(Sender: TObject);
+begin
+  KeyClick(Sender);
+end;
+
 procedure TTotemPrincipalfrm.edtPesquisaEnter(Sender: TObject);
 begin
+
   if not Assigned(TecladoVirtualfrm) then
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
 
   // Posiciona o teclado próximo ao TEdit
   TecladoVirtualfrm.Left := Round(TEdit(Sender).AbsoluteRect.Left);
-  TecladoVirtualfrm.Top := Round(TEdit(Sender).AbsoluteRect.Bottom + 50);
-  TecladoVirtualfrm.Show;
+  TecladoVirtualfrm.Top := Round(TEdit(Sender).AbsoluteRect.Bottom);
 
-  // Vincula o TEdit ativo para o teclado
-  TecladoVirtualfrm.Tag := NativeInt(Sender);
+  // Associa explicitamente o TEdit ao teclado virtual
+  TecladoVirtualfrm.SetTargetEdit(TEdit(Sender));
+
+  // Exibe o teclado
+  TecladoVirtualfrm.Show;
+//
+//  // Opcional: Força o foco no TEdit
+//  TEdit(Sender).SetFocus;
 //  if not IsKeyboardShown then
 //  begin
-//    ShowKeyboardOn(TEdit(Sender));
+    //ShowKeyboardOn(TEdit(Sender));
 //    IsKeyboardShown := True; // Marca como exibido
 //  end
 //  else
@@ -958,6 +1049,9 @@ var
   ParentObject: TFmxObject;
   btn : TRectangle;
 begin
+  qryConfig.Close;
+  qryConfig.Open;
+
   btn := Sender as TRectangle;
 
   // Encontra o Frame pai do ComboBox
@@ -984,7 +1078,7 @@ begin
     Abort;
   end;
 
-  lFuncoes.EnviarMsgWhatsApp( '8404a52b-690a-422f-be65-3281d55ac4b9', '24981244253', Frame.edtTelCli.Text,
+  lFuncoes.EnviarMsgWhatsApp( qryConfigAPI_KEY_WHATSAPP.AsString, qryConfigCELL_RECEPTOR_WHATSAPP.AsString, Frame.edtTelCli.Text,
                               'Oi Tudo Bem !! ' + #13 + #13 + 'Sou o ' + Frame.edtNomeCli.Text + #13 +
                               'Acabei de escolher um celular ' + Frame.lblTITULOCEL.Text +
                               ', aqui no Totem do Shopping no valor de ' + Frame.edtValorTel.Text + Frame.cbbMododePagamento.Items[Frame.cbbMododePagamento.ItemIndex] +
