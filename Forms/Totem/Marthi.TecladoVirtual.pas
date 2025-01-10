@@ -103,7 +103,7 @@ type
     Rectangle67: TRectangle;
     KeyÇ: TRectangle;
     lblÇ: TLabel;
-    Rectangle71: TRectangle;
+    RecBotoesFixos: TRectangle;
     Rectangle72: TRectangle;
     KeyDelete: TRectangle;
     lblDelete: TLabel;
@@ -173,6 +173,11 @@ implementation
 procedure TTecladoVirtualfrm.SetTargetEdit(ATargetEdit: TEdit);
 begin
   FTargetEdit := ATargetEdit;
+
+  if FTargetEdit.Name = 'edtTelCli' then
+      RecTeclado.Enabled := False
+    else
+      RecTeclado.Enabled := True;
 end;
 
 procedure TTecladoVirtualfrm.KeyClick(Sender: TObject);
@@ -184,6 +189,7 @@ var
 begin
   if Assigned(FTargetEdit) then
   begin
+
     if Sender is TRectangle then
     begin
       Rectangle := Sender as TRectangle;

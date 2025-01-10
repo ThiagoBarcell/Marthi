@@ -49,6 +49,7 @@ Source: MarthiCadastros.exe; DestDir: \Marthi\; Flags: ignoreversion overwritere
 Source: caminhos.ini; DestDir: \Marthi\; Flags: ignoreversion overwritereadonly replacesameversion
 Source: Marthi DataBase\DataBase\MARTHIDB.FDB; DestDir: \Marthi\Marthi DataBase\DataBase\; Flags: ignoreversion overwritereadonly replacesameversion
 Source: Dependencias\*; DestDir: \Marthi\Dependencias\; Flags: ignoreversion overwritereadonly replacesameversion
-
+Source: Util\*; DestDir: \Marthi\Util\; Flags: ignoreversion overwritereadonly replacesameversion
+Source: Release\*; DestDir: \Marthi\Release\; Flags: ignoreversion overwritereadonly replacesameversion
 
 

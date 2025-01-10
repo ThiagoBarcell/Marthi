@@ -1054,6 +1054,7 @@ var
   lFuncoes : TFuncoesUteis;
   ParentObject: TFmxObject;
   btn : TRectangle;
+  StatusCode : Integer;
 begin
   qryConfig.Close;
   qryConfig.Open;
@@ -1085,10 +1086,22 @@ begin
   end;
 
   lFuncoes.EnviarMsgWhatsApp( qryConfigAPI_KEY_WHATSAPP.AsString, qryConfigCELL_RECEPTOR_WHATSAPP.AsString, Frame.edtTelCli.Text,
-                              'Oi Tudo Bem !! ' + #13 + #13 + 'Sou o ' + Frame.edtNomeCli.Text + #13 +
-                              'Acabei de escolher um celular ' + Frame.lblTITULOCEL.Text +
-                              ', aqui no Totem do Shopping no valor de ' + Frame.edtValorTel.Text + Frame.cbbMododePagamento.Items[Frame.cbbMododePagamento.ItemIndex] +
-                              'Poderia me dar mais informações sobre o produto?' , '', False );
+                              'Oi Tudo Bem? ' + #13 + #13 +
+                              'Meu nome é ' + Frame.edtNomeCli.Text + #13 +
+                              'Acabei de escolher o celular ' + Frame.lblTITULOCEL.Text + ', na cor ' + Frame.edtCorTel.Text + ', capacidade ' + Frame.edtCapacidadeTel.Text + #13 +
+                              ', aqui no Totem do Shopping Olga Sola, Três Rios, na condição de retirada, ' + Frame.cbbRetirada.Items[Frame.cbbRetirada.ItemIndex] + #13 +
+                              ' forma de pagamento, ' + Frame.cbbMododePagamento.Items[Frame.cbbMododePagamento.ItemIndex] + ', preço ' + Frame.edtValorTel.Text +
+                              'Podemos formalizar o pedido pessoalmente?' , '', False, StatusCode );
+
+  if StatusCode in [200, 201] then
+  begin
+    MessageDlg('Mensagem enviado com Sucesso!', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
+    Frame.edtNomeCli.Text := '';
+    Frame.edtTelCli.Text := '';
+    Frame.tbcTotem.ActiveTab := Frame.TabTotemPrincipal;
+  end
+  else
+    MessageDlg('Erro no envio dos dados!', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
 end;
 
 procedure TTotemPrincipalfrm.AjustarAlturaScrollBox(ScrollBox: TVertScrollBox);

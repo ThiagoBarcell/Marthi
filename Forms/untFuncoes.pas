@@ -21,7 +21,7 @@ public
   //Procedures
   procedure AbreQrysInfo( lQryArmazenamento, lQryCondicao, lQryCor, lQryTpPreco : TFDQuery );
   Procedure ConectaBD_Ini( lConexao : TFDConnection; lLinkFB : TFDPhysFBDriverLink );
-  procedure EnviarMsgWhatsApp( sAPIKEYEMP, sTelefoneFrom, sTelefoneTo : String; sMensagem : WideString = ''; sCaminhoAnexo : String = ''; lEviarMensagemPDF : Boolean = False );
+  procedure EnviarMsgWhatsApp(sAPIKEYEMP, sTelefoneFrom, sTelefoneTo: String; sMensagem: WideString; sCaminhoAnexo: String; lEviarMensagemPDF: Boolean; out StatusCode: Integer);
   procedure ReplicaCelular(lQryCell: TFDQuery; lConnectionBD : TFDConnection );
   Procedure CriaParcelas( lConexao: TFDConnection; lCellID, lItemID, lTpPreco : Integer ;
   lValUnitario : Double);
@@ -208,7 +208,7 @@ begin
   Result := lQry;
 end;
 
-procedure TFuncoesUteis.EnviarMsgWhatsApp(sAPIKEYEMP, sTelefoneFrom, sTelefoneTo: String; sMensagem: WideString; sCaminhoAnexo: String; lEviarMensagemPDF: Boolean);
+procedure TFuncoesUteis.EnviarMsgWhatsApp(sAPIKEYEMP, sTelefoneFrom, sTelefoneTo: String; sMensagem: WideString; sCaminhoAnexo: String; lEviarMensagemPDF: Boolean; out StatusCode: Integer);
 var
   inStream       : TStream;
   outStream      : TStream;
@@ -326,6 +326,7 @@ begin
     sRESTRequest.Params.Items[8].Value := StringList.Text;
 
     sRESTRequest.Execute;
+    StatusCode := sRESTResponse.StatusCode;
 
   finally
 
@@ -335,7 +336,7 @@ begin
     FreeAndNil( StringList );
 
     if( lEviarMensagemPDF )then
-      EnviarMsgWhatsApp( sAPIKEYEMP, sTelefoneFrom, sTelefoneTo, sMensagem );
+      EnviarMsgWhatsApp( sAPIKEYEMP, sTelefoneFrom, sTelefoneTo, sMensagem, '', False, StatusCode );
 
   end;
 

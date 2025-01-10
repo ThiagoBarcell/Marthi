@@ -19,18 +19,18 @@
     XRadius = 5.000000000000000000
     YRadius = 5.000000000000000000
     object Rectangle7: TRectangle
-      Align = Left
+      Align = Top
       Fill.Color = xF5F5F5F5
       Position.Y = 65.000000000000000000
-      Size.Width = 715.000000000000000000
-      Size.Height = 263.000000000000000000
+      Size.Width = 717.000000000000000000
+      Size.Height = 197.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None
       object RecTeclado: TRectangle
         Align = Client
         Fill.Color = xF5F5F5F5
-        Size.Width = 715.000000000000000000
-        Size.Height = 263.000000000000000000
+        Size.Width = 717.000000000000000000
+        Size.Height = 197.000000000000000000
         Size.PlatformDefault = False
         Stroke.Kind = None
         XRadius = 5.000000000000000000
@@ -44,7 +44,7 @@
           Margins.Bottom = 3.000000000000000000
           Position.X = 3.000000000000000000
           Position.Y = 3.000000000000000000
-          Size.Width = 709.000000000000000000
+          Size.Width = 711.000000000000000000
           Size.Height = 60.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
@@ -488,7 +488,7 @@
           Margins.Bottom = 3.000000000000000000
           Position.X = 3.000000000000000000
           Position.Y = 135.000000000000000000
-          Size.Width = 709.000000000000000000
+          Size.Width = 711.000000000000000000
           Size.Height = 60.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
@@ -776,7 +776,7 @@
           Margins.Bottom = 3.000000000000000000
           Position.X = 3.000000000000000000
           Position.Y = 69.000000000000000000
-          Size.Width = 709.000000000000000000
+          Size.Width = 711.000000000000000000
           Size.Height = 60.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
@@ -1211,126 +1211,6 @@
             end
           end
         end
-        object Rectangle71: TRectangle
-          Align = Top
-          Fill.Color = xF5F5F5F5
-          Margins.Left = 3.000000000000000000
-          Margins.Top = 3.000000000000000000
-          Margins.Right = 3.000000000000000000
-          Margins.Bottom = 3.000000000000000000
-          Position.X = 3.000000000000000000
-          Position.Y = 201.000000000000000000
-          Size.Width = 709.000000000000000000
-          Size.Height = 60.000000000000000000
-          Size.PlatformDefault = False
-          Stroke.Kind = None
-          XRadius = 5.000000000000000000
-          YRadius = 5.000000000000000000
-          object Rectangle72: TRectangle
-            Align = Left
-            Fill.Color = xFF525252
-            Margins.Right = 5.000000000000000000
-            Size.Width = 149.000000000000000000
-            Size.Height = 60.000000000000000000
-            Size.PlatformDefault = False
-            Stroke.Kind = None
-            XRadius = 5.000000000000000000
-            YRadius = 5.000000000000000000
-            object KeyDelete: TRectangle
-              Align = Contents
-              Cursor = crHandPoint
-              Fill.Color = xFF4F4FBC
-              Margins.Left = 3.000000000000000000
-              Margins.Bottom = 3.000000000000000000
-              Size.Width = 146.000000000000000000
-              Size.Height = 57.000000000000000000
-              Size.PlatformDefault = False
-              Stroke.Kind = None
-              XRadius = 5.000000000000000000
-              YRadius = 5.000000000000000000
-              OnClick = KeyQClick
-              object lblDelete: TLabel
-                Align = Center
-                StyledSettings = [Style]
-                Size.Width = 156.000000000000000000
-                Size.Height = 35.000000000000000000
-                Size.PlatformDefault = False
-                TextSettings.Font.Family = 'Arial'
-                TextSettings.Font.Size = 25.000000000000000000
-                TextSettings.FontColor = claWhite
-                TextSettings.HorzAlign = Center
-                Text = 'Delete'
-                TabOrder = 0
-              end
-            end
-          end
-          object KeySpace: TRectangle
-            Align = Left
-            Cursor = crHandPoint
-            Fill.Color = xFF525252
-            Margins.Right = 5.000000000000000000
-            Position.X = 154.000000000000000000
-            Size.Width = 401.000000000000000000
-            Size.Height = 60.000000000000000000
-            Size.PlatformDefault = False
-            Stroke.Kind = None
-            XRadius = 5.000000000000000000
-            YRadius = 5.000000000000000000
-            OnClick = KeyQClick
-            object lblSpace: TLabel
-              Align = Center
-              StyledSettings = [Style]
-              Size.Width = 156.000000000000000000
-              Size.Height = 35.000000000000000000
-              Size.PlatformDefault = False
-              TextSettings.Font.Family = 'Arial'
-              TextSettings.Font.Size = 30.000000000000000000
-              TextSettings.FontColor = claWhite
-              TextSettings.HorzAlign = Center
-              Text = 'Space'
-              TabOrder = 0
-            end
-          end
-          object Rectangle74: TRectangle
-            Align = Left
-            Fill.Color = xFF525252
-            Margins.Right = 5.000000000000000000
-            Position.X = 560.000000000000000000
-            Size.Width = 149.000000000000000000
-            Size.Height = 60.000000000000000000
-            Size.PlatformDefault = False
-            Stroke.Kind = None
-            XRadius = 5.000000000000000000
-            YRadius = 5.000000000000000000
-            object KeyQBackSpace: TRectangle
-              Align = Contents
-              Cursor = crHandPoint
-              Fill.Color = xFF4F4FBC
-              Margins.Left = 3.000000000000000000
-              Margins.Bottom = 3.000000000000000000
-              Size.Width = 146.000000000000000000
-              Size.Height = 57.000000000000000000
-              Size.PlatformDefault = False
-              Stroke.Kind = None
-              XRadius = 5.000000000000000000
-              YRadius = 5.000000000000000000
-              OnClick = KeyQClick
-              object lblBackSpace: TLabel
-                Align = Center
-                StyledSettings = [Style]
-                Size.Width = 156.000000000000000000
-                Size.Height = 35.000000000000000000
-                Size.PlatformDefault = False
-                TextSettings.Font.Family = 'Arial'
-                TextSettings.Font.Size = 25.000000000000000000
-                TextSettings.FontColor = claWhite
-                TextSettings.HorzAlign = Center
-                Text = 'BackSpace'
-                TabOrder = 0
-              end
-            end
-          end
-        end
       end
     end
     object Rectangle1: TRectangle
@@ -1352,7 +1232,7 @@
         Position.X = 3.000000000000000000
         Position.Y = 3.000000000000000000
         Size.Width = 711.000000000000000000
-        Size.Height = 60.000000000000000000
+        Size.Height = 62.000000000000000000
         Size.PlatformDefault = False
         Stroke.Kind = None
         XRadius = 5.000000000000000000
@@ -1362,7 +1242,7 @@
           Fill.Color = xFF525252
           Margins.Right = 5.000000000000000000
           Size.Width = 60.000000000000000000
-          Size.Height = 60.000000000000000000
+          Size.Height = 62.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
           XRadius = 5.000000000000000000
@@ -1374,7 +1254,7 @@
             Margins.Left = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
             Size.Width = 57.000000000000000000
-            Size.Height = 57.000000000000000000
+            Size.Height = 59.000000000000000000
             Size.PlatformDefault = False
             Stroke.Kind = None
             XRadius = 5.000000000000000000
@@ -1401,7 +1281,7 @@
           Margins.Right = 5.000000000000000000
           Position.X = 65.000000000000000000
           Size.Width = 60.000000000000000000
-          Size.Height = 60.000000000000000000
+          Size.Height = 62.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
           XRadius = 5.000000000000000000
@@ -1413,7 +1293,7 @@
             Margins.Left = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
             Size.Width = 57.000000000000000000
-            Size.Height = 57.000000000000000000
+            Size.Height = 59.000000000000000000
             Size.PlatformDefault = False
             Stroke.Kind = None
             XRadius = 5.000000000000000000
@@ -1440,7 +1320,7 @@
           Margins.Right = 5.000000000000000000
           Position.X = 130.000000000000000000
           Size.Width = 60.000000000000000000
-          Size.Height = 60.000000000000000000
+          Size.Height = 62.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
           XRadius = 5.000000000000000000
@@ -1452,7 +1332,7 @@
             Margins.Left = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
             Size.Width = 57.000000000000000000
-            Size.Height = 57.000000000000000000
+            Size.Height = 59.000000000000000000
             Size.PlatformDefault = False
             Stroke.Kind = None
             XRadius = 5.000000000000000000
@@ -1479,7 +1359,7 @@
           Margins.Right = 5.000000000000000000
           Position.X = 195.000000000000000000
           Size.Width = 60.000000000000000000
-          Size.Height = 60.000000000000000000
+          Size.Height = 62.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
           XRadius = 5.000000000000000000
@@ -1491,7 +1371,7 @@
             Margins.Left = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
             Size.Width = 57.000000000000000000
-            Size.Height = 57.000000000000000000
+            Size.Height = 59.000000000000000000
             Size.PlatformDefault = False
             Stroke.Kind = None
             XRadius = 5.000000000000000000
@@ -1518,7 +1398,7 @@
           Margins.Right = 5.000000000000000000
           Position.X = 260.000000000000000000
           Size.Width = 60.000000000000000000
-          Size.Height = 60.000000000000000000
+          Size.Height = 62.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
           XRadius = 5.000000000000000000
@@ -1530,7 +1410,7 @@
             Margins.Left = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
             Size.Width = 57.000000000000000000
-            Size.Height = 57.000000000000000000
+            Size.Height = 59.000000000000000000
             Size.PlatformDefault = False
             Stroke.Kind = None
             XRadius = 5.000000000000000000
@@ -1557,7 +1437,7 @@
           Margins.Right = 5.000000000000000000
           Position.X = 325.000000000000000000
           Size.Width = 60.000000000000000000
-          Size.Height = 60.000000000000000000
+          Size.Height = 62.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
           XRadius = 5.000000000000000000
@@ -1569,7 +1449,7 @@
             Margins.Left = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
             Size.Width = 57.000000000000000000
-            Size.Height = 57.000000000000000000
+            Size.Height = 59.000000000000000000
             Size.PlatformDefault = False
             Stroke.Kind = None
             XRadius = 5.000000000000000000
@@ -1596,7 +1476,7 @@
           Margins.Right = 5.000000000000000000
           Position.X = 520.000000000000000000
           Size.Width = 60.000000000000000000
-          Size.Height = 60.000000000000000000
+          Size.Height = 62.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
           XRadius = 5.000000000000000000
@@ -1608,7 +1488,7 @@
             Margins.Left = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
             Size.Width = 57.000000000000000000
-            Size.Height = 57.000000000000000000
+            Size.Height = 59.000000000000000000
             Size.PlatformDefault = False
             Stroke.Kind = None
             XRadius = 5.000000000000000000
@@ -1635,7 +1515,7 @@
           Margins.Right = 5.000000000000000000
           Position.X = 390.000000000000000000
           Size.Width = 60.000000000000000000
-          Size.Height = 60.000000000000000000
+          Size.Height = 62.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
           XRadius = 5.000000000000000000
@@ -1647,7 +1527,7 @@
             Margins.Left = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
             Size.Width = 57.000000000000000000
-            Size.Height = 57.000000000000000000
+            Size.Height = 59.000000000000000000
             Size.PlatformDefault = False
             Stroke.Kind = None
             XRadius = 5.000000000000000000
@@ -1674,7 +1554,7 @@
           Margins.Right = 5.000000000000000000
           Position.X = 455.000000000000000000
           Size.Width = 60.000000000000000000
-          Size.Height = 60.000000000000000000
+          Size.Height = 62.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
           XRadius = 5.000000000000000000
@@ -1686,7 +1566,7 @@
             Margins.Left = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
             Size.Width = 57.000000000000000000
-            Size.Height = 57.000000000000000000
+            Size.Height = 59.000000000000000000
             Size.PlatformDefault = False
             Stroke.Kind = None
             XRadius = 5.000000000000000000
@@ -1753,7 +1633,7 @@
           Margins.Right = 5.000000000000000000
           Position.X = 585.000000000000000000
           Size.Width = 61.000000000000000000
-          Size.Height = 60.000000000000000000
+          Size.Height = 62.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
           XRadius = 5.000000000000000000
@@ -1765,7 +1645,7 @@
             Margins.Left = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
             Size.Width = 58.000000000000000000
-            Size.Height = 57.000000000000000000
+            Size.Height = 59.000000000000000000
             Size.PlatformDefault = False
             Stroke.Kind = None
             XRadius = 5.000000000000000000
@@ -1792,7 +1672,7 @@
           Margins.Right = 5.000000000000000000
           Position.X = 651.000000000000000000
           Size.Width = 60.000000000000000000
-          Size.Height = 60.000000000000000000
+          Size.Height = 62.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
           XRadius = 5.000000000000000000
@@ -1804,7 +1684,7 @@
             Margins.Left = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
             Size.Width = 57.000000000000000000
-            Size.Height = 57.000000000000000000
+            Size.Height = 59.000000000000000000
             Size.PlatformDefault = False
             Stroke.Kind = None
             XRadius = 5.000000000000000000
@@ -1823,6 +1703,126 @@
               Text = '.'
               TabOrder = 0
             end
+          end
+        end
+      end
+    end
+    object RecBotoesFixos: TRectangle
+      Align = Top
+      Fill.Color = xF5F5F5F5
+      Margins.Left = 3.000000000000000000
+      Margins.Top = 3.000000000000000000
+      Margins.Right = 3.000000000000000000
+      Margins.Bottom = 3.000000000000000000
+      Position.X = 3.000000000000000000
+      Position.Y = 265.000000000000000000
+      Size.Width = 711.000000000000000000
+      Size.Height = 60.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      XRadius = 5.000000000000000000
+      YRadius = 5.000000000000000000
+      object Rectangle72: TRectangle
+        Align = Left
+        Fill.Color = xFF525252
+        Margins.Right = 5.000000000000000000
+        Size.Width = 149.000000000000000000
+        Size.Height = 60.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 5.000000000000000000
+        YRadius = 5.000000000000000000
+        object KeyDelete: TRectangle
+          Align = Contents
+          Cursor = crHandPoint
+          Fill.Color = xFF4F4FBC
+          Margins.Left = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Size.Width = 146.000000000000000000
+          Size.Height = 57.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+          OnClick = KeyQClick
+          object lblDelete: TLabel
+            Align = Center
+            StyledSettings = [Style]
+            Size.Width = 156.000000000000000000
+            Size.Height = 35.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Family = 'Arial'
+            TextSettings.Font.Size = 25.000000000000000000
+            TextSettings.FontColor = claWhite
+            TextSettings.HorzAlign = Center
+            Text = 'Delete'
+            TabOrder = 0
+          end
+        end
+      end
+      object KeySpace: TRectangle
+        Align = Left
+        Cursor = crHandPoint
+        Fill.Color = xFF525252
+        Margins.Right = 5.000000000000000000
+        Position.X = 154.000000000000000000
+        Size.Width = 401.000000000000000000
+        Size.Height = 60.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 5.000000000000000000
+        YRadius = 5.000000000000000000
+        OnClick = KeyQClick
+        object lblSpace: TLabel
+          Align = Center
+          StyledSettings = [Style]
+          Size.Width = 156.000000000000000000
+          Size.Height = 35.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Family = 'Arial'
+          TextSettings.Font.Size = 30.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Text = 'Space'
+          TabOrder = 0
+        end
+      end
+      object Rectangle74: TRectangle
+        Align = Left
+        Fill.Color = xFF525252
+        Margins.Right = 5.000000000000000000
+        Position.X = 560.000000000000000000
+        Size.Width = 149.000000000000000000
+        Size.Height = 60.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 5.000000000000000000
+        YRadius = 5.000000000000000000
+        object KeyQBackSpace: TRectangle
+          Align = Contents
+          Cursor = crHandPoint
+          Fill.Color = xFF4F4FBC
+          Margins.Left = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Size.Width = 146.000000000000000000
+          Size.Height = 57.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+          OnClick = KeyQClick
+          object lblBackSpace: TLabel
+            Align = Center
+            StyledSettings = [Style]
+            Size.Width = 156.000000000000000000
+            Size.Height = 35.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Family = 'Arial'
+            TextSettings.Font.Size = 25.000000000000000000
+            TextSettings.FontColor = claWhite
+            TextSettings.HorzAlign = Center
+            Text = 'BackSpace'
+            TabOrder = 0
           end
         end
       end
