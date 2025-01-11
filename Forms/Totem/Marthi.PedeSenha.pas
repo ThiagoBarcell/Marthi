@@ -43,6 +43,7 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
     procedure edtSenhaEnter(Sender: TObject);
     procedure edtSenhaClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -76,19 +77,37 @@ begin
 end;
 
 procedure TfrmPedeSenhaMarthi.edtSenhaClick(Sender: TObject);
+var
+  Display: TDisplay;
+  KeyboardLeft, KeyboardTop: Single;
 begin
   if not Assigned(TecladoVirtualfrm) then
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
 
-  // Posiciona o teclado próximo ao TEdit
-  TecladoVirtualfrm.Left := Round(TEdit(Sender).AbsoluteRect.Left) + 300;
-  TecladoVirtualfrm.Top := Round(TEdit(Sender).AbsoluteRect.Bottom) + 300;
+  // Obtém o display (monitor) com base no retângulo do formulário
+  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
+
+  // Calcula a posição do teclado relativo ao display
+  KeyboardLeft := Round(TEdit(Sender).AbsoluteRect.Left) + 300;
+  KeyboardTop :=  Round(TEdit(Sender).AbsoluteRect.Bottom) + 300;
+
+  // Garante que o teclado virtual fique dentro da área do display
+  if KeyboardLeft + TecladoVirtualfrm.Width > Display.WorkArea.Width then
+    KeyboardLeft := Display.WorkArea.Width - TecladoVirtualfrm.Width;
+
+  if KeyboardTop + TecladoVirtualfrm.Height > Display.WorkArea.Height then
+    KeyboardTop := Display.WorkArea.Height - TecladoVirtualfrm.Height;
+
+  // Ajusta a posição do teclado virtual
+  TecladoVirtualfrm.Left := Round(KeyboardLeft);
+  TecladoVirtualfrm.Top := Round(KeyboardTop);
 
   // Associa explicitamente o TEdit ao teclado virtual
-  TecladoVirtualfrm.SetTargetEdit(TEdit(Sender));
+  TecladoVirtualfrm.SetTargetEdit(edtSenha);
 
   // Exibe o teclado
   TecladoVirtualfrm.Show;
+
 end;
 
 procedure TfrmPedeSenhaMarthi.edtSenhaEnter(Sender: TObject);
@@ -101,6 +120,13 @@ begin
 //  end
 //  else
 //    IsKeyboardShown := False;
+end;
+
+procedure TfrmPedeSenhaMarthi.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  if Assigned(TecladoVirtualfrm) then
+    TecladoVirtualfrm.Close;
 end;
 
 procedure TfrmPedeSenhaMarthi.FormKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);

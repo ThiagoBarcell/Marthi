@@ -1,4 +1,4 @@
-unit frmTotemPrincipal;
+ï»¿unit frmTotemPrincipal;
 
 interface
 
@@ -165,10 +165,10 @@ begin
   if ComboBox.ItemIndex = -1 then
     Exit;
 
-  // Obtém o ID da capacidade selecionada
+  // ObtÃ©m o ID da capacidade selecionada
   CapacidadeID := Integer(ComboBox.Items.Objects[ComboBox.ItemIndex]);
 
-  // Obtém o ID da cor selecionada
+  // ObtÃ©m o ID da cor selecionada
   if Frame.cbbCor.ItemIndex >= 0 then
     CorID := Integer(Frame.cbbCor.Items.Objects[Frame.cbbCor.ItemIndex])
   else
@@ -176,7 +176,7 @@ begin
 
    qryDados := TFDQuery.Create(nil);
   try
-    qryDados.Connection := ConectMarthi; // Substitua pelo seu componente de conexão
+    qryDados.Connection := ConectMarthi; // Substitua pelo seu componente de conexÃ£o
     qryDados.SQL.Text :=
       'SELECT CELL_ITENS.CELL_VAL_UNIT, CELL_ITENS.CELL_VAL_PARC, CELL_ITENS.CELL_PARCELAS ' +
       'FROM CELL_ITENS ' +
@@ -226,7 +226,7 @@ begin
   if ComboBox.ItemIndex = -1 then
     Exit;
 
-  // Obtém o ID da cor selecionada
+  // ObtÃ©m o ID da cor selecionada
   if Frame.cbbCor.ItemIndex >= 0 then
     CorID := Integer(Frame.cbbCor.Items.Objects[Frame.cbbCor.ItemIndex])
   else
@@ -308,7 +308,7 @@ begin
     Frame.CELL_MARCA.Text := dtsCadCell.DataSet.FieldByName('CELL_MARCA').AsString;
     Frame.CELL_ID.Text := dtsCadCell.DataSet.FieldByName('CELL_ID').AsString;
 
-    // Obtém o ID dos itens selecionados
+    // ObtÃ©m o ID dos itens selecionados
     if Frame.cbbCor.ItemIndex >= 0 then
       CorID := Integer(Frame.cbbCor.Items.Objects[Frame.cbbCor.ItemIndex])
     else
@@ -386,13 +386,15 @@ end;
 
 procedure TTotemPrincipalfrm.OnClickNomeCli(Sender: TObject);
 var
-  Edit : TEdit;
+  Edit: TEdit;
   ParentObject: TFmxObject;
   Frame: TFrameTotem;
+  Display: TDisplay;
+  KeyboardLeft, KeyboardTop: Single;
 begin
   Edit := Sender as TEdit;
 
-  // Encontra o Frame pai do ComboBox
+  // Encontra o Frame pai do Edit
   ParentObject := Edit.Parent;
   while (ParentObject <> nil) and not (ParentObject is TFrameTotem) do
     ParentObject := ParentObject.Parent;
@@ -405,14 +407,28 @@ begin
   if not Assigned(TecladoVirtualfrm) then
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
 
-  // Posiciona o teclado próximo ao TEdit
-  TecladoVirtualfrm.Left := Round(TEdit(Sender).AbsoluteRect.Left);
-  TecladoVirtualfrm.Top := Round(Frame.RecFrame.AbsoluteRect.Bottom);
+  // ObtÃ©m o display (monitor) com base no retÃ¢ngulo do Frame
+  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
+
+  // Calcula a posiÃ§Ã£o desejada do teclado virtual
+  KeyboardLeft := Edit.AbsoluteRect.Left;
+  KeyboardTop := Frame.RecFrame.AbsoluteRect.Bottom;
+
+  // Ajusta a posiÃ§Ã£o para garantir que o teclado fique dentro da Ã¡rea do display
+  if KeyboardLeft + TecladoVirtualfrm.Width > Display.WorkArea.Width then
+    KeyboardLeft := Display.WorkArea.Width - TecladoVirtualfrm.Width;
+
+  if KeyboardTop + TecladoVirtualfrm.Height > Display.WorkArea.Height then
+    KeyboardTop := Display.WorkArea.Height - TecladoVirtualfrm.Height;
+
+  // Define a posiÃ§Ã£o ajustada do teclado virtual
+  TecladoVirtualfrm.Left := Round(KeyboardLeft);
+  TecladoVirtualfrm.Top := Round(KeyboardTop);
 
   // Associa explicitamente o TEdit ao teclado virtual
-  TecladoVirtualfrm.SetTargetEdit(TEdit(Sender));
+  TecladoVirtualfrm.SetTargetEdit(Edit);
 
-  // Exibe o teclado
+  // Exibe o teclado virtual
   TecladoVirtualfrm.Show;
 
 //  if not IsKeyboardShown then
@@ -426,13 +442,15 @@ end;
 
 procedure TTotemPrincipalfrm.OnClickTelCli(Sender: TObject);
 var
-  Edit : TEdit;
+  Edit: TEdit;
   ParentObject: TFmxObject;
   Frame: TFrameTotem;
+  Display: TDisplay;
+  KeyboardLeft, KeyboardTop: Single;
 begin
   Edit := Sender as TEdit;
 
-  // Encontra o Frame pai do ComboBox
+  // Encontra o Frame pai do Edit
   ParentObject := Edit.Parent;
   while (ParentObject <> nil) and not (ParentObject is TFrameTotem) do
     ParentObject := ParentObject.Parent;
@@ -445,14 +463,28 @@ begin
   if not Assigned(TecladoVirtualfrm) then
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
 
-  // Posiciona o teclado próximo ao TEdit
-  TecladoVirtualfrm.Left := Round(TEdit(Sender).AbsoluteRect.Left);
-  TecladoVirtualfrm.Top := Round(Frame.RecFrame.AbsoluteRect.Bottom);
+  // ObtÃ©m o display (monitor) com base no retÃ¢ngulo do Frame
+  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
+
+  // Calcula a posiÃ§Ã£o desejada do teclado virtual
+  KeyboardLeft := Edit.AbsoluteRect.Left;
+  KeyboardTop := Frame.RecFrame.AbsoluteRect.Bottom;
+
+  // Ajusta a posiÃ§Ã£o para garantir que o teclado fique dentro da Ã¡rea do display
+  if KeyboardLeft + TecladoVirtualfrm.Width > Display.WorkArea.Width then
+    KeyboardLeft := Display.WorkArea.Width - TecladoVirtualfrm.Width;
+
+  if KeyboardTop + TecladoVirtualfrm.Height > Display.WorkArea.Height then
+    KeyboardTop := Display.WorkArea.Height - TecladoVirtualfrm.Height;
+
+  // Define a posiÃ§Ã£o ajustada do teclado virtual
+  TecladoVirtualfrm.Left := Round(KeyboardLeft);
+  TecladoVirtualfrm.Top := Round(KeyboardTop);
 
   // Associa explicitamente o TEdit ao teclado virtual
-  TecladoVirtualfrm.SetTargetEdit(TEdit(Sender));
+  TecladoVirtualfrm.SetTargetEdit(Edit);
 
-  // Exibe o teclado
+  // Exibe o teclado virtual
   TecladoVirtualfrm.Show;
 //  if not IsKeyboardShown then
 //  begin
@@ -467,6 +499,9 @@ procedure TTotemPrincipalfrm.Rectangle2DblClick(Sender: TObject);
 var
   PedeSenhaMarthi : TfrmPedeSenhaMarthi;
 begin
+  if Assigned(TecladoVirtualfrm) then
+    TecladoVirtualfrm.Close;
+
   qryConfig.Close;
   qryConfig.Open;
 
@@ -511,16 +546,16 @@ begin
   if ComboBox.ItemIndex = -1 then
     Exit;
 
-  // Obtém o ID da capacidade selecionada
+  // ObtÃ©m o ID da capacidade selecionada
   RetiradaID := Integer(ComboBox.Items.Objects[ComboBox.ItemIndex]);
 
-  // Obtém o ID da cor selecionada
+  // ObtÃ©m o ID da cor selecionada
   if Frame.cbbCor.ItemIndex >= 0 then
     CorID := Integer(Frame.cbbCor.Items.Objects[Frame.cbbCor.ItemIndex])
   else
     Exit;
 
-   // Obtém o ID da capacidade selecionada
+   // ObtÃ©m o ID da capacidade selecionada
   if Frame.cbbCapacidade.ItemIndex >= 0 then
     CapacidadeID := Integer(Frame.cbbCapacidade.Items.Objects[Frame.cbbCapacidade.ItemIndex])
   else
@@ -528,7 +563,7 @@ begin
 
    qryDados := TFDQuery.Create(nil);
   try
-    qryDados.Connection := ConectMarthi; // Substitua pelo seu componente de conexão
+    qryDados.Connection := ConectMarthi; // Substitua pelo seu componente de conexÃ£o
     qryDados.SQL.Text :=
       'SELECT CELL_ITENS.ITEM_ID, CELL_ITENS.CELL_VAL_UNIT, CELL_ITENS.CELL_VAL_PARC ' +
       'FROM CELL_ITENS ' +
@@ -590,12 +625,12 @@ begin
   if ComboBox.ItemIndex = -1 then
     Exit;
 
-  // Obtém o ID da capacidade selecionada
+  // ObtÃ©m o ID da capacidade selecionada
   ParcelaID := Integer(ComboBox.Items.Objects[ComboBox.ItemIndex]);
 
   qryDadosParcela := TFDQuery.Create(nil);
   try
-    qryDadosParcela.Connection := ConectMarthi; // Substitua pelo seu componente de conexão
+    qryDadosParcela.Connection := ConectMarthi; // Substitua pelo seu componente de conexÃ£o
     qryDadosParcela.SQL.Text :=
       'SELECT ' +
       '  CELL_VAL_ITENS_PARC.CELL_PARCELA, ' +
@@ -605,7 +640,7 @@ begin
     qryDadosParcela.ParamByName('CELL_VAL_ITENS_PARC_ID').AsInteger := ParcelaID;
     qryDadosParcela.Open;
 
-    // Adiciona o valor à vista como o primeiro item
+    // Adiciona o valor Ã  vista como o primeiro item
     if ComboBox.ItemIndex = 0 then
       descricao := '1 X ' + Frame.lblValorAVista.Text
     else
@@ -628,7 +663,7 @@ begin
 
   qryDadosParcela := TFDQuery.Create(nil);
   try
-    qryDadosParcela.Connection := ConectMarthi; // Substitua pelo seu componente de conexão
+    qryDadosParcela.Connection := ConectMarthi; // Substitua pelo seu componente de conexÃ£o
     qryDadosParcela.SQL.Text :=
       'SELECT ' +
       ' CELL_VAL_ITENS_PARC.CELL_VAL_ITENS_PARC_ID, ' +
@@ -643,10 +678,10 @@ begin
     qryDadosParcela.ParamByName('CELL_TP_PRECO').AsInteger := CELL_TP_PRECO;
     qryDadosParcela.Open;
 
-    // Adiciona o valor à vista como o primeiro item
+    // Adiciona o valor Ã  vista como o primeiro item
     //descricao := '1 X ' + Format('R$ %.2f', [ValorAVista]);
     descricao := '1 X ';
-    ComboBox.Items.AddObject(descricao, TObject(1)); // 1 representa uma parcela à vista
+    ComboBox.Items.AddObject(descricao, TObject(1)); // 1 representa uma parcela Ã  vista
 
     // Adiciona as parcelas vindas do SQL
     while not qryDadosParcela.Eof do
@@ -671,21 +706,21 @@ var
   ScrollBox: THorzScrollBox;
   Rectangle : Double;
 begin
-  // Verifica se o Frame e o HorzScrollBoxImagens não são nulos
+  // Verifica se o Frame e o HorzScrollBoxImagens nÃ£o sÃ£o nulos
   if not Assigned(Frame) then
-    raise Exception.Create('Frame não está inicializado.');
+    raise Exception.Create('Frame nÃ£o estÃ¡ inicializado.');
 
   ScrollBox := Frame.HorzScrollBoxImagens;
 
   Rectangle := ( StrToFloat(Frame.lblTOT_WIDTH.Text) / StrToFloat(Frame.TOT_IMAGEM.Text) );
 
   if not Assigned(ScrollBox) then
-    raise Exception.Create('HorzScrollBoxImagens não está inicializado.');
+    raise Exception.Create('HorzScrollBoxImagens nÃ£o estÃ¡ inicializado.');
 
-  // Verifica se há conteúdo para rolar à esquerda
+  // Verifica se hÃ¡ conteÃºdo para rolar Ã  esquerda
   Frame.CircEsquerda.Visible := ScrollBox.ViewportPosition.X > 0;
 
-  // Verifica se há conteúdo para rolar à direita
+  // Verifica se hÃ¡ conteÃºdo para rolar Ã  direita
   Frame.CircDireita.Visible := ( Round(ScrollBox.ViewportPosition.X) + Rectangle < StrToInt(Frame.lblTOT_WIDTH.Text) ) AND
                                ( StrToInt(Frame.TOT_IMAGEM.Text) > 1 ) ;
 
@@ -713,11 +748,11 @@ begin
     with Frame.HorzScrollBoxImagens do
     begin
       ViewportPosition := PointF(
-        ViewportPosition.X + 215, // Avança 100 pixels para a direita
+        ViewportPosition.X + 215, // AvanÃ§a 100 pixels para a direita
         ViewportPosition.Y
       );
     end;
-    AtualizarBotoesNavegacao(Frame); // Atualiza a visibilidade dos botões
+    AtualizarBotoesNavegacao(Frame); // Atualiza a visibilidade dos botÃµes
   end;
 end;
 
@@ -743,11 +778,11 @@ begin
     with Frame.HorzScrollBoxImagens do
     begin
       ViewportPosition := PointF(
-        ViewportPosition.X - 215, // Avança 100 pixels para a direita
+        ViewportPosition.X - 215, // AvanÃ§a 100 pixels para a direita
         ViewportPosition.Y
       );
     end;
-    AtualizarBotoesNavegacao(Frame); // Atualiza a visibilidade dos botões
+    AtualizarBotoesNavegacao(Frame); // Atualiza a visibilidade dos botÃµes
   end;
 end;
 
@@ -786,11 +821,11 @@ begin
   begin
     Frame := TFrameTotem(VertScrollBox1.Content.Controls[i]);
 
-    // Verifica se o frame corresponde à marca iPhone (CELL_MARCA = 0)
+    // Verifica se o frame corresponde Ã  marca iPhone (CELL_MARCA = 0)
     if (StrToInt(Frame.CELL_MARCA.Text) = 0) then
       Frame.Visible := True
     else
-      Frame.Visible := False; // Esconde os frames que não correspondem
+      Frame.Visible := False; // Esconde os frames que nÃ£o correspondem
   end;
 
   // Reseta a cor de btnIphone para Mintcream
@@ -811,11 +846,11 @@ begin
   begin
     Frame := TFrameTotem(VertScrollBox1.Content.Controls[i]);
 
-    // Verifica se o frame corresponde à marca Xiaomi (CELL_MARCA = 1)
+    // Verifica se o frame corresponde Ã  marca Xiaomi (CELL_MARCA = 1)
     if (StrToInt(Frame.CELL_MARCA.Text) = 1) then
       Frame.Visible := True
     else
-      Frame.Visible := False; // Esconde os frames que não correspondem
+      Frame.Visible := False; // Esconde os frames que nÃ£o correspondem
   end;
 
   // Altera a cor de btnXiaomi para #FFF0EEE8
@@ -848,7 +883,7 @@ begin
   end;
 
   if ComboBox.Items.Count > 0 then
-    ComboBox.ItemIndex := 0; // Seleciona o primeiro item por padrão
+    ComboBox.ItemIndex := 0; // Seleciona o primeiro item por padrÃ£o
 
 end;
 
@@ -861,16 +896,16 @@ var
   CurrentLeft: Single;
   TotalWidth: Single;
 begin
-  // Verifica se o HorzScrollBoxImagens está inicializado
+  // Verifica se o HorzScrollBoxImagens estÃ¡ inicializado
   if not Assigned(Frame.HorzScrollBoxImagens) then
   begin
-    raise Exception.Create('HorzScrollBoxImagens não está inicializado.');
+    raise Exception.Create('HorzScrollBoxImagens nÃ£o estÃ¡ inicializado.');
   end;
 
-  // Verifica se o conteúdo da HorzScrollBoxImagens foi configurado corretamente
+  // Verifica se o conteÃºdo da HorzScrollBoxImagens foi configurado corretamente
   if not Assigned(Frame.HorzScrollBoxImagens.Content) then
   begin
-    raise Exception.Create('Conteúdo do HorzScrollBoxImagens não está inicializado.');
+    raise Exception.Create('ConteÃºdo do HorzScrollBoxImagens nÃ£o estÃ¡ inicializado.');
   end;
 
   Frame.HorzScrollBoxImagens.BeginUpdate;
@@ -936,10 +971,10 @@ begin
       ImageQuery.Free;
     end;
 
-    // Atualiza os botões de navegação
+    // Atualiza os botÃµes de navegaÃ§Ã£o
     AtualizarBotoesNavegacao(Frame);
 
-    // Configura os eventos dos botões de navegação
+    // Configura os eventos dos botÃµes de navegaÃ§Ã£o
     Frame.CircDireita.OnClick := BotaoDireitaClick;
     Frame.CircEsquerda.OnClick := BotaoEsquerdaClick;
     Frame.HorzScrollBoxImagens.OnViewportPositionChange := ViewportPositionChange;
@@ -950,16 +985,36 @@ begin
 end;
 
 procedure TTotemPrincipalfrm.edtPesquisaClick(Sender: TObject);
+var
+  Display: TDisplay;
+  KeyboardLeft, KeyboardTop: Single;
 begin
+  if Assigned(TecladoVirtualfrm) then
+    TecladoVirtualfrm.Close;
+
   if not Assigned(TecladoVirtualfrm) then
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
 
-  // Posiciona o teclado próximo ao TEdit
-  TecladoVirtualfrm.Left := Round(recEdit.AbsoluteRect.Left);
-  TecladoVirtualfrm.Top := Round(RecCenter.AbsoluteRect.Top + 10);
+  // ObtÃ©m o display (monitor) com base no retÃ¢ngulo do formulÃ¡rio
+  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
+
+  // Calcula a posiÃ§Ã£o do teclado relativo ao display
+  KeyboardLeft := recEdit.AbsoluteRect.Left;
+  KeyboardTop := RecCenter.AbsoluteRect.Top + 10;
+
+  // Garante que o teclado virtual fique dentro da Ã¡rea do display
+  if KeyboardLeft + TecladoVirtualfrm.Width > Display.WorkArea.Width then
+    KeyboardLeft := Display.WorkArea.Width - TecladoVirtualfrm.Width;
+
+  if KeyboardTop + TecladoVirtualfrm.Height > Display.WorkArea.Height then
+    KeyboardTop := Display.WorkArea.Height - TecladoVirtualfrm.Height;
+
+  // Ajusta a posiÃ§Ã£o do teclado virtual
+  TecladoVirtualfrm.Left := Round(KeyboardLeft);
+  TecladoVirtualfrm.Top := Round(KeyboardTop);
 
   // Associa explicitamente o TEdit ao teclado virtual
-  TecladoVirtualfrm.SetTargetEdit(TEdit(Sender));
+  TecladoVirtualfrm.SetTargetEdit(edtPesquisa);
 
   // Exibe o teclado
   TecladoVirtualfrm.Show;
@@ -968,9 +1023,9 @@ end;
 procedure TTotemPrincipalfrm.edtPesquisaEnter(Sender: TObject);
 begin
 
-  
+
 //
-//  // Opcional: Força o foco no TEdit
+//  // Opcional: ForÃ§a o foco no TEdit
 //  TEdit(Sender).SetFocus;
 //  if not IsKeyboardShown then
 //  begin
@@ -987,13 +1042,13 @@ var
   i: Integer;
   SearchText: string;
 begin
-  // Obtém o texto digitado
+  // ObtÃ©m o texto digitado
   SearchText := edtPesquisa.Text.Trim;
 
   // Se o campo de pesquisa estiver vazio, mostra todos os frames
   if SearchText = '' then
   begin
-    // Torna todos os frames visíveis
+    // Torna todos os frames visÃ­veis
     for i := 0 to VertScrollBox1.Content.ControlsCount - 1 do
     begin
       Frame := TFrameTotem(VertScrollBox1.Content.Controls[i]);
@@ -1012,11 +1067,11 @@ begin
     begin
       Frame := TFrameTotem(VertScrollBox1.Content.Controls[i]);
 
-      // Verifica se o texto do campo edtPesquisa está na descrição do Frame
+      // Verifica se o texto do campo edtPesquisa estÃ¡ na descriÃ§Ã£o do Frame
       if Frame.lblNomeItem.Text.ToLower.Contains(SearchText.ToLower) then
-        Frame.Visible := True  // Torna o frame visível se o texto contiver a descrição
+        Frame.Visible := True  // Torna o frame visÃ­vel se o texto contiver a descriÃ§Ã£o
       else
-        Frame.Visible := False; // Torna o frame invisível caso contrário
+        Frame.Visible := False; // Torna o frame invisÃ­vel caso contrÃ¡rio
     end;
   end;
 end;
@@ -1059,12 +1114,18 @@ begin
   end;
 
   lFuncoes.EnviarMsgWhatsApp( qryConfigAPI_KEY_WHATSAPP.AsString, qryConfigCELL_RECEPTOR_WHATSAPP.AsString, Frame.edtTelCli.Text,
-                              'Oi Tudo Bem? ' + #13 + #13 +
-                              'Meu nome é ' + Frame.edtNomeCli.Text + #13 +
-                              'Acabei de escolher o celular ' + Frame.lblTITULOCEL.Text + ', na cor ' + Frame.edtCorTel.Text + ', capacidade ' + Frame.edtCapacidadeTel.Text + #13 +
-                              ', aqui no Totem do Shopping Olga Sola, Três Rios, na condição de retirada, ' + Frame.cbbRetirada.Items[Frame.cbbRetirada.ItemIndex] + #13 +
-                              ' forma de pagamento, ' + Frame.cbbMododePagamento.Items[Frame.cbbMododePagamento.ItemIndex] + ', preço ' + Frame.edtValorTel.Text +
-                              'Podemos formalizar o pedido pessoalmente?' , '', False, StatusCode );
+                              'OlÃ¡! Tudo bem? ðŸ˜Š ' + #13 + #13 +
+                              'Meu nome Ã© ' + Frame.edtNomeCli.Text + '.' + #13 +
+                              'Acabei de escolher um celular aqui no Totem ' +
+                              'do Shopping Olga Sola, em TrÃªs Rios, e gostaria de confirmar o pedido com vocÃª. ' + #13 + #13 +
+                              'Aqui estÃ£o os detalhes:' + #13 + #13 +
+                              'ðŸ“± *Modelo*: ' + Frame.lblTITULOCEL.Text + #13 +
+                              'ðŸŽ¨ *Cor*: ' + Frame.edtCorTel.Text + #13 +
+                              'ðŸ’¾ *Capacidade*: ' + Frame.edtCapacidadeTel.Text + #13 +
+                              'ðŸ“¦ *Retirada*: ' + Frame.cbbRetirada.Items[Frame.cbbRetirada.ItemIndex] + #13 +
+                              'ðŸ’° *Forma de pagamento*: ' + Frame.cbbMododePagamento.Items[Frame.cbbMododePagamento.ItemIndex] + #13 +
+                              'ðŸ’µ *PreÃ§o*: ' + Frame.edtValorTel.Text + #13 + #13 +
+                              'PoderÃ­amos formalizar o pedido pessoalmente?' , '', False, StatusCode );
 
   if StatusCode in [200, 201] then
   begin
@@ -1090,7 +1151,7 @@ begin
     AlturaTotal := Max(AlturaTotal, ScrollBox.Content.Controls[I].Position.Y + ScrollBox.Content.Controls[I].Height);
   end;
 
-  // Ajusta a altura do conteúdo para incluir todos os elementos
+  // Ajusta a altura do conteÃºdo para incluir todos os elementos
   ScrollBox.Content.Height := AlturaTotal;
 end;
 
