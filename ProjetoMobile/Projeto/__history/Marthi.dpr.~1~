@@ -1,0 +1,15 @@
+program ProjMarthiMobile;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  frmProdutos in '..\Forms\frmProdutos.pas' {ProdutosFrm},
+  untFuncoes in '..\..\Forms\untFuncoes.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TProdutosFrm, ProdutosFrm);
+  Application.Run;
+end.

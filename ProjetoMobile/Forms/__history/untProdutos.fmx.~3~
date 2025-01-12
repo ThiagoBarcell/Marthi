@@ -1,0 +1,17 @@
+object frmProdutos: TfrmProdutos
+  Left = 0
+  Top = 0
+  Caption = 'frmProdutos'
+  ClientHeight = 591
+  ClientWidth = 430
+  Position = Designed
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object SpeedButton1: TSpeedButton
+    Position.X = 136.000000000000000000
+    Position.Y = 288.000000000000000000
+    Text = 'SpeedButton1'
+  end
+end
