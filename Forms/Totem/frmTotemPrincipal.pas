@@ -1000,7 +1000,7 @@ begin
 
   // Calcula a posição do teclado relativo ao display
   KeyboardLeft := recEdit.AbsoluteRect.Left;
-  KeyboardTop := RecCenter.AbsoluteRect.Top + 10;
+  KeyboardTop := RecCenter.AbsoluteRect.Top + 200;
 
   // Garante que o teclado virtual fique dentro da área do display
   if KeyboardLeft + TecladoVirtualfrm.Width > Display.WorkArea.Width then
