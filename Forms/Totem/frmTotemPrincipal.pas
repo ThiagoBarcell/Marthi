@@ -21,13 +21,7 @@ uses
 
 type
   TTotemPrincipalfrm = class(TForm)
-    VertScrollBox1: TVertScrollBox;
-    lytTop: TLayout;
-    lytModelo: TLayout;
-    lytCenter: TLayout;
-    Layout3: TLayout;
     StyleBook1: TStyleBook;
-    lytRodape: TLayout;
     ConectMarthi: TFDConnection;
     qryCadCell: TFDQuery;
     qryImagensCell: TFDQuery;
@@ -36,18 +30,12 @@ type
     qryImagensCellIMAGE: TBlobField;
     dtsImagensCell: TBindSourceDB;
     BindingsList1: TBindingsList;
-    lytGlobal: TLayout;
-    lytToten: TLayout;
-    Rectangle8: TRectangle;
-    RecCenter: TRectangle;
-    RecTop: TRectangle;
     dtsCadCell: TBindSourceDB;
     FBLink: TFDPhysFBDriverLink;
     qryCapacidades: TFDQuery;
     qryCapacidadesARMAZENAMENTO_DESC: TStringField;
     qryCores: TFDQuery;
     qryCoresCOR_DESC: TStringField;
-    Rectangle4: TRectangle;
     qryDadosCor: TFDQuery;
     qryDadosCorCELL_VAL_UNIT: TFMTBCDField;
     qryDadosCorCELL_VAL_PARC: TFMTBCDField;
@@ -58,32 +46,9 @@ type
     qryCadCellCELL_DESC: TStringField;
     qryCadCellCELL_MARCA: TIntegerField;
     qryDadosCorARMAZENAMENTO_ID: TIntegerField;
-    ShadowEffect7: TShadowEffect;
-    ShadowEffect8: TShadowEffect;
-    Label3: TLabel;
-    Label5: TLabel;
-    btnIphone: TRectangle;
-    img1: TImage;
-    Label1: TLabel;
-    btnXiaomi: TRectangle;
-    img2: TImage;
-    Label2: TLabel;
-    Rectangle5: TRectangle;
-    Layout1: TLayout;
-    recEdit: TRectangle;
-    Layout2: TLayout;
-    img3: TImage;
     qryRetirada: TFDQuery;
     qryRetiradaTP_PRECO_ID: TIntegerField;
     qryRetiradaTP_PRECO_DESC: TStringField;
-    Label4: TLabel;
-    Label6: TLabel;
-    edtPesquisa: TEdit;
-    ShadowEffect1: TShadowEffect;
-    ShadowEffect2: TShadowEffect;
-    Rectangle2: TRectangle;
-    Label10: TLabel;
-    Label9: TLabel;
     qryDadosCorTP_PRECO_ID: TIntegerField;
     qryDadosCorTP_PRECO_DESC: TStringField;
     qryDadosCorCELL_PARCELAS: TStringField;
@@ -92,6 +57,56 @@ type
     qryConfigAPI_KEY_WHATSAPP: TStringField;
     qryConfigSENHA_ACESSO: TStringField;
     qryConfigCELL_RECEPTOR_WHATSAPP: TStringField;
+    TbcPrincipalToten: TTabControl;
+    TabTotem: TTabItem;
+    TabAbertura: TTabItem;
+    TabCliente: TTabItem;
+    TabRetirada: TTabItem;
+    lytAbertura: TLayout;
+    Rectangle3: TRectangle;
+    btnAbreCliente: TRectangle;
+    Rectangle1: TRectangle;
+    lbl1: TLabel;
+    lytGlobalToten: TLayout;
+    Rectangle8: TRectangle;
+    lytToten: TLayout;
+    RecTop: TRectangle;
+    lytCenter: TLayout;
+    RecCenter: TRectangle;
+    Layout3: TLayout;
+    VertScrollBox1: TVertScrollBox;
+    lytModelo: TLayout;
+    btnIphone: TRectangle;
+    img1: TImage;
+    Label1: TLabel;
+    Label4: TLabel;
+    ShadowEffect1: TShadowEffect;
+    btnXiaomi: TRectangle;
+    img2: TImage;
+    Label2: TLabel;
+    Label6: TLabel;
+    ShadowEffect7: TShadowEffect;
+    lytTop: TLayout;
+    Rectangle5: TRectangle;
+    Layout1: TLayout;
+    recEdit: TRectangle;
+    Layout2: TLayout;
+    img3: TImage;
+    edtPesquisa: TEdit;
+    ShadowEffect2: TShadowEffect;
+    lytRodape: TLayout;
+    Rectangle2: TRectangle;
+    Label10: TLabel;
+    Label9: TLabel;
+    Label3: TLabel;
+    Label5: TLabel;
+    Rectangle4: TRectangle;
+    ShadowEffect8: TShadowEffect;
+    lytClient: TLayout;
+    Rectangle6: TRectangle;
+    Rectangle7: TRectangle;
+    Rectangle9: TRectangle;
+    Label7: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);
@@ -101,6 +116,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure Rectangle2DblClick(Sender: TObject);
     procedure edtPesquisaClick(Sender: TObject);
+    procedure btnAbreClienteClick(Sender: TObject);
   private
     { Private declarations }
     procedure CarregarDados;
@@ -806,6 +822,11 @@ begin
   AtualizarBotoesNavegacao(Frame);
 end;
 
+procedure TTotemPrincipalfrm.btnAbreClienteClick(Sender: TObject);
+begin
+  TbcPrincipalToten.ActiveTab := TabTotem;
+end;
+
 procedure TTotemPrincipalfrm.btnFecharClick(Sender: TObject);
 begin
   Close;
@@ -1167,6 +1188,8 @@ begin
   // Define a cor inicial para btnIphone
   btnIphone.Fill.Color := TAlphaColors.Lavenderblush; // Cor inicial
   btnXiaomi.Fill.Color := TAlphaColors.White; // Cor inicial
+
+  TbcPrincipalToten.ActiveTab := TabAbertura;
 end;
 
 procedure TTotemPrincipalfrm.FormShow(Sender: TObject);

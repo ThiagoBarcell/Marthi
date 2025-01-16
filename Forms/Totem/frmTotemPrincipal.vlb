@@ -1,28 +1,9 @@
-﻿[VertScrollBox1]
-Coordinates=10,280,88,33
-Visible=True
-
-[lytModelo]
-Coordinates=376,234,62,33
-
-[Layout3]
-Coordinates=306,234,53,33
-
-[lytCenter]
-Coordinates=230,234,58,33
-
-[lytTop]
-Coordinates=170,234,45,33
-
-[]
-Coordinates=590,429,69,33
+﻿[]
+Coordinates=584,904,58,33
 Visible=True
 
 [StyleBook1]
 Coordinates=590,377,70,33
-
-[lytRodape]
-Coordinates=590,533,64,33
 
 [qryCadCell]
 Coordinates=98,510,68,33
@@ -47,22 +28,6 @@ Coordinates=710,607,133,33
 [BindingsList1]
 Coordinates=377,80,82,33
 
-[Rectangle8]
-Coordinates=742,662,69,33
-Visible=True
-
-[lytToten]
-Coordinates=603,857,54,33
-
-[lytGlobal]
-Coordinates=584,904,58,33
-
 [dtsImagensCell]
 Coordinates=590,637,92,123
-
-[RecTop]
-Coordinates=742,717,75,33
-
-[RecCenter]
-Coordinates=742,827,75,33
 
