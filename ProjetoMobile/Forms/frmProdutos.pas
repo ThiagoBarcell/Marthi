@@ -25,6 +25,7 @@ type
     memProdutosPROD_ID: TIntegerField;
     memProdutosPROD_DESC: TStringField;
     memProdutosPROD_VAL: TCurrencyField;
+    btnConfiguracoes: TButton;
   private
     { Private declarations }
   public

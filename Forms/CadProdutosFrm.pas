@@ -15,7 +15,7 @@ uses
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, dxBevel,
   GeralDMFrm, Vcl.ComCtrls, Jpeg, untFuncoes, cxCurrencyEdit, CadInformarcoesFrm,
   cxDBLookupComboBox, dxGDIPlusClasses, FireDAC.Stan.Param, CadConfiguracoesFrm,
-  dxNumericWheelPicker, cxCalc;
+  dxNumericWheelPicker, cxCalc, cxEditRepositoryItems;
 
 const
   OffsetMemoryStream : Int64 = 0;
@@ -111,6 +111,10 @@ type
     cxGridDBTableViewCell_ItensColumnTP_PRECO_ID: TcxGridDBColumn;
     btnTabPrecos: TcxButton;
     cxGridDBTableViewCell_ItensColumn1: TcxGridDBColumn;
+    RepositoryMarcas: TcxEditRepository;
+    RepositoryMarcasImgCbx: TcxEditRepositoryImageComboBoxItem;
+    ppmGridItens: TPopupMenu;
+    DuplicarRegistro2: TMenuItem;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
@@ -148,6 +152,8 @@ type
     procedure cxGridDBTableViewCell_ItensColumnCELL_PARCELASPropertiesValidate(
       Sender: TObject; var DisplayValue: Variant; var ErrorText: TCaption;
       var Error: Boolean);
+    procedure cxGridDBTableViewCell_ItensNavigatorButtonsButtonClick(Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
+    procedure DuplicarRegistro2Click(Sender: TObject);
   private
     procedure AbreTelaInfo( iCod : Integer ) ;
     procedure AbreConfTabelaPrecos( lCod : Integer );
@@ -302,6 +308,7 @@ end;
 procedure TfrmCadProdutos.btnVoltarClick(Sender: TObject);
 begin
   PgeCadastroComp.ActivePageIndex := 0;
+  frmGeralDM.qryCadCell.Refresh;
 end;
 
 procedure TfrmCadProdutos.cbxFiltrosPropertiesChange(Sender: TObject);
@@ -325,6 +332,19 @@ begin
   Funcoes.CriaParcelas( frmGeralDM.ConectMarthi, frmGeralDM.qryCellItensCELL_ID.AsInteger ,
     frmGeralDM.qryCellItensITEM_ID.AsInteger, frmGeralDM.qryCellItensTP_PRECO_ID.AsInteger,
     frmGeralDM.qryCellItensCELL_VAL_UNIT.AsFloat );
+end;
+
+procedure TfrmCadProdutos.cxGridDBTableViewCell_ItensNavigatorButtonsButtonClick(Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
+begin
+  if AButtonIndex = 6 then
+  begin
+    //Entra em modo de edição caso necessário para sempre atualizar o produto
+    if not ( frmGeralDM.qryCadCell.State in dsEditModes ) then
+      frmGeralDM.qryCadCell.Edit;
+
+    frmGeralDM.qryCadCell.Post;
+  end;
+
 end;
 
 procedure TfrmCadProdutos.cxGridImagesDBTableViewImageCellClick(
@@ -359,6 +379,12 @@ procedure TfrmCadProdutos.Duplicarregistro1Click(Sender: TObject);
 begin
   Funcoes.ReplicaCelular( frmGeralDM.qryCadCell, frmGeralDM.ConectMarthi );
   frmGeralDM.qryCadCell.Refresh;
+end;
+
+procedure TfrmCadProdutos.DuplicarRegistro2Click(Sender: TObject);
+begin
+  //Duplicando itens
+
 end;
 
 procedure TfrmCadProdutos.FormCreate(Sender: TObject);

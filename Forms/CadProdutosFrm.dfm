@@ -384,8 +384,13 @@ object frmCadProdutos: TfrmCadProdutos
               Caption = 'Marca'
               DataBinding.FieldName = 'CELL_MARCA'
               PropertiesClassName = 'TcxLabelProperties'
-              Properties.Alignment.Horz = taCenter
+              Properties.Alignment.Horz = taRightJustify
+              Properties.Alignment.Vert = taVCenter
+              RepositoryItem = RepositoryMarcasImgCbx
+              FooterAlignmentHorz = taCenter
+              GroupSummaryAlignment = taCenter
               HeaderAlignmentHorz = taCenter
+              HeaderGlyphAlignmentHorz = taCenter
               Width = 197
             end
           end
@@ -781,17 +786,13 @@ object frmCadProdutos: TfrmCadProdutos
           object cbxMarcaCell: TcxDBImageComboBox
             Left = 120
             Top = 51
+            RepositoryItem = RepositoryMarcasImgCbx
             Anchors = [akLeft, akTop, akRight]
             DataBinding.DataField = 'CELL_MARCA'
             DataBinding.DataSource = frmGeralDM.dtsCadCell
             Properties.Alignment.Horz = taLeftJustify
             Properties.Images = imgMarcas
-            Properties.Items = <
-              item
-                Description = 'IPhone'
-                ImageIndex = 0
-                Value = 0
-              end>
+            Properties.Items = <>
             TabOrder = 1
             Width = 442
           end
@@ -915,6 +916,7 @@ object frmCadProdutos: TfrmCadProdutos
             LookAndFeel.NativeStyle = False
             LookAndFeel.SkinName = 'UserSkin'
             object cxGridDBTableViewCell_Itens: TcxGridDBTableView
+              Navigator.Buttons.OnButtonClick = cxGridDBTableViewCell_ItensNavigatorButtonsButtonClick
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.First.Visible = True
               Navigator.Buttons.PriorPage.Visible = False
@@ -952,6 +954,7 @@ object frmCadProdutos: TfrmCadProdutos
                 PropertiesClassName = 'TcxLabelProperties'
                 Properties.Alignment.Horz = taCenter
                 Properties.Alignment.Vert = taVCenter
+                Visible = False
                 FooterAlignmentHorz = taCenter
                 GroupSummaryAlignment = taCenter
                 HeaderAlignmentHorz = taCenter
@@ -7855,17 +7858,26 @@ object frmCadProdutos: TfrmCadProdutos
         ImageClass = 'TdxPNGImage'
         Image.Data = {
           89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-          61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-          00097048597300000EC400000EC401952B0E1B00000002624B474400FF878FCC
-          BF0000010449444154384F8D923D0E445010C7D956A1A0178903A89CC00D5C40
-          AD528846A210B544E2244ABD52E5040AA1526A67BD316B7DBC5D7EC9DF7C64FE
-          E38527C043B22CA3EC88C81EC21FE679162449C29C37FAA2F813CBB230264982
-          F1023BC13FD8481445545D392C08C3100D4C866140100450140598A6B9F56559
-          86BEEFC9B15B90A6E9367427DBB6C9B55BC01BE449D77572ACE082A669B8C33C
-          956589C60FF817C67164E1119AA651B6820B5455C5E209755D53B6B25D245114
-          B1F104B220DB45521485B27BD8CB8661580B7602469EE7878F75A70FDF6C8137
-          C893EFFBE4382D68DB966B386BCFB15AE8BA0E1CC781388E619A26EC555505AE
-          EB82E779587F0178031FFEB3E348A57A910000000049454E44AE426082}
+          61000000097048597300000B1300000B1301009A9C18000000BD49444154388D
+          6360A013F001E27272352701F13F20EE2447332310BF00E2AB402C42AC263120
+          0E026247206603E258207600E26420B60362267C9AA380F81B10FF87E27740FC
+          0C890FC28781980F9B666520FE81A6181B5E07C4ECD80CA82742F34F2016C4E5
+          FCD9441870059FFF271061C01B2066C165401A11068070332E036480F82F9186
+          E4E3326419119A4196E8E132401188DF1330601A2ECD30E00AC41F81F8330324
+          CE411AAE43356F63C09106D001070324192303ACA90F00257A6269D485C86C00
+          00000049454E44AE426082}
+      end
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          61000000097048597300000B1300000B1301009A9C18000000A149444154388D
+          63601870F03F9D4101885761C5690C4B80B8F47F3283108A9E3486C960F92C06
+          7986FF290C0640CE7FBC388DE12950B10A92A5F7C0E240BDC806BC062A4C43C1
+          E90C3940FA0C547E277E03D218EE62F56216830450FE1F50FEC7FF5006368206
+          FC8F61E006B2BB8162ED487EFE015693C8204AD800A022A8937F8E1A40370360
+          4919983CC192490CBCD0A4BC1429E12C058BE532F06124E5010700550E2B8517
+          E1A0750000000049454E44AE426082}
       end>
   end
   object OpenDialog: TOpenDialog
@@ -8100,6 +8112,34 @@ object frmCadProdutos: TfrmCadProdutos
     object Duplicarregistro1: TMenuItem
       Caption = 'Duplicar registro'
       OnClick = Duplicarregistro1Click
+    end
+  end
+  object RepositoryMarcas: TcxEditRepository
+    Left = 1080
+    Top = 329
+    PixelsPerInch = 96
+    object RepositoryMarcasImgCbx: TcxEditRepositoryImageComboBoxItem
+      Properties.Alignment.Horz = taLeftJustify
+      Properties.Images = imgMarcas
+      Properties.Items = <
+        item
+          Description = 'Apple'
+          ImageIndex = 0
+          Value = 0
+        end
+        item
+          Description = 'Xiaomi'
+          ImageIndex = 1
+          Value = 1
+        end>
+    end
+  end
+  object ppmGridItens: TPopupMenu
+    Left = 1080
+    Top = 385
+    object DuplicarRegistro2: TMenuItem
+      Caption = 'Duplicar registro'
+      OnClick = DuplicarRegistro2Click
     end
   end
 end
