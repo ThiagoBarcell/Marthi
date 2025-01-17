@@ -3,19 +3,74 @@ unit CadProdutosFrm;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
-  dxSkinsDefaultPainters, Vcl.Menus, dxBarBuiltInMenu, cxMemo, cxDBEdit, cxPC,
-  Vcl.StdCtrls, cxButtons, dxCustomTileControl, dxTileControl, cxGroupBox,
-  dximctrl, cxMaskEdit, cxDropDownEdit, cxImageComboBox, cxLabel, cxTextEdit,
-  Vcl.ExtCtrls, System.ImageList, Vcl.ImgList, cxImageList, cxStyles,
-  cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
-  Data.DB, cxDBData, cxRadioGroup, cxGridLevel, cxClasses, cxGridCustomView,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, dxBevel,
-  GeralDMFrm, Vcl.ComCtrls, Jpeg, untFuncoes, cxCurrencyEdit, CadInformarcoesFrm,
-  cxDBLookupComboBox, dxGDIPlusClasses, FireDAC.Stan.Param, CadConfiguracoesFrm,
-  dxNumericWheelPicker, cxCalc, cxEditRepositoryItems;
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  cxGraphics,
+  cxControls,
+  cxLookAndFeels,
+  cxLookAndFeelPainters,
+  cxContainer,
+  cxEdit,
+  dxSkinsCore,
+  dxSkinsDefaultPainters,
+  Vcl.Menus,
+  dxBarBuiltInMenu,
+  cxMemo,
+  cxDBEdit,
+  cxPC,
+  Vcl.StdCtrls,
+  cxButtons,
+  dxCustomTileControl,
+  dxTileControl,
+  cxGroupBox,
+  dximctrl,
+  cxMaskEdit,
+  cxDropDownEdit,
+  cxImageComboBox,
+  cxLabel,
+  cxTextEdit,
+  Vcl.ExtCtrls,
+  System.ImageList,
+  Vcl.ImgList,
+  cxImageList,
+  cxStyles,
+  cxCustomData,
+  cxFilter,
+  cxData,
+  cxDataStorage,
+  cxNavigator,
+  dxDateRanges,
+  Data.DB,
+  cxDBData,
+  cxRadioGroup,
+  cxGridLevel,
+  cxClasses,
+  cxGridCustomView,
+  cxGridCustomTableView,
+  cxGridTableView,
+  cxGridDBTableView,
+  cxGrid,
+  dxBevel,
+  GeralDMFrm,
+  Vcl.ComCtrls,
+  Jpeg,
+  untFuncoes,
+  cxCurrencyEdit,
+  CadInformarcoesFrm,
+  cxDBLookupComboBox,
+  dxGDIPlusClasses,
+  FireDAC.Stan.Param,
+  CadConfiguracoesFrm,
+  dxNumericWheelPicker,
+  cxCalc,
+  cxEditRepositoryItems;
 
 const
   OffsetMemoryStream : Int64 = 0;
@@ -113,8 +168,7 @@ type
     cxGridDBTableViewCell_ItensColumn1: TcxGridDBColumn;
     RepositoryMarcas: TcxEditRepository;
     RepositoryMarcasImgCbx: TcxEditRepositoryImageComboBoxItem;
-    ppmGridItens: TPopupMenu;
-    DuplicarRegistro2: TMenuItem;
+    imgGerais: TcxImageList;
     procedure btnConsultaProdutosClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
@@ -153,7 +207,6 @@ type
       Sender: TObject; var DisplayValue: Variant; var ErrorText: TCaption;
       var Error: Boolean);
     procedure cxGridDBTableViewCell_ItensNavigatorButtonsButtonClick(Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
-    procedure DuplicarRegistro2Click(Sender: TObject);
   private
     procedure AbreTelaInfo( iCod : Integer ) ;
     procedure AbreConfTabelaPrecos( lCod : Integer );
@@ -336,6 +389,7 @@ end;
 
 procedure TfrmCadProdutos.cxGridDBTableViewCell_ItensNavigatorButtonsButtonClick(Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
 begin
+  //Btn de insert
   if AButtonIndex = 6 then
   begin
     //Entra em modo de edição caso necessário para sempre atualizar o produto
@@ -345,6 +399,13 @@ begin
     frmGeralDM.qryCadCell.Post;
   end;
 
+  //Duplicar Registro
+  if AButtonIndex = 16 then
+  begin
+    //Duplicando itens
+    frmGeralDM.DuplicaCellItem;
+    frmGeralDM.qryCellItens.Refresh;
+  end;
 end;
 
 procedure TfrmCadProdutos.cxGridImagesDBTableViewImageCellClick(
@@ -379,12 +440,6 @@ procedure TfrmCadProdutos.Duplicarregistro1Click(Sender: TObject);
 begin
   Funcoes.ReplicaCelular( frmGeralDM.qryCadCell, frmGeralDM.ConectMarthi );
   frmGeralDM.qryCadCell.Refresh;
-end;
-
-procedure TfrmCadProdutos.DuplicarRegistro2Click(Sender: TObject);
-begin
-  //Duplicando itens
-
 end;
 
 procedure TfrmCadProdutos.FormCreate(Sender: TObject);

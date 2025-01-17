@@ -32,6 +32,8 @@ object frmCadInformacoes: TfrmCadInformacoes
     object tabArmazenamento: TcxTabSheet
       Caption = 'Armazenamento'
       ImageIndex = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdCadastroArmazenamento: TcxGrid
         Left = 0
         Top = 0
@@ -94,6 +96,8 @@ object frmCadInformacoes: TfrmCadInformacoes
     object tabCondicao: TcxTabSheet
       Caption = 'Condi'#231#227'o'
       ImageIndex = 1
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdCadastroCondicao: TcxGrid
         Left = 0
         Top = 0
@@ -153,6 +157,8 @@ object frmCadInformacoes: TfrmCadInformacoes
     object tabCor: TcxTabSheet
       Caption = 'Cor'
       ImageIndex = 2
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdCadastroCor: TcxGrid
         Left = 0
         Top = 0
@@ -212,6 +218,8 @@ object frmCadInformacoes: TfrmCadInformacoes
     object tabTpPreco: TcxTabSheet
       Caption = 'cxTabSheet1'
       ImageIndex = 3
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grdTpPreco: TcxGrid
         Left = 0
         Top = 0

@@ -25,7 +25,6 @@
     ParentBackground = False
     TabOrder = 0
     OnMouseDown = pnlFaixaTopMouseDown
-    ExplicitWidth = 470
     object Image1: TImage
       Left = 1
       Top = 1
@@ -6490,7 +6489,6 @@
       PaintStyle = bpsGlyph
       TabOrder = 0
       OnClick = btnFecharClick
-      ExplicitLeft = 426
     end
   end
   object pgeConfiguracoes: TcxPageControl
@@ -6503,8 +6501,6 @@
     Properties.ActivePage = pagConfigurações
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
-    ExplicitWidth = 470
-    ExplicitHeight = 263
     ClientRectBottom = 446
     ClientRectLeft = 4
     ClientRectRight = 569
@@ -6519,12 +6515,8 @@
         Height = 442
         Align = alClient
         TabOrder = 0
-        Properties.ActivePage = tabConfigWhatsApp
+        Properties.ActivePage = tabConfigGeral
         Properties.CustomButtons.Buttons = <>
-        ExplicitLeft = 120
-        ExplicitTop = 128
-        ExplicitWidth = 289
-        ExplicitHeight = 193
         ClientRectBottom = 438
         ClientRectLeft = 4
         ClientRectRight = 561
@@ -6532,8 +6524,6 @@
         object tabConfigGeral: TcxTabSheet
           Caption = 'Configura'#231#245'es'
           ImageIndex = 1
-          ExplicitLeft = -28
-          ExplicitTop = 25
           object Label1: TLabel
             Left = 27
             Top = 200
@@ -6554,8 +6544,6 @@
         object tabConfigWhatsApp: TcxTabSheet
           Caption = 'WhatsApp'
           ImageIndex = 0
-          ExplicitLeft = 3
-          ExplicitTop = 25
           object Label2: TLabel
             Left = 35
             Top = 120
@@ -6592,6 +6580,8 @@
     object pagTabPrecos: TcxTabSheet
       Caption = 'Tabela de pre'#231'os'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 462
       ExplicitHeight = 255
       object grdTabPreco: TcxGrid
@@ -6669,8 +6659,6 @@
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitTop = 304
-    ExplicitWidth = 470
     object btnCancel: TcxButton
       Left = 286
       Top = 0
@@ -6697,7 +6685,6 @@
         7713357219E2DF0000000049454E44AE426082}
       TabOrder = 0
       OnClick = btnCancelClick
-      ExplicitLeft = 285
     end
     object cxButton1: TcxButton
       Left = 0

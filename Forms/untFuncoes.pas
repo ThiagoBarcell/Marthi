@@ -13,7 +13,9 @@ uses
   System.Net.URLClient,
   System.Net.HttpClient,
   System.Net.HttpClientComponent,
-  System.NetEncoding ;
+  System.NetEncoding,
+  Data.DB,
+  FireDAC.Stan.Param;
 
 type TFuncoesUteis = class
 
@@ -364,8 +366,8 @@ procedure TFuncoesUteis.ReplicaCelular(lQryCell: TFDQuery; lConnectionBD : TFDCo
 var
   lQryReplicacao : TFDQuery;
 begin
+  lQryReplicacao := CriaQuery( lConnectionBD );
   try
-    lQryReplicacao := CriaQuery( lConnectionBD );
     lQryReplicacao.Close;
     lQryReplicacao.SQL.Clear;
     lQryReplicacao.SQL.Add( 'INSERT INTO CAD_CELL (CELL_ID, CELL_MARCA, CELL_DESC, CELL_PROCESSAMENTO,' +

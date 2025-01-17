@@ -3,13 +3,33 @@ unit GeralDMFrm;
 interface
 
 uses
-  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
-  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
-  FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
-  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet, System.IniFiles, FireDAC.Phys.IBBase, untFuncoes,
-  System.ImageList, Vcl.ImgList, Vcl.Controls;
+  System.SysUtils,
+  System.Classes,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Error,
+  FireDAC.UI.Intf,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
+  FireDAC.Stan.Async,
+  FireDAC.Phys,
+  FireDAC.Phys.FB,
+  FireDAC.Phys.FBDef,
+  FireDAC.VCLUI.Wait,
+  Data.DB,
+  FireDAC.Comp.Client,
+  FireDAC.Stan.Param,
+  FireDAC.DatS,
+  FireDAC.DApt.Intf,
+  FireDAC.DApt,
+  FireDAC.Comp.DataSet,
+  System.IniFiles,
+  FireDAC.Phys.IBBase,
+  untFuncoes,
+  System.ImageList,
+  Vcl.ImgList,
+  Vcl.Controls;
 
 type
   TfrmGeralDM = class(TDataModule)
@@ -92,9 +112,14 @@ type
     procedure qryCellTabPrecosNewRecord(DataSet: TDataSet);
   private
   lFuncoes: TFuncoesUteis;
+
     { Private declarations }
   public
+    //Function
     function ProximoNumero( GENERATOR : String ) : integer;
+
+    //Procedure
+    procedure DuplicaCellItem;
     { Public declarations }
   end;
 
@@ -182,6 +207,28 @@ end;
 procedure TfrmGeralDM.qryCellTpPrecoNewRecord(DataSet: TDataSet);
 begin
   qryCellTpPrecoTP_PRECO_ID.AsInteger := ProximoNumero( 'GEN_CELL_TP_PRECOS_ID' );
+end;
+
+procedure TfrmGeralDM.DuplicaCellItem;
+var
+  lQryInsCellItem : tfdquery;
+begin
+  //Duplicando itens
+  lQryInsCellItem := lFuncoes.CriaQuery( ConectMarthi );
+  try
+    lQryInsCellItem.Close;
+    lQryInsCellItem.SQL.Clear;
+    lQryInsCellItem.SQL.Add( 'INSERT INTO CELL_ITENS (ITEM_ID, CELL_ID, ARMAZENAMENTO_ID, COR_ID, CODICAO_ID ) ' +
+      'VALUES ( :ITEM_ID, :CELL_ID, :ARMAZENAMENTO_ID, :COR_ID, :CODICAO_ID);' );
+    lQryInsCellItem.ParamByName( 'ITEM_ID' ).AsInteger := ProximoNumero( 'GEN_CELL_ITENS_ID' );
+    lQryInsCellItem.ParamByName( 'CELL_ID' ).AsInteger := qryCadCellCELL_ID.AsInteger;
+    lQryInsCellItem.ParamByName( 'ARMAZENAMENTO_ID' ).AsInteger := qryCellItensARMAZENAMENTO_ID.AsInteger;
+    lQryInsCellItem.ParamByName( 'COR_ID' ).AsInteger := qryCellItensCOR_ID.AsInteger;
+    lQryInsCellItem.ParamByName( 'CODICAO_ID' ).AsInteger := qryCellItensCODICAO_ID.AsInteger;
+    lQryInsCellItem.ExecSQL;
+  finally
+    lQryInsCellItem.Free;
+  end;
 end;
 
 end.

@@ -43,6 +43,8 @@ object frmCadProdutos: TfrmCadProdutos
         ImageIndex = 0
         TabVisible = False
         OnShow = tabConsultaShow
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object pnlTop: TPanel
           Left = 0
           Top = 0
@@ -196,6 +198,8 @@ object frmCadProdutos: TfrmCadProdutos
               object tabFiltroCadastro: TcxTabSheet
                 Caption = 'cxTabSheet1'
                 ImageIndex = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object Label2: TLabel
                   Left = 261
                   Top = 13
@@ -225,6 +229,8 @@ object frmCadProdutos: TfrmCadProdutos
               object tabFiltroDesc: TcxTabSheet
                 Caption = 'tabFiltroDesc'
                 ImageIndex = 1
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object edtFiltroDesc: TcxTextEdit
                   Left = 32
                   Top = 7
@@ -234,6 +240,8 @@ object frmCadProdutos: TfrmCadProdutos
               end
               object tabFiltroReferencia: TcxTabSheet
                 ImageIndex = 2
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object edtFiltroReferencia: TcxTextEdit
                   Left = 32
                   Top = 7
@@ -405,6 +413,8 @@ object frmCadProdutos: TfrmCadProdutos
         ImageIndex = 0
         TabVisible = False
         OnShow = tabCadastroShow
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object pnlCadastroDeProduto: TPanel
           Left = 0
           Top = 0
@@ -911,13 +921,19 @@ object frmCadProdutos: TfrmCadProdutos
             Top = 410
             Width = 539
             Height = 171
+            Images = imgGerais
             TabOrder = 23
             LookAndFeel.Kind = lfOffice11
             LookAndFeel.NativeStyle = False
             LookAndFeel.SkinName = 'UserSkin'
             object cxGridDBTableViewCell_Itens: TcxGridDBTableView
               Navigator.Buttons.OnButtonClick = cxGridDBTableViewCell_ItensNavigatorButtonsButtonClick
-              Navigator.Buttons.CustomButtons = <>
+              Navigator.Buttons.CustomButtons = <
+                item
+                  Hint = 'Duplicar Registro'
+                  ImageIndex = 0
+                end>
+              Navigator.Buttons.Images = imgGerais
               Navigator.Buttons.First.Visible = True
               Navigator.Buttons.PriorPage.Visible = False
               Navigator.Buttons.Prior.Visible = True
@@ -7732,7 +7748,7 @@ object frmCadProdutos: TfrmCadProdutos
         Left = 59
         Top = 4
         Width = 80
-        Height = 33
+        Height = 23
         Margins.Left = 10
         Align = alLeft
         Caption = 'lblTitulo'
@@ -7746,7 +7762,6 @@ object frmCadProdutos: TfrmCadProdutos
         ParentFont = False
         Layout = tlBottom
         OnMouseDown = lblTituloMouseDown
-        ExplicitHeight = 23
       end
       object btnFechar: TcxButton
         AlignWithMargins = True
@@ -7852,7 +7867,7 @@ object frmCadProdutos: TfrmCadProdutos
   object imgMarcas: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 4719680
+    DesignInfo = 14287888
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -7882,12 +7897,12 @@ object frmCadProdutos: TfrmCadProdutos
   end
   object OpenDialog: TOpenDialog
     Filter = 'Imagens( JPG )|*.jpg|Imagens( JPEG )|*.jpeg'
-    Left = 1088
-    Top = 136
+    Left = 1040
+    Top = 328
   end
   object ImgUteis: TcxImageCollection
-    Left = 1088
-    Top = 201
+    Left = 1040
+    Top = 273
     object imgNO_IMAGE: TcxImageCollectionItem
       Picture.Data = {
         0B546478504E47496D61676589504E470D0A1A0A0000000D4948445200000200
@@ -8043,7 +8058,7 @@ object frmCadProdutos: TfrmCadProdutos
   object imgStatus: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 1705024
+    DesignInfo = 11142160
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -8107,16 +8122,16 @@ object frmCadProdutos: TfrmCadProdutos
       end>
   end
   object ppmGridCadastro: TPopupMenu
-    Left = 1088
-    Top = 265
+    Left = 1041
+    Top = 378
     object Duplicarregistro1: TMenuItem
       Caption = 'Duplicar registro'
       OnClick = Duplicarregistro1Click
     end
   end
   object RepositoryMarcas: TcxEditRepository
-    Left = 1080
-    Top = 329
+    Left = 1042
+    Top = 492
     PixelsPerInch = 96
     object RepositoryMarcasImgCbx: TcxEditRepositoryImageComboBoxItem
       Properties.Alignment.Horz = taLeftJustify
@@ -8134,12 +8149,23 @@ object frmCadProdutos: TfrmCadProdutos
         end>
     end
   end
-  object ppmGridItens: TPopupMenu
-    Left = 1080
-    Top = 385
-    object DuplicarRegistro2: TMenuItem
-      Caption = 'Duplicar registro'
-      OnClick = DuplicarRegistro2Click
-    end
+  object imgGerais: TcxImageList
+    SourceDPI = 96
+    FormatVersion = 1
+    DesignInfo = 7930896
+    ImageInfo = <
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          6100000009704859730000007600000076014E7B26080000001974455874536F
+          667477617265007777772E696E6B73636170652E6F72679BEE3C1A0000009E49
+          444154388DDDD3310E014118C5F11FD1A81CC31524C269A8352A51503B82C205
+          D4CEA3108D4224121ABB0A3BC990B51BBB9D7F32C9CBBCF95EDE2433D4A411E9
+          658EBFC726D303F4B0FA1696E28C43B4B6913FC3A9A84D8A71CE7E1F53EC70CD
+          F4E49780392EB823C9F4F1978040EE159A05039F2478141D286B10E86254A541
+          6088759D8037FE2020FE0BA9D723B995CCB4D109B3ADC858D46D5389271CEC20
+          0843319D9E0000000049454E44AE426082}
+      end>
   end
 end
