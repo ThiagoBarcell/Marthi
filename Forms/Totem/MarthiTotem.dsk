@@ -18,8 +18,8 @@ File_14=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Vendas\Forms\Report\VenPlanilhaS
 [Modules]
 Module0=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 Module1=default.htm
-Module2=C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas
-Module3=C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
+Module2=C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
+Module3=C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas
 Module4=C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas
 Module5=C:\Marthi GIT\Forms\untFuncoes.pas
 Module6=C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
@@ -32,10 +32,10 @@ ModuleType=TSourceModule
 [default.htm]
 ModuleType=TURLModule
 
-[C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas]
+[C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas]
 ModuleType=TSourceModule
 
-[C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas]
+[C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas]
 ModuleType=TSourceModule
 
 [C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas]
@@ -98,7 +98,7 @@ TopLine=981
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
+EditViewName=Borland.FormDesignerView
 
 [View2]
 CustomEditViewType=TEditView
@@ -328,6 +328,11 @@ LRDockWidth=1895
 Dockable=1
 StayOnTop=0
 SplitPos=111
+
+[PropInspDesignerSelection]
+ArrangeBy=Name
+SelectedItem=Action,
+ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,Border=0,Fill=0,FormFactor=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -809,8 +814,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=8
-Top=8
+Left=1191
+Top=115
 Width=2025
 Height=8480
 MaxLeft=-1

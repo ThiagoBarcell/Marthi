@@ -103,10 +103,24 @@ type
     Rectangle4: TRectangle;
     ShadowEffect8: TShadowEffect;
     lytClient: TLayout;
-    Rectangle6: TRectangle;
+    Label7: TLabel;
+    Rectangle10: TRectangle;
     Rectangle7: TRectangle;
     Rectangle9: TRectangle;
-    Label7: TLabel;
+    Label8: TLabel;
+    Rectangle11: TRectangle;
+    Rectangle12: TRectangle;
+    Label11: TLabel;
+    ShadowEffect3: TShadowEffect;
+    edtPesquisa1: TEdit;
+    edtPesquisa2: TEdit;
+    Rectangle13: TRectangle;
+    Rectangle14: TRectangle;
+    edtPesquisa3: TEdit;
+    Label12: TLabel;
+    btnComprar: TRectangle;
+    Label13: TLabel;
+    Rectangle15: TRectangle;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);
@@ -117,6 +131,7 @@ type
     procedure Rectangle2DblClick(Sender: TObject);
     procedure edtPesquisaClick(Sender: TObject);
     procedure btnAbreClienteClick(Sender: TObject);
+    procedure btnComprarClick(Sender: TObject);
   private
     { Private declarations }
     procedure CarregarDados;
@@ -823,6 +838,11 @@ begin
 end;
 
 procedure TTotemPrincipalfrm.btnAbreClienteClick(Sender: TObject);
+begin
+  TbcPrincipalToten.ActiveTab := TabCliente;
+end;
+
+procedure TTotemPrincipalfrm.btnComprarClick(Sender: TObject);
 begin
   TbcPrincipalToten.ActiveTab := TabTotem;
 end;
