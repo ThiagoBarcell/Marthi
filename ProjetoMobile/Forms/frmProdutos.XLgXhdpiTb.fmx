@@ -1,0 +1,41 @@
+inherited ProdutosFrm_XLgXhdpiTb: TProdutosFrm_XLgXhdpiTb
+  ClientHeight = 1255
+  ClientWidth = 800
+  DesignerMasterStyle = 3
+  inherited pnlTop: TPanel
+    Size.Width = 800.000000000000000000
+    inherited btnConfiguracoes: TButton
+      Position.X = 754.000000000000000000
+    end
+  end
+  inherited tabPrincipal: TTabControl
+    Size.Width = 800.000000000000000000
+    Size.Height = 1214.000000000000000000
+    Sizes = (
+      800s
+      1165s
+      800s
+      1165s)
+    inherited tabProdutos: TTabItem
+      Size.Width = 400.000000000000000000
+      ExplicitSize.cx = 215.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      inherited rtgProdutos: TRectangle
+        Size.Width = 800.000000000000000000
+        Size.Height = 1165.000000000000000000
+      end
+    end
+    inherited TabItem1: TTabItem
+      Size.Width = 400.000000000000000000
+      ExplicitSize.cx = 215.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      inherited rtgConfiguracoes: TRectangle
+        Size.Width = 800.000000000000000000
+        Size.Height = 1165.000000000000000000
+        inherited btnConnectar: TButton
+          Padding.Bottom = 10.000000000000000000
+        end
+      end
+    end
+  end
+end

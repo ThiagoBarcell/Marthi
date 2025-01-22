@@ -63,10 +63,7 @@ type
     TabCliente: TTabItem;
     TabRetirada: TTabItem;
     lytAbertura: TLayout;
-    Rectangle3: TRectangle;
     btnAbreCliente: TRectangle;
-    Rectangle1: TRectangle;
-    lbl1: TLabel;
     lytGlobalToten: TLayout;
     Rectangle8: TRectangle;
     lytToten: TLayout;
@@ -111,7 +108,6 @@ type
     Rectangle11: TRectangle;
     Rectangle12: TRectangle;
     Label11: TLabel;
-    ShadowEffect3: TShadowEffect;
     edtPesquisa1: TEdit;
     edtPesquisa2: TEdit;
     Rectangle13: TRectangle;
@@ -121,6 +117,17 @@ type
     btnComprar: TRectangle;
     Label13: TLabel;
     Rectangle15: TRectangle;
+    Label14: TLabel;
+    ShadowEffect4: TShadowEffect;
+    Rectangle1: TRectangle;
+    Rectangle3: TRectangle;
+    Label15: TLabel;
+    Label16: TLabel;
+    Rectangle6: TRectangle;
+    ShadowEffect3: TShadowEffect;
+    ShadowEffect5: TShadowEffect;
+    ShadowEffect6: TShadowEffect;
+    ShadowEffect9: TShadowEffect;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);

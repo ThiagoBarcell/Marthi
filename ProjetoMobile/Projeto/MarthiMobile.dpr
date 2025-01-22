@@ -3,7 +3,8 @@ program MarthiMobile;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  frmProdutos in '..\Forms\frmProdutos.pas' {ProdutosFrm};
+  frmProdutos in '..\Forms\frmProdutos.pas' {ProdutosFrm},
+  untFuncoesMobile in '..\Forms\untFuncoesMobile.pas';
 
 {$R *.res}
 

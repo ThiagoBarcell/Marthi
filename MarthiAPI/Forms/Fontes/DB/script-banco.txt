@@ -1,0 +1,16 @@
+CREATE TABLE TAB_CLIENTE (
+    ID_CLIENTE INT NOT NULL PRIMARY KEY,
+    NOME       VARCHAR(100),
+    EMAIL      VARCHAR(100),
+    FONE       VARCHAR(50)
+);
+
+ 
+create generator gen_cliente_id;
+
+CREATE TRIGGER TR_CLIENTE FOR TAB_CLIENTE
+ACTIVE BEFORE INSERT POSITION 0
+AS
+BEGIN
+    new.ID_CLIENTE =gen_id(gen_cliente_id, 1);
+END

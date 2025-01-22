@@ -63,3 +63,4 @@ XmlDestinatario/
 *.cfg
 *.dof
 *.dcu
+*.so
