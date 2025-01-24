@@ -8,33 +8,17 @@ inherited ProdutosFrm_XLgXhdpiTb: TProdutosFrm_XLgXhdpiTb
       Position.X = 754.000000000000000000
     end
   end
-  inherited tabPrincipal: TTabControl
+  inherited lytPrincipal: TLayout
     Size.Width = 800.000000000000000000
     Size.Height = 1214.000000000000000000
-    Sizes = (
-      800s
-      1165s
-      800s
-      1165s)
-    inherited tabProdutos: TTabItem
-      Size.Width = 400.000000000000000000
-      ExplicitSize.cx = 215.000000000000000000
-      ExplicitSize.cy = 49.000000000000000000
-      inherited rtgProdutos: TRectangle
-        Size.Width = 800.000000000000000000
-        Size.Height = 1165.000000000000000000
-      end
-    end
-    inherited TabItem1: TTabItem
-      Size.Width = 400.000000000000000000
-      ExplicitSize.cx = 215.000000000000000000
-      ExplicitSize.cy = 49.000000000000000000
-      inherited rtgConfiguracoes: TRectangle
-        Size.Width = 800.000000000000000000
-        Size.Height = 1165.000000000000000000
-        inherited btnConnectar: TButton
-          Padding.Bottom = 10.000000000000000000
-        end
+    inherited rctPrincipal: TRectangle
+      Size.Width = 790.000000000000000000
+      Size.Height = 1194.000000000000000000
+      inherited vsbPrincipal: TVertScrollBox
+        Size.Width = 790.000000000000000000
+        Size.Height = 1194.000000000000000000
+        Viewport.Width = 790.000000000000000000
+        Viewport.Height = 1194.000000000000000000
       end
     end
   end

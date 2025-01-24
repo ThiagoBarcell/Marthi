@@ -39,7 +39,9 @@ type
       property PRODUTO_REFERENCIA: string read FPRODUTO_REFERENCIA write FPRODUTO_REFERENCIA;
 
       function ListarProduto( out erro: string ) : TFDQuery;
-  end;
+      function ListarImagemProduto(out erro: string; IDProduto : Integer): TFDQuery;
+      function ListarITemProduto(out erro: string; IDProduto : Integer): TFDQuery;
+    end;
 
 
 implementation
@@ -76,6 +78,29 @@ begin
   except on ex:exception do
     begin
       erro := 'Erro ao consultar os produtos: ' + ex.Message;
+      Result := nil;
+    end;
+  end;
+end;
+
+function TProdutos.ListarImagemProduto(out erro: string; IDProduto : Integer): TFDQuery;
+var
+  lQryImagemProdutos : TFDQuery;
+begin
+  try
+    lQryImagemProdutos := TFDQuery.Create(nil);
+    lQryImagemProdutos.Connection := frmModeloConnection.FConnection;
+
+    lQryImagemProdutos.Close;
+    lQryImagemProdutos.SQL.Clear;
+    //Retorna apenas os celulares ativos
+    lQryImagemProdutos.SQL.Add('select * from cell_images where cell_id = ' + IntToStr( IDProduto ) );
+    lQryImagemProdutos.Open;
+    erro := '';
+    Result := lQryImagemProdutos;
+  except on ex:exception do
+    begin
+      erro := 'Erro ao consultar a imagem produtos: ' + ex.Message;
       Result := nil;
     end;
   end;

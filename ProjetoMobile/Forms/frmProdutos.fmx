@@ -29,6 +29,7 @@ object ProdutosFrm: TProdutosFrm
       StyleLookup = 'btnConfiguracoesStyle1'
       TabOrder = 0
       TintColor = claWhitesmoke
+      OnClick = btnConfiguracoesClick
     end
     object lblTitulo: TLabel
       Position.X = 44.000000000000000000
@@ -7124,139 +7125,32 @@ object ProdutosFrm: TProdutosFrm
     Left = 384
     Top = 128
   end
-  object tabPrincipal: TTabControl
+  object lytPrincipal: TLayout
     Align = Client
     Size.Width = 430.000000000000000000
     Size.Height = 550.000000000000000000
     Size.PlatformDefault = False
-    TabHeight = 49.000000000000000000
-    TabIndex = 0
-    TabOrder = 7
-    TabPosition = PlatformDefault
-    Sizes = (
-      430s
-      501s
-      430s
-      501s)
-    object tabProdutos: TTabItem
-      CustomIcon = <
-        item
-        end>
-      IsSelected = True
-      Size.Width = 215.000000000000000000
-      Size.Height = 49.000000000000000000
+    TabOrder = 6
+    object rctPrincipal: TRectangle
+      Align = Client
+      Margins.Left = 5.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Size.Width = 420.000000000000000000
+      Size.Height = 530.000000000000000000
       Size.PlatformDefault = False
-      StyleLookup = ''
-      TabOrder = 0
-      Text = 'Produtos'
-      ExplicitSize.cx = 215.000000000000000000
-      ExplicitSize.cy = 49.000000000000000000
-      object rtgProdutos: TRectangle
+      Stroke.Kind = None
+      object vsbPrincipal: TVertScrollBox
         Align = Client
-        Size.Width = 430.000000000000000000
-        Size.Height = 501.000000000000000000
+        Size.Width = 420.000000000000000000
+        Size.Height = 530.000000000000000000
         Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 420.000000000000000000
+        Viewport.Height = 530.000000000000000000
       end
     end
-    object TabItem1: TTabItem
-      CustomIcon = <
-        item
-        end>
-      IsSelected = False
-      Size.Width = 215.000000000000000000
-      Size.Height = 49.000000000000000000
-      Size.PlatformDefault = False
-      StyleLookup = ''
-      TabOrder = 0
-      Text = 'Configura'#231#245'es'
-      ExplicitSize.cx = 215.000000000000000000
-      ExplicitSize.cy = 49.000000000000000000
-      object rtgConfiguracoes: TRectangle
-        Align = Client
-        Size.Width = 430.000000000000000000
-        Size.Height = 501.000000000000000000
-        Size.PlatformDefault = False
-        object btnConnectar: TButton
-          Position.X = 72.000000000000000000
-          Position.Y = 423.000000000000000000
-          Size.Width = 289.000000000000000000
-          Size.Height = 44.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 0
-          Text = 'Conectar DB'
-          OnClick = btnConnectarClick
-        end
-        object RoundRect1: TRoundRect
-          Fill.Color = xFFF2F2F2
-          Position.X = 16.000000000000000000
-          Position.Y = 119.000000000000000000
-          Size.Width = 393.000000000000000000
-          Size.Height = 50.000000000000000000
-          Size.PlatformDefault = False
-        end
-        object edtPathDB: TEdit
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          TabOrder = 1
-          Position.X = 30.000000000000000000
-          Position.Y = 128.000000000000000000
-          Size.Width = 362.000000000000000000
-          Size.Height = 32.000000000000000000
-          Size.PlatformDefault = False
-          TextPrompt = 'Caminho DB'
-        end
-        object RoundRect2: TRoundRect
-          Fill.Color = xFFF2F2F2
-          Position.X = 16.000000000000000000
-          Position.Y = 217.000000000000000000
-          Size.Width = 393.000000000000000000
-          Size.Height = 50.000000000000000000
-          Size.PlatformDefault = False
-        end
-        object edtServerDB: TEdit
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          TabOrder = 2
-          Position.X = 27.000000000000000000
-          Position.Y = 226.000000000000000000
-          Size.Width = 362.000000000000000000
-          Size.Height = 32.000000000000000000
-          Size.PlatformDefault = False
-          TextPrompt = 'Server DB : 192.168.1.8/3050:'
-        end
-      end
-    end
-  end
-  object memProdutos: TFDMemTable
-    FetchOptions.AssignedValues = [evMode]
-    FetchOptions.Mode = fmAll
-    ResourceOptions.AssignedValues = [rvSilentMode]
-    ResourceOptions.SilentMode = True
-    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
-    UpdateOptions.CheckRequired = False
-    UpdateOptions.AutoCommitUpdates = True
-    Left = 376
-    Top = 256
-    object memProdutosPROD_ID: TIntegerField
-      FieldName = 'PROD_ID'
-    end
-    object memProdutosPROD_DESC: TStringField
-      FieldName = 'PROD_DESC'
-      Size = 255
-    end
-    object memProdutosPROD_VAL: TCurrencyField
-      FieldName = 'PROD_VAL'
-    end
-  end
-  object cntMarthi: TFDConnection
-    Params.Strings = (
-      'User_Name=SYSDBA'
-      'Password=masterkey'
-      'Port=3050'
-      'Server=192.168.1.8'
-      'Database=C:\MarthiGIT\Marthi DataBase\DataBase\MARTHIDB.FDB'
-      'DriverID=FB')
-    Connected = True
-    Left = 376
-    Top = 321
   end
   object imgGerais: TImageList
     Source = <
@@ -7336,5 +7230,15 @@ object ProdutosFrm: TProdutosFrm
     Params = <>
     Left = 65487
     Top = 117
+  end
+  object cdsProdutos: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 381
+    Top = 259
+  end
+  object dtsProdutos: TDataSource
+    Left = 381
+    Top = 315
   end
 end
