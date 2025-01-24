@@ -54,7 +54,8 @@ uses
   Datasnap.DBClient,
   System.JSON,
   System.SysUtils,
-  System.Math;
+  System.Math,
+  Soap.EncdDecd;
 
 type
   TProdutosFrm = class(TForm)
@@ -64,12 +65,15 @@ type
     lblTitulo: TLabel;
     imgGerais: TImageList;
     Image1: TImage;
-    Cad_cellTable: TSQLDataSet;
     rctPrincipal: TRectangle;
     lytPrincipal: TLayout;
     vsbPrincipal: TVertScrollBox;
     cdsProdutos: TClientDataSet;
     dtsProdutos: TDataSource;
+    cdsImagemProduto: TClientDataSet;
+    cdsItemProduto: TClientDataSet;
+    dtsItemProduto: TDataSource;
+    dtsImagemProduto: TDataSource;
     procedure btnConnectarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Rectangle8Click(Sender: TObject);
@@ -79,9 +83,14 @@ type
     //Procedures
     procedure CarregaDados;
     procedure AjustarAlturaScrollBox( ScrollBox : TVertScrollBox );
+    procedure CarregarImagens(Frame: TProdutoFrame; IDCell: Integer);
 
     //Functions
-    function ExtrairDadosJSon( Json: string; cdsProduto : TClientDataSet ): string;
+    function ExtrairDadosJSonProduto( Json: string; cdsProduto : TClientDataSet ): string;
+    function ExtrairDadosJSonItemProduto( Json: string; cdsItemProd : TClientDataSet ): string;
+    function ExtrairDadosJSonImagemProduto( Json: string; cdsImgProd : TClientDataSet ): string;
+    procedure LoadImageFromBase64(const JSONResponse: string;
+      ImageComponent: TImage);
   public
     lFuncoes : TFuncoesMobile;
     { Public declarations }
@@ -127,7 +136,9 @@ end;
 procedure TProdutosFrm.CarregaDados;
 var
   Frame: TProdutoFrame;
-  lConsult: TIdHTTP;
+  lConsultCell: TIdHTTP;
+  lConsultImagem: TIdHTTP;
+  lConsultItem: TIdHTTP;
   lRetorno: string;
   Cont, CellID: Integer;
   CorID, CapacidadeID, RetiradaID: Integer;
@@ -136,16 +147,17 @@ begin
   while vsbPrincipal.Content.ControlsCount > 0 do
     vsbPrincipal.Content.Controls[0].Free;
 
-  lConsult := TIdHTTP.Create( nil );
+  lConsultCell := TIdHTTP.Create( nil );
 
   try
-    lRetorno := lConsult.Get( 'http://172.27.245.210:9000/produtos' );
-    ExtrairDadosJSon( lRetorno, cdsProdutos );
+    lRetorno := lConsultCell.Get( 'http://172.27.245.210:9000/produtos' );
+    ExtrairDadosJSonProduto( lRetorno, cdsProdutos );
   finally
-    lConsult.Free;
+    lConsultCell.Free;
   end;
 
   cdsProdutos.First;
+
   while not( cdsProdutos.Eof ) do
   begin
     Inc(Cont);
@@ -239,7 +251,114 @@ begin
   AjustarAlturaScrollBox(vsbPrincipal);
 end;
 
-function TProdutosFrm.ExtrairDadosJSon( Json: string; cdsProduto : TClientDataSet ): string;
+procedure TProdutosFrm.CarregarImagens(Frame: TProdutoFrame; IDCell: Integer);
+var
+  ImageQuery: TFDQuery;
+  ImageStream: TMemoryStream;
+  BlobField: TBlobField;
+  CloneRect: TRectangle;
+  CurrentLeft: Single;
+  TotalWidth: Single;
+  lConsultaImg : TIdHTTP;
+  lResponseImg : string;
+begin
+  // Verifica se o HorzScrollBoxImagens está inicializado
+  if not Assigned(Frame.rtgImageProd) then
+  begin
+    raise Exception.Create('HorzScrollBoxImagens não está inicializado.');
+  end;
+
+  lConsultaImg := TIdHTTP.Create( nil );
+  lResponseImg := lConsultaImg.Get( 'http://172.27.245.210:9000/produtos/imagens/' + IntToStr( IDCell ) );
+
+  Frame.rtgImageProd.BeginUpdate;
+  try
+    CurrentLeft := 0;
+    TotalWidth := 0;
+
+    ImageQuery := TFDQuery.Create(nil);
+    try
+      ImageQuery.Connection := ConectMarthi;
+      ImageQuery.SQL.Text := 'SELECT IMAGE FROM CELL_IMAGES WHERE CELL_ID = :CELL_ID';
+      ImageQuery.ParamByName('CELL_ID').AsInteger := CellID;
+      ImageQuery.Open;
+      Frame.TOT_IMAGEM.Text := IntToStr(ImageQuery.RecordCount);
+
+      while not ImageQuery.Eof do
+      begin
+        CloneRect := TRectangle.Create(Frame.HorzScrollBoxImagens);
+        CloneRect.Parent := Frame.HorzScrollBoxImagens;
+        CloneRect.Width := Frame.imgCell.Width;
+        CloneRect.Height := Frame.imgCell.Height;
+        CloneRect.Margins.Top := 5;
+        CloneRect.Margins.Left := 5;
+        CloneRect.Margins.Right := 3;
+        CloneRect.Margins.Bottom := 5;
+        CloneRect.Position.X := CurrentLeft;
+        CloneRect.Position.Y := 0;
+        CloneRect.Stroke.Assign(Frame.imgCell.Stroke);
+        CloneRect.Fill.Kind := TBrushKind.Bitmap;
+        CloneRect.Fill.Bitmap.WrapMode := TWrapMode.TileStretch;
+        CloneRect.SetBounds(CloneRect.Position.X, CloneRect.Position.Y, CloneRect.Width, CloneRect.Height);
+        CloneRect.XRadius := 10;
+        CloneRect.YRadius := 10;
+
+        BlobField := ImageQuery.FieldByName('IMAGE') as TBlobField;
+        if not BlobField.IsNull then
+        begin
+          ImageStream := TMemoryStream.Create;
+          try
+            BlobField.SaveToStream(ImageStream);
+            ImageStream.Position := 0;
+            CloneRect.Fill.Bitmap.Bitmap.LoadFromStream(ImageStream);
+          finally
+            ImageStream.Free;
+          end;
+        end
+        else
+        begin
+          CloneRect.Fill.Kind := TBrushKind.Solid;
+          CloneRect.Fill.Color := TAlphaColors.Gray;
+        end;
+
+        CurrentLeft := CurrentLeft + CloneRect.Width + 10;
+        TotalWidth := CurrentLeft;
+
+        ImageQuery.Next;
+      end;
+
+      Frame.HorzScrollBoxImagens.Content.Width := TotalWidth;
+      Frame.lblTOT_WIDTH.Text := FloatToStr(TotalWidth);
+    finally
+      ImageQuery.Free;
+    end;
+
+    // Atualiza os botões de navegação
+    AtualizarBotoesNavegacao(Frame);
+
+    // Configura os eventos dos botões de navegação
+    Frame.CircDireita.OnClick := BotaoDireitaClick;
+    Frame.CircEsquerda.OnClick := BotaoEsquerdaClick;
+    Frame.HorzScrollBoxImagens.OnViewportPositionChange := ViewportPositionChange;
+
+  finally
+    Frame.HorzScrollBoxImagens.EndUpdate;
+  end;
+end;
+
+function TProdutosFrm.ExtrairDadosJSonImagemProduto(Json: string;
+  cdsImgProd: TClientDataSet): string;
+begin
+  //
+end;
+
+function TProdutosFrm.ExtrairDadosJSonItemProduto(Json: string;
+  cdsItemProd: TClientDataSet): string;
+begin
+  //
+end;
+
+function TProdutosFrm.ExtrairDadosJSonProduto( Json: string; cdsProduto : TClientDataSet ): string;
 var
   JSONArray: TJSONArray;
   JSONObject: TJSONObject;
@@ -309,6 +428,12 @@ end;
 procedure TProdutosFrm.FormCreate(Sender: TObject);
 begin
   lFuncoes := TFuncoesMobile.Create;
+end;
+
+procedure TProdutosFrm.LoadImageFromBase64(const JSONResponse: string;
+  ImageComponent: TImage);
+begin
+
 end;
 
 procedure TProdutosFrm.Rectangle8Click(Sender: TObject);

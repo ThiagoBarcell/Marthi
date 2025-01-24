@@ -15,14 +15,14 @@
     <Transaction>2025/01/18 19:20:15.000.513,C:\MarthiGIT\Forms\untFuncoes.pas=</Transaction>
     <Transaction>2025/01/18 19:20:27.000.056,=C:\MarthiGIT\ProjetoMobile\Projeto\Unit1.pas</Transaction>
     <Transaction>2025/01/18 19:20:42.000.729,C:\MarthiGIT\ProjetoMobile\Projeto\Unit1.pas=C:\MarthiGIT\ProjetoMobile\Forms\untFuncoesMobile.pas</Transaction>
-    <Transaction>2025/01/24 13:45:15.693,=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.pas</Transaction>
-    <Transaction>2025/01/24 13:46:23.399,D:\Marthi GIT\ProjetoMobile\Frames\frameProduto.pas=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.pas</Transaction>
-    <Transaction>2025/01/24 13:46:23.399,D:\Marthi GIT\ProjetoMobile\Frames\frameProduto.fmx=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.fmx</Transaction>
-    <Transaction>2025/01/24 14:08:25.798,D:\Marthi GIT\ProjetoMobile\Frames\Frame.MarthiGIT.Produto.fmx=D:\Marthi GIT\ProjetoMobile\Frames\frameProduto.fmx</Transaction>
-    <Transaction>2025/01/24 14:08:25.798,D:\Marthi GIT\ProjetoMobile\Frames\Frame.MarthiGIT.Produto.pas=D:\Marthi GIT\ProjetoMobile\Frames\frameProduto.pas</Transaction>
+    <Transaction>2025/01/24 13:45:15.000.693,=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.pas</Transaction>
+    <Transaction>2025/01/24 13:46:23.000.399,D:\Marthi GIT\ProjetoMobile\Frames\frameProduto.pas=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.pas</Transaction>
+    <Transaction>2025/01/24 13:46:23.000.399,D:\Marthi GIT\ProjetoMobile\Frames\frameProduto.fmx=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.fmx</Transaction>
+    <Transaction>2025/01/24 14:08:25.000.798,D:\Marthi GIT\ProjetoMobile\Frames\Frame.MarthiGIT.Produto.fmx=D:\Marthi GIT\ProjetoMobile\Frames\frameProduto.fmx</Transaction>
+    <Transaction>2025/01/24 14:08:25.000.798,D:\Marthi GIT\ProjetoMobile\Frames\Frame.MarthiGIT.Produto.pas=D:\Marthi GIT\ProjetoMobile\Frames\frameProduto.pas</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<NoProfile iOSSimulator="iPhone5" Android="3adc02b27d75" Android64=""/>
+		<NoProfile iOSSimulator="iPhone5" Android="" Android64=""/>
 	</ActiveMobileDevice>
 	<BT_BuildType>Debug</BT_BuildType>
 </BorlandProject>

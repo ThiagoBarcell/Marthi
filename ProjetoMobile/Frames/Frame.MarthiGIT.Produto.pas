@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
-  FMX.Controls.Presentation, FMX.Objects, FMX.Layouts;
+  FMX.Controls.Presentation, FMX.Objects, FMX.Layouts, FMX.ExtCtrls;
 
 type
   TProdutoFrame = class(TFrame)
@@ -16,6 +16,7 @@ type
     lblValorAPrazo: TLabel;
     lblValorAVista: TLabel;
     Label7: TLabel;
+    lblID_CELL: TLabel;
   private
     { Private declarations }
   public

@@ -56,15 +56,16 @@ begin
   end;
 
   try
-    lQryRetorno := lItemproduto.ListarImagemProduto(erro, Req.Params.Field('IDProd').AsInteger );
+    lQryRetorno := lItemproduto.ListarITemProduto(erro, Req.Params.Field('IDProd').AsInteger );
 
-    arrayImagemProdutos := lQryRetorno.ToJSONArray();
+    arrayItemProdutos := lQryRetorno.ToJSONArray();
 
-    res.Send<TJSONArray>(arrayImagemProdutos);
+    res.Send<TJSONArray>(arrayItemProdutos);
 
   finally
     lQryRetorno.Free;
-    lImagemproduto.Free;
+    lItemproduto.Free
+
   end;
 end;
 

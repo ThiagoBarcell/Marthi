@@ -83,6 +83,30 @@ begin
   end;
 end;
 
+function TProdutos.ListarITemProduto(out erro: string;
+  IDProduto: Integer): TFDQuery;
+var
+  lQryItemProduto : TFDQuery;
+begin
+  try
+    lQryItemProduto := TFDQuery.Create(nil);
+    lQryItemProduto.Connection := frmModeloConnection.FConnection;
+
+    lQryItemProduto.Close;
+    lQryItemProduto.SQL.Clear;
+    //Retorna apenas os celulares ativos
+    lQryItemProduto.SQL.Add('SELECT * FROM CELL_ITENS WHERE CELL_ID = ' + IntToStr( IDProduto ) );
+    lQryItemProduto.Open;
+    erro := '';
+    Result := lQryItemProduto;
+  except on ex:exception do
+    begin
+      erro := 'Erro ao consultar os itens produtos: ' + ex.Message;
+      Result := nil;
+    end;
+  end;
+end;
+
 function TProdutos.ListarImagemProduto(out erro: string; IDProduto : Integer): TFDQuery;
 var
   lQryImagemProdutos : TFDQuery;
@@ -94,7 +118,7 @@ begin
     lQryImagemProdutos.Close;
     lQryImagemProdutos.SQL.Clear;
     //Retorna apenas os celulares ativos
-    lQryImagemProdutos.SQL.Add('select * from cell_images where cell_id = ' + IntToStr( IDProduto ) );
+    lQryImagemProdutos.SQL.Add('SELECT FIRST 1 * FROM CELL_IMAGES WHERE CELL_ID = ' + IntToStr( IDProduto ) );
     lQryImagemProdutos.Open;
     erro := '';
     Result := lQryImagemProdutos;
