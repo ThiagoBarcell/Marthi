@@ -18,12 +18,13 @@ File_14=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Vendas\Forms\Report\VenPlanilhaS
 [Modules]
 Module0=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 Module1=default.htm
-Module2=C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
-Module3=C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas
-Module4=C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas
-Module5=C:\Marthi GIT\Forms\untFuncoes.pas
-Module6=C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
-Count=7
+Module2=C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas
+Module3=C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas
+Module4=C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
+Module5=C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas
+Module6=C:\Marthi GIT\Forms\untFuncoes.pas
+Module7=C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
+Count=8
 EditWindowCount=1
 
 [C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas]
@@ -32,13 +33,16 @@ ModuleType=TSourceModule
 [default.htm]
 ModuleType=TURLModule
 
+[C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas]
+ModuleType=TSourceModule
+
+[C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas]
+ModuleType=TSourceModule
+
 [C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas]
 ModuleType=TSourceModule
 
 [C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas]
-ModuleType=TSourceModule
-
-[C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas]
 ModuleType=TSourceModule
 
 [C:\Marthi GIT\Forms\untFuncoes.pas]
@@ -48,7 +52,7 @@ ModuleType=TSourceModule
 ModuleType=TSourceModule
 
 [EditWindow0]
-ViewCount=7
+ViewCount=8
 CurrentEditView=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 View0=0
 View1=1
@@ -57,6 +61,7 @@ View3=3
 View4=4
 View5=5
 View6=6
+View7=7
 PercentageSizes=1
 Create=1
 Visible=1
@@ -92,15 +97,26 @@ WelcomePageURL=bds:/default.htm
 [View1]
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
-CursorX=63
-CursorY=1002
-TopLine=981
+CursorX=1
+CursorY=1239
+TopLine=1239
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=Borland.FormDesignerView
 
 [View2]
+CustomEditViewType=TEditView
+Module=C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas
+CursorX=1
+CursorY=47
+TopLine=47
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Borland.FormDesignerView
+
+[View3]
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas
 CursorX=24
@@ -109,9 +125,9 @@ TopLine=78
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas
+EditViewName=Borland.FormDesignerView
 
-[View3]
+[View4]
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\untFuncoes.pas
 CursorX=39
@@ -122,7 +138,7 @@ Elisions=
 Bookmarks=
 EditViewName=C:\Marthi GIT\Forms\untFuncoes.pas
 
-[View4]
+[View5]
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
 CursorX=30
@@ -133,7 +149,7 @@ Elisions=
 Bookmarks=
 EditViewName=Borland.FormDesignerView
 
-[View5]
+[View6]
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas
 CursorX=34
@@ -144,7 +160,7 @@ Elisions=
 Bookmarks=
 EditViewName=Borland.FormDesignerView
 
-[View6]
+[View7]
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
 CursorX=1
@@ -184,10 +200,10 @@ StayOnTop=0
 
 [Breakpoints]
 Count=4
-Breakpoint0='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',124,'',0,1,'',1,0,0,'',1,'','','',0,''
-Breakpoint1='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',530,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint0='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',105,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint1='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',529,'',0,1,'',1,0,0,'',1,'','','',0,''
 Breakpoint2='C:\Sistemas\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas',90,'',0,1,'',1,0,0,'',1,'','','',0,''
-Breakpoint3='C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',929,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint3='C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',940,'',0,1,'',1,0,0,'',1,'','','',0,''
 
 [EmbarcaderoWin32Debugger_AddressBreakpoints]
 Count=0
@@ -219,8 +235,8 @@ Create=1
 Visible=1
 Docked=0
 State=2
-Left=143
-Top=270
+Left=286
+Top=0
 Width=8932
 Height=8517
 MaxLeft=-7
@@ -302,8 +318,8 @@ Width=1784
 Height=6115
 MaxLeft=-7
 MaxTop=-12
-ClientWidth=1680
-ClientHeight=5637
+ClientWidth=1706
+ClientHeight=5650
 TBDockHeight=6115
 LRDockWidth=1784
 Dockable=1
@@ -862,8 +878,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=8
-Top=8
+Left=1193
+Top=115
 Width=2012
 Height=8480
 MaxLeft=-1

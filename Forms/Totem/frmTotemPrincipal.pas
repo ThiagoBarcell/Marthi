@@ -17,7 +17,7 @@ uses
   Frame.MarthiGIT.Totem, System.Math, System.IniFiles, Untfuncoes,
   FireDAC.Phys.IBBase, MyVirtualKeyboard, FMX.Filter.Effects, FMX.Ani,
   System.Math.Vectors, FMX.Controls3D, FMX.Objects3D, Marthi.PedeSenha,
-  Marthi.TecladoVirtual;
+  Marthi.TecladoVirtual, Marthi.TipoRetirada;
 
 type
   TTotemPrincipalfrm = class(TForm)
@@ -61,7 +61,6 @@ type
     TabTotem: TTabItem;
     TabAbertura: TTabItem;
     TabCliente: TTabItem;
-    TabRetirada: TTabItem;
     lytAbertura: TLayout;
     btnAbreCliente: TRectangle;
     lytGlobalToten: TLayout;
@@ -100,34 +99,34 @@ type
     Rectangle4: TRectangle;
     ShadowEffect8: TShadowEffect;
     lytClient: TLayout;
+    Rectangle15: TRectangle;
+    Label14: TLabel;
+    Rectangle3: TRectangle;
+    Label15: TLabel;
+    Label16: TLabel;
+    BorrarFundo: TBlurEffect;
     Label7: TLabel;
-    Rectangle10: TRectangle;
-    Rectangle7: TRectangle;
-    Rectangle9: TRectangle;
-    Label8: TLabel;
+    Rectangle1: TRectangle;
+    btnComprar: TRectangle;
+    Label13: TLabel;
+    ShadowEffect4: TShadowEffect;
     Rectangle11: TRectangle;
     Rectangle12: TRectangle;
-    Label11: TLabel;
     edtPesquisa1: TEdit;
-    edtPesquisa2: TEdit;
+    Label11: TLabel;
+    ShadowEffect3: TShadowEffect;
     Rectangle13: TRectangle;
     Rectangle14: TRectangle;
     edtPesquisa3: TEdit;
     Label12: TLabel;
-    btnComprar: TRectangle;
-    Label13: TLabel;
-    Rectangle15: TRectangle;
-    Label14: TLabel;
-    ShadowEffect4: TShadowEffect;
-    Rectangle1: TRectangle;
-    Rectangle3: TRectangle;
-    Label15: TLabel;
-    Label16: TLabel;
-    Rectangle6: TRectangle;
-    ShadowEffect3: TShadowEffect;
-    ShadowEffect5: TShadowEffect;
     ShadowEffect6: TShadowEffect;
+    Rectangle7: TRectangle;
+    Rectangle9: TRectangle;
+    edtPesquisa2: TEdit;
+    Label8: TLabel;
     ShadowEffect9: TShadowEffect;
+    Rectangle6: TRectangle;
+    Label17: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);
@@ -850,8 +849,20 @@ begin
 end;
 
 procedure TTotemPrincipalfrm.btnComprarClick(Sender: TObject);
+var
+  frmTipoRetirada : TfrmTipoRetirada;
 begin
+
   TbcPrincipalToten.ActiveTab := TabTotem;
+
+  frmTipoRetirada := TfrmTipoRetirada.Create(Self);
+  try
+    BorrarFundo.Enabled := True;
+    frmTipoRetirada.ShowModal;
+  finally
+    FreeAndNil(frmTipoRetirada);
+    BorrarFundo.Enabled := False;
+  end;
 end;
 
 procedure TTotemPrincipalfrm.btnFecharClick(Sender: TObject);
@@ -1217,6 +1228,7 @@ begin
   btnXiaomi.Fill.Color := TAlphaColors.White; // Cor inicial
 
   TbcPrincipalToten.ActiveTab := TabAbertura;
+
 end;
 
 procedure TTotemPrincipalfrm.FormShow(Sender: TObject);
