@@ -27,17 +27,23 @@ uses
   FireDAC.Phys.FBDef,
   FireDAC.FMXUI.Wait,
   System.JSON,
-  Soap.EncdDecd;
-
+  Soap.EncdDecd,
+  IdBaseComponent,
+  IdComponent,
+  IdTCPConnection,
+  IdTCPClient,
+  IdHTTP,
+  Datasnap.DBClient,
+  System.Math;
 type
   TFuncoesMobile = Class
   private
     function LoadImageFromBase64(const JSONResponse: string): TMemoryStream;
 
   public
+    lIPServer : string;
 
   //Procedures
-
 
   //Functions
   function ConectarBD ( lConexao : TFDConnection; lServer, lDataBase : string ): boolean;

@@ -55,7 +55,9 @@ uses
   System.JSON,
   System.SysUtils,
   System.Math,
-  Soap.EncdDecd;
+  Soap.EncdDecd,
+  System.NetEncoding,
+  FMX.DialogService;
 
 type
   TProdutosFrm = class(TForm)
@@ -74,23 +76,32 @@ type
     cdsItemProduto: TClientDataSet;
     dtsItemProduto: TDataSource;
     dtsImagemProduto: TDataSource;
+    TabControl1: TTabControl;
+    tabListaProdutos: TTabItem;
+    tabConfiguracoes: TTabItem;
+    edtIPServidor: TEdit;
+    btnAttIP: TButton;
     procedure btnConnectarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Rectangle8Click(Sender: TObject);
     procedure btnConfiguracoesClick(Sender: TObject);
+    procedure btnAttIPClick(Sender: TObject);
   private
     { Private declarations }
     //Procedures
     procedure CarregaDados;
     procedure AjustarAlturaScrollBox( ScrollBox : TVertScrollBox );
     procedure CarregarImagens(Frame: TProdutoFrame; IDCell: Integer);
+    procedure LoadImageFromBase64(const JSONResponse: string;
+      ImageComponent: TImage);
+    procedure ExtrairDadosImagemProduto(lJSon: string;
+      lClientDataSet: TClientDataSet);
+
 
     //Functions
     function ExtrairDadosJSonProduto( Json: string; cdsProduto : TClientDataSet ): string;
     function ExtrairDadosJSonItemProduto( Json: string; cdsItemProd : TClientDataSet ): string;
-    function ExtrairDadosJSonImagemProduto( Json: string; cdsImgProd : TClientDataSet ): string;
-    procedure LoadImageFromBase64(const JSONResponse: string;
-      ImageComponent: TImage);
+    procedure ConfiguraCDSImagens;
   public
     lFuncoes : TFuncoesMobile;
     { Public declarations }
@@ -122,6 +133,11 @@ begin
   ScrollBox.Content.Height := AlturaTotal;
 end;
 
+procedure TProdutosFrm.btnAttIPClick(Sender: TObject);
+begin
+  lFuncoes.lIPServer := edtIPServidor.Text;
+end;
+
 procedure TProdutosFrm.btnConfiguracoesClick(Sender: TObject);
 begin
   CarregaDados;
@@ -131,6 +147,20 @@ procedure TProdutosFrm.btnConnectarClick(Sender: TObject);
 begin
   //if not ( lFuncoes.ConectarBD( cntMarthi, edtServerDB.Text, edtPathDB.Text ) ) then
   //  ShowMessage( 'Não foi possível conectar no banco de dados' );
+end;
+
+procedure TProdutosFrm.ConfiguraCDSImagens;
+begin
+  cdsImagemProduto.Close;
+  cdsImagemProduto.FieldDefs.Clear;
+  cdsImagemProduto.FieldDefs.Add('CELL_ID', ftInteger );
+  cdsImagemProduto.FieldDefs.Add('SEQUENCIA', ftInteger );
+  cdsImagemProduto.FieldDefs.Add('IMAGE', ftBlob );
+
+  cdsImagemProduto.CreateDataSet;
+  cdsImagemProduto.Close;
+  dtsImagemProduto.DataSet := cdsImagemProduto;
+  cdsImagemProduto.Open;
 end;
 
 procedure TProdutosFrm.CarregaDados;
@@ -150,7 +180,7 @@ begin
   lConsultCell := TIdHTTP.Create( nil );
 
   try
-    lRetorno := lConsultCell.Get( 'http://172.27.245.210:9000/produtos' );
+    lRetorno := lConsultCell.Get( 'http://' + lFuncoes.lIPServer + '/produtos' );
     ExtrairDadosJSonProduto( lRetorno, cdsProdutos );
   finally
     lConsultCell.Free;
@@ -175,7 +205,12 @@ begin
     Frame.lblNomeItem.Text := cdsProdutos.FieldByName('cellDesc').AsString;
     Frame.lblValorAPrazo.Text := '10';//cdsProdutos.FieldByName('cellDesc').AsString;
     Frame.lblValorAVista.Text := '10';//cdsProdutos.FieldByName('cellDesc').AsString;
+    Frame.lblID_CELL.Text := cdsProdutos.FieldByName('cellId').AsString;
+    try
+      CarregarImagens( Frame, cdsProdutos.FieldByName( 'cellId' ).AsInteger );
+    except
 
+    end;
 
     //CellID := cdsProdutos.FieldByName('cellId').AsInteger;
     //CarregarImagensHorizontais(Frame, CellID);
@@ -251,105 +286,114 @@ begin
   AjustarAlturaScrollBox(vsbPrincipal);
 end;
 
+procedure CarregarImagemFromBlob(BlobField: TBlobField; Bitmap: TBitmap);
+var
+  Base64Stream: TStringStream;
+  ImageStream: TMemoryStream;
+  Base64Data: string;
+begin
+  if BlobField.IsNull then
+    Exit;
+
+  // Obtém o conteúdo do campo BLOB como string Base64
+  Base64Data := BlobField.AsString;
+
+  // Stream para decodificar a Base64
+  Base64Stream := TStringStream.Create(Base64Data, TEncoding.UTF8);
+  ImageStream := TMemoryStream.Create;
+  try
+    // Decodifica a string Base64 para o stream binário
+    TNetEncoding.Base64.Decode(Base64Stream, ImageStream);
+
+    // Volta para o início do stream
+    ImageStream.Position := 0;
+
+    // Carrega a imagem no Bitmap
+    Bitmap.LoadFromStream(ImageStream);
+  finally
+    Base64Stream.Free;
+    ImageStream.Free;
+  end;
+end;
+
 procedure TProdutosFrm.CarregarImagens(Frame: TProdutoFrame; IDCell: Integer);
 var
-  ImageQuery: TFDQuery;
   ImageStream: TMemoryStream;
   BlobField: TBlobField;
   CloneRect: TRectangle;
   CurrentLeft: Single;
   TotalWidth: Single;
   lConsultaImg : TIdHTTP;
-  lResponseImg : string;
+  lResponseImg : TStringList;
 begin
+  //TDialogService.ShowMessage( '1' );
   // Verifica se o HorzScrollBoxImagens está inicializado
   if not Assigned(Frame.rtgImageProd) then
   begin
     raise Exception.Create('HorzScrollBoxImagens não está inicializado.');
   end;
-
+  lResponseImg := TStringList.Create;
   lConsultaImg := TIdHTTP.Create( nil );
-  lResponseImg := lConsultaImg.Get( 'http://172.27.245.210:9000/produtos/imagens/' + IntToStr( IDCell ) );
+  lResponseImg.Text := lConsultaImg.Get( 'http://' + lFuncoes.lIPServer + '/produtos/imagens/' + IntToStr( IDCell ) );
+
+  //ShowMessage( '2' );
+
+  ConfiguraCDSImagens;
+  ExtrairDadosImagemProduto( lResponseImg.Text, cdsImagemProduto );
 
   Frame.rtgImageProd.BeginUpdate;
   try
     CurrentLeft := 0;
     TotalWidth := 0;
 
-    ImageQuery := TFDQuery.Create(nil);
     try
-      ImageQuery.Connection := ConectMarthi;
-      ImageQuery.SQL.Text := 'SELECT IMAGE FROM CELL_IMAGES WHERE CELL_ID = :CELL_ID';
-      ImageQuery.ParamByName('CELL_ID').AsInteger := CellID;
-      ImageQuery.Open;
-      Frame.TOT_IMAGEM.Text := IntToStr(ImageQuery.RecordCount);
+      Frame.rtgImageProd.Margins.Top := 5;
+      Frame.rtgImageProd.Margins.Left := 5;
+      Frame.rtgImageProd.Margins.Right := 3;
+      Frame.rtgImageProd.Margins.Bottom := 5;
+      Frame.rtgImageProd.Position.X := CurrentLeft;
+      Frame.rtgImageProd.Position.Y := 0;
+      Frame.rtgImageProd.Stroke.Assign(Frame.rtgImageProd.Stroke);
+      Frame.rtgImageProd.Fill.Kind := TBrushKind.Bitmap;
+      Frame.rtgImageProd.Fill.Bitmap.WrapMode := TWrapMode.TileStretch;
+      Frame.rtgImageProd.SetBounds(Frame.rtgImageProd.Position.X, Frame.rtgImageProd.Position.Y, Frame.rtgImageProd.Width, Frame.rtgImageProd.Height);
+      Frame.rtgImageProd.XRadius := 10;
+      Frame.rtgImageProd.YRadius := 10;
 
-      while not ImageQuery.Eof do
+      BlobField := cdsImagemProduto.FieldByName('IMAGE') as TBlobField;
+      if not BlobField.IsNull then
       begin
-        CloneRect := TRectangle.Create(Frame.HorzScrollBoxImagens);
-        CloneRect.Parent := Frame.HorzScrollBoxImagens;
-        CloneRect.Width := Frame.imgCell.Width;
-        CloneRect.Height := Frame.imgCell.Height;
-        CloneRect.Margins.Top := 5;
-        CloneRect.Margins.Left := 5;
-        CloneRect.Margins.Right := 3;
-        CloneRect.Margins.Bottom := 5;
-        CloneRect.Position.X := CurrentLeft;
-        CloneRect.Position.Y := 0;
-        CloneRect.Stroke.Assign(Frame.imgCell.Stroke);
-        CloneRect.Fill.Kind := TBrushKind.Bitmap;
-        CloneRect.Fill.Bitmap.WrapMode := TWrapMode.TileStretch;
-        CloneRect.SetBounds(CloneRect.Position.X, CloneRect.Position.Y, CloneRect.Width, CloneRect.Height);
-        CloneRect.XRadius := 10;
-        CloneRect.YRadius := 10;
+        ImageStream := TMemoryStream.Create;
+        try
+          //BlobField.SaveToStream(ImageStream);
+          if Frame.rtgImageProd.Fill.Bitmap.Bitmap = nil then
+            Frame.rtgImageProd.Fill.Bitmap.Bitmap := TBitmap.Create;
 
-        BlobField := ImageQuery.FieldByName('IMAGE') as TBlobField;
-        if not BlobField.IsNull then
-        begin
-          ImageStream := TMemoryStream.Create;
-          try
-            BlobField.SaveToStream(ImageStream);
-            ImageStream.Position := 0;
-            CloneRect.Fill.Bitmap.Bitmap.LoadFromStream(ImageStream);
-          finally
-            ImageStream.Free;
-          end;
-        end
-        else
-        begin
-          CloneRect.Fill.Kind := TBrushKind.Solid;
-          CloneRect.Fill.Color := TAlphaColors.Gray;
+          CarregarImagemFromBlob(BlobField,Frame.rtgImageProd.Fill.Bitmap.Bitmap);
+
+          ImageStream.Position := 0;
+        finally
+          ImageStream.Free;
         end;
-
-        CurrentLeft := CurrentLeft + CloneRect.Width + 10;
-        TotalWidth := CurrentLeft;
-
-        ImageQuery.Next;
+      end
+      else
+      begin
+        Frame.rtgImageProd.Fill.Kind := TBrushKind.Solid;
+        //Frame.rtgImageProd.Fill.Color := TAlphaColors.Gray;
       end;
 
-      Frame.HorzScrollBoxImagens.Content.Width := TotalWidth;
-      Frame.lblTOT_WIDTH.Text := FloatToStr(TotalWidth);
+      CurrentLeft := CurrentLeft + Frame.rtgImageProd.Width + 10;
+      TotalWidth := CurrentLeft;
+
+    //Frame.HorzScrollBoxImagens.Content.Width := TotalWidth;
+    //Frame.lblTOT_WIDTH.Text := FloatToStr(TotalWidth);
     finally
-      ImageQuery.Free;
+      BlobField.Free;
+    //  ImageQuery.Free;
     end;
-
-    // Atualiza os botões de navegação
-    AtualizarBotoesNavegacao(Frame);
-
-    // Configura os eventos dos botões de navegação
-    Frame.CircDireita.OnClick := BotaoDireitaClick;
-    Frame.CircEsquerda.OnClick := BotaoEsquerdaClick;
-    Frame.HorzScrollBoxImagens.OnViewportPositionChange := ViewportPositionChange;
-
   finally
-    Frame.HorzScrollBoxImagens.EndUpdate;
+    Frame.rtgImageProd.EndUpdate;
   end;
-end;
-
-function TProdutosFrm.ExtrairDadosJSonImagemProduto(Json: string;
-  cdsImgProd: TClientDataSet): string;
-begin
-  //
 end;
 
 function TProdutosFrm.ExtrairDadosJSonItemProduto(Json: string;
@@ -425,6 +469,40 @@ begin
   end;
 end;
 
+procedure TProdutosFrm.ExtrairDadosImagemProduto( lJSon : string; lClientDataSet : TClientDataSet );
+var
+  JSONArray: TJSONArray;
+  JSONObject: TJSONObject;
+  i: Integer;
+  CellId, Sequencia: Integer;
+  Image: string;
+begin
+  try
+    // Carrega o JSON recebido em um JSONArray
+    JSONArray := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(lJSon), 0) as TJSONArray;
+    try
+      // Itera pelos objetos no array
+      for i := 0 to JSONArray.Count - 1 do
+      begin
+        JSONObject := JSONArray.Items[i] as TJSONObject;
+        lClientDataSet.Append;
+        // Lê os valores do objeto
+        lClientDataSet.FieldByName( 'CELL_ID' ).AsInteger := JSONObject.GetValue<Integer>('cellId');
+        lClientDataSet.FieldByName( 'SEQUENCIA' ).AsInteger := JSONObject.GetValue<Integer>('sequencia');
+        lClientDataSet.FieldByName( 'IMAGE' ).AsBytes := TEncoding.UTF8.GetBytes( JSONObject.GetValue<string>('image') );
+        lClientDataSet.Post;
+        // Exibe as informações (ou faça o que for necessário)
+        //Writeln(Format('CellId: %d, Sequencia: %d, Image: %s', [CellId, Sequencia, Image]));
+      end;
+    finally
+      JSONArray.Free;
+    end;
+  except
+    on E: Exception do
+      Writeln('Erro: ' + E.Message);
+  end;
+end;
+
 procedure TProdutosFrm.FormCreate(Sender: TObject);
 begin
   lFuncoes := TFuncoesMobile.Create;
@@ -444,7 +522,7 @@ begin
   lConulta := TIdHTTP.Create(nil);
 
   try
-    lReturn := lConulta.Get( 'http://172.27.245.210:9000/produtos' );
+    lReturn := lConulta.Get( 'http://' + lFuncoes.lIPServer + '/produtos' );
     //Memo1.Lines.Text := lReturn;
   finally
     lConulta.Free;

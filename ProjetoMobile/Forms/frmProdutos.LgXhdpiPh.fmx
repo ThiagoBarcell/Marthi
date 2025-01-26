@@ -8,18 +8,37 @@ inherited ProdutosFrm_LgXhdpiPh: TProdutosFrm_LgXhdpiPh
       Position.X = 404.000000000000000000
     end
   end
-  inherited lytPrincipal: TLayout
+  inherited TabControl1: TTabControl
     Size.Width = 450.000000000000000000
     Size.Height = 654.000000000000000000
-    inherited rctPrincipal: TRectangle
-      Size.Width = 440.000000000000000000
-      Size.Height = 634.000000000000000000
-      inherited vsbPrincipal: TVertScrollBox
-        Size.Width = 440.000000000000000000
-        Size.Height = 634.000000000000000000
-        Viewport.Width = 440.000000000000000000
-        Viewport.Height = 634.000000000000000000
+    Sizes = (
+      450s
+      605s
+      450s
+      605s)
+    inherited tabListaProdutos: TTabItem
+      Size.Width = 225.000000000000000000
+      ExplicitSize.cx = 200.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      inherited lytPrincipal: TLayout
+        Size.Width = 450.000000000000000000
+        Size.Height = 605.000000000000000000
+        inherited rctPrincipal: TRectangle
+          Size.Width = 440.000000000000000000
+          Size.Height = 585.000000000000000000
+          inherited vsbPrincipal: TVertScrollBox
+            Size.Width = 440.000000000000000000
+            Size.Height = 585.000000000000000000
+            Viewport.Width = 440.000000000000000000
+            Viewport.Height = 585.000000000000000000
+          end
+        end
       end
+    end
+    inherited tabConfiguracoes: TTabItem
+      Size.Width = 225.000000000000000000
+      ExplicitSize.cx = 225.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
     end
   end
 end
