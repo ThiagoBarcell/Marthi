@@ -34,11 +34,11 @@ object ProdutosFrm: TProdutosFrm
     object lblTitulo: TLabel
       Position.X = 44.000000000000000000
       Position.Y = 11.000000000000000000
-      Size.Width = 125.000000000000000000
+      Size.Width = 85.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = 'lblTituloStyle1'
-      Text = 'Marthi - Mobile'
+      Text = 'MARTHI'
       TabOrder = 2
     end
     object Image1: TImage
@@ -6679,6 +6679,22 @@ object ProdutosFrm: TProdutosFrm
       Size.Height = 41.000000000000000000
       Size.PlatformDefault = False
     end
+    object lblLoading: TLabel
+      Align = Right
+      StyledSettings = [Family]
+      Position.X = 256.000000000000000000
+      Size.Width = 128.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 8.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      TextSettings.FontColor = claWhite
+      TextSettings.HorzAlign = Trailing
+      TextSettings.VertAlign = Trailing
+      Text = 'Label1'
+      Visible = False
+      TabOrder = 3
+    end
   end
   object Brush: TBrushObject
     StyleName = 'Brush'
@@ -7143,6 +7159,8 @@ object ProdutosFrm: TProdutosFrm
       CustomIcon = <
         item
         end>
+      TextSettings.FontColor = xFF021524
+      StyledSettings = [Family, Size, Style]
       IsSelected = True
       Size.Width = 215.000000000000000000
       Size.Height = 49.000000000000000000
@@ -7160,22 +7178,20 @@ object ProdutosFrm: TProdutosFrm
         TabOrder = 0
         object rctPrincipal: TRectangle
           Align = Client
-          Margins.Left = 5.000000000000000000
-          Margins.Top = 10.000000000000000000
-          Margins.Right = 5.000000000000000000
-          Margins.Bottom = 10.000000000000000000
-          Size.Width = 420.000000000000000000
-          Size.Height = 481.000000000000000000
+          Fill.Color = xFF021524
+          Size.Width = 430.000000000000000000
+          Size.Height = 501.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
           object vsbPrincipal: TVertScrollBox
             Align = Client
-            Size.Width = 420.000000000000000000
-            Size.Height = 481.000000000000000000
+            Size.Width = 430.000000000000000000
+            Size.Height = 501.000000000000000000
             Size.PlatformDefault = False
+            StyleLookup = 'vsbPrincipalStyle1'
             TabOrder = 0
-            Viewport.Width = 420.000000000000000000
-            Viewport.Height = 481.000000000000000000
+            Viewport.Width = 430.000000000000000000
+            Viewport.Height = 501.000000000000000000
           end
         end
       end
@@ -7184,6 +7200,8 @@ object ProdutosFrm: TProdutosFrm
       CustomIcon = <
         item
         end>
+      TextSettings.FontColor = xFF021524
+      StyledSettings = [Family, Size, Style]
       IsSelected = False
       Size.Width = 215.000000000000000000
       Size.Height = 49.000000000000000000

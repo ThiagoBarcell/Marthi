@@ -57,7 +57,8 @@ uses
   System.Math,
   Soap.EncdDecd,
   System.NetEncoding,
-  FMX.DialogService;
+  FMX.DialogService,
+  System.Threading;
 
 type
   TProdutosFrm = class(TForm)
@@ -81,6 +82,7 @@ type
     tabConfiguracoes: TTabItem;
     edtIPServidor: TEdit;
     btnAttIP: TButton;
+    lblLoading: TLabel;
     procedure btnConnectarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Rectangle8Click(Sender: TObject);
@@ -140,7 +142,9 @@ end;
 
 procedure TProdutosFrm.btnConfiguracoesClick(Sender: TObject);
 begin
-  CarregaDados;
+  TTask.Run(
+    CarregaDados
+  );
 end;
 
 procedure TProdutosFrm.btnConnectarClick(Sender: TObject);
@@ -170,6 +174,7 @@ var
   lConsultImagem: TIdHTTP;
   lConsultItem: TIdHTTP;
   lRetorno: string;
+  lTotalReg: string;
   Cont, CellID: Integer;
   CorID, CapacidadeID, RetiradaID: Integer;
 begin
@@ -178,7 +183,6 @@ begin
     vsbPrincipal.Content.Controls[0].Free;
 
   lConsultCell := TIdHTTP.Create( nil );
-
   try
     lRetorno := lConsultCell.Get( 'http://' + lFuncoes.lIPServer + '/produtos' );
     ExtrairDadosJSonProduto( lRetorno, cdsProdutos );
@@ -186,11 +190,18 @@ begin
     lConsultCell.Free;
   end;
 
+  lblLoading.Visible := True;
+
+  lTotalReg := IntToStr( cdsProdutos.RecordCount );
+
   cdsProdutos.First;
 
   while not( cdsProdutos.Eof ) do
   begin
     Inc(Cont);
+
+    lblLoading.Text := 'Atualizando :' + IntToStr( cont ) + ' de ' + lTotalReg;
+
     Frame := TProdutoFrame.Create(vsbPrincipal);
     Frame.Name := 'Frame' + IntToStr(Cont);
     Frame.Parent := vsbPrincipal;
@@ -207,7 +218,7 @@ begin
     Frame.lblValorAVista.Text := '10';//cdsProdutos.FieldByName('cellDesc').AsString;
     Frame.lblID_CELL.Text := cdsProdutos.FieldByName('cellId').AsString;
     try
-      CarregarImagens( Frame, cdsProdutos.FieldByName( 'cellId' ).AsInteger );
+      //CarregarImagens( Frame, cdsProdutos.FieldByName( 'cellId' ).AsInteger );
     except
 
     end;
@@ -279,10 +290,10 @@ begin
     // Atribuir o evento OnEnter
 //    Frame.edtNomeCli.OnClick := OnClickNomeCli;
 //    Frame.edtTelCli.OnClick := OnClickTelCli;
-
+    Application.ProcessMessages;
     cdsProdutos.Next;
   end;
-
+  lblLoading.Visible := False;
   AjustarAlturaScrollBox(vsbPrincipal);
 end;
 
@@ -336,8 +347,6 @@ begin
   lConsultaImg := TIdHTTP.Create( nil );
   lResponseImg.Text := lConsultaImg.Get( 'http://' + lFuncoes.lIPServer + '/produtos/imagens/' + IntToStr( IDCell ) );
 
-  //ShowMessage( '2' );
-
   ConfiguraCDSImagens;
   ExtrairDadosImagemProduto( lResponseImg.Text, cdsImagemProduto );
 
@@ -347,12 +356,12 @@ begin
     TotalWidth := 0;
 
     try
-      Frame.rtgImageProd.Margins.Top := 5;
-      Frame.rtgImageProd.Margins.Left := 5;
-      Frame.rtgImageProd.Margins.Right := 3;
-      Frame.rtgImageProd.Margins.Bottom := 5;
-      Frame.rtgImageProd.Position.X := CurrentLeft;
-      Frame.rtgImageProd.Position.Y := 0;
+//      Frame.rtgImageProd.Margins.Top := 5;
+//      Frame.rtgImageProd.Margins.Left := 30;
+//      Frame.rtgImageProd.Margins.Right := 30;
+//      Frame.rtgImageProd.Margins.Bottom := 5;
+//      Frame.rtgImageProd.Position.X := CurrentLeft;
+//      Frame.rtgImageProd.Position.Y := 0;
       Frame.rtgImageProd.Stroke.Assign(Frame.rtgImageProd.Stroke);
       Frame.rtgImageProd.Fill.Kind := TBrushKind.Bitmap;
       Frame.rtgImageProd.Fill.Bitmap.WrapMode := TWrapMode.TileStretch;

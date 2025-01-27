@@ -7,6 +7,9 @@ inherited ProdutosFrm_LgXhdpiPh: TProdutosFrm_LgXhdpiPh
     inherited btnConfiguracoes: TButton
       Position.X = 404.000000000000000000
     end
+    inherited lblLoading: TLabel
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+    end
   end
   inherited TabControl1: TTabControl
     Size.Width = 450.000000000000000000
@@ -24,6 +27,10 @@ inherited ProdutosFrm_LgXhdpiPh: TProdutosFrm_LgXhdpiPh
         Size.Width = 450.000000000000000000
         Size.Height = 605.000000000000000000
         inherited rctPrincipal: TRectangle
+          Margins.Left = 5.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 5.000000000000000000
+          Margins.Bottom = 10.000000000000000000
           Size.Width = 440.000000000000000000
           Size.Height = 585.000000000000000000
           inherited vsbPrincipal: TVertScrollBox
