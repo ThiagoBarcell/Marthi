@@ -22,7 +22,7 @@
     <Transaction>2025/01/24 14:08:25.000.798,D:\Marthi GIT\ProjetoMobile\Frames\frameProduto.fmx=D:\Marthi GIT\ProjetoMobile\Frames\Frame.MarthiGIT.Produto.fmx</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<NoProfile iOSSimulator="iPhone5" Android="" Android64=""/>
+		<NoProfile iOSSimulator="iPhone5" Android="3adc02b27d75" Android64=""/>
 	</ActiveMobileDevice>
 	<BT_BuildType>Debug</BT_BuildType>
 </BorlandProject>

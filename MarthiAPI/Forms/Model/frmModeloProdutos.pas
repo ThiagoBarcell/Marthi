@@ -70,7 +70,7 @@ begin
     lQryProdutos.Close;
     lQryProdutos.SQL.Clear;
     //Retorna apenas os celulares ativos
-    lQryProdutos.SQL.Add('SELECT * FROM CAD_CELL WHERE CELL_STATUS = 1');
+    lQryProdutos.SQL.Add('SELECT * FROM CAD_CELL WHERE CELL_STATUS = 1 ORDER BY CELL_ID');
     lQryProdutos.Open;
 
     erro := '';
