@@ -14,7 +14,7 @@
   DesignerMasterStyle = 0
   object Rectangle11: TRectangle
     Align = Contents
-    Fill.Color = xF5F5F5F5
+    Fill.Color = xF5000000
     Size.Width = 537.000000000000000000
     Size.Height = 221.000000000000000000
     Size.PlatformDefault = False
@@ -23,7 +23,7 @@
     YRadius = 5.000000000000000000
     object RecBotoesLetras: TRectangle
       Align = Top
-      Fill.Color = xF5F5F5F5
+      Fill.Color = claBlack
       Position.Y = 50.000000000000000000
       Size.Width = 537.000000000000000000
       Size.Height = 153.000000000000000000
@@ -31,7 +31,7 @@
       Stroke.Kind = None
       object RecTeclado: TRectangle
         Align = Client
-        Fill.Color = xF5F5F5F5
+        Fill.Color = claBlack
         Size.Width = 537.000000000000000000
         Size.Height = 153.000000000000000000
         Size.PlatformDefault = False
@@ -40,7 +40,7 @@
         YRadius = 5.000000000000000000
         object Rectangle2: TRectangle
           Align = Top
-          Fill.Color = xF5F5F5F5
+          Fill.Color = claBlack
           Margins.Left = 3.000000000000000000
           Margins.Top = 3.000000000000000000
           Margins.Right = 3.000000000000000000
@@ -484,7 +484,7 @@
         end
         object Rectangle23: TRectangle
           Align = Top
-          Fill.Color = xF5F5F5F5
+          Fill.Color = claBlack
           Margins.Left = 3.000000000000000000
           Margins.Top = 3.000000000000000000
           Margins.Right = 3.000000000000000000
@@ -772,7 +772,7 @@
         end
         object Rectangle48: TRectangle
           Align = Top
-          Fill.Color = xF5F5F5F5
+          Fill.Color = claBlack
           Margins.Left = 3.000000000000000000
           Margins.Top = 3.000000000000000000
           Margins.Right = 3.000000000000000000
@@ -1218,7 +1218,7 @@
     end
     object RecBotoesNumericos: TRectangle
       Align = Top
-      Fill.Color = xF5F5F5F5
+      Fill.Color = claBlack
       Size.Width = 537.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
@@ -1227,7 +1227,7 @@
       YRadius = 5.000000000000000000
       object Rectangle50: TRectangle
         Align = Top
-        Fill.Color = xF5F5F5F5
+        Fill.Color = claBlack
         Margins.Left = 3.000000000000000000
         Margins.Top = 3.000000000000000000
         Margins.Right = 3.000000000000000000
@@ -1712,7 +1712,7 @@
     end
     object RecBotoesFixos: TRectangle
       Align = Top
-      Fill.Color = xF5F5F5F5
+      Fill.Color = claBlack
       Margins.Left = 3.000000000000000000
       Margins.Top = 3.000000000000000000
       Margins.Right = 3.000000000000000000

@@ -257,12 +257,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=2038
-Height=7868
+Width=2025
+Height=8137
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2038
-ClientHeight=7868
+ClientWidth=2025
+ClientHeight=8137
 TBDockHeight=5895
 LRDockWidth=2350
 Dockable=1
@@ -347,8 +347,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Align,
-ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,Corners=0,Fill=1,LiveBindings=0,Margins=0,Padding=0,Position=0,RotationCenter=0,Scale=0,Sides=0,Size=0,Stroke=0,Touch=0,Fill.Bitmap=1,Fill.Resource=0,Fill.Bitmap.Image=0
+SelectedItem=Name,
+ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,Corners=0,Fill=0,LiveBindings=0,Margins=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -830,14 +830,14 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=3
-Top=23
-Width=2038
-Height=8211
+Left=1191
+Top=115
+Width=2025
+Height=8480
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2038
-ClientHeight=8211
+ClientWidth=2025
+ClientHeight=8480
 TBDockHeight=8480
 LRDockWidth=2025
 Dockable=1
