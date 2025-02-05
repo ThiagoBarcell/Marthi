@@ -11,12 +11,15 @@ type
   TProdutoFrame = class(TFrame)
     lytProduto: TLayout;
     rtgProduto: TRectangle;
-    rtgImageProd: TRectangle;
     lblNomeItem: TLabel;
     lblValorAPrazo: TLabel;
     lblValorAVista: TLabel;
     Label7: TLabel;
     lblID_CELL: TLabel;
+    Label1: TLabel;
+    btnAtualizarPro: TRectangle;
+    Label2: TLabel;
+    lblReferencia: TLabel;
   private
     { Private declarations }
   public

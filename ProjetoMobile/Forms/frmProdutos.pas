@@ -93,7 +93,7 @@ type
     //Procedures
     procedure CarregaDados;
     procedure AjustarAlturaScrollBox( ScrollBox : TVertScrollBox );
-    procedure CarregarImagens(Frame: TProdutoFrame; IDCell: Integer);
+    //procedure CarregarImagens(Frame: TProdutoFrame; IDCell: Integer);
     procedure LoadImageFromBase64(const JSONResponse: string;
       ImageComponent: TImage);
     procedure ExtrairDadosImagemProduto(lJSon: string;
@@ -142,9 +142,11 @@ end;
 
 procedure TProdutosFrm.btnConfiguracoesClick(Sender: TObject);
 begin
-  TTask.Run(
-    CarregaDados
-  );
+//  TTask.Run(
+//    CarregaDados
+//  );
+
+  CarregaDados;
 end;
 
 procedure TProdutosFrm.btnConnectarClick(Sender: TObject);
@@ -217,6 +219,8 @@ begin
     Frame.lblValorAPrazo.Text := '10';//cdsProdutos.FieldByName('cellDesc').AsString;
     Frame.lblValorAVista.Text := '10';//cdsProdutos.FieldByName('cellDesc').AsString;
     Frame.lblID_CELL.Text := cdsProdutos.FieldByName('cellId').AsString;
+
+    //Por questoes de performace não vou carregar as imagens aqui
     try
       //CarregarImagens( Frame, cdsProdutos.FieldByName( 'cellId' ).AsInteger );
     except
@@ -327,83 +331,83 @@ begin
   end;
 end;
 
-procedure TProdutosFrm.CarregarImagens(Frame: TProdutoFrame; IDCell: Integer);
-var
-  ImageStream: TMemoryStream;
-  BlobField: TBlobField;
-  CloneRect: TRectangle;
-  CurrentLeft: Single;
-  TotalWidth: Single;
-  lConsultaImg : TIdHTTP;
-  lResponseImg : TStringList;
-begin
-  //TDialogService.ShowMessage( '1' );
-  // Verifica se o HorzScrollBoxImagens está inicializado
-  if not Assigned(Frame.rtgImageProd) then
-  begin
-    raise Exception.Create('HorzScrollBoxImagens não está inicializado.');
-  end;
-  lResponseImg := TStringList.Create;
-  lConsultaImg := TIdHTTP.Create( nil );
-  lResponseImg.Text := lConsultaImg.Get( 'http://' + lFuncoes.lIPServer + '/produtos/imagens/' + IntToStr( IDCell ) );
-
-  ConfiguraCDSImagens;
-  ExtrairDadosImagemProduto( lResponseImg.Text, cdsImagemProduto );
-
-  Frame.rtgImageProd.BeginUpdate;
-  try
-    CurrentLeft := 0;
-    TotalWidth := 0;
-
-    try
-//      Frame.rtgImageProd.Margins.Top := 5;
-//      Frame.rtgImageProd.Margins.Left := 30;
-//      Frame.rtgImageProd.Margins.Right := 30;
-//      Frame.rtgImageProd.Margins.Bottom := 5;
-//      Frame.rtgImageProd.Position.X := CurrentLeft;
-//      Frame.rtgImageProd.Position.Y := 0;
-      Frame.rtgImageProd.Stroke.Assign(Frame.rtgImageProd.Stroke);
-      Frame.rtgImageProd.Fill.Kind := TBrushKind.Bitmap;
-      Frame.rtgImageProd.Fill.Bitmap.WrapMode := TWrapMode.TileStretch;
-      Frame.rtgImageProd.SetBounds(Frame.rtgImageProd.Position.X, Frame.rtgImageProd.Position.Y, Frame.rtgImageProd.Width, Frame.rtgImageProd.Height);
-      Frame.rtgImageProd.XRadius := 10;
-      Frame.rtgImageProd.YRadius := 10;
-
-      BlobField := cdsImagemProduto.FieldByName('IMAGE') as TBlobField;
-      if not BlobField.IsNull then
-      begin
-        ImageStream := TMemoryStream.Create;
-        try
-          //BlobField.SaveToStream(ImageStream);
-          if Frame.rtgImageProd.Fill.Bitmap.Bitmap = nil then
-            Frame.rtgImageProd.Fill.Bitmap.Bitmap := TBitmap.Create;
-
-          CarregarImagemFromBlob(BlobField,Frame.rtgImageProd.Fill.Bitmap.Bitmap);
-
-          ImageStream.Position := 0;
-        finally
-          ImageStream.Free;
-        end;
-      end
-      else
-      begin
-        Frame.rtgImageProd.Fill.Kind := TBrushKind.Solid;
-        //Frame.rtgImageProd.Fill.Color := TAlphaColors.Gray;
-      end;
-
-      CurrentLeft := CurrentLeft + Frame.rtgImageProd.Width + 10;
-      TotalWidth := CurrentLeft;
-
-    //Frame.HorzScrollBoxImagens.Content.Width := TotalWidth;
-    //Frame.lblTOT_WIDTH.Text := FloatToStr(TotalWidth);
-    finally
-      BlobField.Free;
-    //  ImageQuery.Free;
-    end;
-  finally
-    Frame.rtgImageProd.EndUpdate;
-  end;
-end;
+//procedure TProdutosFrm.CarregarImagens(Frame: TProdutoFrame; IDCell: Integer);
+//var
+//  ImageStream: TMemoryStream;
+//  BlobField: TBlobField;
+//  CloneRect: TRectangle;
+//  CurrentLeft: Single;
+//  TotalWidth: Single;
+//  lConsultaImg : TIdHTTP;
+//  lResponseImg : TStringList;
+//begin
+//  //TDialogService.ShowMessage( '1' );
+//  // Verifica se o HorzScrollBoxImagens está inicializado
+//  if not Assigned(Frame.rtgImageProd) then
+//  begin
+//    raise Exception.Create('HorzScrollBoxImagens não está inicializado.');
+//  end;
+//  lResponseImg := TStringList.Create;
+//  lConsultaImg := TIdHTTP.Create( nil );
+//  lResponseImg.Text := lConsultaImg.Get( 'http://' + lFuncoes.lIPServer + '/produtos/imagens/' + IntToStr( IDCell ) );
+//
+//  ConfiguraCDSImagens;
+//  ExtrairDadosImagemProduto( lResponseImg.Text, cdsImagemProduto );
+//
+//  Frame.rtgImageProd.BeginUpdate;
+//  try
+//    CurrentLeft := 0;
+//    TotalWidth := 0;
+//
+//    try
+////      Frame.rtgImageProd.Margins.Top := 5;
+////      Frame.rtgImageProd.Margins.Left := 30;
+////      Frame.rtgImageProd.Margins.Right := 30;
+////      Frame.rtgImageProd.Margins.Bottom := 5;
+////      Frame.rtgImageProd.Position.X := CurrentLeft;
+////      Frame.rtgImageProd.Position.Y := 0;
+//      Frame.rtgImageProd.Stroke.Assign(Frame.rtgImageProd.Stroke);
+//      Frame.rtgImageProd.Fill.Kind := TBrushKind.Bitmap;
+//      Frame.rtgImageProd.Fill.Bitmap.WrapMode := TWrapMode.TileStretch;
+//      Frame.rtgImageProd.SetBounds(Frame.rtgImageProd.Position.X, Frame.rtgImageProd.Position.Y, Frame.rtgImageProd.Width, Frame.rtgImageProd.Height);
+//      Frame.rtgImageProd.XRadius := 10;
+//      Frame.rtgImageProd.YRadius := 10;
+//
+//      BlobField := cdsImagemProduto.FieldByName('IMAGE') as TBlobField;
+//      if not BlobField.IsNull then
+//      begin
+//        ImageStream := TMemoryStream.Create;
+//        try
+//          //BlobField.SaveToStream(ImageStream);
+//          if Frame.rtgImageProd.Fill.Bitmap.Bitmap = nil then
+//            Frame.rtgImageProd.Fill.Bitmap.Bitmap := TBitmap.Create;
+//
+//          CarregarImagemFromBlob(BlobField,Frame.rtgImageProd.Fill.Bitmap.Bitmap);
+//
+//          ImageStream.Position := 0;
+//        finally
+//          ImageStream.Free;
+//        end;
+//      end
+//      else
+//      begin
+//        Frame.rtgImageProd.Fill.Kind := TBrushKind.Solid;
+//        //Frame.rtgImageProd.Fill.Color := TAlphaColors.Gray;
+//      end;
+//
+//      CurrentLeft := CurrentLeft + Frame.rtgImageProd.Width + 10;
+//      TotalWidth := CurrentLeft;
+//
+//    //Frame.HorzScrollBoxImagens.Content.Width := TotalWidth;
+//    //Frame.lblTOT_WIDTH.Text := FloatToStr(TotalWidth);
+//    finally
+//      BlobField.Free;
+//    //  ImageQuery.Free;
+//    end;
+//  finally
+//    Frame.rtgImageProd.EndUpdate;
+//  end;
+//end;
 
 function TProdutosFrm.ExtrairDadosJSonItemProduto(Json: string;
   cdsItemProd: TClientDataSet): string;
