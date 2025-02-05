@@ -17,26 +17,17 @@ File_14=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Vendas\Forms\Report\VenPlanilhaS
 
 [Modules]
 Module0=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
-Module1=default.htm
-Module2=C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas
+Module1=C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
+Module2=C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas
 Module3=C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas
-Module4=C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
-Module5=C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas
-Module6=C:\Marthi GIT\Forms\untFuncoes.pas
+Module4=C:\Marthi GIT\Forms\untFuncoes.pas
+Module5=C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas
+Module6=default.htm
 Module7=C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
 Count=8
 EditWindowCount=1
 
 [C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas]
-ModuleType=TSourceModule
-
-[default.htm]
-ModuleType=TURLModule
-
-[C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas]
-ModuleType=TSourceModule
-
-[C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas]
 ModuleType=TSourceModule
 
 [C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas]
@@ -45,8 +36,17 @@ ModuleType=TSourceModule
 [C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas]
 ModuleType=TSourceModule
 
+[C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas]
+ModuleType=TSourceModule
+
 [C:\Marthi GIT\Forms\untFuncoes.pas]
 ModuleType=TSourceModule
+
+[C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas]
+ModuleType=TSourceModule
+
+[default.htm]
+ModuleType=TURLModule
 
 [C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas]
 ModuleType=TSourceModule
@@ -98,8 +98,8 @@ WelcomePageURL=bds:/default.htm
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
 CursorX=1
-CursorY=1239
-TopLine=1239
+CursorY=1380
+TopLine=1380
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -201,9 +201,9 @@ StayOnTop=0
 [Breakpoints]
 Count=4
 Breakpoint0='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',105,'',0,1,'',1,0,0,'',1,'','','',0,''
-Breakpoint1='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',529,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint1='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',670,'',0,1,'',1,0,0,'',1,'','','',0,''
 Breakpoint2='C:\Sistemas\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas',90,'',0,1,'',1,0,0,'',1,'','','',0,''
-Breakpoint3='C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',940,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint3='C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',1081,'',0,1,'',1,0,0,'',1,'','','',0,''
 
 [EmbarcaderoWin32Debugger_AddressBreakpoints]
 Count=0
@@ -235,8 +235,8 @@ Create=1
 Visible=1
 Docked=0
 State=2
-Left=286
-Top=0
+Left=143
+Top=270
 Width=8932
 Height=8517
 MaxLeft=-7
@@ -257,12 +257,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=2025
-Height=8137
+Width=2038
+Height=7868
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2025
-ClientHeight=8137
+ClientWidth=2038
+ClientHeight=7868
 TBDockHeight=5895
 LRDockWidth=2350
 Dockable=1
@@ -347,8 +347,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Name,
-ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,Corners=0,Fill=0,LiveBindings=0,Margins=0
+SelectedItem=Margins.Left,
+ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,LiveBindings=0,Margins=1,Padding=0,Position=1,RotationCenter=0,Scale=0,Size=0,StyledSettings=0,TextSettings=1,Touch=0,TouchTargetExpansion=0,TextSettings.Font=0,Corners=0,Fill=1,Sides=0,Stroke=0,Fill.Bitmap=0,Fill.Resource=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -830,14 +830,14 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=1191
-Top=115
-Width=2025
-Height=8480
+Left=3
+Top=23
+Width=2038
+Height=8211
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2025
-ClientHeight=8480
+ClientWidth=2038
+ClientHeight=8211
 TBDockHeight=8480
 LRDockWidth=2025
 Dockable=1
@@ -878,8 +878,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=1193
-Top=115
+Left=8
+Top=8
 Width=2012
 Height=8480
 MaxLeft=-1

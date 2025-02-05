@@ -127,7 +127,6 @@ type
     ShadowEffect9: TShadowEffect;
     Rectangle6: TRectangle;
     Label17: TLabel;
-    Label18: TLabel;
     Rectangle10: TRectangle;
     RecBotoesLetras: TRectangle;
     RecTeclado: TRectangle;
@@ -268,6 +267,10 @@ type
     Rectangle74: TRectangle;
     KeyQBackSpace: TRectangle;
     lblBackSpace: TLabel;
+    Rectangle39: TRectangle;
+    Label18: TLabel;
+    Rectangle41: TRectangle;
+    ShadowEffect5: TShadowEffect;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);
@@ -1029,7 +1032,7 @@ begin
   end;
 
   // Reseta a cor de btnIphone para Mintcream
-  btnIphone.Fill.Color := TAlphaColors.Lavenderblush;
+  btnIphone.Fill.Color := $FFE0E0E0;
 
   // Altera a cor de btnXiaomi para White
   btnXiaomi.Fill.Color := TAlphaColors.White;
@@ -1054,7 +1057,7 @@ begin
   end;
 
   // Altera a cor de btnXiaomi para #FFF0EEE8
-  btnXiaomi.Fill.Color := TAlphaColors.Lavenderblush;
+  btnXiaomi.Fill.Color := $FFE8E8E8;
 
   // Reseta a cor de btnIphone para branco
   btnIphone.Fill.Color := TAlphaColors.White;
@@ -1365,7 +1368,7 @@ begin
   lFuncoes.ConectaBD_Ini( ConectMarthi, FBLink );
 
   // Define a cor inicial para btnIphone
-  btnIphone.Fill.Color := TAlphaColors.Lavenderblush; // Cor inicial
+  btnIphone.Fill.Color := $FFE8E8E8; // Cor inicial
   btnXiaomi.Fill.Color := TAlphaColors.White; // Cor inicial
 
   TbcPrincipalToten.ActiveTab := TabAbertura;
