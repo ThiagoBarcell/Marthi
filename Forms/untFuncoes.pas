@@ -5,6 +5,7 @@ interface
 uses
   System.IniFiles,
   System.SysUtils,
+  System.Variants,
   FireDAC.Comp.Client,
   FireDAC.Phys.FB,
   System.Classes,
@@ -15,7 +16,8 @@ uses
   System.Net.HttpClientComponent,
   System.NetEncoding,
   Data.DB,
-  FireDAC.Stan.Param;
+  FireDAC.Stan.Param,
+  Math;
 
 type TFuncoesUteis = class
 
@@ -25,15 +27,17 @@ public
   Procedure ConectaBD_Ini( lConexao : TFDConnection; lLinkFB : TFDPhysFBDriverLink );
   procedure EnviarMsgWhatsApp(sAPIKEYEMP, sTelefoneFrom, sTelefoneTo: String; sMensagem: WideString; sCaminhoAnexo: String; lEviarMensagemPDF: Boolean; out StatusCode: Integer);
   procedure ReplicaCelular(lQryCell: TFDQuery; lConnectionBD : TFDConnection );
-  Procedure CriaParcelas( lConexao: TFDConnection; lCellID, lItemID, lTpPreco : Integer ;
-  lValUnitario : Double);
+  Procedure CriaParcelas( lConexao: TFDConnection; lCellID, lItemID, lTpPreco : Integer ; lValUnitario : Double);
+  procedure PCDestroyQuery( oQuery : array of TFDQuery );
+  Procedure PCUpdatePadrao( aTables, aFieldUpd, aFieldAnd : Array of string; aValueUpd, aValueAnd : Array of variant );
+  Procedure PCUpdateOrInsertPadrao( aTables, aFieldIns : Array of string; aValueIns : Array of variant );
 
 
   //Functions
   function CriaQuery ( Conexao : TFDConnection ): TFDQuery;
   function NextID( lGenerator : string; lConexaoBD : TFDConnection ) : Integer;
-  function CalculaParcela( lConexao: TFDConnection; lParcelas : Integer;
-  lValorTot : Double ): Double;
+  function CalculaParcela( lConexao: TFDConnection; lParcelas : Integer; lValorTot : Double ): Double;
+  function FCCreateQuery( oConnection: TFDConnection = nil) : TFDQuery;
 
 
 end;
@@ -344,6 +348,20 @@ begin
 
 end;
 
+function TFuncoesUteis.FCCreateQuery(oConnection: TFDConnection): TFDQuery;
+var oQuery : TFDQuery;
+begin
+  oQuery := TFDQuery.Create( Nil );
+
+  if ( oConnection = nil ) then
+    oQuery.ConnectionName := 'dbsMARTHI'
+  else
+    oQuery.Connection := oConnection;
+
+  Result := oQuery;
+
+end;
+
 function TFuncoesUteis.NextID(lGenerator: string;
   lConexaoBD: TFDConnection): Integer;
 var
@@ -360,6 +378,142 @@ begin
     Result := oqryNovoNum.FieldByName( 'ID_ATUAL' ).AsInteger;
     FreeAndNil(oqryNovoNum);
   end;
+end;
+
+procedure TFuncoesUteis.PCDestroyQuery(oQuery: array of TFDQuery);
+var
+  iX : Integer;
+begin
+  for iX := Low( oQuery ) to High( oQuery ) do
+  begin
+
+    if ( oQuery[ iX ] <> Nil ) then
+    begin
+      oQuery[ iX ].Close;
+      oQuery[ iX ].SQL.Clear;
+      FreeAndNil( oQuery[ iX ] );
+    end;
+
+  end;
+
+end;
+
+procedure TFuncoesUteis.PCUpdateOrInsertPadrao(aTables, aFieldIns: array of string; aValueIns: array of variant);
+var idxTables, idxFields : integer;
+    oScript : TStringList;
+    sDelimiter : string;
+    oQueryIns : TFDQuery;
+begin
+
+  // cria stringlist que ira receber o script
+  oScript := TstringList.Create;
+  oQueryIns := FCCreateQuery;
+  try
+
+    for idxTables := Low( aTables ) to High( aTables ) do
+    begin
+
+      // limpa a stringlist
+      oScript.Clear;
+
+      // passa script de uptade
+      oScript.Add( 'UPDATE OR INSERT INTO ' + aTables[ idxTables ] + ' (' );
+
+      // passa os campos
+      for idxFields := Low( aFieldIns ) to High( aFieldIns ) do
+      begin
+        sDelimiter := IfThen( idxFields < High( aFieldIns ), ',', '' );
+        oScript.Add( aFieldIns[ idxFields ] + sDelimiter );
+      end;
+
+      oScript.Add( ') VALUES ( ' );
+
+      // passa os parametros nos values
+      for idxFields := Low( aFieldIns ) to High( aFieldIns ) do
+      begin
+        sDelimiter := IfThen( idxFields < High( aFieldIns ), ',', '' );
+        oScript.Add( IfThen( aValueIns[ idxFields ] = null, ' null', ' :FIELDUPD' + IntToStr( idxFields ) ) + sDelimiter );
+
+        //  se o valor passado nao for nulo
+        if not( aValueIns[ idxFields ] = null ) then
+        begin
+          oQueryIns.Params.CreateParam( ftUnknown, 'FIELDUPD' + IntToStr( idxFields ), ptInputOutput );
+          oQueryIns.Params.ParamByName( 'FIELDUPD' + IntToStr( idxFields ) ).Value := aValueIns[ idxFields ];
+        end;
+
+      end;
+
+      oScript.Add( ')' );
+
+      oQueryIns.SQL.Clear;
+      oQueryIns.SQL.AddStrings( oScript );
+      oQueryIns.ExecSQL;
+
+    end;
+
+  finally
+    PCDestroyQuery( oQueryIns );
+    FreeAndNil( oScript );
+  end;
+
+end;
+
+procedure TFuncoesUteis.PCUpdatePadrao(aTables, aFieldUpd, aFieldAnd: array of string; aValueUpd, aValueAnd: array of variant);
+var idxTables, idxFields : integer;
+    oScript : TStringList;
+    sDelimiter : string;
+    oQueryUpdate : TFDQuery;
+begin
+
+  // cria stringlist que ira receber o script
+  oScript := TstringList.Create;
+  oQueryUpdate := FCCreateQuery;
+  try
+
+    for idxTables := Low( aTables ) to High( aTables ) do
+    begin
+
+      // limpa a stringlist
+      oScript.Clear;
+
+      // passa script de uptade
+      oScript.Add( 'UPDATE ' + aTables[ idxTables ] + ' SET ' );
+
+      // passa os campos a serem atualizados para sql
+      for idxFields := Low( aFieldUpd ) to High( aFieldUpd ) do
+      begin
+        sDelimiter := IfThen( idxFields < High( aFieldUpd ), ',', '' );
+        oScript.Add( aFieldUpd[ idxFields ] + IfThen( aValueUpd[ idxFields ] = null, ' = null', ' = :FIELDUPD' + IntToStr( idxFields ) ) + sDelimiter );
+
+        //  se o valor passado nao for nulo
+        if not( aValueUpd[ idxFields ] = null ) then
+        begin
+          oQueryUpdate.Params.CreateParam( ftUnknown, 'FIELDUPD' + IntToStr( idxFields ), ptInputOutput );
+          oQueryUpdate.Params.ParamByName( 'FIELDUPD' + IntToStr( idxFields ) ).Value := aValueUpd[ idxFields ];
+        end;
+      end;
+
+      // passa as condicoes
+      for idxFields := Low( aFieldAnd ) to High( aFieldAnd ) do
+      begin
+        sDelimiter := IfThen( idxFields = low( aFieldAnd ), 'WHERE ', 'AND ' );
+        oScript.Add( sDelimiter + aFieldAnd[ idxFields ] + ' = :VALUEAND' + IntToStr( idxFields ) );
+
+        oQueryUpdate.Params.CreateParam( ftUnknown, 'VALUEAND' + IntToStr( idxFields ), ptInputOutput );
+        oQueryUpdate.Params.ParamByName( 'VALUEAND' + IntToStr( idxFields ) ).Value := aValueAnd[ idxFields ];
+      end;
+
+      oQueryUpdate.SQL.Clear;
+      oQueryUpdate.SQL.AddStrings( oScript );
+      oQueryUpdate.ExecSQL;
+
+    end;
+
+  finally
+    PCDestroyQuery( oQueryUpdate );
+    FreeAndNil( oScript );
+  end;
+
 end;
 
 procedure TFuncoesUteis.ReplicaCelular(lQryCell: TFDQuery; lConnectionBD : TFDConnection );

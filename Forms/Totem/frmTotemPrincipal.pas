@@ -100,7 +100,6 @@ type
     ShadowEffect8: TShadowEffect;
     lytClient: TLayout;
     Rectangle15: TRectangle;
-    Label14: TLabel;
     Rectangle3: TRectangle;
     Label15: TLabel;
     Label16: TLabel;
@@ -112,22 +111,22 @@ type
     ShadowEffect4: TShadowEffect;
     Rectangle11: TRectangle;
     Rectangle12: TRectangle;
-    edtPesquisa1: TEdit;
+    edtTel: TEdit;
     Label11: TLabel;
     ShadowEffect3: TShadowEffect;
     Rectangle13: TRectangle;
     Rectangle14: TRectangle;
-    edtPesquisa3: TEdit;
+    edtCPF: TEdit;
     Label12: TLabel;
     ShadowEffect6: TShadowEffect;
     Rectangle7: TRectangle;
     Rectangle9: TRectangle;
-    edtPesquisa2: TEdit;
+    edtNome: TEdit;
     Label8: TLabel;
     ShadowEffect9: TShadowEffect;
     Rectangle6: TRectangle;
     Label17: TLabel;
-    Rectangle10: TRectangle;
+    recTecladoTela: TRectangle;
     RecBotoesLetras: TRectangle;
     RecTeclado: TRectangle;
     Rectangle16: TRectangle;
@@ -271,6 +270,15 @@ type
     Label18: TLabel;
     Rectangle41: TRectangle;
     ShadowEffect5: TShadowEffect;
+    Rectangle43: TRectangle;
+    qryCadCli: TFDQuery;
+    qryCadCliID: TIntegerField;
+    qryCadCliNOME: TStringField;
+    qryCadCliTELEFONE: TStringField;
+    qryCadCliCPF: TStringField;
+    qryCadCliDATA_HORA_SOLICITACAO: TSQLTimeStampField;
+    qryCadCliDATA_HORA_CADASTRO: TSQLTimeStampField;
+    qryCadCliCELL_ID: TIntegerField;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);
@@ -282,7 +290,12 @@ type
     procedure edtPesquisaClick(Sender: TObject);
     procedure btnAbreClienteClick(Sender: TObject);
     procedure btnComprarClick(Sender: TObject);
+    procedure edtNomeClick(Sender: TObject);
+    procedure KeyQClick(Sender: TObject);
+    procedure edtTelClick(Sender: TObject);
+    procedure edtCPFClick(Sender: TObject);
   private
+    FTargetEdit: TEdit;
     { Private declarations }
     procedure CarregarDados;
     procedure AjustarAlturaScrollBox(ScrollBox: TVertScrollBox);
@@ -303,6 +316,8 @@ type
     procedure ViewportPositionChange(Sender: TObject; const OldViewportPosition, NewViewportPosition: TPointF; const ContentSizeChanged: Boolean);
     procedure PreencherParcelas(ComboBox: TComboBox; CELL_ID, ITEM_ID,
       CELL_TP_PRECO: Integer; ValorAVista: Double);
+    procedure KeyClick(Sender: TObject);
+    procedure SetTargetEdit(ATargetEdit: TEdit);
   public
     { Public declarations }
   end;
@@ -781,6 +796,16 @@ begin
 
 end;
 
+procedure TTotemPrincipalfrm.SetTargetEdit(ATargetEdit: TEdit);
+begin
+  FTargetEdit := ATargetEdit;
+
+  if ( FTargetEdit.Name = 'edtTel' ) or ( FTargetEdit.Name = 'edtCPF' ) then
+      RecTeclado.Enabled := False
+    else
+      RecTeclado.Enabled := True;
+end;
+
 procedure TTotemPrincipalfrm.ParcelasChange(Sender: TObject);
 var
   qryDadosParcela: TFDQuery;
@@ -1187,6 +1212,19 @@ begin
   end;
 end;
 
+procedure TTotemPrincipalfrm.edtCPFClick(Sender: TObject);
+begin
+  recTecladoTela.Visible := True;
+  SetTargetEdit(edtCPF);
+end;
+
+procedure TTotemPrincipalfrm.edtNomeClick(Sender: TObject);
+begin
+  // Associa explicitamente o TEdit ao teclado virtual
+  recTecladoTela.Visible := True;
+  SetTargetEdit(edtNome);
+end;
+
 procedure TTotemPrincipalfrm.edtPesquisaClick(Sender: TObject);
 var
   Display: TDisplay;
@@ -1277,6 +1315,12 @@ begin
         Frame.Visible := False; // Torna o frame invisível caso contrário
     end;
   end;
+end;
+
+procedure TTotemPrincipalfrm.edtTelClick(Sender: TObject);
+begin
+  recTecladoTela.Visible := True;
+  SetTargetEdit(edtTel);
 end;
 
 procedure TTotemPrincipalfrm.EnviaWhatsapp(Sender: TObject);
@@ -1378,6 +1422,73 @@ end;
 procedure TTotemPrincipalfrm.FormShow(Sender: TObject);
 begin
   CarregarDados;
+  btnIphoneClick(Sender);
+end;
+
+procedure TTotemPrincipalfrm.KeyClick(Sender: TObject);
+var
+  Rectangle: TRectangle;
+  LabelInside: TLabel;
+  Child: TComponent;
+  KeyAction: string;
+begin
+  if Assigned(FTargetEdit) then
+  begin
+
+    if Sender is TRectangle then
+    begin
+      Rectangle := Sender as TRectangle;
+
+      // Busca diretamente pelos filhos do TRectangle
+      for Child in Rectangle.Children do
+      begin
+        if (Child is TLabel) and (Copy(TLabel(Child).Name, 1, 3) = 'lbl') then
+        begin
+          LabelInside := TLabel(Child);
+          KeyAction := LabelInside.Text;
+
+          // Processa teclas especiais
+          if KeyAction = 'Enter' then
+          begin
+            close;
+          end
+          else if KeyAction = 'Space' then
+          begin
+            FTargetEdit.Text := FTargetEdit.Text + ' ';
+          end
+          else if KeyAction = 'BackSpace' then
+          begin
+            if Length(FTargetEdit.Text) > 0 then
+              FTargetEdit.Text := Copy(FTargetEdit.Text, 1, Length(FTargetEdit.Text) - 1);
+          end
+          else if KeyAction = 'Delete' then
+          begin
+            FTargetEdit.Text := '';
+          end
+          else
+          begin
+            FTargetEdit.Text := FTargetEdit.Text + KeyAction;
+          end;
+
+          // Chama o evento OnTyping de FTargetEdit
+          if Assigned(FTargetEdit.OnTyping) then
+            FTargetEdit.OnTyping(FTargetEdit);  // Dispara o evento Typing manualmente
+
+          Exit;
+        end;
+      end;
+
+      ShowMessage('Nenhum label encontrado com prefixo "lbl".');
+    end;
+  end
+  else
+    ShowMessage('Nenhum controle de texto associado.');
+
+end;
+
+procedure TTotemPrincipalfrm.KeyQClick(Sender: TObject);
+begin
+  KeyClick(Sender);
 end;
 
 end.

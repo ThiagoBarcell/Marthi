@@ -416,6 +416,7 @@ object frmTipoRetirada: TfrmTipoRetirada
         Size.Height = 340.000000000000000000
         Size.PlatformDefault = False
         Stroke.Thickness = 0.000000000000000000
+        OnClick = btnPorEncomendaClick
       end
       object Rectangle8: TRectangle
         Align = Bottom
@@ -428,6 +429,7 @@ object frmTipoRetirada: TfrmTipoRetirada
         Stroke.Thickness = 0.000000000000000000
         XRadius = 5.000000000000000000
         YRadius = 5.000000000000000000
+        OnClick = btnPorEncomendaClick
         object Label2: TLabel
           Align = Bottom
           StyledSettings = [Style]
@@ -1116,6 +1118,7 @@ object frmTipoRetirada: TfrmTipoRetirada
         Size.Height = 317.000000000000000000
         Size.PlatformDefault = False
         Stroke.Thickness = 0.000000000000000000
+        OnClick = btnProntaEntregaClick
       end
       object Rectangle7: TRectangle
         Align = Bottom
@@ -1128,6 +1131,7 @@ object frmTipoRetirada: TfrmTipoRetirada
         Stroke.Thickness = 0.000000000000000000
         XRadius = 5.000000000000000000
         YRadius = 5.000000000000000000
+        OnClick = btnProntaEntregaClick
         object Label1: TLabel
           Align = Bottom
           StyledSettings = [Style]
