@@ -3,23 +3,25 @@ unit untFuncoes;
 interface
 
 uses
-  System.IniFiles,
   System.SysUtils,
+  System.IniFiles,
   System.Variants,
-  FireDAC.Comp.Client,
-  FireDAC.Phys.FB,
-  System.Classes,
-  REST.Types,
-  REST.Client,
+  System.Math,
   System.Net.URLClient,
   System.Net.HttpClient,
   System.Net.HttpClientComponent,
   System.NetEncoding,
+  System.Classes,
+  FireDAC.Comp.Client,
+  FireDAC.Phys.FB,
+  REST.Types,
+  REST.Client,
   Data.DB,
-  FireDAC.Stan.Param,
-  Math;
+  FireDAC.Stan.Param;
 
 type TFuncoesUteis = class
+  private
+    function IIF(ACondition: Boolean; const ATrue, AFalse: Variant): Variant;
 
 public
   //Procedures
@@ -422,7 +424,7 @@ begin
       // passa os campos
       for idxFields := Low( aFieldIns ) to High( aFieldIns ) do
       begin
-        sDelimiter := IfThen( idxFields < High( aFieldIns ), ',', '' );
+        sDelimiter := IIF( idxFields < High( aFieldIns ), ',', '' );
         oScript.Add( aFieldIns[ idxFields ] + sDelimiter );
       end;
 
@@ -431,8 +433,8 @@ begin
       // passa os parametros nos values
       for idxFields := Low( aFieldIns ) to High( aFieldIns ) do
       begin
-        sDelimiter := IfThen( idxFields < High( aFieldIns ), ',', '' );
-        oScript.Add( IfThen( aValueIns[ idxFields ] = null, ' null', ' :FIELDUPD' + IntToStr( idxFields ) ) + sDelimiter );
+        sDelimiter := IIF( idxFields < High( aFieldIns ), ',', '' );
+        oScript.Add( IIF( aValueIns[ idxFields ] = null, ' null', ' :FIELDUPD' + IntToStr( idxFields ) ) + sDelimiter );
 
         //  se o valor passado nao for nulo
         if not( aValueIns[ idxFields ] = null ) then
@@ -456,6 +458,14 @@ begin
     FreeAndNil( oScript );
   end;
 
+end;
+
+function TFuncoesUteis.IIF(ACondition: Boolean; const ATrue, AFalse: Variant): Variant;
+begin
+  if ACondition then
+    Result := ATrue
+  else
+    Result := AFalse;
 end;
 
 procedure TFuncoesUteis.PCUpdatePadrao(aTables, aFieldUpd, aFieldAnd: array of string; aValueUpd, aValueAnd: array of variant);
@@ -482,8 +492,8 @@ begin
       // passa os campos a serem atualizados para sql
       for idxFields := Low( aFieldUpd ) to High( aFieldUpd ) do
       begin
-        sDelimiter := IfThen( idxFields < High( aFieldUpd ), ',', '' );
-        oScript.Add( aFieldUpd[ idxFields ] + IfThen( aValueUpd[ idxFields ] = null, ' = null', ' = :FIELDUPD' + IntToStr( idxFields ) ) + sDelimiter );
+        sDelimiter := IIF( idxFields < High( aFieldUpd ), ',', '' );
+        oScript.Add( aFieldUpd[ idxFields ] + IIF( aValueUpd[ idxFields ] = null, ' = null', ' = :FIELDUPD' + IntToStr( idxFields ) ) + sDelimiter );
 
         //  se o valor passado nao for nulo
         if not( aValueUpd[ idxFields ] = null ) then
@@ -496,7 +506,7 @@ begin
       // passa as condicoes
       for idxFields := Low( aFieldAnd ) to High( aFieldAnd ) do
       begin
-        sDelimiter := IfThen( idxFields = low( aFieldAnd ), 'WHERE ', 'AND ' );
+        sDelimiter := IIF( idxFields = low( aFieldAnd ), 'WHERE ', 'AND ' );
         oScript.Add( sDelimiter + aFieldAnd[ idxFields ] + ' = :VALUEAND' + IntToStr( idxFields ) );
 
         oQueryUpdate.Params.CreateParam( ftUnknown, 'VALUEAND' + IntToStr( idxFields ), ptInputOutput );

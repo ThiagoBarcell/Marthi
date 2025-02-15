@@ -106,7 +106,7 @@ type
     BorrarFundo: TBlurEffect;
     Label7: TLabel;
     Rectangle1: TRectangle;
-    btnComprar: TRectangle;
+    btnCadCLi: TRectangle;
     Label13: TLabel;
     ShadowEffect4: TShadowEffect;
     Rectangle11: TRectangle;
@@ -279,6 +279,7 @@ type
     qryCadCliDATA_HORA_SOLICITACAO: TSQLTimeStampField;
     qryCadCliDATA_HORA_CADASTRO: TSQLTimeStampField;
     qryCadCliCELL_ID: TIntegerField;
+    FDManager1: TFDManager;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);
@@ -289,7 +290,7 @@ type
     procedure Rectangle2DblClick(Sender: TObject);
     procedure edtPesquisaClick(Sender: TObject);
     procedure btnAbreClienteClick(Sender: TObject);
-    procedure btnComprarClick(Sender: TObject);
+    procedure btnCadCLiClick(Sender: TObject);
     procedure edtNomeClick(Sender: TObject);
     procedure KeyQClick(Sender: TObject);
     procedure edtTelClick(Sender: TObject);
@@ -318,6 +319,7 @@ type
       CELL_TP_PRECO: Integer; ValorAVista: Double);
     procedure KeyClick(Sender: TObject);
     procedure SetTargetEdit(ATargetEdit: TEdit);
+    procedure CadCli;
   public
     { Public declarations }
   end;
@@ -1017,7 +1019,7 @@ begin
   TbcPrincipalToten.ActiveTab := TabCliente;
 end;
 
-procedure TTotemPrincipalfrm.btnComprarClick(Sender: TObject);
+procedure TTotemPrincipalfrm.btnCadCLiClick(Sender: TObject);
 var
   frmTipoRetirada : TfrmTipoRetirada;
 begin
@@ -1032,6 +1034,18 @@ begin
     FreeAndNil(frmTipoRetirada);
     BorrarFundo.Enabled := False;
   end;
+end;
+
+procedure TTotemPrincipalfrm.CadCli;
+var
+  lFuncoes : TFuncoesUteis;
+begin
+  lFuncoes.PCUpdateOrInsertPadrao(
+    ['CLIENTES'],                          // Nome da Tabela
+    ['NOME', 'TELEFONE', 'CPF', 'DATA_HORA_CADASTRO'],      // Campos da Tabela
+    [edtNome.Text, edtTel.Text, edtCPF.Text, Now]  // Valores a serem inseridos
+  );
+  ShowMessage('Cliente salvo com sucesso!');
 end;
 
 procedure TTotemPrincipalfrm.btnFecharClick(Sender: TObject);
