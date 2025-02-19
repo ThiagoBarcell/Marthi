@@ -125,7 +125,7 @@ type
     Label8: TLabel;
     ShadowEffect9: TShadowEffect;
     Rectangle6: TRectangle;
-    Label17: TLabel;
+    lblBoasVindas: TLabel;
     recTecladoTela: TRectangle;
     RecBotoesLetras: TRectangle;
     RecTeclado: TRectangle;
@@ -321,6 +321,7 @@ type
     procedure SetTargetEdit(ATargetEdit: TEdit);
     procedure CadCli;
   public
+    FTipoRetirada : Integer;
     { Public declarations }
   end;
 
@@ -761,7 +762,7 @@ begin
 
    qryDados := TFDQuery.Create(nil);
   try
-    qryDados.Connection := ConectMarthi; // Substitua pelo seu componente de conexão
+    qryDados.Connection := ConectMarthi;
     qryDados.SQL.Text :=
       'SELECT CELL_ITENS.ITEM_ID, CELL_ITENS.CELL_VAL_UNIT, CELL_ITENS.CELL_VAL_PARC ' +
       'FROM CELL_ITENS ' +
@@ -1023,13 +1024,39 @@ procedure TTotemPrincipalfrm.btnCadCLiClick(Sender: TObject);
 var
   frmTipoRetirada : TfrmTipoRetirada;
 begin
+  if edtNome.Text = '' then
+  begin
+    MessageDlg('Informe seu nome !', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
+    edtNome.SetFocus;
+    Abort;
+  end;
+
+  if edtTel.Text = '' then
+  begin
+    MessageDlg('Informe seu telefone !', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
+    edtTel.SetFocus;
+    Abort;
+  end;
+
+  // Cadastra o cliente ou atualiza o registro
+  CadCli;
 
   TbcPrincipalToten.ActiveTab := TabTotem;
 
   frmTipoRetirada := TfrmTipoRetirada.Create(Self);
   try
+
     BorrarFundo.Enabled := True;
     frmTipoRetirada.ShowModal;
+
+    FTipoRetirada := frmTipoRetirada.Tipo.TipoRetirada;
+
+    if FTipoRetirada = 0 then
+      lblBoasVindas.Text := 'Olá, ' + edtNome.Text + ' Seja bem vindo(a) veja os modelos disponiveis a pronta entrega ...';
+
+    if FTipoRetirada = 1 then
+      lblBoasVindas.Text := 'Olá, ' + edtNome.Text + ' Seja bem vindo(a) veja os modelos disponiveis por encomenda ...';
+
   finally
     FreeAndNil(frmTipoRetirada);
     BorrarFundo.Enabled := False;
@@ -1039,13 +1066,23 @@ end;
 procedure TTotemPrincipalfrm.CadCli;
 var
   lFuncoes : TFuncoesUteis;
+  lID : Variant;
 begin
+  qryCadCli.Close;
+  qryCadCli.ParamByName('TELEFONE').AsString := edtTel.Text;
+  qryCadCli.Open;
+
+  if not ( qryCadCli.IsEmpty ) then
+    lID := qryCadCliID.Value
+  else
+    lID := null;
+
   lFuncoes.PCUpdateOrInsertPadrao(
     ['CLIENTES'],                          // Nome da Tabela
-    ['NOME', 'TELEFONE', 'CPF', 'DATA_HORA_CADASTRO'],      // Campos da Tabela
-    [edtNome.Text, edtTel.Text, edtCPF.Text, Now]  // Valores a serem inseridos
+    ['ID','NOME', 'TELEFONE', 'CPF', 'DATA_HORA_CADASTRO'],      // Campos da Tabela
+    [lID,edtNome.Text, edtTel.Text, edtCPF.Text, Now]  // Valores a serem inseridos
   );
-  ShowMessage('Cliente salvo com sucesso!');
+//  ShowMessage('Cliente salvo com sucesso!');
 end;
 
 procedure TTotemPrincipalfrm.btnFecharClick(Sender: TObject);

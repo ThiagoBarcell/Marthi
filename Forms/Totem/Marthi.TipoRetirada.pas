@@ -4,9 +4,14 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Effects, FMX.Objects, FMX.Layouts, FMX.Controls.Presentation, FMX.StdCtrls;
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Effects, FMX.Objects, FMX.Layouts, FMX.Controls.Presentation, FMX.StdCtrls,
+  untFuncoes;
 
 type
+  TtipoRetirada = record
+    TipoRetirada : Integer;
+  end;
+
   TfrmTipoRetirada = class(TForm)
     Layout1: TLayout;
     btnProntaEntrega: TRectangle;
@@ -24,6 +29,7 @@ type
   private
     { Private declarations }
   public
+    Tipo : TtipoRetirada;
     { Public declarations }
   end;
 
@@ -36,11 +42,13 @@ implementation
 
 procedure TfrmTipoRetirada.btnPorEncomendaClick(Sender: TObject);
 begin
+  Tipo.TipoRetirada := 1;
   close;
 end;
 
 procedure TfrmTipoRetirada.btnProntaEntregaClick(Sender: TObject);
 begin
+  Tipo.TipoRetirada := 0;
   Close;
 end;
 

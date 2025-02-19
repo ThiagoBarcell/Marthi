@@ -17,17 +17,26 @@ File_14=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Vendas\Forms\Report\VenPlanilhaS
 
 [Modules]
 Module0=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
-Module1=C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas
-Module2=C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas
-Module3=C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
-Module4=C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas
-Module5=default.htm
-Module6=C:\Marthi GIT\Forms\untFuncoes.pas
-Module7=C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
+Module1=C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
+Module2=C:\Marthi GIT\Forms\untFuncoes.pas
+Module3=C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas
+Module4=C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas
+Module5=C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas
+Module6=C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
+Module7=default.htm
 Count=8
 EditWindowCount=1
 
 [C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas]
+ModuleType=TSourceModule
+
+[C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas]
+ModuleType=TSourceModule
+
+[C:\Marthi GIT\Forms\untFuncoes.pas]
+ModuleType=TSourceModule
+
+[C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas]
 ModuleType=TSourceModule
 
 [C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas]
@@ -39,17 +48,8 @@ ModuleType=TSourceModule
 [C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas]
 ModuleType=TSourceModule
 
-[C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas]
-ModuleType=TSourceModule
-
 [default.htm]
 ModuleType=TURLModule
-
-[C:\Marthi GIT\Forms\untFuncoes.pas]
-ModuleType=TSourceModule
-
-[C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas]
-ModuleType=TSourceModule
 
 [EditWindow0]
 ViewCount=8
@@ -69,22 +69,22 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=9896
-Height=8775
+Width=16562
+Height=11422
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=9896
-ClientHeight=8775
+ClientWidth=16562
+ClientHeight=11422
 DockedToMainForm=1
 BorlandEditorCodeExplorer=BorlandEditorCodeExplorer@EditWindow0
 TopPanelSize=0
 LeftPanelSize=1895
 LeftPanelClients=DockSite3,PropertyInspector
-LeftPanelData=00000800010100000000A0110000000000000167070000000000000100000000F00B000009000000446F636B53697465330100000000551F00001100000050726F7065727479496E73706563746F72FFFFFFFF
+LeftPanelData=000008000101000000001E170000000000000167070000000000000100000000F00B000009000000446F636B53697465330100000000192900001100000050726F7065727479496E73706563746F72FFFFFFFF
 RightPanelSize=0
 BottomPanelSize=174
 BottomPanelClients=MessageView,DockSite1
-BottomPanelData=0000080001020100000009000000446F636B5369746531B94400000000000002AE000000000000000100000000B94400000F0000004D65737361676556696577466F726DFFFFFFFF
+BottomPanelData=0000080001020100000009000000446F636B5369746531047300000000000002AE000000000000000100000000047300000F0000004D65737361676556696577466F726DFFFFFFFF
 BottomMiddlePanelSize=0
 BottomMiddlePanelClients=DockSite0,GraphDrawingModel
 BottomMiddelPanelData=0000080001020200000009000000446F636B536974653010000000477261706844726177696E67566965779D1D00000000000002F606000000000000FFFFFFFF
@@ -97,9 +97,9 @@ WelcomePageURL=bds:/default.htm
 [View1]
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
-CursorX=36
-CursorY=1371
-TopLine=1361
+CursorX=1
+CursorY=1408
+TopLine=1405
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -130,9 +130,9 @@ EditViewName=Borland.FormDesignerView
 [View4]
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\untFuncoes.pas
-CursorX=39
-CursorY=329
-TopLine=319
+CursorX=3
+CursorY=160
+TopLine=139
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -152,9 +152,9 @@ EditViewName=Borland.FormDesignerView
 [View6]
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas
-CursorX=34
-CursorY=180
-TopLine=169
+CursorX=3
+CursorY=245
+TopLine=156
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -163,13 +163,13 @@ EditViewName=Borland.FormDesignerView
 [View7]
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
-CursorX=1
-CursorY=1
-TopLine=1
+CursorX=26
+CursorY=143
+TopLine=111
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=Borland.FormDesignerView
+EditViewName=C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
 
 [UndockedDesigner]
 Count=0
@@ -200,10 +200,10 @@ StayOnTop=0
 
 [Breakpoints]
 Count=4
-Breakpoint0='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',105,'',0,1,'',1,0,0,'',1,'','','',0,''
-Breakpoint1='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',673,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint0='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',104,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint1='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',688,'',0,1,'',1,0,0,'',1,'','','',0,''
 Breakpoint2='C:\Sistemas\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas',90,'',0,1,'',1,0,0,'',1,'','','',0,''
-Breakpoint3='C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',1084,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint3='C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',1109,'',0,1,'',1,0,0,'',1,'','','',0,''
 
 [EmbarcaderoWin32Debugger_AddressBreakpoints]
 Count=0
@@ -235,17 +235,17 @@ Create=1
 Visible=1
 Docked=0
 State=2
-Left=273
-Top=-294
+Left=-17793
+Top=-233
 Width=8932
 Height=8517
 MaxLeft=-7
 MaxTop=-12
 MaxWidth=8932
 MaxHeight=8517
-ClientWidth=10026
-ClientHeight=9730
-BottomPanelSize=8287
+ClientWidth=16693
+ClientHeight=12377
+BottomPanelSize=10787
 BottomPanelClients=EditWindow0
 BottomPanelData=0000080000000000000000000000000000000000000000000000000100000000000000000C0000004564697457696E646F775F30FFFFFFFF
 
@@ -257,12 +257,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=2025
-Height=8137
+Width=2038
+Height=10515
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2025
-ClientHeight=8137
+ClientWidth=2038
+ClientHeight=10515
 TBDockHeight=5895
 LRDockWidth=2350
 Dockable=1
@@ -276,11 +276,11 @@ Docked=1
 State=0
 Left=0
 Top=24
-Width=9896
+Width=16562
 Height=0
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=9896
+ClientWidth=16562
 ClientHeight=0
 TBDockHeight=1409
 LRDockWidth=2767
@@ -295,11 +295,11 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=2038
+Width=2025
 Height=10858
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2038
+ClientWidth=2025
 ClientHeight=10858
 TBDockHeight=7157
 LRDockWidth=1999
@@ -334,11 +334,11 @@ State=0
 Left=0
 Top=288
 Width=1895
-Height=4963
+Height=7610
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1895
-ClientHeight=4963
+ClientHeight=7610
 TBDockHeight=8480
 LRDockWidth=1895
 Dockable=1
@@ -347,8 +347,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Name,LiveBindings
-ExpandedItems=Anchors=1,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,LiveBindings=0,Margins=1,Padding=0,Position=0,RotationCenter=0,Scale=0,Size=0,StyledSettings=1,TextSettings=1,Touch=0,TouchTargetExpansion=0,Corners=1,Fill=1,Sides=0,Stroke=1,Stroke.Bitmap=0,Stroke.Resource=0,TextSettings.Font=1,TextSettings.Font.Style=1,Fill.Bitmap=0,Fill.Resource=0
+SelectedItem=Name,AfterCommit
+ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,Fill=1,LiveBindings=0,Margins=1,Padding=0,Position=0,RotationCenter=0,Scale=0,Sides=0,Size=0,Stroke=0,Touch=0,Corners=0,Fill.Bitmap=1,Fill.Resource=0,Fill.Bitmap.Image=0,Caret=0,ConnectedStoredUsage=0,FetchOptions=1,FormatOptions=1,Params=0,ResourceOptions=1,TxOptions=1,UpdateOptions=0,FormFactor=0,FetchOptions.AssignedValues=0,FetchOptions.Cache=0,FetchOptions.Items=0,FormatOptions.AssignedValues=0,FormatOptions.SortOptions=0,ResourceOptions.AssignedValues=0,ResourceOptions.StoreItems=0,TxOptions.StopOptions=1
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -830,14 +830,14 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=8
-Top=8
-Width=2025
-Height=8480
+Left=3
+Top=23
+Width=2038
+Height=10858
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2025
-ClientHeight=8480
+ClientWidth=2038
+ClientHeight=10858
 TBDockHeight=8480
 LRDockWidth=2025
 Dockable=1
@@ -880,14 +880,14 @@ Docked=1
 State=0
 Left=3
 Top=23
-Width=2038
+Width=2025
 Height=10858
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2038
+ClientWidth=2025
 ClientHeight=10858
 TBDockHeight=8480
-LRDockWidth=2038
+LRDockWidth=2012
 Dockable=1
 StayOnTop=0
 TabPosition=1

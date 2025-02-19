@@ -19,7 +19,8 @@ uses
   Data.DB,
   FireDAC.Stan.Param;
 
-type TFuncoesUteis = class
+type
+  TFuncoesUteis = class
   private
     function IIF(ACondition: Boolean; const ATrue, AFalse: Variant): Variant;
 
@@ -34,15 +35,16 @@ public
   Procedure PCUpdatePadrao( aTables, aFieldUpd, aFieldAnd : Array of string; aValueUpd, aValueAnd : Array of variant );
   Procedure PCUpdateOrInsertPadrao( aTables, aFieldIns : Array of string; aValueIns : Array of variant );
 
-
   //Functions
   function CriaQuery ( Conexao : TFDConnection ): TFDQuery;
   function NextID( lGenerator : string; lConexaoBD : TFDConnection ) : Integer;
   function CalculaParcela( lConexao: TFDConnection; lParcelas : Integer; lValorTot : Double ): Double;
-  function FCCreateQuery( oConnection: TFDConnection = nil) : TFDQuery;
-
+  function FCCreateQuery: TFDQuery;
 
 end;
+
+var
+  MarthiConection: TFDConnection;
 
 implementation
 { TFuncoesUteis }
@@ -205,6 +207,8 @@ begin
 
   lConexao.Params.Text := lParams;
 
+  MarthiConection := lConexao;
+
 end;
 
 function TFuncoesUteis.CriaQuery( Conexao : TFDConnection ): TFDQuery;
@@ -350,15 +354,12 @@ begin
 
 end;
 
-function TFuncoesUteis.FCCreateQuery(oConnection: TFDConnection): TFDQuery;
+function TFuncoesUteis.FCCreateQuery: TFDQuery;
 var oQuery : TFDQuery;
 begin
   oQuery := TFDQuery.Create( Nil );
 
-  if ( oConnection = nil ) then
-    oQuery.ConnectionName := 'dbsMARTHI'
-  else
-    oQuery.Connection := oConnection;
+  oQuery.Connection := MarthiConection;
 
   Result := oQuery;
 

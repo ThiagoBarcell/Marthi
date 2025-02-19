@@ -19,6 +19,7 @@ object frmTipoRetirada: TfrmTipoRetirada
     Size.PlatformDefault = False
     TabOrder = 0
     object btnPorEncomenda: TRectangle
+      Tag = 1
       Align = Right
       Cursor = crHandPoint
       Fill.Color = claWhite
