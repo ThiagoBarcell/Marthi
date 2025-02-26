@@ -6790,7 +6790,7 @@ object ProdutosFrm: TProdutosFrm
         TabOrder = 0
         object rctPrincipal: TRectangle
           Align = Client
-          Fill.Color = xFF021524
+          Fill.Kind = None
           Size.Width = 430.000000000000000000
           Size.Height = 501.000000000000000000
           Size.PlatformDefault = False
@@ -6826,7 +6826,7 @@ object ProdutosFrm: TProdutosFrm
       object edtIPServidor: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 0
-        Text = '172.27.245.210:9000'
+        Text = '10.1.1.124:9000'
         Position.X = 40.000000000000000000
         Position.Y = 215.000000000000000000
         Size.Width = 345.000000000000000000

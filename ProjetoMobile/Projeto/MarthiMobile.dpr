@@ -5,12 +5,14 @@ uses
   FMX.Forms,
   frmProdutos in '..\Forms\frmProdutos.pas' {ProdutosFrm},
   untFuncoesMobile in '..\Forms\untFuncoesMobile.pas',
-  Frame.MarthiGIT.Produto in '..\Frames\Frame.MarthiGIT.Produto.pas' {ProdutoFrame: TFrame};
+  Frame.MarthiGIT.Produto in '..\Frames\Frame.MarthiGIT.Produto.pas' {ProdutoFrame: TFrame},
+  frmAtualizaProdutos in '..\Forms\frmAtualizaProdutos.pas' {AtualizaProdutosFrm};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TProdutosFrm, ProdutosFrm);
+  Application.CreateForm(TAtualizaProdutosFrm, AtualizaProdutosFrm);
   Application.Run;
 end.

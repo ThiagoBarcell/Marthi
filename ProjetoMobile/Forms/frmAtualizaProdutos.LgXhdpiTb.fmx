@@ -1,0 +1,16 @@
+inherited AtualizaProdutosFrm_LgXhdpiTb: TAtualizaProdutosFrm_LgXhdpiTb
+  ClientHeight = 829
+  ClientWidth = 480
+  DesignerMasterStyle = 3
+  inherited rtgPrincipal: TRectangle
+    Size.Width = 480.000000000000000000
+    Size.Height = 829.000000000000000000
+    inherited rtgButtons: TRectangle
+      Position.Y = 781.000000000000000000
+      Size.Width = 470.000000000000000000
+      inherited rtgBtnAtualizarValores: TRectangle
+        Position.X = 432.000000000000000000
+      end
+    end
+  end
+end

@@ -208,24 +208,20 @@ begin
     Frame.Name := 'Frame' + IntToStr(Cont);
     Frame.Parent := vsbPrincipal;
     Frame.Align := TAlignLayout.MostTop;
-    Frame.Width := 210;
-    Frame.Height := 230;
+    Frame.IpAPI := lFuncoes.lIPServer;
+    //Frame.Width := 210;
+    //Frame.Height := 230;
     //Frame.tbcTotem.ActiveTab := Frame.TabTotemPrincipal;
 
     Frame.Margins.Top := 5;
     Frame.Margins.Bottom := 5;
 
     Frame.lblNomeItem.Text := cdsProdutos.FieldByName('cellDesc').AsString;
-    Frame.lblValorAPrazo.Text := '10';//cdsProdutos.FieldByName('cellDesc').AsString;
-    Frame.lblValorAVista.Text := '10';//cdsProdutos.FieldByName('cellDesc').AsString;
     Frame.lblID_CELL.Text := cdsProdutos.FieldByName('cellId').AsString;
+    Frame.lblReferencia.Text := cdsProdutos.FieldByName('cellReferencia').AsString;
 
     //Por questoes de performace não vou carregar as imagens aqui
-    try
       //CarregarImagens( Frame, cdsProdutos.FieldByName( 'cellId' ).AsInteger );
-    except
-
-    end;
 
     //CellID := cdsProdutos.FieldByName('cellId').AsInteger;
     //CarregarImagensHorizontais(Frame, CellID);
