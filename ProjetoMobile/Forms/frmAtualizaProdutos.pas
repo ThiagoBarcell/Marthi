@@ -14,6 +14,7 @@ type
     rtgBtnAtualizarValores: TRectangle;
     Rectangle1: TRectangle;
     rtgImageProd: TRectangle;
+    Rectangle2: TRectangle;
   private
     { Private declarations }
   public

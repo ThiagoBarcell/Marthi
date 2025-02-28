@@ -6,11 +6,19 @@ inherited AtualizaProdutosFrm_LgXhdpiTb: TAtualizaProdutosFrm_LgXhdpiTb
     Size.Width = 480.000000000000000000
     Size.Height = 829.000000000000000000
     inherited rtgButtons: TRectangle
-      Position.Y = 781.000000000000000000
+      Fill.Kind = None
+      Margins.Left = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 784.000000000000000000
       Size.Width = 470.000000000000000000
       inherited rtgBtnAtualizarValores: TRectangle
         Position.X = 432.000000000000000000
       end
+    end
+    inherited Rectangle2: TRectangle
+      Size.Width = 480.000000000000000000
     end
   end
 end

@@ -20,12 +20,12 @@
     <Transaction>2025/01/24 13:46:23.000.399,D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.pas=D:\Marthi GIT\ProjetoMobile\Frames\frameProduto.pas</Transaction>
     <Transaction>2025/01/24 14:08:25.000.798,D:\Marthi GIT\ProjetoMobile\Frames\frameProduto.pas=D:\Marthi GIT\ProjetoMobile\Frames\Frame.MarthiGIT.Produto.pas</Transaction>
     <Transaction>2025/01/24 14:08:25.000.798,D:\Marthi GIT\ProjetoMobile\Frames\frameProduto.fmx=D:\Marthi GIT\ProjetoMobile\Frames\Frame.MarthiGIT.Produto.fmx</Transaction>
-    <Transaction>2025/02/24 13:10:09.904,=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.pas</Transaction>
-    <Transaction>2025/02/24 13:22:21.443,D:\Marthi GIT\ProjetoMobile\Forms\frmAtualizaProdutos.fmx=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.fmx</Transaction>
-    <Transaction>2025/02/24 13:22:21.443,D:\Marthi GIT\ProjetoMobile\Forms\frmAtualizaProdutos.pas=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.pas</Transaction>
+    <Transaction>2025/02/24 13:10:09.000.904,=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.pas</Transaction>
+    <Transaction>2025/02/24 13:22:21.000.443,D:\Marthi GIT\ProjetoMobile\Forms\frmAtualizaProdutos.fmx=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.fmx</Transaction>
+    <Transaction>2025/02/24 13:22:21.000.443,D:\Marthi GIT\ProjetoMobile\Forms\frmAtualizaProdutos.pas=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.pas</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<NoProfile iOSSimulator="iPhone5" Android="3adc02b27d75" Android64=""/>
+		<NoProfile iOSSimulator="iPhone5" Android="TESTECELL" Android64=""/>
 	</ActiveMobileDevice>
 	<BT_BuildType>Debug</BT_BuildType>
 </BorlandProject>

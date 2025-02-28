@@ -1,3 +1,14 @@
 inherited AtualizaProdutosFrm_Windows: TAtualizaProdutosFrm_Windows
   DesignerMasterStyle = 3
+  inherited rtgPrincipal: TRectangle
+    inherited rtgButtons: TRectangle
+      Fill.Kind = None
+      Margins.Left = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 427.000000000000000000
+      Size.Width = 390.000000000000000000
+    end
+  end
 end

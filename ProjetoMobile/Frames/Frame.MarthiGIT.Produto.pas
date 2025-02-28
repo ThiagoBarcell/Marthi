@@ -21,6 +21,10 @@ type
     dtsImagemProduto: TDataSource;
     procedure rtgProdutoClick(Sender: TObject);
   private
+    procedure ConfiguraCDSImagens;
+    procedure ExtrairDadosImagemProduto(lJSon: string;
+      lClientDataSet: TClientDataSet);
+    procedure CarregarImagemFromBlob(BlobField: TBlobField; Bitmap: TBitmap);
     { Private declarations }
   public
     { Public declarations }
@@ -38,11 +42,7 @@ var
 begin
   fFrmAttprod := TAtualizaProdutosFrm.Create(nil);
   CarregarImagens( fFrmAttprod, StrToInt( lblID_CELL.Text ) );
-  try
     fFrmAttprod.Show;
-  finally
-    fFrmAttprod.Free;
-  end;
 end;
 
 procedure TProdutoFrame.CarregarImagens( frmProd : TAtualizaProdutosFrm; IDCell: Integer);
@@ -64,62 +64,145 @@ begin
   lResponseImg := TStringList.Create;
   lConsultaImg := TIdHTTP.Create( nil );
   lResponseImg.Text := lConsultaImg.Get( 'http://' + IpAPI + '/produtos/imagens/' + IntToStr( IDCell ) );
-
-  ConfiguraCDSImagens;
-  ExtrairDadosImagemProduto( lResponseImg.Text, cdsImagemProduto );
-
-  Frame.rtgImageProd.BeginUpdate;
   try
-    CurrentLeft := 0;
-    TotalWidth := 0;
+    ConfiguraCDSImagens;
+    ExtrairDadosImagemProduto( lResponseImg.Text, cdsImagemProduto );
 
+    frmProd.rtgImageProd.BeginUpdate;
     try
-//      Frame.rtgImageProd.Margins.Top := 5;
-//      Frame.rtgImageProd.Margins.Left := 30;
-//      Frame.rtgImageProd.Margins.Right := 30;
-//      Frame.rtgImageProd.Margins.Bottom := 5;
-//      Frame.rtgImageProd.Position.X := CurrentLeft;
-//      Frame.rtgImageProd.Position.Y := 0;
-      Frame.rtgImageProd.Stroke.Assign(Frame.rtgImageProd.Stroke);
-      Frame.rtgImageProd.Fill.Kind := TBrushKind.Bitmap;
-      Frame.rtgImageProd.Fill.Bitmap.WrapMode := TWrapMode.TileStretch;
-      Frame.rtgImageProd.SetBounds(Frame.rtgImageProd.Position.X, Frame.rtgImageProd.Position.Y, Frame.rtgImageProd.Width, Frame.rtgImageProd.Height);
-      Frame.rtgImageProd.XRadius := 10;
-      Frame.rtgImageProd.YRadius := 10;
+      CurrentLeft := 0;
+      TotalWidth := 0;
 
-      BlobField := cdsImagemProduto.FieldByName('IMAGE') as TBlobField;
-      if not BlobField.IsNull then
-      begin
-        ImageStream := TMemoryStream.Create;
-        try
-          //BlobField.SaveToStream(ImageStream);
-          if Frame.rtgImageProd.Fill.Bitmap.Bitmap = nil then
-            Frame.rtgImageProd.Fill.Bitmap.Bitmap := TBitmap.Create;
+      try
+  //      Frame.rtgImageProd.Margins.Top := 5;
+  //      Frame.rtgImageProd.Margins.Left := 30;
+  //      Frame.rtgImageProd.Margins.Right := 30;
+  //      Frame.rtgImageProd.Margins.Bottom := 5;
+  //      Frame.rtgImageProd.Position.X := CurrentLeft;
+  //      Frame.rtgImageProd.Position.Y := 0;
+        frmProd.rtgImageProd.Stroke.Assign(frmProd.rtgImageProd.Stroke);
+        frmProd.rtgImageProd.Fill.Kind := TBrushKind.Bitmap;
+        frmProd.rtgImageProd.Fill.Bitmap.WrapMode := TWrapMode.TileStretch;
+        frmProd.rtgImageProd.SetBounds(frmProd.rtgImageProd.Position.X, frmProd.rtgImageProd.Position.Y, frmProd.rtgImageProd.Width, frmProd.rtgImageProd.Height);
+        frmProd.rtgImageProd.XRadius := 10;
+        frmProd.rtgImageProd.YRadius := 10;
 
-          CarregarImagemFromBlob(BlobField,Frame.rtgImageProd.Fill.Bitmap.Bitmap);
+        BlobField := cdsImagemProduto.FieldByName('IMAGE') as TBlobField;
+        if not BlobField.IsNull then
+        begin
+          ImageStream := TMemoryStream.Create;
+          try
+            //BlobField.SaveToStream(ImageStream);
+            if frmProd.rtgImageProd.Fill.Bitmap.Bitmap = nil then
+              frmProd.rtgImageProd.Fill.Bitmap.Bitmap := TBitmap.Create;
 
-          ImageStream.Position := 0;
-        finally
-          ImageStream.Free;
+            CarregarImagemFromBlob(BlobField,frmProd.rtgImageProd.Fill.Bitmap.Bitmap);
+
+            ImageStream.Position := 0;
+          finally
+            ImageStream.Free;
+          end;
+        end
+        else
+        begin
+          frmProd.rtgImageProd.Fill.Kind := TBrushKind.Solid;
+          //Frame.rtgImageProd.Fill.Color := TAlphaColors.Gray;
         end;
-      end
-      else
-      begin
-        Frame.rtgImageProd.Fill.Kind := TBrushKind.Solid;
-        //Frame.rtgImageProd.Fill.Color := TAlphaColors.Gray;
+
+        CurrentLeft := CurrentLeft + frmProd.rtgImageProd.Width + 10;
+        TotalWidth := CurrentLeft;
+
+      //Frame.HorzScrollBoxImagens.Content.Width := TotalWidth;
+      //Frame.lblTOT_WIDTH.Text := FloatToStr(TotalWidth);
+      finally
+        try
+          BlobField.Free;
+        except
+        end;
+      //  ImageQuery.Free;
       end;
-
-      CurrentLeft := CurrentLeft + Frame.rtgImageProd.Width + 10;
-      TotalWidth := CurrentLeft;
-
-    //Frame.HorzScrollBoxImagens.Content.Width := TotalWidth;
-    //Frame.lblTOT_WIDTH.Text := FloatToStr(TotalWidth);
     finally
-      BlobField.Free;
-    //  ImageQuery.Free;
+      frmProd.rtgImageProd.EndUpdate;
     end;
+  except
+  end;
+end;
+
+procedure TProdutoFrame.ConfiguraCDSImagens;
+begin
+  cdsImagemProduto.Close;
+  cdsImagemProduto.FieldDefs.Clear;
+  cdsImagemProduto.FieldDefs.Add('CELL_ID', ftInteger );
+  cdsImagemProduto.FieldDefs.Add('SEQUENCIA', ftInteger );
+  cdsImagemProduto.FieldDefs.Add('IMAGE', ftBlob );
+
+  cdsImagemProduto.CreateDataSet;
+  cdsImagemProduto.Close;
+  dtsImagemProduto.DataSet := cdsImagemProduto;
+  cdsImagemProduto.Open;
+end;
+
+procedure TProdutoFrame.ExtrairDadosImagemProduto( lJSon : string; lClientDataSet : TClientDataSet );
+var
+  JSONArray: TJSONArray;
+  JSONObject: TJSONObject;
+  i: Integer;
+  CellId, Sequencia: Integer;
+  Image: string;
+begin
+  try
+    // Carrega o JSON recebido em um JSONArray
+    JSONArray := TJSONObject.ParseJSONValue(TEncoding.UTF8.GetBytes(lJSon), 0) as TJSONArray;
+    try
+      // Itera pelos objetos no array
+      for i := 0 to JSONArray.Count - 1 do
+      begin
+        JSONObject := JSONArray.Items[i] as TJSONObject;
+        lClientDataSet.Append;
+        // Lê os valores do objeto
+        lClientDataSet.FieldByName( 'CELL_ID' ).AsInteger := JSONObject.GetValue<Integer>('cellId');
+        lClientDataSet.FieldByName( 'SEQUENCIA' ).AsInteger := JSONObject.GetValue<Integer>('sequencia');
+        lClientDataSet.FieldByName( 'IMAGE' ).AsBytes := TEncoding.UTF8.GetBytes( JSONObject.GetValue<string>('image') );
+        lClientDataSet.Post;
+        // Exibe as informações (ou faça o que for necessário)
+        //Writeln(Format('CellId: %d, Sequencia: %d, Image: %s', [CellId, Sequencia, Image]));
+      end;
+    finally
+      JSONArray.Free;
+    end;
+  except
+    on E: Exception do
+      Writeln('Erro: ' + E.Message);
+  end;
+end;
+
+procedure TProdutoFrame.CarregarImagemFromBlob(BlobField: TBlobField; Bitmap: TBitmap);
+var
+  Base64Stream: TStringStream;
+  ImageStream: TMemoryStream;
+  Base64Data: string;
+begin
+  if BlobField.IsNull then
+    Exit;
+
+  // Obtém o conteúdo do campo BLOB como string Base64
+  Base64Data := BlobField.AsString;
+
+  // Stream para decodificar a Base64
+  Base64Stream := TStringStream.Create(Base64Data, TEncoding.UTF8);
+  ImageStream := TMemoryStream.Create;
+  try
+    // Decodifica a string Base64 para o stream binário
+    TNetEncoding.Base64.Decode(Base64Stream, ImageStream);
+
+    // Volta para o início do stream
+    ImageStream.Position := 0;
+
+    // Carrega a imagem no Bitmap
+    Bitmap.LoadFromStream(ImageStream);
   finally
-    Frame.rtgImageProd.EndUpdate;
+    Base64Stream.Free;
+    ImageStream.Free;
   end;
 end;
 
