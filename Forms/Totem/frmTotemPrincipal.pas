@@ -281,6 +281,7 @@ type
     qryCadCliCELL_ID: TIntegerField;
     FDManager1: TFDManager;
     BorraFundoCliente: TBlurEffect;
+    chkNaoseidentificar: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);
@@ -1025,22 +1026,27 @@ procedure TTotemPrincipalfrm.btnCadCLiClick(Sender: TObject);
 var
   frmTipoRetirada : TfrmTipoRetirada;
 begin
-  if edtNome.Text = '' then
+  if not ( chkNaoseidentificar.IsChecked ) then
   begin
-    MessageDlg('Informe seu nome !', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
-    edtNome.SetFocus;
-    Abort;
-  end;
 
-  if edtTel.Text = '' then
-  begin
-    MessageDlg('Informe seu telefone !', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
-    edtTel.SetFocus;
-    Abort;
-  end;
+    if edtNome.Text = '' then
+    begin
+      MessageDlg('Informe seu nome !', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
+      edtNome.SetFocus;
+      Abort;
+    end;
 
-  // Cadastra o cliente ou atualiza o registro
-  CadCli;
+    if edtTel.Text = '' then
+    begin
+      MessageDlg('Informe seu telefone !', TMsgDlgType.mtInformation, [TMsgDlgBtn.mbOK], 0);
+      edtTel.SetFocus;
+      Abort;
+    end;
+
+    // Cadastra o cliente ou atualiza o registro
+    CadCli;
+
+  end;
 
   TbcPrincipalToten.ActiveTab := TabTotem;
 
@@ -1053,15 +1059,26 @@ begin
     FTipoRetirada := frmTipoRetirada.Tipo.TipoRetirada;
 
     if FTipoRetirada = 0 then
-      lblBoasVindas.Text := 'Olá, ' + edtNome.Text + ' Seja bem vindo(a) veja os modelos disponiveis a pronta entrega ...';
+    begin
+      if not ( chkNaoseidentificar.IsChecked ) then
+        lblBoasVindas.Text := 'Olá, ' + edtNome.Text + ' Seja bem vindo(a) veja os modelos disponiveis a pronta entrega ...'
+      else
+        lblBoasVindas.Text := 'Olá, Seja bem vindo(a) veja os modelos disponiveis a pronta entrega ...'
+    end;
 
     if FTipoRetirada = 1 then
-      lblBoasVindas.Text := 'Olá, ' + edtNome.Text + ' Seja bem vindo(a) veja os modelos disponiveis por encomenda ...';
+    begin
+      if not ( chkNaoseidentificar.IsChecked ) then
+        lblBoasVindas.Text := 'Olá, ' + edtNome.Text + ' Seja bem vindo(a) veja os modelos disponiveis por encomenda ...'
+      else
+        lblBoasVindas.Text := 'Olá, Seja bem vindo(a) veja os modelos disponiveis a pronta entrega ...'
+    end;
 
   finally
     FreeAndNil(frmTipoRetirada);
     BorrarFundo.Enabled := False;
   end;
+
 end;
 
 procedure TTotemPrincipalfrm.CadCli;

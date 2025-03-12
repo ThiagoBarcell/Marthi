@@ -16,27 +16,33 @@ File_13=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Setup\Forms\SetUpLookUpDMFrm.pas
 File_14=TSourceModule,'D:\SIG2000 GIT\DelphiRio\Vendas\Forms\Report\VenPlanilhaSepReportFrm.pas',0,1,7497,95,7522,0,0,,
 
 [Modules]
-Module0=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
-Module1=C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
-Module2=C:\Marthi GIT\Forms\untFuncoes.pas
-Module3=C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas
-Module4=C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas
-Module5=C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas
-Module6=C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
-Module7=default.htm
+Module0=C:\Marthi GIT\Forms\untFuncoes.pas
+Module1=default.htm
+Module2=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
+Module3=C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas
+Module4=C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas
+Module5=C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas
+Module6=C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas
+Module7=C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas
 Count=8
 EditWindowCount=1
-
-[C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas]
-ModuleType=TSourceModule
-
-[C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas]
-ModuleType=TSourceModule
 
 [C:\Marthi GIT\Forms\untFuncoes.pas]
 ModuleType=TSourceModule
 
+[default.htm]
+ModuleType=TURLModule
+
+[C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas]
+ModuleType=TSourceModule
+
+[C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas]
+ModuleType=TSourceModule
+
 [C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas]
+ModuleType=TSourceModule
+
+[C:\Marthi GIT\Forms\DataModules\GeralDMFrm.pas]
 ModuleType=TSourceModule
 
 [C:\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas]
@@ -45,15 +51,9 @@ ModuleType=TSourceModule
 [C:\Marthi GIT\Forms\Totem\Marthi.TecladoVirtual.pas]
 ModuleType=TSourceModule
 
-[C:\Marthi GIT\Forms\Totem\Frame.MarthiGIT.Totem.pas]
-ModuleType=TSourceModule
-
-[default.htm]
-ModuleType=TURLModule
-
 [EditWindow0]
 ViewCount=8
-CurrentEditView=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
+CurrentEditView=C:\Marthi GIT\Forms\untFuncoes.pas
 View0=0
 View1=1
 View2=2
@@ -97,9 +97,9 @@ WelcomePageURL=bds:/default.htm
 [View1]
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas
-CursorX=1
-CursorY=1408
-TopLine=1405
+CursorX=3
+CursorY=1048
+TopLine=1043
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -108,13 +108,13 @@ EditViewName=Borland.FormDesignerView
 [View2]
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas
-CursorX=1
-CursorY=47
-TopLine=47
+CursorX=67
+CursorY=49
+TopLine=13
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=Borland.FormDesignerView
+EditViewName=C:\Marthi GIT\Forms\Totem\Marthi.TipoRetirada.pas
 
 [View3]
 CustomEditViewType=TEditView
@@ -130,9 +130,9 @@ EditViewName=Borland.FormDesignerView
 [View4]
 CustomEditViewType=TEditView
 Module=C:\Marthi GIT\Forms\untFuncoes.pas
-CursorX=3
-CursorY=160
-TopLine=139
+CursorX=101
+CursorY=31
+TopLine=16
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -199,11 +199,12 @@ Dockable=1
 StayOnTop=0
 
 [Breakpoints]
-Count=4
+Count=5
 Breakpoint0='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',104,'',0,1,'',1,0,0,'',1,'','','',0,''
-Breakpoint1='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',688,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint1='C:\Sistemas\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',689,'',0,1,'',1,0,0,'',1,'','','',0,''
 Breakpoint2='C:\Sistemas\Marthi GIT\Forms\Totem\Marthi.PedeSenha.pas',90,'',0,1,'',1,0,0,'',1,'','','',0,''
-Breakpoint3='C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',1109,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint3='C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',1046,'',0,1,'',1,0,0,'',1,'','','',0,''
+Breakpoint4='C:\Marthi GIT\Forms\Totem\frmTotemPrincipal.pas',1075,'',0,1,'',1,0,0,'',1,'','','',0,''
 
 [EmbarcaderoWin32Debugger_AddressBreakpoints]
 Count=0
@@ -235,8 +236,8 @@ Create=1
 Visible=1
 Docked=0
 State=2
-Left=-17793
-Top=-233
+Left=-13724
+Top=0
 Width=8932
 Height=8517
 MaxLeft=-7
@@ -257,12 +258,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=2038
-Height=10515
+Width=2025
+Height=8137
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2038
-ClientHeight=10515
+ClientWidth=2025
+ClientHeight=8137
 TBDockHeight=5895
 LRDockWidth=2350
 Dockable=1
@@ -282,7 +283,7 @@ MaxLeft=-1
 MaxTop=-1
 ClientWidth=16562
 ClientHeight=0
-TBDockHeight=1409
+TBDockHeight=1740
 LRDockWidth=2767
 Dockable=1
 StayOnTop=0
@@ -295,12 +296,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=2025
-Height=10858
+Width=1908
+Height=8002
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2025
-ClientHeight=10858
+ClientWidth=1908
+ClientHeight=8002
 TBDockHeight=7157
 LRDockWidth=1999
 Dockable=1
@@ -339,7 +340,7 @@ MaxLeft=-1
 MaxTop=-1
 ClientWidth=1895
 ClientHeight=7610
-TBDockHeight=8480
+TBDockHeight=10846
 LRDockWidth=1895
 Dockable=1
 StayOnTop=0
@@ -347,8 +348,8 @@ SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Name,AfterCommit
-ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,Fill=1,LiveBindings=0,Margins=1,Padding=0,Position=0,RotationCenter=0,Scale=0,Sides=0,Size=0,Stroke=0,Touch=0,Corners=0,Fill.Bitmap=1,Fill.Resource=0,Fill.Bitmap.Image=0,Caret=0,ConnectedStoredUsage=0,FetchOptions=1,FormatOptions=1,Params=0,ResourceOptions=1,TxOptions=1,UpdateOptions=0,FormFactor=0,FetchOptions.AssignedValues=0,FetchOptions.Cache=0,FetchOptions.Items=0,FormatOptions.AssignedValues=0,FormatOptions.SortOptions=0,ResourceOptions.AssignedValues=0,ResourceOptions.StoreItems=0,TxOptions.StopOptions=1
+SelectedItem=Name,LiveBindings
+ExpandedItems=Anchors=0,BorderIcons=0,"LiveBindings Designer=0",AuditorSettings=0,ConfigINI=0,DanfeSettings=1,EmailSettings=0,Corners=1,Fill=0,LiveBindings=0,Margins=0,Padding=0,Position=0,RotationCenter=0,Scale=0,Sides=0,Size=0,Stroke=0,Touch=0,ConnectedStoredUsage=0,FetchOptions=0,FormatOptions=0,Params=0,ResourceOptions=0,TxOptions=0,UpdateOptions=0,StyledSettings=0,TextSettings=0,TouchTargetExpansion=0,Fill.Bitmap=0,Fill.Resource=0,ActiveStoredUsage=0,Connection=0,FieldOptions=0,FilterChanges=0,FilterOptions=0
 
 [ClassBrowserTool]
 PercentageSizes=1
@@ -356,8 +357,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=-33
-Top=-225
+Left=2552
+Top=-116
 Width=1849
 Height=3137
 MaxLeft=-1
@@ -432,8 +433,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=0
-Top=0
+Left=-16
+Top=251
 Width=273
 Height=368
 MaxLeft=-1
@@ -537,11 +538,11 @@ State=0
 Left=0
 Top=0
 Width=2337
-Height=1140
+Height=1054
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2337
-ClientHeight=1140
+ClientHeight=1054
 TBDockHeight=2500
 LRDockWidth=3398
 Dockable=1
@@ -556,11 +557,11 @@ State=0
 Left=0
 Top=0
 Width=2337
-Height=1140
+Height=895
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2337
-ClientHeight=1140
+ClientHeight=895
 TBDockHeight=2316
 LRDockWidth=2826
 Dockable=1
@@ -594,11 +595,11 @@ State=0
 Left=0
 Top=0
 Width=2337
-Height=1054
+Height=1140
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2337
-ClientHeight=1054
+ClientHeight=1140
 TBDockHeight=1152
 LRDockWidth=3678
 Dockable=1
@@ -637,8 +638,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=0
-Top=0
+Left=307
+Top=634
 Width=2858
 Height=3211
 MaxLeft=-1
@@ -806,8 +807,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=8
-Top=8
+Left=-2552
+Top=1024
 Width=3822
 Height=1422
 MaxLeft=-1
@@ -830,14 +831,14 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=3
-Top=23
-Width=2038
-Height=10858
+Left=8
+Top=8
+Width=2025
+Height=8480
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2038
-ClientHeight=10858
+ClientWidth=2025
+ClientHeight=8480
 TBDockHeight=8480
 LRDockWidth=2025
 Dockable=1
@@ -862,7 +863,7 @@ MaxLeft=-1
 MaxTop=-1
 ClientWidth=1895
 ClientHeight=2843
-TBDockHeight=8480
+TBDockHeight=10846
 LRDockWidth=1895
 Dockable=1
 StayOnTop=0
@@ -878,14 +879,14 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=3
-Top=23
-Width=2025
-Height=10858
+Left=8
+Top=8
+Width=2012
+Height=8480
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=2025
-ClientHeight=10858
+ClientWidth=1908
+ClientHeight=8002
 TBDockHeight=8480
 LRDockWidth=2012
 Dockable=1
