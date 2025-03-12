@@ -280,6 +280,7 @@ type
     qryCadCliDATA_HORA_CADASTRO: TSQLTimeStampField;
     qryCadCliCELL_ID: TIntegerField;
     FDManager1: TFDManager;
+    BorraFundoCliente: TBlurEffect;
     procedure FormCreate(Sender: TObject);
     procedure edtPesquisaEnter(Sender: TObject);
     procedure edtPesquisaTyping(Sender: TObject);
@@ -1265,15 +1266,82 @@ end;
 
 procedure TTotemPrincipalfrm.edtCPFClick(Sender: TObject);
 begin
-  recTecladoTela.Visible := True;
-  SetTargetEdit(edtCPF);
+//  recTecladoTela.Visible := True;
+//  SetTargetEdit(edtCPF);
+
+  if Assigned(TecladoVirtualfrm) then
+    TecladoVirtualfrm.Close;
+
+  if not Assigned(TecladoVirtualfrm) then
+    TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+
+  try
+
+    BorraFundoCliente.Enabled := True;
+
+    TecladoVirtualfrm.edtEditar.TextPrompt := 'Clique para editar seu CPF...';
+    TecladoVirtualfrm.RecTeclado.Enabled := False;
+    TecladoVirtualfrm.ShowModal;
+
+    edtCPF.Text := TecladoVirtualfrm.edtEditar.Text;
+  finally
+    FreeAndNil(TecladoVirtualfrm);
+    BorraFundoCliente.Enabled := False;
+  end;
 end;
 
 procedure TTotemPrincipalfrm.edtNomeClick(Sender: TObject);
+var
+  Display: TDisplay;
+  KeyboardLeft, KeyboardTop: Single;
 begin
+  if Assigned(TecladoVirtualfrm) then
+    TecladoVirtualfrm.Close;
+
+  if not Assigned(TecladoVirtualfrm) then
+    TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+
+  try
+
+    BorraFundoCliente.Enabled := True;
+
+    TecladoVirtualfrm.edtEditar.TextPrompt := 'Clique para editar seu nome...';
+    TecladoVirtualfrm.ShowModal;
+
+    edtNome.Text := TecladoVirtualfrm.edtEditar.Text;
+  finally
+    FreeAndNil(TecladoVirtualfrm);
+    BorraFundoCliente.Enabled := False;
+  end;
+
+//  // Obtém o display (monitor) com base no retângulo do formulário
+//  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
+//
+//  // Calcula a posição do teclado relativo ao display
+//  KeyboardLeft := recEdit.AbsoluteRect.Left;
+//  KeyboardTop := RecCenter.AbsoluteRect.Top + 200;
+//
+//  // Garante que o teclado virtual fique dentro da área do display
+//  if KeyboardLeft + TecladoVirtualfrm.Width > Display.WorkArea.Width then
+//    KeyboardLeft := Display.WorkArea.Width - TecladoVirtualfrm.Width;
+//
+//  if KeyboardTop + TecladoVirtualfrm.Height > Display.WorkArea.Height then
+//    KeyboardTop := Display.WorkArea.Height - TecladoVirtualfrm.Height;
+//
+//  // Ajusta a posição do teclado virtual
+//  TecladoVirtualfrm.Left := Round(KeyboardLeft);
+//  TecladoVirtualfrm.Top := Round(KeyboardTop);
+//
+//  // Associa explicitamente o TEdit ao teclado virtual
+//  TecladoVirtualfrm.SetTargetEdit(edtPesquisa);
+
+  // Exibe o teclado
+  //TecladoVirtualfrm.Show;
   // Associa explicitamente o TEdit ao teclado virtual
-  recTecladoTela.Visible := True;
-  SetTargetEdit(edtNome);
+//  recTecladoTela.Visible := True;
+//  SetTargetEdit(edtNome);
+
+
 end;
 
 procedure TTotemPrincipalfrm.edtPesquisaClick(Sender: TObject);
@@ -1287,26 +1355,26 @@ begin
   if not Assigned(TecladoVirtualfrm) then
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
 
-  // Obtém o display (monitor) com base no retângulo do formulário
-  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
-
-  // Calcula a posição do teclado relativo ao display
-  KeyboardLeft := recEdit.AbsoluteRect.Left;
-  KeyboardTop := RecCenter.AbsoluteRect.Top + 200;
-
-  // Garante que o teclado virtual fique dentro da área do display
-  if KeyboardLeft + TecladoVirtualfrm.Width > Display.WorkArea.Width then
-    KeyboardLeft := Display.WorkArea.Width - TecladoVirtualfrm.Width;
-
-  if KeyboardTop + TecladoVirtualfrm.Height > Display.WorkArea.Height then
-    KeyboardTop := Display.WorkArea.Height - TecladoVirtualfrm.Height;
-
-  // Ajusta a posição do teclado virtual
-  TecladoVirtualfrm.Left := Round(KeyboardLeft);
-  TecladoVirtualfrm.Top := Round(KeyboardTop);
-
-  // Associa explicitamente o TEdit ao teclado virtual
-  TecladoVirtualfrm.SetTargetEdit(edtPesquisa);
+//  // Obtém o display (monitor) com base no retângulo do formulário
+//  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
+//
+//  // Calcula a posição do teclado relativo ao display
+//  KeyboardLeft := recEdit.AbsoluteRect.Left;
+//  KeyboardTop := RecCenter.AbsoluteRect.Top + 200;
+//
+//  // Garante que o teclado virtual fique dentro da área do display
+//  if KeyboardLeft + TecladoVirtualfrm.Width > Display.WorkArea.Width then
+//    KeyboardLeft := Display.WorkArea.Width - TecladoVirtualfrm.Width;
+//
+//  if KeyboardTop + TecladoVirtualfrm.Height > Display.WorkArea.Height then
+//    KeyboardTop := Display.WorkArea.Height - TecladoVirtualfrm.Height;
+//
+//  // Ajusta a posição do teclado virtual
+//  TecladoVirtualfrm.Left := Round(KeyboardLeft);
+//  TecladoVirtualfrm.Top := Round(KeyboardTop);
+//
+//  // Associa explicitamente o TEdit ao teclado virtual
+//  TecladoVirtualfrm.SetTargetEdit(edtPesquisa);
 
   // Exibe o teclado
   TecladoVirtualfrm.Show;
@@ -1370,8 +1438,28 @@ end;
 
 procedure TTotemPrincipalfrm.edtTelClick(Sender: TObject);
 begin
-  recTecladoTela.Visible := True;
-  SetTargetEdit(edtTel);
+  if Assigned(TecladoVirtualfrm) then
+    TecladoVirtualfrm.Close;
+
+  if not Assigned(TecladoVirtualfrm) then
+    TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+
+  try
+
+    BorraFundoCliente.Enabled := True;
+
+    TecladoVirtualfrm.edtEditar.TextPrompt := 'Clique para editar seu telefone...';
+    TecladoVirtualfrm.RecTeclado.Enabled := False;
+    TecladoVirtualfrm.ShowModal;
+
+    edtTel.Text := TecladoVirtualfrm.edtEditar.Text;
+  finally
+    FreeAndNil(TecladoVirtualfrm);
+    BorraFundoCliente.Enabled := False;
+  end;
+
+//  recTecladoTela.Visible := True;
+//  SetTargetEdit(edtTel);
 end;
 
 procedure TTotemPrincipalfrm.EnviaWhatsapp(Sender: TObject);

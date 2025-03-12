@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Objects, FMX.TabControl,
-  FMX.Edit, FMX.Platform, FMX.VirtualKeyboard;
+  FMX.Edit, FMX.Platform, FMX.VirtualKeyboard, FMX.Layouts;
 
 type
   TTecladoVirtualfrm = class(TForm)
@@ -150,7 +150,13 @@ type
     KeytraçoPrin: TRectangle;
     Keytraço: TRectangle;
     lbltraço: TLabel;
+    Rectangle1: TRectangle;
+    Layout2: TLayout;
+    img3: TImage;
+    edtEditar: TEdit;
     procedure KeyQClick(Sender: TObject);
+    procedure edtEditarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     private
     FTargetEdit: TEdit;
     { Private declarations }
@@ -174,10 +180,21 @@ procedure TTecladoVirtualfrm.SetTargetEdit(ATargetEdit: TEdit);
 begin
   FTargetEdit := ATargetEdit;
 
-  if FTargetEdit.Name = 'edtTelCli' then
-      RecTeclado.Enabled := False
-    else
-      RecTeclado.Enabled := True;
+//  if FTargetEdit.Name = 'edtTelCli' then
+//      RecTeclado.Enabled := False
+//    else
+//      RecTeclado.Enabled := True;
+end;
+
+procedure TTecladoVirtualfrm.edtEditarClick(Sender: TObject);
+begin
+  SetTargetEdit(edtEditar);
+end;
+
+procedure TTecladoVirtualfrm.FormShow(Sender: TObject);
+begin
+  edtEditar.SetFocus;
+  SetTargetEdit(edtEditar);
 end;
 
 procedure TTecladoVirtualfrm.KeyClick(Sender: TObject);
