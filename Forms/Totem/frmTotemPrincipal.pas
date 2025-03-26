@@ -268,7 +268,7 @@ type
     lblBackSpace: TLabel;
     Rectangle39: TRectangle;
     Label18: TLabel;
-    Rectangle41: TRectangle;
+    btnTPRetirada: TRectangle;
     ShadowEffect5: TShadowEffect;
     Rectangle43: TRectangle;
     qryCadCli: TFDQuery;
@@ -322,6 +322,7 @@ type
     procedure KeyClick(Sender: TObject);
     procedure SetTargetEdit(ATargetEdit: TEdit);
     procedure CadCli;
+    procedure ValidaMarca(Sender : TObject);
   public
     FTipoRetirada : Integer;
     { Public declarations }
@@ -375,7 +376,7 @@ begin
   else
     Exit;
 
-   qryDados := TFDQuery.Create(nil);
+  qryDados := TFDQuery.Create(nil);
   try
     qryDados.Connection := ConectMarthi; // Substitua pelo seu componente de conexão
     qryDados.SQL.Text :=
@@ -997,6 +998,56 @@ begin
   end;
 end;
 
+procedure TTotemPrincipalfrm.ValidaMarca(Sender : TObject);
+var
+  qryValidaMarca : TFDQuery;
+  lValidaIphone : Boolean;
+  lValidaXiaomi : Boolean;
+begin
+  lValidaIphone := False;
+  lValidaXiaomi := False;
+  qryValidaMarca := TFDQuery.Create(nil);
+  try
+    qryValidaMarca.Connection := ConectMarthi; // Substitua pelo seu componente de conexão
+    qryValidaMarca.SQL.Text :=
+      'SELECT COUNT(CELL_ID) AS CONT_CELL ' +
+      'FROM CAD_CELL ' +
+      'WHERE CELL_MARCA = :CELL_MARCA ';
+    qryValidaMarca.ParamByName('CELL_MARCA').AsInteger := 0; // IPHONE
+    qryValidaMarca.Open;
+
+    lValidaIphone := ( qryValidaMarca.FieldByName('CONT_CELL').AsInteger > 0 );
+
+    if lValidaIphone then
+      btnIphone.Visible := True
+    else
+      btnIphone.Visible := False;
+
+    qryValidaMarca.Close;
+    qryValidaMarca.ParamByName('CELL_MARCA').AsInteger := 1; // XIAOMI
+    qryValidaMarca.Open;
+
+    lValidaXiaomi := ( qryValidaMarca.FieldByName('CONT_CELL').AsInteger > 0 );
+
+    if lValidaXiaomi then
+      btnXiaomi.Visible := True
+    else
+      btnXiaomi.Visible := False;
+
+    if ( lValidaIphone ) and ( lValidaXiaomi ) then
+      btnIphoneClick(Sender);
+
+    if ( lValidaIphone ) and ( lValidaXiaomi = False ) then
+      btnIphoneClick(Sender);
+
+    if ( lValidaIphone = False ) and ( lValidaXiaomi ) then
+      btnXiaomiClick(Sender);
+
+  finally
+    qryValidaMarca.Free;
+  end;
+end;
+
 procedure TTotemPrincipalfrm.ViewportPositionChange(Sender: TObject; const OldViewportPosition, NewViewportPosition: TPointF; const ContentSizeChanged: Boolean);
 var
   Frame: TFrameTotem;
@@ -1578,7 +1629,7 @@ end;
 procedure TTotemPrincipalfrm.FormShow(Sender: TObject);
 begin
   CarregarDados;
-  btnIphoneClick(Sender);
+  ValidaMarca(Sender);
 end;
 
 procedure TTotemPrincipalfrm.KeyClick(Sender: TObject);
