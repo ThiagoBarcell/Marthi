@@ -102,7 +102,6 @@ type
 
     //Functions
     function ExtrairDadosJSonProduto( Json: string; cdsProduto : TClientDataSet ): string;
-    function ExtrairDadosJSonItemProduto( Json: string; cdsItemProd : TClientDataSet ): string;
     procedure ConfiguraCDSImagens;
   public
     lFuncoes : TFuncoesMobile;
@@ -404,12 +403,6 @@ end;
 //    Frame.rtgImageProd.EndUpdate;
 //  end;
 //end;
-
-function TProdutosFrm.ExtrairDadosJSonItemProduto(Json: string;
-  cdsItemProd: TClientDataSet): string;
-begin
-  //
-end;
 
 function TProdutosFrm.ExtrairDadosJSonProduto( Json: string; cdsProduto : TClientDataSet ): string;
 var

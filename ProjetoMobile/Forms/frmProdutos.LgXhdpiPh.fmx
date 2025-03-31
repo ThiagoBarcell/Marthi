@@ -46,6 +46,10 @@ inherited ProdutosFrm_LgXhdpiPh: TProdutosFrm_LgXhdpiPh
       Size.Width = 225.000000000000000000
       ExplicitSize.cx = 225.000000000000000000
       ExplicitSize.cy = 49.000000000000000000
+      inherited btnAttIP: TButton
+        Position.Y = 521.000000000000000000
+        Size.Width = 450.000000000000000000
+      end
     end
   end
 end

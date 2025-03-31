@@ -106,5 +106,35 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
         Size.PlatformDefault = False
       end
     end
+    object rtgConfiguracoes: TRectangle
+      Align = Top
+      Position.Y = 193.000000000000000000
+      Size.Width = 400.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      object cbxConfig: TComboBox
+        Position.X = 152.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 233.000000000000000000
+        Size.Height = 32.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+      end
+    end
+  end
+  object lblConf: TLabel
+    Position.X = 8.000000000000000000
+    Position.Y = 208.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Configura'#231#245'es : '
+    TabOrder = 1
+  end
+  object cdsInfoProdutos: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 336
+    Top = 64
   end
 end

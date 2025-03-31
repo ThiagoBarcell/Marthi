@@ -20,5 +20,8 @@ inherited AtualizaProdutosFrm_LgXhdpiTb: TAtualizaProdutosFrm_LgXhdpiTb
     inherited Rectangle2: TRectangle
       Size.Width = 480.000000000000000000
     end
+    inherited rtgConfiguracoes: TRectangle
+      Size.Width = 480.000000000000000000
+    end
   end
 end

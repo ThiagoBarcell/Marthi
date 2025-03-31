@@ -7,7 +7,8 @@ uses
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
   FMX.Controls.Presentation, FMX.Objects, FMX.Layouts, FMX.ExtCtrls,frmAtualizaProdutos,
   IdTCPConnection, IdTCPClient, IdHTTP,Datasnap.DBClient,System.JSON,
-  System.Math,Soap.EncdDecd, System.NetEncoding, FMX.DialogService, System.Threading, Data.DB;
+  System.Math,Soap.EncdDecd, System.NetEncoding, FMX.DialogService,
+  System.Threading, Data.DB;
 
 type
   TProdutoFrame = class(TFrame)
@@ -25,6 +26,8 @@ type
     procedure ExtrairDadosImagemProduto(lJSon: string;
       lClientDataSet: TClientDataSet);
     procedure CarregarImagemFromBlob(BlobField: TBlobField; Bitmap: TBitmap);
+    procedure ConfiguraCDS(frmProd: TAtualizaProdutosFrm; IDCell: Integer);
+    procedure PreencherItemCDS(cds: TClientDataSet; const JSONStr: string);
     { Private declarations }
   public
     { Public declarations }
@@ -42,7 +45,62 @@ var
 begin
   fFrmAttprod := TAtualizaProdutosFrm.Create(nil);
   CarregarImagens( fFrmAttprod, StrToInt( lblID_CELL.Text ) );
-    fFrmAttprod.Show;
+  ConfiguraCDS( fFrmAttprod, StrToInt( lblID_CELL.Text ) );
+  fFrmAttprod.Show;
+end;
+
+procedure TProdutoFrame.ConfiguraCDS(frmProd: TAtualizaProdutosFrm;
+  IDCell: Integer);
+var
+  lConsultaItem : TIdHTTP;
+  lResponseItem : TStringList;
+begin
+  frmProd.cdsInfoProdutos.Close;
+  frmProd.cdsInfoProdutos.FieldDefs.Clear;
+  frmProd.cdsInfoProdutos.FieldDefs.Add( 'itemId', ftInteger );
+  frmProd.cdsInfoProdutos.FieldDefs.Add( 'cellId', ftInteger );
+  frmProd.cdsInfoProdutos.FieldDefs.Add( 'armazenamentoId', ftInteger );
+  frmProd.cdsInfoProdutos.FieldDefs.Add( 'corId', ftInteger );
+  frmProd.cdsInfoProdutos.FieldDefs.Add( 'codicaoId', ftInteger );
+  frmProd.cdsInfoProdutos.FieldDefs.Add( 'cellValUnit', ftInteger );
+  frmProd.cdsInfoProdutos.FieldDefs.Add( 'cellValParc', ftInteger );
+  frmProd.cdsInfoProdutos.FieldDefs.Add( 'cellParcelas', ftString, 100 );
+  frmProd.cdsInfoProdutos.FieldDefs.Add( 'tpPrecoId', ftInteger );
+  frmProd.cdsInfoProdutos.CreateDataSet;
+
+  lResponseItem := TStringList.Create;
+  lConsultaItem := TIdHTTP.Create( nil );
+  lResponseItem.Text := lConsultaItem.Get( 'http://' + IpAPI + '/produtos/itens/' + IntToStr( IDCell ) );
+  PreencherItemCDS( frmProd.cdsInfoProdutos, lResponseItem.Text )
+end;
+
+procedure TProdutoFrame.PreencherItemCDS(cds: TClientDataSet; const JSONStr: string);
+var
+  JSONArray: TJSONArray;
+  JSONObject: TJSONObject;
+  I: Integer;
+begin
+  // Carregar JSON
+  JSONArray := TJSONObject.ParseJSONValue(JSONStr) as TJSONArray;
+  try
+    for I := 0 to JSONArray.Count - 1 do
+    begin
+      JSONObject := JSONArray.Items[I] as TJSONObject;
+      cds.Append;
+      cds.FieldByName('itemId').AsInteger := JSONObject.GetValue<Integer>('itemId');
+      cds.FieldByName('cellId').AsInteger := JSONObject.GetValue<Integer>('cellId');
+      cds.FieldByName('armazenamentoId').AsInteger := JSONObject.GetValue<Integer>('armazenamentoId');
+      cds.FieldByName('corId').AsInteger := JSONObject.GetValue<Integer>('corId');
+      cds.FieldByName('codicaoId').AsInteger := JSONObject.GetValue<Integer>('codicaoId');
+      cds.FieldByName('cellValUnit').AsFloat := JSONObject.GetValue<Double>('cellValUnit');
+      cds.FieldByName('cellValParc').AsFloat := JSONObject.GetValue<Double>('cellValParc');
+      cds.FieldByName('cellParcelas').AsString := JSONObject.GetValue<string>('cellParcelas');
+      cds.FieldByName('tpPrecoId').AsInteger := JSONObject.GetValue<Integer>('tpPrecoId');
+      cds.Post;
+    end;
+  finally
+    JSONArray.Free;
+  end;
 end;
 
 procedure TProdutoFrame.CarregarImagens( frmProd : TAtualizaProdutosFrm; IDCell: Integer);

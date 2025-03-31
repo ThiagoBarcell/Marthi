@@ -6825,18 +6825,18 @@ object ProdutosFrm: TProdutosFrm
       ExplicitSize.cy = 49.000000000000000000
       object edtIPServidor: TEdit
         Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Center
         TabOrder = 0
         Text = '10.1.1.124:9000'
-        Position.X = 40.000000000000000000
-        Position.Y = 215.000000000000000000
         Size.Width = 345.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
       end
       object btnAttIP: TButton
-        Position.X = 104.000000000000000000
-        Position.Y = 375.000000000000000000
-        Size.Width = 225.000000000000000000
+        Align = Bottom
+        Margins.Bottom = 40.000000000000000000
+        Position.Y = 417.000000000000000000
+        Size.Width = 430.000000000000000000
         Size.Height = 44.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1

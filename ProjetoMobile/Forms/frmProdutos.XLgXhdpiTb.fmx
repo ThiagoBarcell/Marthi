@@ -46,6 +46,10 @@ inherited ProdutosFrm_XLgXhdpiTb: TProdutosFrm_XLgXhdpiTb
       Size.Width = 400.000000000000000000
       ExplicitSize.cx = 400.000000000000000000
       ExplicitSize.cy = 49.000000000000000000
+      inherited btnAttIP: TButton
+        Position.Y = 1081.000000000000000000
+        Size.Width = 800.000000000000000000
+      end
     end
   end
 end
