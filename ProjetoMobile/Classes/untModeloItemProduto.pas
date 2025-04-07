@@ -18,10 +18,12 @@ type
     FCell_Parcelas: string;
     FTP_Preco_ID: Integer;
     FTP_Preco_Desc: string;
+    FProdDesc: string;
 
   public
     property ID: Integer read FID write FID;
     property CellID: Integer read FCellID write FCellID;
+    property ProdDesc: string read FProdDesc write FProdDesc;
     property ArmazenamentoID: Integer read FArmazenamentoID write FArmazenamentoID;
     property ArmazenamentoDesc: string read FArmazenamentoDesc write FArmazenamentoDesc;
     property CorID: Integer read FCorID write FCorID;

@@ -100,7 +100,7 @@ begin
 
   try
 
- // Percorre cada item no JSON
+    //Percorre cada item no JSON
     for I := 0 to JSONArray.Count - 1 do
     begin
       JSONObject := JSONArray.Items[I] as TJSONObject;
@@ -109,6 +109,7 @@ begin
       lModelProduto := TModeloProduto.Create;
       lModelProduto.ID := JSONObject.GetValue<Integer>('itemId');
       lModelProduto.CellId := JSONObject.GetValue<Integer>('cellId');
+      lModelProduto.ProdDesc := JSONObject.GetValue<string>('cellDesc');
       lModelProduto.ArmazenamentoId := JSONObject.GetValue<Integer>('armazenamentoId');
       lModelProduto.ArmazenamentoDesc := JSONObject.GetValue<string>('armazenamentoDesc');
       lModelProduto.CorId := JSONObject.GetValue<Integer>('corId');

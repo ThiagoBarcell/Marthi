@@ -95,8 +95,9 @@ begin
     lQryItemProduto.Close;
     lQryItemProduto.SQL.Clear;
     //Retorna apenas os celulares ativos
-    lQryItemProduto.SQL.Add('SELECT ' +
+    lQryItemProduto.SQL.Add(' SELECT ' +
       ' CELL_ITENS.ITEM_ID, ' +
+      ' CAD_CELL.CELL_DESC, ' +
       ' CELL_ITENS.CELL_ID, ' +
       ' CELL_ITENS.ARMAZENAMENTO_ID, ' +
       ' CELL_ARMAZENAMENTO.ARMAZENAMENTO_DESC, ' +
@@ -110,6 +111,8 @@ begin
       ' CELL_ITENS.TP_PRECO_ID, ' +
       ' CELL_TP_PRECOS.TP_PRECO_DESC ' +
       ' FROM CELL_ITENS ' +
+      ' LEFT OUTER JOIN CAD_CELL ' +
+      '  ON CAD_CELL.CELL_ID = CELL_ITENS.CELL_ID ' +
       ' LEFT OUTER JOIN CELL_ARMAZENAMENTO ' +
       '  ON CELL_ARMAZENAMENTO.ARMAZENAMENTO_ID = CELL_ITENS.ARMAZENAMENTO_ID ' +
       ' LEFT OUTER JOIN CELL_TP_PRECOS ' +
@@ -118,7 +121,7 @@ begin
       '  ON CELL_CONDICOES.CONDICAO_ID = CELL_ITENS.CODICAO_ID ' +
       ' LEFT OUTER JOIN CELL_CORES ' +
       '  ON CELL_CORES.COR_ID = CELL_ITENS.COR_ID ' +
-      ' WHERE CELL_ID = ' + IntToStr( IDProduto ) +
+      ' WHERE CELL_ITENS.CELL_ID = ' + IntToStr( IDProduto ) +
       ' ORDER BY CELL_ID' );
     lQryItemProduto.Open;
     erro := '';

@@ -42,6 +42,7 @@ type
     Label6: TLabel;
     Label7: TLabel;
     lblInfoTPPreco: TLabel;
+    lblTituloProd: TLabel;
     procedure FormShow(Sender: TObject);
     procedure cbxConfigChange(Sender: TObject);
   private
@@ -91,8 +92,11 @@ var
 begin
   for lModelProduto in lListaInfoProdutos do
   begin
-    cbxConfig.Items.Add( 'Info : ' + lModelProduto.ID.ToString )
+    cbxConfig.Items.Add( lModelProduto.ArmazenamentoDesc + ' - ' +
+      lModelProduto.CorDesc + ' - ' + lModelProduto.TP_Preco_Desc )
   end;
+
+  lblTituloProd.Text := lModelProduto.ProdDesc;
 
   MostraLabels(False);
 end;
