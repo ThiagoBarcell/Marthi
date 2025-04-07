@@ -14,6 +14,5 @@ uses
 begin
   Application.Initialize;
   Application.CreateForm(TProdutosFrm, ProdutosFrm);
-  Application.CreateForm(TAtualizaProdutosFrm, AtualizaProdutosFrm);
   Application.Run;
 end.

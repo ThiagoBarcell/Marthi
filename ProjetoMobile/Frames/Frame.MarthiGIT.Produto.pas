@@ -70,9 +70,9 @@ procedure TProdutoFrame.rtgProdutoClick(Sender: TObject);
 var
   fFrmAttprod : TAtualizaProdutosFrm;
 begin
-  CarregarImagens( fFrmAttprod, StrToInt( lblID_CELL.Text ) );
   ConfiguraClasseProd( StrToInt( lblID_CELL.Text ) );
   fFrmAttprod := TAtualizaProdutosFrm.Create(lListaInfoItens);
+  CarregarImagens( fFrmAttprod, StrToInt( lblID_CELL.Text ) );
   fFrmAttprod.Show;
 end;
 

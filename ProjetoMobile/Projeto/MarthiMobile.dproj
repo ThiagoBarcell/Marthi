@@ -6,7 +6,7 @@
         <MainSource>MarthiMobile.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Platform Condition="'$(Platform)'==''">Android</Platform>
         <TargetedPlatforms>5215</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>
@@ -353,7 +353,23 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Android)'!=''">
         <VerInfo_Build>1</VerInfo_Build>
-        <Android_NotificationAccentColor>#000000</Android_NotificationAccentColor>
+        <Android_NotificationAccentColor>#FFFFFF</Android_NotificationAccentColor>
+        <Android_LauncherIcon36>..\..\Logo\Logo 36.png</Android_LauncherIcon36>
+        <Android_LauncherIcon48>..\..\Logo\Logo 48.png</Android_LauncherIcon48>
+        <Android_LauncherIcon72>..\..\Logo\Logo 72.png</Android_LauncherIcon72>
+        <Android_LauncherIcon96>..\..\Logo\Logo 96.png</Android_LauncherIcon96>
+        <Android_LauncherIcon144>..\..\Logo\Logo 144.png</Android_LauncherIcon144>
+        <Android_SplashImage426>..\..\Logo\Marthi Logo + Descritivo 426X320.png</Android_SplashImage426>
+        <Android_SplashImage470>..\..\Logo\Marthi Logo + Descritivo 470X320.png</Android_SplashImage470>
+        <Android_SplashImage640>..\..\Logo\Marthi Logo + Descritivo 640X480.png</Android_SplashImage640>
+        <Android_SplashImage960>..\..\Logo\Marthi Logo + Descritivo 960X720.png</Android_SplashImage960>
+        <Android_SplashTileMode>disabled</Android_SplashTileMode>
+        <Android_SplashGravity>fill_horizontal</Android_SplashGravity>
+        <Android_NotificationIcon24>..\..\Logo\Logo 24.png</Android_NotificationIcon24>
+        <Android_NotificationIcon36>..\..\Logo\Logo 36.png</Android_NotificationIcon36>
+        <Android_NotificationIcon48>..\..\Logo\Logo 48.png</Android_NotificationIcon48>
+        <Android_NotificationIcon72>..\..\Logo\Logo 72.png</Android_NotificationIcon72>
+        <Android_NotificationIcon96>..\..\Logo\Logo 96.png</Android_NotificationIcon96>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
@@ -431,14 +447,14 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Android\Debug\strings.xml" Configuration="Debug" Class="Android_Strings">
+                <DeployFile LocalName="..\..\Logo\Marthi Logo + Descritivo 426X320.png" Configuration="Debug" Class="Android_SplashImage426">
                     <Platform Name="Android">
+                        <RemoteName>splash_image.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\LogoMobile\640x480\LogoMarthi.png" Configuration="Debug" Class="Android_SplashImage640">
-                    <Platform Name="Android64">
-                        <RemoteName>splash_image.png</RemoteName>
+                <DeployFile LocalName="Android\Debug\strings.xml" Configuration="Debug" Class="Android_Strings">
+                    <Platform Name="Android">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -448,14 +464,14 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\LogoMobile\72x\LogoReduzida.png" Configuration="Debug" Class="Android_NotificationIcon72">
+                <DeployFile LocalName="..\..\Logo\Logo 72.png" Configuration="Debug" Class="Android_NotificationIcon72">
                     <Platform Name="Android">
                         <RemoteName>ic_notification.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\LogoMobile\426x320\LogoMarthi.png" Configuration="Debug" Class="Android_SplashImage426">
-                    <Platform Name="Android">
+                <DeployFile LocalName="..\LogoMobile\640x480\LogoMarthi.png" Configuration="Debug" Class="Android_SplashImage640">
+                    <Platform Name="Android64">
                         <RemoteName>splash_image.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -472,7 +488,13 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\LogoMobile\24x\LogoReduzida.png" Configuration="Debug" Class="Android_NotificationIcon24">
+                <DeployFile LocalName="..\..\Logo\Logo 96.png" Configuration="Debug" Class="Android_LauncherIcon96">
+                    <Platform Name="Android">
+                        <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\Logo\Logo 24.png" Configuration="Debug" Class="Android_NotificationIcon24">
                     <Platform Name="Android">
                         <RemoteName>ic_notification.png</RemoteName>
                         <Overwrite>true</Overwrite>
@@ -532,7 +554,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\LogoMobile\36x\LogoReduzida.png" Configuration="Debug" Class="Android_NotificationIcon36">
+                <DeployFile LocalName="..\..\Logo\Logo 36.png" Configuration="Debug" Class="Android_NotificationIcon36">
                     <Platform Name="Android">
                         <RemoteName>ic_notification.png</RemoteName>
                         <Overwrite>true</Overwrite>
@@ -543,15 +565,15 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\LogoMobile\48x\LogoReduzida.png" Configuration="Debug" Class="Android_NotificationIcon48">
+                <DeployFile LocalName="..\..\Logo\Logo 48.png" Configuration="Debug" Class="Android_NotificationIcon48">
                     <Platform Name="Android">
                         <RemoteName>ic_notification.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeMipsFile">
+                <DeployFile LocalName="..\..\Logo\Logo 48.png" Configuration="Debug" Class="Android_LauncherIcon48">
                     <Platform Name="Android">
-                        <RemoteName>libMarthiMobile.so</RemoteName>
+                        <RemoteName>ic_launcher.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -594,19 +616,19 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\LogoMobile\640x480\LogoMarthi.png" Configuration="Debug" Class="Android_SplashImage640">
+                <DeployFile LocalName="..\..\Logo\Marthi Logo + Descritivo 640X480.png" Configuration="Debug" Class="Android_SplashImage640">
                     <Platform Name="Android">
                         <RemoteName>splash_image.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\LogoMobile\144x\LogoReduzida.png" Configuration="Debug" Class="Android_LauncherIcon144">
+                <DeployFile LocalName="..\..\Logo\Logo 144.png" Configuration="Debug" Class="Android_LauncherIcon144">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\LogoMobile\470x320\LogoMarthi.png" Configuration="Debug" Class="Android_SplashImage470">
+                <DeployFile LocalName="..\..\Logo\Marthi Logo + Descritivo 470X320.png" Configuration="Debug" Class="Android_SplashImage470">
                     <Platform Name="Android">
                         <RemoteName>splash_image.png</RemoteName>
                         <Overwrite>true</Overwrite>
@@ -628,13 +650,31 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="..\..\Logo\Logo 36.png" Configuration="Debug" Class="Android_LauncherIcon36">
+                    <Platform Name="Android">
+                        <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\Logo\Logo 72.png" Configuration="Debug" Class="Android_LauncherIcon72">
+                    <Platform Name="Android">
+                        <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeArmeabiFile">
                     <Platform Name="Android">
                         <RemoteName>libMarthiMobile.so</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\LogoMobile\960x720\LogoMarthi.png" Configuration="Debug" Class="Android_SplashImage960">
+                <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeMipsFile">
+                    <Platform Name="Android">
+                        <RemoteName>libMarthiMobile.so</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\Logo\Marthi Logo + Descritivo 960X720.png" Configuration="Debug" Class="Android_SplashImage960">
                     <Platform Name="Android">
                         <RemoteName>splash_image.png</RemoteName>
                         <Overwrite>true</Overwrite>
@@ -663,7 +703,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\LogoMobile\96x\LogoReduzida.png" Configuration="Debug" Class="Android_NotificationIcon96">
+                <DeployFile LocalName="..\..\Logo\Logo 96.png" Configuration="Debug" Class="Android_NotificationIcon96">
                     <Platform Name="Android">
                         <RemoteName>ic_notification.png</RemoteName>
                         <Overwrite>true</Overwrite>
