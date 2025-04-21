@@ -166,6 +166,8 @@
         <DCCReference Include="..\Forms\Model\frmModeloProdutos.pas"/>
         <DCCReference Include="..\Forms\Controller\frmController.pas"/>
         <DCCReference Include="..\Forms\Model\frmModeloConnection.pas"/>
+        <DCCReference Include="..\..\Forms\untFuncoes.pas"/>
+        <DCCReference Include="..\..\Forms\MarthiConstantes.pas"/>
         <None Include="ModelSupport_MarthiAPI\default.txvpck"/>
         <None Include="ModelSupport_MarthiAPI\frmController\default.txvpck"/>
         <None Include="ModelSupport_MarthiAPI\MarthiAPI\default.txvpck"/>

@@ -20,14 +20,12 @@ uses
   Datasnap.DBClient,
   untModeloItemProduto,
   System.Generics.Collections,
-  FMX.ListBox;
+  FMX.ListBox, FMX.Edit, FMX.EditBox, FMX.NumberBox, IdHTTP, System.JSON;
 
 type
   TAtualizaProdutosFrm = class(TForm)
     rtgPrincipal: TRectangle;
     rtgButtons: TRectangle;
-    rtgBtnAtualizarValores: TRectangle;
-    Rectangle1: TRectangle;
     rtgImageProd: TRectangle;
     Rectangle2: TRectangle;
     lblConf: TLabel;
@@ -43,8 +41,14 @@ type
     Label7: TLabel;
     lblInfoTPPreco: TLabel;
     lblTituloProd: TLabel;
+    btnFechar: TSpeedButton;
+    btnSalvar: TSpeedButton;
+    Label2: TLabel;
+    cbxValUnit: TNumberBox;
     procedure FormShow(Sender: TObject);
     procedure cbxConfigChange(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
   private
 
     lListaInfoProdutos : TObjectList<TModeloProduto>;
@@ -53,6 +57,8 @@ type
     { Private declarations }
   public
     { Public declarations }
+    fIP_Atual : string;
+
     constructor create( lListProd : TObjectList<TModeloProduto> );
   end;
 
@@ -67,12 +73,55 @@ implementation
 
 { TAtualizaProdutosFrm }
 
+procedure TAtualizaProdutosFrm.btnFecharClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TAtualizaProdutosFrm.btnSalvarClick(Sender: TObject);
+var
+  lAtualizaProd : TIdHTTP;
+  lJSONObject : TJSONObject;
+  JsonStr: TStringStream;
+  Response: string;
+begin
+  lJSONObject := TJSONObject.Create;
+  try
+    lJSONObject.AddPair( 'cell_id', TJSONNumber.Create( lListaInfoProdutos.Items[ cbxConfig.ItemIndex ].CellID ) );
+    lJSONObject.AddPair( 'item_id',TJSONNumber.Create( lListaInfoProdutos.Items[ cbxConfig.ItemIndex ].ID ) );
+    lJSONObject.AddPair( 'item_parcela',TJSONNumber.Create(lListaInfoProdutos.Items[ cbxConfig.ItemIndex ].Cell_Parcelas ) );
+    lJSONObject.AddPair( 'tp_preco', TJSONNumber.Create( lListaInfoProdutos.Items[ cbxConfig.ItemIndex ].TP_Preco_ID ) );
+    lJSONObject.AddPair( 'val_unit', TJSONNumber.Create( StrToFloat( cbxValUnit.Text ) ) );
+
+     // Converte para string stream com encoding UTF-8
+    JsonStr := TStringStream.Create(lJSONObject.ToJSON, TEncoding.UTF8);
+
+    try
+      lAtualizaProd := TIdHTTP.Create(nil);
+      try
+        lAtualizaProd.Request.ContentType := 'application/json';
+        Response := lAtualizaProd.Post('http://' + fIP_Atual + '/produtos/atualizapreco', JsonStr) ;
+      finally
+        lAtualizaProd.Free;
+      end;
+    finally
+      JsonStr.Free;
+    end;
+  finally
+    lJSONObject.Free;
+    ModalResult := mrOk;
+    ShowMessage( '' );
+    Close;
+  end;
+end;
+
 procedure TAtualizaProdutosFrm.cbxConfigChange(Sender: TObject);
 begin
   lblInfoArmazenamento.Text := lListaInfoProdutos.Items[ cbxConfig.ItemIndex ].ArmazenamentoDesc;
   lblInfoCondicao.Text := lListaInfoProdutos.Items[ cbxConfig.ItemIndex ].CondicaoDesc;
   lblInfoCor.Text := lListaInfoProdutos.Items[ cbxConfig.ItemIndex ].CorDesc;
   lblInfoTPPreco.Text := lListaInfoProdutos.Items[ cbxConfig.ItemIndex ].TP_Preco_Desc;
+  cbxValUnit.Text := lListaInfoProdutos.Items[ cbxConfig.ItemIndex ].Cell_Val_Unit.ToString;
 
   MostraLabels(True);
 end;
@@ -97,6 +146,8 @@ begin
   end;
 
   lblTituloProd.Text := lModelProduto.ProdDesc;
+
+  cbxValUnit.Value := 0;
 
   MostraLabels(False);
 end;

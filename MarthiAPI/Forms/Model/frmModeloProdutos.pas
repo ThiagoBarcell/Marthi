@@ -5,7 +5,7 @@ interface
 uses FireDAC.Comp.Client,
      Data.DB,
      System.SysUtils,
-     frmModeloConnection;
+     frmModeloConnection, untFuncoes;
 
 type
   TProdutos = class
@@ -22,9 +22,14 @@ type
       FPRODUTO_DAT_ALT: TDate;
       FPRODUTO_STATUS: Integer;
       FPRODUTO_REFERENCIA: string;
+    FPRODUTO_ITEM_ID: Integer;
+    FPRODUTO_TP_PRECO: Integer;
+    FPRODUTO_VAL_UNIT: Double;
     public
+
       constructor Create;
       destructor Destroy; override;
+
       property PRODUTO_ID: Integer read FPRODUTO_ID write FPRODUTO_ID;
       property PRODUTO_MARCA: Integer read FPRODUTO_MARCA write FPRODUTO_MARCA;
       property PRODUTO_DESC: string read FPRODUTO_DESC write FPRODUTO_DESC;
@@ -37,6 +42,12 @@ type
       property PRODUTO_DAT_ALT: TDate read FPRODUTO_DAT_ALT write FPRODUTO_DAT_ALT;
       property PRODUTO_STATUS: Integer read FPRODUTO_STATUS write FPRODUTO_STATUS;
       property PRODUTO_REFERENCIA: string read FPRODUTO_REFERENCIA write FPRODUTO_REFERENCIA;
+      property PRODUTO_ITEM_ID: Integer read FPRODUTO_ITEM_ID write FPRODUTO_ITEM_ID;
+      property PRODUTO_TP_PRECO: Integer read FPRODUTO_TP_PRECO write FPRODUTO_TP_PRECO;
+      property PRODUTO_VAL_UNIT: Double read FPRODUTO_VAL_UNIT write FPRODUTO_VAL_UNIT;
+
+      procedure AtualizarPrecoParcela(out pErro : boolean; pCellId, pItemID, pParcela, pTPPreco : Integer;
+  pValUnit : Double);
 
       function ListarProduto( out erro: string ) : TFDQuery;
       function ListarImagemProduto(out erro: string; IDProduto : Integer): TFDQuery;
@@ -47,6 +58,30 @@ type
 implementation
 
 { TProdutos }
+
+procedure TProdutos.AtualizarPrecoParcela(out pErro : boolean; pCellId, pItemID, pParcela, pTPPreco : Integer;
+  pValUnit : Double);
+var
+  lFuncoes : TFuncoesUteis;
+begin
+  try
+    //Atualiza os dados cadastrais do produto
+    lFuncoes.AtualizaPrecoItem(
+      frmModeloConnection.FConnection,
+      pCellId,
+      pItemID,
+      pValUnit,
+      lFuncoes.CalculaParcela( frmModeloConnection.FConnection, pParcela, pValUnit ));
+
+    //Cria as parcelas de preço do produto
+    lFuncoes.CriaParcelas( frmModeloConnection.FConnection, pCellId, pItemID, pTPPreco, pValUnit );
+    pErro := True;
+  except on ex:exception do
+    begin
+      pErro := False;// + ex.Message;
+    end;
+  end;
+end;
 
 constructor TProdutos.Create;
 begin

@@ -23,7 +23,6 @@ type
   TFuncoesUteis = class
   private
     function IIF(ACondition: Boolean; const ATrue, AFalse: Variant): Variant;
-
 public
   //Procedures
   procedure AbreQrysInfo( lQryArmazenamento, lQryCondicao, lQryCor, lQryTpPreco : TFDQuery );
@@ -34,6 +33,8 @@ public
   procedure PCDestroyQuery( oQuery : array of TFDQuery );
   Procedure PCUpdatePadrao( aTables, aFieldUpd, aFieldAnd : Array of string; aValueUpd, aValueAnd : Array of variant );
   Procedure PCUpdateOrInsertPadrao( aTables, aFieldIns : Array of string; aValueIns : Array of variant );
+  procedure AtualizaPrecoItem( lConexao: TFDConnection; pCellID, pItemID: Integer;
+  pValUnit, pValParc : double);
 
   //Functions
   function CriaQuery ( Conexao : TFDConnection ): TFDQuery;
@@ -380,6 +381,31 @@ begin
   finally
     Result := oqryNovoNum.FieldByName( 'ID_ATUAL' ).AsInteger;
     FreeAndNil(oqryNovoNum);
+  end;
+end;
+
+procedure TFuncoesUteis.AtualizaPrecoItem( lConexao: TFDConnection; pCellID, pItemID: Integer;
+  pValUnit, pValParc : double);
+var
+  oqryUdtItem : TFDQuery;
+begin
+  oqryUdtItem := CriaQuery( lConexao );
+  try
+    oqryUdtItem.Close;
+    oqryUdtItem.SQL.Clear;
+    oqryUdtItem.SQL.Add( ' UPDATE CELL_ITENS ' +
+      ' SET CELL_VAL_UNIT = :CELL_VAL_UNIT, ' +
+      ' CELL_VAL_PARC = :CELL_VAL_PARC ' +
+      ' WHERE( ITEM_ID = :ITEM_ID ) ' +
+      ' AND( CELL_ID = :CELL_ID )' );
+    oqryUdtItem.ParamByName( 'CELL_VAL_UNIT' ).AsFloat := pValUnit;
+    oqryUdtItem.ParamByName( 'CELL_VAL_PARC' ).AsFloat := pValParc;
+    oqryUdtItem.ParamByName( 'ITEM_ID' ).AsInteger := pItemID;
+    oqryUdtItem.ParamByName( 'CELL_ID' ).AsInteger := pCellID;
+
+    oqryUdtItem.ExecSQL;
+  finally
+    FreeAndNil(oqryUdtItem);
   end;
 end;
 

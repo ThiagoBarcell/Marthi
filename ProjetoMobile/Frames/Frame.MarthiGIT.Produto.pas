@@ -73,6 +73,7 @@ begin
   ConfiguraClasseProd( StrToInt( lblID_CELL.Text ) );
   fFrmAttprod := TAtualizaProdutosFrm.Create(lListaInfoItens);
   CarregarImagens( fFrmAttprod, StrToInt( lblID_CELL.Text ) );
+  fFrmAttprod.fIP_Atual := IpAPI;
   fFrmAttprod.Show;
 end;
 
@@ -81,11 +82,15 @@ var
   lConsultaItem : TIdHTTP;
   lResponseItem : TStringList;
 begin
-
-  lResponseItem := TStringList.Create;
-  lConsultaItem := TIdHTTP.Create( nil );
-  lResponseItem.Text := lConsultaItem.Get( 'http://' + IpAPI + '/produtos/itens/' + IntToStr( IDCell ) );
-  PreencherItemCDS( lResponseItem.Text )
+  try
+    lResponseItem := TStringList.Create;
+    lConsultaItem := TIdHTTP.Create( nil );
+    lResponseItem.Text := lConsultaItem.Get( 'http://' + IpAPI + '/produtos/itens/' + IntToStr( IDCell ) );
+    PreencherItemCDS( lResponseItem.Text )
+  finally
+    lResponseItem.free;
+    lConsultaItem.free;
+  end;
 end;
 
 procedure TProdutoFrame.PreencherItemCDS( const JSONStr: string);
@@ -200,10 +205,6 @@ begin
       //Frame.HorzScrollBoxImagens.Content.Width := TotalWidth;
       //Frame.lblTOT_WIDTH.Text := FloatToStr(TotalWidth);
       finally
-        try
-          BlobField.Free;
-        except
-        end;
       //  ImageQuery.Free;
       end;
     finally
