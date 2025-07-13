@@ -25,9 +25,12 @@
     <Transaction>2025/02/24 13:22:21.000.443,D:\Marthi GIT\ProjetoMobile\Forms\frmAtualizaProdutos.fmx=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.fmx</Transaction>
     <Transaction>2025/04/02 21:52:40.000.933,=C:\MarthiGIT\ProjetoMobile\Projeto\Unit1.pas</Transaction>
     <Transaction>2025/04/02 21:54:11.000.604,C:\MarthiGIT\ProjetoMobile\Classes\untModeloItemProduto.pas=C:\MarthiGIT\ProjetoMobile\Projeto\Unit1.pas</Transaction>
+    <Transaction>2025/07/13 16:50:07.119,=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.pas</Transaction>
+    <Transaction>2025/07/13 16:51:10.713,D:\Marthi GIT\ProjetoMobile\Forms\DataModule\GeraisDMFrm.pas=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.pas</Transaction>
+    <Transaction>2025/07/13 16:51:10.713,D:\Marthi GIT\ProjetoMobile\Forms\DataModule\GeraisDMFrm.dfm=D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.dfm</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<NoProfile iOSSimulator="iPhone5" Android="TESTE_MARTHI" Android64=""/>
+		<NoProfile iOSSimulator="iPhone5" Android="R9XRA03KQKF" Android64=""/>
 	</ActiveMobileDevice>
 	<BT_BuildType>Debug</BT_BuildType>
 </BorlandProject>

@@ -38,6 +38,12 @@ uses
   FMX.Edit,
   FMX.TabControl,
   System.Classes,
+  System.IOUtils,
+  System.IniFiles,
+  Androidapi.Helpers,
+  Androidapi.JNI.JavaTypes,
+  Androidapi.JNI.GraphicsContentViewText,
+  FMX.Helpers.Android,
   untFuncoesMobile,
   FMX.Objects,
   System.ImageList,
@@ -58,7 +64,9 @@ uses
   Soap.EncdDecd,
   System.NetEncoding,
   FMX.DialogService,
-  System.Threading;
+  System.Types,
+  System.Threading,
+  GeraisDMFrm;
 
 type
   TProdutosFrm = class(TForm)
@@ -66,7 +74,6 @@ type
     Brush: TBrushObject;
     btnConfiguracoes: TButton;
     lblTitulo: TLabel;
-    imgGerais: TImageList;
     Image1: TImage;
     rctPrincipal: TRectangle;
     lytPrincipal: TLayout;
@@ -77,13 +84,12 @@ type
     cdsItemProduto: TClientDataSet;
     dtsItemProduto: TDataSource;
     dtsImagemProduto: TDataSource;
-    TabControl1: TTabControl;
+    tabProdutos: TTabControl;
     tabListaProdutos: TTabItem;
     tabConfiguracoes: TTabItem;
     edtIPServidor: TEdit;
     btnAttIP: TButton;
     lblLoading: TLabel;
-    procedure btnConnectarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Rectangle8Click(Sender: TObject);
     procedure btnConfiguracoesClick(Sender: TObject);
@@ -103,6 +109,9 @@ type
     //Functions
     function ExtrairDadosJSonProduto( Json: string; cdsProduto : TClientDataSet ): string;
     procedure ConfiguraCDSImagens;
+    procedure SalvarIP(const AIP: string);
+    function LerIP: string;
+    function GetAndroidFilesDir: string;
   public
     lFuncoes : TFuncoesMobile;
     { Public declarations }
@@ -137,21 +146,50 @@ end;
 procedure TProdutosFrm.btnAttIPClick(Sender: TObject);
 begin
   lFuncoes.lIPServer := edtIPServidor.Text;
+  SalvarIP( edtIPServidor.Text );
+end;
+
+procedure TProdutosFrm.SalvarIP(const AIP: string);
+var
+  Ini: TIniFile;
+  CaminhoArquivo: string;
+begin
+  CaminhoArquivo := GetAndroidFilesDir + PathDelim + 'config.ini';
+  Ini := TIniFile.Create(CaminhoArquivo);
+  try
+    Ini.WriteString('INFORMACOES', 'IP', AIP);
+  finally
+    Ini.Free;
+  end;
+end;
+
+function TProdutosFrm.GetAndroidFilesDir: string;
+begin
+  Result := JStringToString(TAndroidHelper.Context.getFilesDir.getAbsolutePath);
+end;
+
+function TProdutosFrm.LerIP: string;
+var
+  Ini: TIniFile;
+  CaminhoArquivo: string;
+begin
+  CaminhoArquivo := GetAndroidFilesDir + PathDelim + 'config.ini';
+  if TFile.Exists(CaminhoArquivo) then
+  begin
+    Ini := TIniFile.Create(CaminhoArquivo);
+    try
+      Result := Ini.ReadString('INFORMACOES', 'IP', '');
+    finally
+      Ini.Free;
+    end;
+  end
+  else
+    Result := '';
 end;
 
 procedure TProdutosFrm.btnConfiguracoesClick(Sender: TObject);
 begin
-//  TTask.Run(
-//    CarregaDados
-//  );
-
   CarregaDados;
-end;
-
-procedure TProdutosFrm.btnConnectarClick(Sender: TObject);
-begin
-  //if not ( lFuncoes.ConectarBD( cntMarthi, edtServerDB.Text, edtPathDB.Text ) ) then
-  //  ShowMessage( 'Não foi possível conectar no banco de dados' );
 end;
 
 procedure TProdutosFrm.ConfiguraCDSImagens;
@@ -208,9 +246,6 @@ begin
     Frame.Parent := vsbPrincipal;
     Frame.Align := TAlignLayout.MostTop;
     Frame.IpAPI := lFuncoes.lIPServer;
-    //Frame.Width := 210;
-    //Frame.Height := 230;
-    //Frame.tbcTotem.ActiveTab := Frame.TabTotemPrincipal;
 
     Frame.Margins.Top := 5;
     Frame.Margins.Bottom := 5;
@@ -218,77 +253,6 @@ begin
     Frame.lblNomeItem.Text := cdsProdutos.FieldByName('cellDesc').AsString;
     Frame.lblID_CELL.Text := cdsProdutos.FieldByName('cellId').AsString;
     Frame.lblReferencia.Text := cdsProdutos.FieldByName('cellReferencia').AsString;
-
-    //Por questoes de performace não vou carregar as imagens aqui
-      //CarregarImagens( Frame, cdsProdutos.FieldByName( 'cellId' ).AsInteger );
-
-    //CellID := cdsProdutos.FieldByName('cellId').AsInteger;
-    //CarregarImagensHorizontais(Frame, CellID);
-    // Preenche Combobox de cor
-    //CarregaComboBox(Frame, CellID, 'cbbCor', 'COR_ID', 'COR_DESC', qryCores);
-    // Preenche Combobox de Capacidade
-    //CarregaComboBox(Frame, CellID, 'cbbCapacidade', 'ARMAZENAMENTO_ID', 'ARMAZENAMENTO_DESC', qryCapacidades);
-    // Preenche Combobox de Retirada
-    //CarregaComboBox(Frame, CellID, 'cbbRetirada', 'TP_PRECO_ID', 'TP_PRECO_DESC', qryRetirada);
-
-    //Frame.CELL_MARCA.Text := dtsCadCell.DataSet.FieldByName('CELL_MARCA').AsString;
-    //Frame.CELL_ID.Text := dtsCadCell.DataSet.FieldByName('CELL_ID').AsString;
-
-    // Obtém o ID dos itens selecionados
-//    if Frame.cbbCor.ItemIndex >= 0 then
-//      CorID := Integer(Frame.cbbCor.Items.Objects[Frame.cbbCor.ItemIndex])
-//    else
-//      Exit;
-
-//    if Frame.cbbCapacidade.ItemIndex >= 0 then
-//      CapacidadeID := Integer(Frame.cbbCapacidade.Items.Objects[Frame.cbbCapacidade.ItemIndex])
-//    else
-//      Exit;
-
-//    if Frame.cbbRetirada.ItemIndex >= 0 then
-//      RetiradaID := Integer(Frame.cbbRetirada.Items.Objects[Frame.cbbRetirada.ItemIndex])
-//    else
-//      Exit;
-
-//    try
-//      qryDadosCor.ParamByName('COR_ID').AsInteger := CorID;
-//      qryDadosCor.ParamByName('CELL_ID').AsInteger := qryCadCellCELL_ID.AsInteger;
-//      qryDadosCor.Open;
-//
-//      // Preenche o ComboBox de Parcelas
-//      PreencherParcelas(Frame.cbbParcelas,
-//                        qryCadCellCELL_ID.AsInteger,
-//                        qryDadosCor.FieldByName('ITEM_ID').AsInteger,
-//                        RetiradaID,
-//                        qryDadosCor.FieldByName('CELL_VAL_UNIT').AsFloat);
-//
-//      // Atualiza os labels e o ComboBox de capacidade
-//      if not qryDadosCor.IsEmpty then
-//      begin
-//        Frame.lblValorAVista.Text := Format('R$ %.2f', [qryDadosCor.FieldByName('CELL_VAL_UNIT').AsFloat]);
-//        Frame.lblValorAPrazo.Text := qryDadosCor.FieldByName('CELL_PARCELAS').AsString + ' X ' + Format('R$ %.2f', [qryDadosCor.FieldByName('CELL_VAL_PARC').AsFloat]);
-//      end
-//      else
-//      begin
-//        Frame.lblValorAVista.Text := 'R$ 0,00';
-//        Frame.lblValorAPrazo.Text := 'R$ 0,00';
-//      end;
-//    finally
-//      qryDadosCor.Close;
-//    end;
-
-    // Atribuir os eventos OnChange
-//    Frame.cbbCor.OnChange := CorChange;
-//    Frame.cbbCapacidade.OnChange := CapacidadeChange;
-//    Frame.cbbRetirada.OnChange := RetiradaChange;
-//    Frame.cbbParcelas.OnChange := ParcelasChange;
-
-    // Atribuir o evento OnClick
-//    Frame.btnEnviaWhatsapp.OnClick := EnviaWhatsapp;
-
-    // Atribuir o evento OnEnter
-//    Frame.edtNomeCli.OnClick := OnClickNomeCli;
-//    Frame.edtTelCli.OnClick := OnClickTelCli;
     Application.ProcessMessages;
     cdsProdutos.Next;
   end;
@@ -325,84 +289,6 @@ begin
     ImageStream.Free;
   end;
 end;
-
-//procedure TProdutosFrm.CarregarImagens(Frame: TProdutoFrame; IDCell: Integer);
-//var
-//  ImageStream: TMemoryStream;
-//  BlobField: TBlobField;
-//  CloneRect: TRectangle;
-//  CurrentLeft: Single;
-//  TotalWidth: Single;
-//  lConsultaImg : TIdHTTP;
-//  lResponseImg : TStringList;
-//begin
-//  //TDialogService.ShowMessage( '1' );
-//  // Verifica se o HorzScrollBoxImagens está inicializado
-//  if not Assigned(Frame.rtgImageProd) then
-//  begin
-//    raise Exception.Create('HorzScrollBoxImagens não está inicializado.');
-//  end;
-//  lResponseImg := TStringList.Create;
-//  lConsultaImg := TIdHTTP.Create( nil );
-//  lResponseImg.Text := lConsultaImg.Get( 'http://' + lFuncoes.lIPServer + '/produtos/imagens/' + IntToStr( IDCell ) );
-//
-//  ConfiguraCDSImagens;
-//  ExtrairDadosImagemProduto( lResponseImg.Text, cdsImagemProduto );
-//
-//  Frame.rtgImageProd.BeginUpdate;
-//  try
-//    CurrentLeft := 0;
-//    TotalWidth := 0;
-//
-//    try
-////      Frame.rtgImageProd.Margins.Top := 5;
-////      Frame.rtgImageProd.Margins.Left := 30;
-////      Frame.rtgImageProd.Margins.Right := 30;
-////      Frame.rtgImageProd.Margins.Bottom := 5;
-////      Frame.rtgImageProd.Position.X := CurrentLeft;
-////      Frame.rtgImageProd.Position.Y := 0;
-//      Frame.rtgImageProd.Stroke.Assign(Frame.rtgImageProd.Stroke);
-//      Frame.rtgImageProd.Fill.Kind := TBrushKind.Bitmap;
-//      Frame.rtgImageProd.Fill.Bitmap.WrapMode := TWrapMode.TileStretch;
-//      Frame.rtgImageProd.SetBounds(Frame.rtgImageProd.Position.X, Frame.rtgImageProd.Position.Y, Frame.rtgImageProd.Width, Frame.rtgImageProd.Height);
-//      Frame.rtgImageProd.XRadius := 10;
-//      Frame.rtgImageProd.YRadius := 10;
-//
-//      BlobField := cdsImagemProduto.FieldByName('IMAGE') as TBlobField;
-//      if not BlobField.IsNull then
-//      begin
-//        ImageStream := TMemoryStream.Create;
-//        try
-//          //BlobField.SaveToStream(ImageStream);
-//          if Frame.rtgImageProd.Fill.Bitmap.Bitmap = nil then
-//            Frame.rtgImageProd.Fill.Bitmap.Bitmap := TBitmap.Create;
-//
-//          CarregarImagemFromBlob(BlobField,Frame.rtgImageProd.Fill.Bitmap.Bitmap);
-//
-//          ImageStream.Position := 0;
-//        finally
-//          ImageStream.Free;
-//        end;
-//      end
-//      else
-//      begin
-//        Frame.rtgImageProd.Fill.Kind := TBrushKind.Solid;
-//        //Frame.rtgImageProd.Fill.Color := TAlphaColors.Gray;
-//      end;
-//
-//      CurrentLeft := CurrentLeft + Frame.rtgImageProd.Width + 10;
-//      TotalWidth := CurrentLeft;
-//
-//    //Frame.HorzScrollBoxImagens.Content.Width := TotalWidth;
-//    //Frame.lblTOT_WIDTH.Text := FloatToStr(TotalWidth);
-//    finally
-//      BlobField.Free;
-//    //  ImageQuery.Free;
-//    end;
-//  finally
-//    Frame.rtgImageProd.EndUpdate;
-//  end;
-//end;
 
 function TProdutosFrm.ExtrairDadosJSonProduto( Json: string; cdsProduto : TClientDataSet ): string;
 var
@@ -467,6 +353,7 @@ begin
       cdsProduto.Post;
     end;
   finally
+    JSONObject.Free;
     JSONArray.Free;
   end;
 end;
@@ -506,8 +393,14 @@ begin
 end;
 
 procedure TProdutosFrm.FormCreate(Sender: TObject);
+var
+  lIpAtual : string;
 begin
   lFuncoes := TFuncoesMobile.Create;
+  lIpAtual := LerIP;
+  edtIPServidor.Text := lIpAtual;
+  lFuncoes.lIPServer := lIpAtual;
+  tabProdutos.TabIndex := 0;
 end;
 
 procedure TProdutosFrm.LoadImageFromBase64(const JSONResponse: string;

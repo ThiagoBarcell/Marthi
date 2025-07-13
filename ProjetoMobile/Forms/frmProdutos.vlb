@@ -3,7 +3,7 @@ Coordinates=219,10,54,36
 Visible=True
 
 []
-Coordinates=134,154,94,124
+Coordinates=441,166,73,36
 Visible=True
 
 [lblTitulo]
@@ -14,9 +14,6 @@ Coordinates=339,78,53,36
 
 [Brush]
 Coordinates=339,188,48,36
-
-[imgGerais]
-Coordinates=441,166,73,36
 
 [Image1]
 Coordinates=241,1,57,58

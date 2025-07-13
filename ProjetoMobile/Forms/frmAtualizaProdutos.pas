@@ -110,7 +110,6 @@ begin
   finally
     lJSONObject.Free;
     ModalResult := mrOk;
-    ShowMessage( '' );
     Close;
   end;
 end;
