@@ -84,23 +84,23 @@ begin
   if not Assigned(TecladoVirtualfrm) then
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
 
-  // Obtém o display (monitor) com base no retângulo do formulário
-  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
-
-  // Calcula a posição do teclado relativo ao display
-  KeyboardLeft := Round(TEdit(Sender).AbsoluteRect.Left) + 300;
-  KeyboardTop :=  Round(TEdit(Sender).AbsoluteRect.Bottom) + 300;
-
-  // Garante que o teclado virtual fique dentro da área do display
-  if KeyboardLeft + TecladoVirtualfrm.Width > Display.WorkArea.Width then
-    KeyboardLeft := Display.WorkArea.Width - TecladoVirtualfrm.Width;
-
-  if KeyboardTop + TecladoVirtualfrm.Height > Display.WorkArea.Height then
-    KeyboardTop := Display.WorkArea.Height - TecladoVirtualfrm.Height;
-
-  // Ajusta a posição do teclado virtual
-  TecladoVirtualfrm.Left := Round(KeyboardLeft);
-  TecladoVirtualfrm.Top := Round(KeyboardTop);
+//  // Obtém o display (monitor) com base no retângulo do formulário
+//  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
+//
+//  // Calcula a posição do teclado relativo ao display
+//  KeyboardLeft := Round(TEdit(Sender).AbsoluteRect.Left) + 300;
+//  KeyboardTop :=  Round(TEdit(Sender).AbsoluteRect.Bottom) + 300;
+//
+//  // Garante que o teclado virtual fique dentro da área do display
+//  if KeyboardLeft + TecladoVirtualfrm.Width > Display.WorkArea.Width then
+//    KeyboardLeft := Display.WorkArea.Width - TecladoVirtualfrm.Width;
+//
+//  if KeyboardTop + TecladoVirtualfrm.Height > Display.WorkArea.Height then
+//    KeyboardTop := Display.WorkArea.Height - TecladoVirtualfrm.Height;
+//
+//  // Ajusta a posição do teclado virtual
+//  TecladoVirtualfrm.Left := Round(KeyboardLeft);
+//  TecladoVirtualfrm.Top := Round(KeyboardTop);
 
   // Associa explicitamente o TEdit ao teclado virtual
   TecladoVirtualfrm.SetTargetEdit(edtSenha);
