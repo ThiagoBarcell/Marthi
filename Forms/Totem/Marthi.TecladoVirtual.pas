@@ -194,7 +194,9 @@ end;
 procedure TTecladoVirtualfrm.FormShow(Sender: TObject);
 begin
   edtEditar.SetFocus;
-  SetTargetEdit(edtEditar);
+  // Somente define o edit local se nenhum outro foi passado
+//  if not Assigned(FTargetEdit) then
+//    SetTargetEdit(edtEditar);
 end;
 
 procedure TTecladoVirtualfrm.KeyClick(Sender: TObject);
@@ -222,7 +224,11 @@ begin
           // Processa teclas especiais
           if KeyAction = 'Enter' then
           begin
-            close;
+            if Assigned(FTargetEdit) then
+            begin
+              FTargetEdit.Text := edtEditar.Text;
+              Close;
+            end;
           end
           else if KeyAction = 'Space' then
           begin

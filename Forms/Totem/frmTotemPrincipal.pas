@@ -1421,7 +1421,13 @@ begin
     TecladoVirtualfrm.Close;
 
   if not Assigned(TecladoVirtualfrm) then
+  begin
     TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+    TecladoVirtualfrm.SetTargetEdit(edtPesquisa);
+  end;
+
+  // Exibe o teclado
+  TecladoVirtualfrm.Show;
 
 //  // Obtém o display (monitor) com base no retângulo do formulário
 //  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
@@ -1622,7 +1628,7 @@ begin
   btnIphone.Fill.Color := $FFE8E8E8; // Cor inicial
   btnXiaomi.Fill.Color := TAlphaColors.White; // Cor inicial
 
-  TbcPrincipalToten.ActiveTab := TabAbertura;
+  TbcPrincipalToten.ActiveTab := TabTotem;
 
 end;
 
