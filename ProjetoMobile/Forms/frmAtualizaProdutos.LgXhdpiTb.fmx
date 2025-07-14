@@ -30,16 +30,32 @@ inherited AtualizaProdutosFrm_LgXhdpiTb: TAtualizaProdutosFrm_LgXhdpiTb
     inherited rtgConfigInfo: TRectangle
       Size.Width = 480.000000000000000000
       inherited Label1: TLabel
+        Position.Y = 71.000000000000000000
         TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+      inherited lblInfoArmazenamento: TLabel
+        Position.Y = 109.000000000000000000
       end
       inherited Label3: TLabel
+        Position.Y = 146.000000000000000000
         TextSettings.Font.StyleExt = {00070000000000000004000000}
       end
+      inherited lblInfoCondicao: TLabel
+        Position.Y = 184.000000000000000000
+      end
+      inherited lblInfoCor: TLabel
+        Position.Y = 109.000000000000000000
+      end
       inherited Label6: TLabel
+        Position.Y = 146.000000000000000000
         TextSettings.Font.StyleExt = {00070000000000000004000000}
       end
       inherited Label7: TLabel
+        Position.Y = 71.000000000000000000
         TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+      inherited lblInfoTPPreco: TLabel
+        Position.Y = 184.000000000000000000
       end
       inherited Label2: TLabel
         TextSettings.Font.StyleExt = {00070000000000000004000000}

@@ -20,7 +20,14 @@ uses
   Datasnap.DBClient,
   untModeloItemProduto,
   System.Generics.Collections,
-  FMX.ListBox, FMX.Edit, FMX.EditBox, FMX.NumberBox, IdHTTP, System.JSON;
+  FMX.ListBox,
+  FMX.Edit,
+  FMX.EditBox,
+  FMX.NumberBox,
+  IdHTTP,
+  System.JSON,
+  System.Messaging,
+  FMX.DialogService;
 
 type
   TAtualizaProdutosFrm = class(TForm)
@@ -53,6 +60,8 @@ type
 
     lListaInfoProdutos : TObjectList<TModeloProduto>;
     procedure MostraLabels(Mostra: boolean);
+    procedure EnviarAtualizacaoPreco;
+    procedure SalvarInfo;
 
     { Private declarations }
   public
@@ -70,6 +79,8 @@ implementation
 {$R *.fmx}
 {$R *.LgXhdpiTb.fmx ANDROID}
 {$R *.Windows.fmx MSWINDOWS}
+{$R *.XLgXhdpiTb.fmx ANDROID}
+{$R *.LgXhdpiPh.fmx ANDROID}
 
 { TAtualizaProdutosFrm }
 
@@ -79,6 +90,11 @@ begin
 end;
 
 procedure TAtualizaProdutosFrm.btnSalvarClick(Sender: TObject);
+begin
+  EnviarAtualizacaoPreco;
+end;
+
+procedure TAtualizaProdutosFrm.SalvarInfo;
 var
   lAtualizaProd : TIdHTTP;
   lJSONObject : TJSONObject;
@@ -110,9 +126,11 @@ begin
   finally
     lJSONObject.Free;
     ModalResult := mrOk;
+    TDialogService.ShowMessage( 'Produto atualizado com sucesso!' );
     Close;
   end;
 end;
+
 
 procedure TAtualizaProdutosFrm.cbxConfigChange(Sender: TObject);
 begin
@@ -123,6 +141,24 @@ begin
   cbxValUnit.Text := lListaInfoProdutos.Items[ cbxConfig.ItemIndex ].Cell_Val_Unit.ToString;
 
   MostraLabels(True);
+end;
+
+procedure TAtualizaProdutosFrm.EnviarAtualizacaoPreco;
+begin
+  TDialogService.MessageDialog(
+    'Deseja realmente atualizar o preço do produto?',
+    TMsgDlgType.mtConfirmation,
+    [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],
+    TMsgDlgBtn.mbNo,        // Botão padrão
+    procedure(const AResult: TModalResult)
+    begin
+      if AResult = mrYes then
+      begin
+        // Executa seu código de envio
+        SalvarInfo;
+      end;
+    end
+  );
 end;
 
 constructor TAtualizaProdutosFrm.create(

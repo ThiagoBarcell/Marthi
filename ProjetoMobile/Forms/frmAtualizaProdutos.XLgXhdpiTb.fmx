@@ -1,0 +1,44 @@
+inherited AtualizaProdutosFrm_XLgXhdpiTb: TAtualizaProdutosFrm_XLgXhdpiTb
+  ClientHeight = 1255
+  ClientWidth = 800
+  DesignerMasterStyle = 3
+  inherited rtgPrincipal: TRectangle
+    Size.Width = 800.000000000000000000
+    Size.Height = 1255.000000000000000000
+    inherited rtgButtons: TRectangle
+      Position.Y = 1210.000000000000000000
+      Size.Width = 800.000000000000000000
+      inherited btnSalvar: TSpeedButton
+        Position.X = 727.000000000000000000
+      end
+    end
+    inherited Rectangle2: TRectangle
+      Size.Width = 800.000000000000000000
+      inherited lblTituloProd: TLabel
+        Size.Width = 800.000000000000000000
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+    end
+    inherited rtgConfiguracoes: TRectangle
+      Size.Width = 800.000000000000000000
+    end
+    inherited rtgConfigInfo: TRectangle
+      Size.Width = 800.000000000000000000
+      inherited Label1: TLabel
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+      inherited Label3: TLabel
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+      inherited Label6: TLabel
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+      inherited Label7: TLabel
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+      inherited Label2: TLabel
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+      end
+    end
+  end
+end

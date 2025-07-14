@@ -8,12 +8,12 @@ inherited AtualizaProdutosFrm_Windows: TAtualizaProdutosFrm_Windows
       Margins.Bottom = 5.000000000000000000
       Position.X = 5.000000000000000000
       Position.Y = 531.000000000000000000
-      Size.Width = 390.000000000000000000
+      Size.Width = 388.000000000000000000
       inherited btnFechar: TSpeedButton
         Size.Height = 45.000000000000000000
       end
       inherited btnSalvar: TSpeedButton
-        Position.X = 317.000000000000000000
+        Position.X = 315.000000000000000000
         Size.Height = 45.000000000000000000
       end
     end

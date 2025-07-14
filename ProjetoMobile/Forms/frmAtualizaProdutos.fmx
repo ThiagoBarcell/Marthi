@@ -3,7 +3,7 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
   Top = 0
   Caption = 'Form1'
   ClientHeight = 581
-  ClientWidth = 400
+  ClientWidth = 398
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -12,7 +12,7 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
   object rtgPrincipal: TRectangle
     Align = Client
     Fill.Color = xF5F5F5F5
-    Size.Width = 400.000000000000000000
+    Size.Width = 398.000000000000000000
     Size.Height = 581.000000000000000000
     Size.PlatformDefault = False
     Stroke.Color = xFFFAF5F5
@@ -20,12 +20,13 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
       Align = Bottom
       Fill.Color = xFFECE9E9
       Position.Y = 536.000000000000000000
-      Size.Width = 400.000000000000000000
+      Size.Width = 398.000000000000000000
       Size.Height = 45.000000000000000000
       Size.PlatformDefault = False
       Stroke.Color = xFFE2E1E1
       object btnFechar: TSpeedButton
         Align = Left
+        CanFocus = True
         Size.Width = 73.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
@@ -34,7 +35,8 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
       end
       object btnSalvar: TSpeedButton
         Align = Right
-        Position.X = 327.000000000000000000
+        CanFocus = True
+        Position.X = 325.000000000000000000
         Size.Width = 73.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
@@ -45,7 +47,7 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
     object Rectangle2: TRectangle
       Align = Top
       Fill.Kind = None
-      Size.Width = 400.000000000000000000
+      Size.Width = 398.000000000000000000
       Size.Height = 281.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None
@@ -58,7 +60,7 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
       object lblTituloProd: TLabel
         Align = Top
         StyledSettings = [Family, FontColor]
-        Size.Width = 400.000000000000000000
+        Size.Width = 398.000000000000000000
         Size.Height = 33.000000000000000000
         Size.PlatformDefault = False
         TextSettings.Font.Size = 20.000000000000000000
@@ -71,13 +73,13 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
     object rtgConfiguracoes: TRectangle
       Align = Top
       Position.Y = 281.000000000000000000
-      Size.Width = 400.000000000000000000
+      Size.Width = 398.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
       object cbxConfig: TComboBox
         Position.X = 152.000000000000000000
         Position.Y = 9.000000000000000000
-        Size.Width = 233.000000000000000000
+        Size.Width = 193.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
@@ -97,14 +99,14 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
       Align = Top
       Fill.Kind = None
       Position.Y = 331.000000000000000000
-      Size.Width = 400.000000000000000000
-      Size.Height = 193.000000000000000000
+      Size.Width = 398.000000000000000000
+      Size.Height = 206.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None
       object Label1: TLabel
         StyledSettings = [Family, Size, FontColor]
         Position.X = 16.000000000000000000
-        Position.Y = 18.000000000000000000
+        Position.Y = 47.000000000000000000
         Size.Width = 170.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
@@ -114,7 +116,7 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
       end
       object lblInfoArmazenamento: TLabel
         Position.X = 16.000000000000000000
-        Position.Y = 51.000000000000000000
+        Position.Y = 85.000000000000000000
         Size.Width = 170.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
@@ -124,7 +126,7 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
       object Label3: TLabel
         StyledSettings = [Family, Size, FontColor]
         Position.X = 233.000000000000000000
-        Position.Y = 99.000000000000000000
+        Position.Y = 122.000000000000000000
         Size.Width = 156.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
@@ -134,7 +136,7 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
       end
       object lblInfoCondicao: TLabel
         Position.X = 16.000000000000000000
-        Position.Y = 131.000000000000000000
+        Position.Y = 160.000000000000000000
         Size.Width = 170.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
@@ -143,7 +145,7 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
       end
       object lblInfoCor: TLabel
         Position.X = 233.000000000000000000
-        Position.Y = 51.000000000000000000
+        Position.Y = 85.000000000000000000
         Size.Width = 156.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
@@ -153,7 +155,7 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
       object Label6: TLabel
         StyledSettings = [Family, Size, FontColor]
         Position.X = 16.000000000000000000
-        Position.Y = 99.000000000000000000
+        Position.Y = 122.000000000000000000
         Size.Width = 170.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
@@ -164,7 +166,7 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
       object Label7: TLabel
         StyledSettings = [Family, Size, FontColor]
         Position.X = 233.000000000000000000
-        Position.Y = 19.000000000000000000
+        Position.Y = 47.000000000000000000
         Size.Width = 156.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
@@ -174,7 +176,7 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
       end
       object lblInfoTPPreco: TLabel
         Position.X = 233.000000000000000000
-        Position.Y = 132.000000000000000000
+        Position.Y = 160.000000000000000000
         Size.Width = 156.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
@@ -184,7 +186,7 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
       object Label2: TLabel
         StyledSettings = [Family, Size, FontColor]
         Position.X = 16.000000000000000000
-        Position.Y = 170.000000000000000000
+        Position.Y = 10.000000000000000000
         Size.Width = 129.000000000000000000
         Size.Height = 23.000000000000000000
         Size.PlatformDefault = False
@@ -196,10 +198,12 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 9
         Cursor = crIBeam
-        Max = 9.999999980506448E18
+        Max = 9.999999980506447E18
         ValueType = Float
+        KeyboardType = NumbersAndPunctuation
         Position.X = 152.000000000000000000
-        Position.Y = 165.000000000000000000
+        Position.Y = 3.000000000000000000
+        Locked = True
         Size.Width = 233.000000000000000000
         Size.Height = 32.000000000000000000
         Size.PlatformDefault = False
