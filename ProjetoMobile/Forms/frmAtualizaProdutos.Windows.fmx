@@ -13,7 +13,7 @@ inherited AtualizaProdutosFrm_Windows: TAtualizaProdutosFrm_Windows
         Size.Height = 45.000000000000000000
       end
       inherited btnSalvar: TSpeedButton
-        Position.X = 315.000000000000000000
+        Position.X = 278.000000000000000000
         Size.Height = 45.000000000000000000
       end
     end

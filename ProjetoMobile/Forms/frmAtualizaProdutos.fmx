@@ -28,10 +28,11 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
         Align = Left
         CanFocus = True
         Images = frmGeraisDM.imgGerais
-        ImageIndex = 1
-        Size.Width = 113.000000000000000000
+        ImageIndex = 4
+        Size.Width = 97.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
+        StyleLookup = 'btnFecharStyle1'
         Text = 'Fechar'
         OnClick = btnFecharClick
       end
@@ -39,8 +40,9 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
         Align = Right
         CanFocus = True
         Images = frmGeraisDM.imgGerais
-        Position.X = 325.000000000000000000
-        Size.Width = 73.000000000000000000
+        ImageIndex = 3
+        Position.X = 288.000000000000000000
+        Size.Width = 110.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         Text = 'Salvar'

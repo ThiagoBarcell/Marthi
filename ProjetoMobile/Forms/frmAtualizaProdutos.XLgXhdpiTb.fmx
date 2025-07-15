@@ -9,7 +9,7 @@ inherited AtualizaProdutosFrm_XLgXhdpiTb: TAtualizaProdutosFrm_XLgXhdpiTb
       Position.Y = 1210.000000000000000000
       Size.Width = 800.000000000000000000
       inherited btnSalvar: TSpeedButton
-        Position.X = 727.000000000000000000
+        Position.X = 690.000000000000000000
       end
     end
     inherited Rectangle2: TRectangle
