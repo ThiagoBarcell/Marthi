@@ -40,10 +40,12 @@ uses
   System.Classes,
   System.IOUtils,
   System.IniFiles,
+  {$IFDEF ANDROID}
   Androidapi.Helpers,
   Androidapi.JNI.JavaTypes,
   Androidapi.JNI.GraphicsContentViewText,
   FMX.Helpers.Android,
+  {$ENDIF}
   untFuncoesMobile,
   FMX.Objects,
   System.ImageList,
@@ -165,7 +167,9 @@ end;
 
 function TProdutosFrm.GetAndroidFilesDir: string;
 begin
+  {$IFDEF ANDROID}
   Result := JStringToString(TAndroidHelper.Context.getFilesDir.getAbsolutePath);
+  {$ENDIF};
 end;
 
 function TProdutosFrm.LerIP: string;

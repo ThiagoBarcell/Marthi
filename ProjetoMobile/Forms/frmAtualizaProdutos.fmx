@@ -27,7 +27,9 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
       object btnFechar: TSpeedButton
         Align = Left
         CanFocus = True
-        Size.Width = 73.000000000000000000
+        Images = frmGeraisDM.imgGerais
+        ImageIndex = 1
+        Size.Width = 113.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         Text = 'Fechar'
@@ -36,6 +38,7 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
       object btnSalvar: TSpeedButton
         Align = Right
         CanFocus = True
+        Images = frmGeraisDM.imgGerais
         Position.X = 325.000000000000000000
         Size.Width = 73.000000000000000000
         Size.Height = 48.000000000000000000
@@ -198,7 +201,7 @@ object AtualizaProdutosFrm: TAtualizaProdutosFrm
         Touch.InteractiveGestures = [LongTap, DoubleTap]
         TabOrder = 9
         Cursor = crIBeam
-        Max = 9.999999980506447E18
+        Max = 9.999999980506448E18
         ValueType = Float
         KeyboardType = NumbersAndPunctuation
         Position.X = 152.000000000000000000

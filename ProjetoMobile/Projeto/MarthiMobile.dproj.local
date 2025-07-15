@@ -30,7 +30,7 @@
     <Transaction>2025/07/13 16:51:10.000.713,D:\Marthi GIT\ProjetoMobile\Projeto\Unit1.dfm=D:\Marthi GIT\ProjetoMobile\Forms\DataModule\GeraisDMFrm.dfm</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<NoProfile iOSSimulator="iPhone5" Android="" Android64=""/>
+		<NoProfile iOSSimulator="iPhone5" Android="R9XRA03KQKF" Android64=""/>
 	</ActiveMobileDevice>
 	<BT_BuildType>Debug</BT_BuildType>
 </BorlandProject>

@@ -27,7 +27,8 @@ uses
   IdHTTP,
   System.JSON,
   System.Messaging,
-  FMX.DialogService;
+  FMX.DialogService,
+  GeraisDMFrm;
 
 type
   TAtualizaProdutosFrm = class(TForm)
@@ -145,20 +146,13 @@ end;
 
 procedure TAtualizaProdutosFrm.EnviarAtualizacaoPreco;
 begin
-  TDialogService.MessageDialog(
-    'Deseja realmente atualizar o preço do produto?',
-    TMsgDlgType.mtConfirmation,
-    [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],
-    TMsgDlgBtn.mbNo,        // Botão padrão
-    procedure(const AResult: TModalResult)
-    begin
-      if AResult = mrYes then
-      begin
-        // Executa seu código de envio
-        SalvarInfo;
-      end;
-    end
-  );
+  if MessageDlg('Deseja realmente atualizar o preço do produto?',
+                TMsgDlgType.mtConfirmation,
+                [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],
+                0) = mrYes then
+  begin
+    SalvarInfo;
+  end;
 end;
 
 constructor TAtualizaProdutosFrm.create(
