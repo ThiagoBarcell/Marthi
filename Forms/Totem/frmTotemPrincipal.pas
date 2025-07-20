@@ -606,32 +606,45 @@ begin
 
   Frame := TFrameTotem(ParentObject);
 
-  if not Assigned(TecladoVirtualfrm) then
-    TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+//  if not Assigned(TecladoVirtualfrm) then
+//    TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+//
+//  // Obtém o display (monitor) com base no retângulo do Frame
+//  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
+//
+//  // Calcula a posição desejada do teclado virtual
+//  KeyboardLeft := Edit.AbsoluteRect.Left;
+//  KeyboardTop := Frame.RecFrame.AbsoluteRect.Bottom;
+//
+//  // Ajusta a posição para garantir que o teclado fique dentro da área do display
+//  if KeyboardLeft + TecladoVirtualfrm.Width > Display.WorkArea.Width then
+//    KeyboardLeft := Display.WorkArea.Width - TecladoVirtualfrm.Width;
+//
+//  if KeyboardTop + TecladoVirtualfrm.Height > Display.WorkArea.Height then
+//    KeyboardTop := Display.WorkArea.Height - TecladoVirtualfrm.Height;
+//
+//  // Define a posição ajustada do teclado virtual
+//  TecladoVirtualfrm.Left := Round(KeyboardLeft);
+//  TecladoVirtualfrm.Top := Round(KeyboardTop);
+//
+//  // Associa explicitamente o TEdit ao teclado virtual
+//  TecladoVirtualfrm.SetTargetEdit(Edit);
+//
+//  // Exibe o teclado virtual
+//  TecladoVirtualfrm.Show;
 
-  // Obtém o display (monitor) com base no retângulo do Frame
-  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
+  TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+  try
 
-  // Calcula a posição desejada do teclado virtual
-  KeyboardLeft := Edit.AbsoluteRect.Left;
-  KeyboardTop := Frame.RecFrame.AbsoluteRect.Bottom;
+    TecladoVirtualfrm.FTargetEdit.Text := Edit.Text;
+    // Exibe o teclado
+    TecladoVirtualfrm.ShowModal;
 
-  // Ajusta a posição para garantir que o teclado fique dentro da área do display
-  if KeyboardLeft + TecladoVirtualfrm.Width > Display.WorkArea.Width then
-    KeyboardLeft := Display.WorkArea.Width - TecladoVirtualfrm.Width;
-
-  if KeyboardTop + TecladoVirtualfrm.Height > Display.WorkArea.Height then
-    KeyboardTop := Display.WorkArea.Height - TecladoVirtualfrm.Height;
-
-  // Define a posição ajustada do teclado virtual
-  TecladoVirtualfrm.Left := Round(KeyboardLeft);
-  TecladoVirtualfrm.Top := Round(KeyboardTop);
-
-  // Associa explicitamente o TEdit ao teclado virtual
-  TecladoVirtualfrm.SetTargetEdit(Edit);
-
-  // Exibe o teclado virtual
-  TecladoVirtualfrm.Show;
+    Edit.Text := TecladoVirtualfrm.FTargetEdit.Text;
+    //edtSenha.OnTyping(edtSenha);
+  finally
+    TecladoVirtualfrm.Close;
+  end;
 
 //  if not IsKeyboardShown then
 //  begin
@@ -662,32 +675,45 @@ begin
 
   Frame := TFrameTotem(ParentObject);
 
-  if not Assigned(TecladoVirtualfrm) then
-    TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+  TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+  try
 
-  // Obtém o display (monitor) com base no retângulo do Frame
-  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
+    TecladoVirtualfrm.FTargetEdit.Text := Edit.Text;
+    // Exibe o teclado
+    TecladoVirtualfrm.ShowModal;
 
-  // Calcula a posição desejada do teclado virtual
-  KeyboardLeft := Edit.AbsoluteRect.Left;
-  KeyboardTop := Frame.RecFrame.AbsoluteRect.Bottom;
+    Edit.Text := TecladoVirtualfrm.FTargetEdit.Text;
+    //edtSenha.OnTyping(edtSenha);
+  finally
+    TecladoVirtualfrm.Close;
+  end;
 
-  // Ajusta a posição para garantir que o teclado fique dentro da área do display
-  if KeyboardLeft + TecladoVirtualfrm.Width > Display.WorkArea.Width then
-    KeyboardLeft := Display.WorkArea.Width - TecladoVirtualfrm.Width;
-
-  if KeyboardTop + TecladoVirtualfrm.Height > Display.WorkArea.Height then
-    KeyboardTop := Display.WorkArea.Height - TecladoVirtualfrm.Height;
-
-  // Define a posição ajustada do teclado virtual
-  TecladoVirtualfrm.Left := Round(KeyboardLeft);
-  TecladoVirtualfrm.Top := Round(KeyboardTop);
-
-  // Associa explicitamente o TEdit ao teclado virtual
-  TecladoVirtualfrm.SetTargetEdit(Edit);
-
-  // Exibe o teclado virtual
-  TecladoVirtualfrm.Show;
+//  if not Assigned(TecladoVirtualfrm) then
+//    TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+//
+//  // Obtém o display (monitor) com base no retângulo do Frame
+//  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
+//
+//  // Calcula a posição desejada do teclado virtual
+//  KeyboardLeft := Edit.AbsoluteRect.Left;
+//  KeyboardTop := Frame.RecFrame.AbsoluteRect.Bottom;
+//
+//  // Ajusta a posição para garantir que o teclado fique dentro da área do display
+//  if KeyboardLeft + TecladoVirtualfrm.Width > Display.WorkArea.Width then
+//    KeyboardLeft := Display.WorkArea.Width - TecladoVirtualfrm.Width;
+//
+//  if KeyboardTop + TecladoVirtualfrm.Height > Display.WorkArea.Height then
+//    KeyboardTop := Display.WorkArea.Height - TecladoVirtualfrm.Height;
+//
+//  // Define a posição ajustada do teclado virtual
+//  TecladoVirtualfrm.Left := Round(KeyboardLeft);
+//  TecladoVirtualfrm.Top := Round(KeyboardTop);
+//
+//  // Associa explicitamente o TEdit ao teclado virtual
+//  TecladoVirtualfrm.SetTargetEdit(Edit);
+//
+//  // Exibe o teclado virtual
+//  TecladoVirtualfrm.Show;
 //  if not IsKeyboardShown then
 //  begin
 //    ShowKeyboardOn(TEdit(Sender));
@@ -1413,21 +1439,23 @@ begin
 end;
 
 procedure TTotemPrincipalfrm.edtPesquisaClick(Sender: TObject);
-var
-  Display: TDisplay;
-  KeyboardLeft, KeyboardTop: Single;
+//var
+//  Display: TDisplay;
+//  KeyboardLeft, KeyboardTop: Single;
 begin
-  if Assigned(TecladoVirtualfrm) then
+
+  TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+  try
+
+    TecladoVirtualfrm.FTargetEdit.Text := edtPesquisa.Text;
+    // Exibe o teclado
+    TecladoVirtualfrm.ShowModal;
+
+    edtPesquisa.Text := TecladoVirtualfrm.FTargetEdit.Text;
+    edtPesquisa.OnTyping(edtPesquisa);
+  finally
     TecladoVirtualfrm.Close;
-
-  if not Assigned(TecladoVirtualfrm) then
-  begin
-    TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
-    TecladoVirtualfrm.SetTargetEdit(edtPesquisa);
   end;
-
-  // Exibe o teclado
-  TecladoVirtualfrm.Show;
 
 //  // Obtém o display (monitor) com base no retângulo do formulário
 //  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
@@ -1449,9 +1477,6 @@ begin
 //
 //  // Associa explicitamente o TEdit ao teclado virtual
 //  TecladoVirtualfrm.SetTargetEdit(edtPesquisa);
-
-  // Exibe o teclado
-  TecladoVirtualfrm.Show;
 end;
 
 procedure TTotemPrincipalfrm.edtPesquisaEnter(Sender: TObject);

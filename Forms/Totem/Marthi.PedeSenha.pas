@@ -81,8 +81,18 @@ var
   Display: TDisplay;
   KeyboardLeft, KeyboardTop: Single;
 begin
-  if not Assigned(TecladoVirtualfrm) then
-    TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+  TecladoVirtualfrm := TTecladoVirtualfrm.Create(Self);
+  try
+
+    TecladoVirtualfrm.FTargetEdit.Text := edtSenha.Text;
+    // Exibe o teclado
+    TecladoVirtualfrm.ShowModal;
+
+    edtSenha.Text := TecladoVirtualfrm.FTargetEdit.Text;
+    //edtSenha.OnTyping(edtSenha);
+  finally
+    TecladoVirtualfrm.Close;
+  end;
 
 //  // Obtém o display (monitor) com base no retângulo do formulário
 //  Display := Screen.DisplayFromRect(RectF(Self.Left, Self.Top, Self.Left + Self.Width, Self.Top + Self.Height));
@@ -103,10 +113,10 @@ begin
 //  TecladoVirtualfrm.Top := Round(KeyboardTop);
 
   // Associa explicitamente o TEdit ao teclado virtual
-  TecladoVirtualfrm.SetTargetEdit(edtSenha);
-
-  // Exibe o teclado
-  TecladoVirtualfrm.Show;
+//  TecladoVirtualfrm.SetTargetEdit(edtSenha);
+//
+//  // Exibe o teclado
+//  TecladoVirtualfrm.Show;
 
 end;
 

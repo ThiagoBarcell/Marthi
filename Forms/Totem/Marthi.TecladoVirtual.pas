@@ -157,12 +157,13 @@ type
     procedure KeyQClick(Sender: TObject);
     procedure edtEditarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     private
-    FTargetEdit: TEdit;
     { Private declarations }
     procedure KeyClick(Sender: TObject);
 
   public
+    FTargetEdit: TEdit;
     procedure SetTargetEdit(ATargetEdit: TEdit);
     { Public declarations }
   end;
@@ -191,10 +192,15 @@ begin
   SetTargetEdit(edtEditar);
 end;
 
+procedure TTecladoVirtualfrm.FormCreate(Sender: TObject);
+begin
+  FTargetEdit := edtEditar;
+end;
+
 procedure TTecladoVirtualfrm.FormShow(Sender: TObject);
 begin
-  edtEditar.SetFocus;
-  // Somente define o edit local se nenhum outro foi passado
+//  edtEditar.SetFocus;
+//  // Somente define o edit local se nenhum outro foi passado
 //  if not Assigned(FTargetEdit) then
 //    SetTargetEdit(edtEditar);
 end;
@@ -224,11 +230,8 @@ begin
           // Processa teclas especiais
           if KeyAction = 'Enter' then
           begin
-            if Assigned(FTargetEdit) then
-            begin
-              FTargetEdit.Text := edtEditar.Text;
-              Close;
-            end;
+            FTargetEdit.Text := edtEditar.Text;
+            Close;
           end
           else if KeyAction = 'Space' then
           begin
@@ -249,8 +252,8 @@ begin
           end;
 
           // Chama o evento OnTyping de FTargetEdit
-          if Assigned(FTargetEdit.OnTyping) then
-            FTargetEdit.OnTyping(FTargetEdit);  // Dispara o evento Typing manualmente
+//          if Assigned(FTargetEdit.OnTyping) then
+//            FTargetEdit.OnTyping(FTargetEdit);  // Dispara o evento Typing manualmente
 
           Exit;
         end;
