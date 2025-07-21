@@ -28,7 +28,10 @@ uses
   System.JSON,
   System.Messaging,
   FMX.DialogService,
-  GeraisDMFrm;
+  GeraisDMFrm,
+  FMX.DialogService.Async,
+  System.RTLConsts,
+  FMX.Consts;
 
 type
   TAtualizaProdutosFrm = class(TForm)
@@ -146,13 +149,20 @@ end;
 
 procedure TAtualizaProdutosFrm.EnviarAtualizacaoPreco;
 begin
-  if MessageDlg('Deseja realmente atualizar o preço do produto?',
-                TMsgDlgType.mtConfirmation,
-                [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],
-                0) = mrYes then
-  begin
-    SalvarInfo;
-  end;
+  TDialogServiceAsync.MessageDialog(
+    'Deseja realmente atualizar o preço do produto?',
+    TMsgDlgType.mtConfirmation,
+    [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],
+    TMsgDlgBtn.mbNo,
+    0, // HelpContext
+    procedure(const AResult: TModalResult)
+    begin
+      if AResult = mrYes then
+      begin
+        SalvarInfo;
+      end;
+    end
+  );
 end;
 
 constructor TAtualizaProdutosFrm.create(
